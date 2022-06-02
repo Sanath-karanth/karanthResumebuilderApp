@@ -1,0 +1,195 @@
+
+.navheadertext{
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    color:'blue'
+  }
+  
+  .navheadersubtext{
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .leftcardheadertext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+  }
+
+  .backicon {
+      size: 30px;
+  }
+
+  .leftContainer {
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .leftcardskilltext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+  }
+
+  .leftcardmandatorytext {
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+  }
+    
+  .leftcardprojecttext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+  }
+
+  .leftcardtechnologytext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .asteriskkey {
+    color: red;
+    font-weight: bold;
+  }
+
+  .leftcardcheckboxtext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+  }
+
+
+  /* -------------------------  Right Card design  ------------------------ */
+
+
+  .nametext {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+  }
+
+  .roletext {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+  }
+  
+  .mailtext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 8px;
+    font-weight: bolder;
+  }
+
+  .phonetext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+  }
+
+  .workexperiencetext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+
+  .skillstext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+
+  .projecttext {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 6px;
+  }
+
+  .projectroletext {
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 4px;
+  }
+
+  .developertext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    
+  }
+
+  .skilllisttext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 6px;
+  }
+
+  .educationtext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+
+  .degreetext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    margin-bottom: 6px;
+  }
+
+  .universitytext {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 6px;
+  }
+
+  .yeartext {
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .worknametext {
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 6px;
+  }
+
+  .workroletext {
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 4px;
+  }
+
+  .workmonthyeartext {
+    font-size: 11px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 6px;
+  }
+
+  .footer{
+    flex-shrink: 0;
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(6, 0, 88);
+    color: white;
+    position: fixed;
+    padding-bottom: 20;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6%;
+  }
+
+.footertext {
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+}
+  
+  .errortext {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    color: red;
+  }
+  
+  
+  
