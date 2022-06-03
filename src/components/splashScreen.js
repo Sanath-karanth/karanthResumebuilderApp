@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'lottie-react-web'
-import animation  from '../lotties/79225-know-your-policy.json'
-import '../css/lottiestyle.css';
+import animation  from '../lotties/12549-document-check.json'
+import '../css/Splashlottiestyle.css';
 import { useNavigate  } from "react-router-dom";
 
 const SplashScreen = () => {
