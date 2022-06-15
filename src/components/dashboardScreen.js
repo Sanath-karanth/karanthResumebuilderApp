@@ -86,9 +86,11 @@ const DashboardScreen = memo(() => {
                         }
                      }>
                         <HeaderScreen />
-                        <div className='pt-4 mt-4'>
-                          <h1>Main Container</h1>
-                        </div>
+                          <Container fluid>
+                            <div className='pt-4 mt-4'>
+                              <h1>Main Container</h1>
+                            </div>
+                          </Container>
                         <FooterScreen />
                     </div>
                 </div>

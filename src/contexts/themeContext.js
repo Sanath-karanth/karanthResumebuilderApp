@@ -3,14 +3,21 @@ import { createContext, useState, useEffect } from "react";
 const themes = {
     dark: {
         backgroundColor: "black",
-        headerBgColor: "black",
         color: "#FFFFFF",
-        shadowColor: "rgba(255, 255, 255, 255) 0px 2px 10px"
+        headerBgColor: "black",
+
+        textmouseon: "#FFFFFF",
+        textmouseoff: "#000000",
+        shadowColor: "rgba(255, 255, 255, 255) 0px 2px 10px",
+        
     },
     light: {
         backgroundColor: "#FFFFFF",
-        headerBgColor: "#FFFFFF",
         color: "#000000",
+        headerBgColor: "#FFFFFF",
+        
+        textmouseon: "#000000",
+        textmouseoff: "#FFFFFF",
         shadowColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px"
     },
 };
