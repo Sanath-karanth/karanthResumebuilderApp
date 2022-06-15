@@ -9,6 +9,17 @@
     --bs-gutter-x: 0px !important;
     --bs-gutter-y: 0px !important;
 }
+.headertabsCol{
+    display: flex;
+    align-items: center;
+}
+.headerthemeCol{
+    margin: auto !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
 .resumebuilderTitle-cont{
     display: flex;
     flex-direction: row;
@@ -21,20 +32,22 @@
     animation-iteration-count: 10;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
-.headertabs{
+.headertabsDesktop{
     display: inline-flex;
     flex-wrap: wrap;
     gap: 18px;
+    justify-content: center;
     align-items: center;
 }
-.headertabstext{
+.headertabsDesktoptext{
     display: flex;
     flex-direction: row;
     align-items: center;
     align-content: center;
+    justify-content: center;
     cursor: pointer;
 }
-.headertabstext:hover{
+.headertabsDesktoptext:hover{
     transition: all 0.2s ease-in-out 0.2s;
     -ms-transform: scale(1.2); /* IE 9 */
     -webkit-transform: scale(1.2); /* Safari 3-8 */
@@ -43,23 +56,46 @@
     padding: 6px;
     border-radius: 10px;
 }
-.headertabsCol{
-    display: flex;
-    align-items: center;
-}
-.headerthemeCol{
-    margin: auto !important;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-}
-.headerIcons{
+.headerIconsDesktop{
     padding-right: 5px;
     margin-bottom: 4px;
     height: 16px;
     width: 16px;
 }
+.headertabsMobile{
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 3px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background-color: rgb(136, 200, 255);
+}
+.headertabsMobileIcons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.headertabsMobileIcons:hover{
+    transition: all 0.2s ease-in-out 0.2s;
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+    background-color: #7a7a7a;
+    padding: 5px;
+    border-radius: 10px;
+}
+.headerIconsMobile{
+    padding: 2px;
+    height: 16px;
+    width: 16px;
+}
+
+
 
 
   /* -----------------------    Resume builder Text Animation styles    ---------------------- */
@@ -198,7 +234,7 @@
 @media (max-width: 767px) {
     .HeadContainer-header{
         margin: 0 auto;
-        padding: 15px 10px 15px 10px;
+        padding: 12px 10px 12px 10px;
         height: fit-content;
     }
     .header-Desktop{
@@ -216,6 +252,9 @@
         font-weight: bolder;
         cursor: pointer;
     }
+    .headertoggle-cont{
+        margin-left: 8px;
+    }
   }
   
   /* Tablet View ----------------------------------------------------------------------------------*/
@@ -226,7 +265,7 @@
     }    
     .HeadContainer-header{
         margin: 0 auto;
-        padding: 15px 10px 15px 10px;
+        padding: 10px;
         height: fit-content;
     }
     .header-Mobile{
@@ -244,7 +283,7 @@
         font-weight: bolder;
         cursor: pointer;
     }
-    .headertabstext h4{
+    .headertabsDesktoptext h4{
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
     }
@@ -258,7 +297,7 @@
     .HeadContainer-header{
         margin: 0 auto;
         max-width: 1280px;
-        padding: 15px 10px 15px 10px;
+        padding: 10px;
         height: fit-content;
     }
     .header-Mobile{
@@ -279,7 +318,7 @@
         font-weight: bolder;
         cursor: pointer;
     }
-    .headertabstext h4{
+    .headertabsDesktoptext h4{
         font-size: 16px;
         font-family: 'Nunito', sans-serif;
     }

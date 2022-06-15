@@ -6,8 +6,8 @@ const themes = {
         color: "#FFFFFF",
         headerBgColor: "black",
 
-        textmouseon: "#FFFFFF",
-        textmouseoff: "#000000",
+        tabIconsBgColor: "#FFFFFF",
+        tabIcons: "#000000",
         shadowColor: "rgba(255, 255, 255, 255) 0px 2px 10px",
         
     },
@@ -16,8 +16,8 @@ const themes = {
         color: "#000000",
         headerBgColor: "#FFFFFF",
         
-        textmouseon: "#000000",
-        textmouseoff: "#FFFFFF",
+        tabIconsBgColor: "#000000",
+        tabIcons: "#FFFFFF",
         shadowColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px"
     },
 };

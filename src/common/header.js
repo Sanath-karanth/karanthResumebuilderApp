@@ -37,6 +37,7 @@ const HeaderScreen = memo(() => {
                            boxShadow: theme.shadowColor
                         }
                      }>
+
                     <Container fluid className='container-guttersforheader'>
                         <div className='header-Desktop'>
                             <Row className='gx-0'>
@@ -51,24 +52,32 @@ const HeaderScreen = memo(() => {
                                     </div>
                                 </Col>
                                 <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={4} className='headertabsCol'>
-                                    <div className='headertabs'>
-                                        <div className="headertabstext" onClick={homeClick}>
-                                            <FontAwesomeIcon icon={faHome} className="headerIcons" />
+                                    <div className='headertabsDesktop'>
+                                        <div className="headertabsDesktoptext" onClick={homeClick}>
+                                            <FontAwesomeIcon 
+                                                icon={faHome} 
+                                                className="headerIconsDesktop" />
                                             <h4>Home</h4>
                                         </div>
-                                        <div className="headertabstext" onClick={instructionClick}>
-                                            <FontAwesomeIcon icon={faQuestionCircle} className="headerIcons" />
+                                        <div className="headertabsDesktoptext" onClick={instructionClick}>
+                                            <FontAwesomeIcon 
+                                                icon={faQuestionCircle} 
+                                                className="headerIconsDesktop" />
                                             <h4>Instructions</h4>
                                         </div>
-                                        <div className="headertabstext" onClick={reviewClick}>
-                                            <FontAwesomeIcon icon={faHeart} className="headerIcons" />
+                                        <div className="headertabsDesktoptext" onClick={reviewClick}>
+                                            <FontAwesomeIcon 
+                                                icon={faHeart} 
+                                                className="headerIconsDesktop" />
                                             <h4>Reviews</h4>
                                         </div>
                                     </div>
                                 </Col>
                                 <Col xs={12} sm={12} md={2} lg={3} xl={3} xxl={4} className='headerthemeCol'>
-                                    <div className="headertabstext" onClick={feedbackClick}>
-                                        <FontAwesomeIcon icon={faCommentDots} className="headerIcons" />
+                                    <div className="headertabsDesktoptext" onClick={feedbackClick}>
+                                        <FontAwesomeIcon 
+                                            icon={faCommentDots} 
+                                            className="headerIconsDesktop" />
                                         <h4>Feedback</h4>
                                     </div>
                                     <div className='headertoggle-cont'>
@@ -79,7 +88,7 @@ const HeaderScreen = memo(() => {
                                 </Col>
                             </Row>
                         </div>
-
+                        {/* -------------------  Mobile view   ----------------- */}
                         <div className='header-Mobile'>
                             <Row className='gx-0'>
                                 <Col xs={5} sm={5} className='headertitleCol'>
@@ -92,20 +101,28 @@ const HeaderScreen = memo(() => {
                                         </div>
                                     </div>
                                 </Col>
-                                <Col xs={5} sm={5} className='headertabsCol'>
-                                    <div className='headertabs'>
-                                        <div className="headertabstext" onClick={homeClick}>
-                                            <FontAwesomeIcon icon={faHome} className="headerIcons" />
+                                <Col xs={7} sm={7} className='headerthemeCol'>
+                                    <div className='headertabsMobile' 
+                                         style={{backgroundColor: theme.tabIconsBgColor}}>
+                                        <div className="headertabsMobileIcons" onClick={reviewClick}>
+                                            <FontAwesomeIcon 
+                                                icon={faHeart}
+                                                style={{color: theme.tabIcons}} 
+                                                className="headerIconsMobile" />
                                         </div>
-                                        <div className="headertabstext" onClick={instructionClick}>
-                                            <FontAwesomeIcon icon={faQuestionCircle} className="headerIcons" />
+                                        <div className="headertabsMobileIcons" onClick={instructionClick}>
+                                            <FontAwesomeIcon 
+                                                icon={faQuestionCircle}
+                                                style={{color: theme.tabIcons}} 
+                                                className="headerIconsMobile" />
                                         </div>
-                                        <div className="headertabstext" onClick={reviewClick}>
-                                            <FontAwesomeIcon icon={faHeart} className="headerIcons" />
+                                        <div className="headertabsMobileIcons" onClick={homeClick}>
+                                            <FontAwesomeIcon 
+                                                icon={faHome} 
+                                                style={{color: theme.tabIcons}}
+                                                className="headerIconsMobile" />
                                         </div>
                                     </div>
-                                </Col>
-                                <Col xs={2} sm={2} className='headerthemeCol'>
                                     <div className='headertoggle-cont'>
                                         <ToggleButton
                                             onChange={toggleTheme}>
@@ -115,6 +132,7 @@ const HeaderScreen = memo(() => {
                             </Row>
                         </div>
                     </Container>
+
                 </div>
             </div>
         </div>
