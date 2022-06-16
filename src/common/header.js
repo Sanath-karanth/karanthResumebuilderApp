@@ -15,13 +15,13 @@ const HeaderScreen = memo(() => {
         navigate("/dashboard");
     }
     const instructionClick = () => {
-        navigate("/");
+        navigate("/dashboard");
     }
     const reviewClick = () => {
-        navigate("/review");
+        navigate("/dashboard");
     }
     const feedbackClick = () => {
-        navigate("/feedback");
+        navigate("/dashboard");
     }
 
 
