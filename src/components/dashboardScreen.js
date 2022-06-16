@@ -82,13 +82,15 @@ const DashboardScreen = memo(() => {
                         { 
                           backgroundColor: theme.backgroundColor,
                           color: theme.color,
-                          height:'100vh'
                         }
                      }>
                         <HeaderScreen />
                           <Container fluid>
                             <div className='pt-4 mt-4'>
-                              <h1>Main Container</h1>
+                              <h1>Dashboard Container for Resume Builder created by Sanath Karanth</h1>
+                            </div>
+                            <div className='pt-4 mt-4'>
+                              <h1>Dashboard Container for Resume Builder created by Sanath Karanth</h1>
                             </div>
                           </Container>
                         <FooterScreen />

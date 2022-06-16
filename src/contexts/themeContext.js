@@ -4,21 +4,26 @@ const themes = {
     dark: {
         backgroundColor: "black",
         color: "#FFFFFF",
-        headerBgColor: "black",
-
+        headerBgColor: "#000000",
+        footerBgColor: "#000000",
         tabIconsBgColor: "#FFFFFF",
         tabIcons: "#000000",
-        shadowColor: "rgba(255, 255, 255, 255) 0px 2px 10px",
-        
+        shadowTopColor: "rgba(255, 255, 255, 255) 0px -2px 10px",
+        shadowBottomColor: "rgba(255, 255, 255, 255) 0px 2px 10px",
+        footerSocialIconcolor: '#FFFFFF',
+        footerCopyrighttext: '#61DBFB'
     },
     light: {
         backgroundColor: "#FFFFFF",
         color: "#000000",
         headerBgColor: "#FFFFFF",
-        
+        footerBgColor: "#FFFFFF",
         tabIconsBgColor: "#000000",
         tabIcons: "#FFFFFF",
-        shadowColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px"
+        shadowTopColor: "rgba(0, 0, 0, 0.35) 0px -5px 15px",
+        shadowBottomColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+        footerSocialIconcolor: '#000000',
+        footerCopyrighttext: '#000000'
     },
 };
 
