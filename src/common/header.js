@@ -34,7 +34,7 @@ const HeaderScreen = memo(() => {
                         { 
                            backgroundColor: theme.headerBgColor,
                            color: theme.color,
-                           boxShadow: theme.shadowBottomColor
+                           boxShadow: theme.shadowBottomColor,
                         }
                      }>
 

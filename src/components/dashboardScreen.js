@@ -82,6 +82,7 @@ const DashboardScreen = memo(() => {
                         { 
                           backgroundColor: theme.backgroundColor,
                           color: theme.color,
+                          paddingTop: '30px'
                         }
                      }>
                         <HeaderScreen />
