@@ -10,14 +10,14 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 const CheckedIcon = () => 
     <>
         <FontAwesomeIcon 
-            icon={faMoon} 
-            style={{color: '#F4F6F0'}} />
+            icon={faSun} 
+            style={{color: '#FCE570'}} />
     </>;
 const UncheckedIcon = () => 
     <>
         <FontAwesomeIcon 
-            icon={faSun} 
-            style={{color: '#FCE570'}} />
+            icon={faMoon} 
+            style={{color: '#F4F6F0'}} />
     </>;
 
 const ToggleButton = ( props ) => {
