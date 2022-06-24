@@ -1,9 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 
-const CheckedIcon = () => <>🌜</>;
-const UncheckedIcon = () => <>🌞</>;
+// const CheckedIcon = () => <>🌜</>;
+// const UncheckedIcon = () => <>🌞</>;
+
+const CheckedIcon = () => 
+    <>
+        <FontAwesomeIcon 
+            icon={faMoon} 
+            style={{color: '#F4F6F0'}} />
+    </>;
+const UncheckedIcon = () => 
+    <>
+        <FontAwesomeIcon 
+            icon={faSun} 
+            style={{color: '#FCE570'}} />
+    </>;
 
 const ToggleButton = ( props ) => {
 
