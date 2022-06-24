@@ -91,7 +91,7 @@ const HeaderScreen = memo(() => {
                         {/* -------------------  Mobile view   ----------------- */}
                         <div className='header-Mobile'>
                             <Row className='gx-0'>
-                                <Col xs={5} sm={5} className='headertitleCol'>
+                                <Col xs={4} sm={4} className='headertitleCol'>
                                     <div className='resumebuilderTitle-cont'>
                                         <div className='headerlogo'>
                                             <img src="./images/atom.png" className="Appheader-logo" alt="AppLogo" />
@@ -101,7 +101,7 @@ const HeaderScreen = memo(() => {
                                         </div>
                                     </div>
                                 </Col>
-                                <Col xs={7} sm={7} className='headerthemeCol'>
+                                <Col xs={8} sm={8} className='headerthemeCol'>
                                     <div className='headertabsMobile' 
                                          style={{backgroundColor: theme.tabIconsBgColor}}>
                                         <div className="headertabsMobileIcons" onClick={reviewClick}>
@@ -109,18 +109,21 @@ const HeaderScreen = memo(() => {
                                                 icon={faHeart}
                                                 style={{color: theme.tabIcons}} 
                                                 className="headerIconsMobile" />
+                                            <p style={{color: theme.tabIcons}}>Reviews</p>
                                         </div>
                                         <div className="headertabsMobileIcons" onClick={instructionClick}>
                                             <FontAwesomeIcon 
                                                 icon={faQuestionCircle}
                                                 style={{color: theme.tabIcons}} 
                                                 className="headerIconsMobile" />
+                                            <p style={{color: theme.tabIcons}}>Instructions</p>
                                         </div>
                                         <div className="headertabsMobileIcons" onClick={homeClick}>
                                             <FontAwesomeIcon 
                                                 icon={faHome} 
                                                 style={{color: theme.tabIcons}}
                                                 className="headerIconsMobile" />
+                                            <p style={{color: theme.tabIcons}}>Home</p>
                                         </div>
                                     </div>
                                     <div className='headertoggle-cont'>
