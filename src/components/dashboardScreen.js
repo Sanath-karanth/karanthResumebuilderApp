@@ -82,18 +82,33 @@ const DashboardScreen = memo(() => {
                         { 
                           backgroundColor: theme.backgroundColor,
                           color: theme.color,
-                          paddingTop: '35px'
                         }
                      }>
                         <HeaderScreen />
-                          <Container fluid>
-                            <div className='pt-4 mt-4'>
-                              <h1>Dashboard Container for Resume Builder created by Sanath Karanth</h1>
+                            <div className='MainCont-dashboard'>
+                              <Container fluid className='container-guttersforDashboard'>
+                              <Row className='gx-0'>
+                                <Col xs={12} sm={12} md={4} lg={4} xl={4} xxl={4}>
+                                  <div className='m-3'>
+                                    <section className='dashboard-card' style={{background: theme.cardColor}}>
+                                      <h1>Dashboard Container for Resum</h1>
+                                      <h1>Dashboard Container for Resum</h1>
+                                      <h1>Dashboard Container for Resum</h1>
+                                    </section>
+                                  </div>
+                                </Col>
+                                <Col xs={12} sm={12} md={8} lg={8} xl={8} xxl={8}>
+                                  <div className='m-3'>
+                                    <section className='dashboard-card' style={{background: theme.cardColor}}>
+                                      <h1>Dashboard Container for Resume Builder created by Sanath Karanth</h1>
+                                      <h1>Dashboard Container for Resume Builder created by Sanath Karanth</h1>
+                                      <h1>Dashboard Container for Resume Builder created by Sanath Karanth</h1>
+                                    </section>
+                                  </div>
+                                </Col>
+                              </Row>
+                              </Container>
                             </div>
-                            <div className='pt-4 mt-4'>
-                              <h1>Dashboard Container for Resume Builder created by Sanath Karanth</h1>
-                            </div>
-                          </Container>
                         <FooterScreen />
                     </div>
                 </div>

@@ -1,6 +1,14 @@
 
 /* ALL Views */
 
+.HeadContainer-dashboard h1, h2, h3, h4, h5, h6, p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.container-guttersforDashboard {
+  --bs-gutter-x: 0px !important;
+  --bs-gutter-y: 0px !important;
+}
 
        
 /* Mobile View */
@@ -10,6 +18,17 @@
       max-width: 1280px;
       height: fit-content;
   }
+  .MainCont-dashboard{
+    padding-top: 85px;
+    padding-bottom: 20px;
+  }
+  .dashboard-card{
+    border-radius: 8px;
+    width: 100%;
+    display: inline-block;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%);
+    padding: 20px;
+}
 }
 
 /* Tablet View */
@@ -23,6 +42,17 @@
       max-width: 1280px;
       height: fit-content;
   }
+  .MainCont-dashboard{
+    padding-top: 85px;
+    padding-bottom: 20px;
+  }
+  .dashboard-card{
+    border-radius: 8px;
+    width: 100%;
+    display: inline-block;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%);
+    padding: 20px;
+}
 }
 
 /* Desktop View */
@@ -33,8 +63,22 @@
       max-width: 1280px;
       height: fit-content;
   }
-  
+  .MainCont-dashboard{
+    padding-top: 85px;
+    padding-bottom: 20px;
+  }
+  .dashboard-card{
+    border-radius: 8px;
+    width: 100%;
+    display: inline-block;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%);
+    padding: 20px;
 }
+}
+
+
+
+
 
 
 /* Large Sektop View */

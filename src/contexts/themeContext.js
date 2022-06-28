@@ -11,10 +11,11 @@ const themes = {
         shadowTopColor: "rgba(255, 255, 255, 255) 0px -2px 10px",
         shadowBottomColor: "rgba(255, 255, 255, 255) 0px 2px 10px",
         footerSocialIconcolor: '#FFFFFF',
-        footerCopyrighttext: '#61DBFB'
+        footerCopyrighttext: '#61DBFB',
+        cardColor: '#343a40'
     },
     light: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#eceef4",
         color: "#000000",
         headerBgColor: "#FFFFFF",
         footerBgColor: "#FFFFFF",
@@ -23,7 +24,8 @@ const themes = {
         shadowTopColor: "rgba(0, 0, 0, 0.35) 0px -5px 15px",
         shadowBottomColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
         footerSocialIconcolor: '#000000',
-        footerCopyrighttext: '#000000'
+        footerCopyrighttext: '#000000',
+        cardColor: '#FFFFFF'
     },
 };
 
