@@ -1,4 +1,18 @@
 
+export const resumeData = [
+      {
+          resumeID: 'Resume11',
+          resumeName: 'Resume 1',
+          labelOption: 'option-1',
+          resumeImg: '../resumes/Resume1.jpg'
+      },
+      {
+          resumeID: 'Resume12',
+          resumeName: 'Resume 2',
+          labelOption: 'option-2',
+          resumeImg: '../resumes/Resume2.jpg'
+      }
+  ];
 
 export const langOptions = [
     { value: 'HTML', label: 'HTML'},

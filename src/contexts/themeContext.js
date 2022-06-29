@@ -12,7 +12,8 @@ const themes = {
         shadowBottomColor: "rgba(255, 255, 255, 255) 0px 2px 10px",
         footerSocialIconcolor: '#FFFFFF',
         footerCopyrighttext: '#61DBFB',
-        cardColor: '#343a40'
+        cardColor: '#343a40',
+        cardLeftBorderColor: '#343a40'
     },
     light: {
         backgroundColor: "#eceef4",
@@ -25,7 +26,8 @@ const themes = {
         shadowBottomColor: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
         footerSocialIconcolor: '#000000',
         footerCopyrighttext: '#000000',
-        cardColor: '#FFFFFF'
+        cardColor: '#FFFFFF',
+        cardLeftBorderColor: '#b9f2ff'
     },
 };
 

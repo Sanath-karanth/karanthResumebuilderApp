@@ -4,6 +4,7 @@ import Loader from '../common/loader'
 import HeaderScreen from '../common/header';
 import FooterScreen from '../common/footer';
 import { ThemeContext } from '../contexts/themeContext';
+import { resumeData } from "../json/json"
 import { useNavigate  } from "react-router-dom";
 import {Navbar,Nav,Container,Row,Col,Button,Card,Modal} from 'react-bootstrap'
 import moment from 'moment';
@@ -27,7 +28,30 @@ const DashboardScreen = memo(() => {
         navigate("/home");
     }
 
+    const filterforImage = (item) => {
+      if(item.resumeName === RadioVal)
+      {
+          return true
+      }
+      else
+      {
+          return false
+      }
+    }
 
+    function resumeTabClick(evt, resumeName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("Dashboardtabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("Dashboardtablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" activetab", "");
+      }
+      document.getElementById(resumeName).style.display = "block";
+      evt.currentTarget.className += " activetab";
+    }
 
     function InstructionsModal(props) {
         return (
@@ -68,6 +92,7 @@ const DashboardScreen = memo(() => {
 
 
       useEffect(() => {
+        document.getElementById("defaultTabOpen").click();
         if (spin) {
           setTimeout(() => setSpin(false), 2000);
         }
@@ -87,22 +112,53 @@ const DashboardScreen = memo(() => {
                         <HeaderScreen />
                             <div className='MainCont-dashboard'>
                               <Container fluid className='container-guttersforDashboard'>
+                              <div className='mandatoryinfotext'>
+                                <p>
+                                  <span className='asteriskkey'>*</span> Please read all the <b>Instructions</b> present within the Header before proceed!
+                                </p>
+                              </div>
                               <Row className='gx-0'>
-                                <Col xs={12} sm={12} md={4} lg={4} xl={4} xxl={4}>
+                                <Col xs={12} sm={4} md={4} lg={3} xl={3} xxl={3}>
                                   <div className='m-3'>
-                                    <section className='dashboard-card' style={{background: theme.cardColor}}>
-                                      <h1>Dashboard Container for Resum</h1>
-                                      <h1>Dashboard Container for Resum</h1>
-                                      <h1>Dashboard Container for Resum</h1>
+                                    <section className='dashboard-card' style={{background: theme.cardLeftBorderColor}}>
+                                      <div className='selecttext pb-3'>
+                                        <h5>Select the Resume:</h5>
+                                      </div>
+                                      <div className='dashboard-lefttCard'>
+                                        {resumeData.map((item,key) => {
+                                            return(
+                                            <div key={key} 
+                                                 className="Dashboardtablinks mb-3"
+                                                 id="defaultTabOpen"
+                                                 onClick={(e) => resumeTabClick(e, item.resumeID)}>
+                                              <div className='leftCardBorder' style={{background: theme.cardLeftBorderColor}}>
+                                                <img 
+                                                  src={item.resumeImg} 
+                                                  alt={item.resumeName}> 
+                                                </img>
+                                              </div>
+                                            </div>)
+                                        })}
+                                      </div>
                                     </section>
                                   </div>
                                 </Col>
-                                <Col xs={12} sm={12} md={8} lg={8} xl={8} xxl={8}>
+                                <Col xs={12} sm={8} md={8} lg={9} xl={9} xxl={9}>
                                   <div className='m-3'>
                                     <section className='dashboard-card' style={{background: theme.cardColor}}>
-                                      <h1>Dashboard Container for Resume Builder created by Sanath Karanth</h1>
-                                      <h1>Dashboard Container for Resume Builder created by Sanath Karanth</h1>
-                                      <h1>Dashboard Container for Resume Builder created by Sanath Karanth</h1>
+                                      <div className='dashboard-rightCard'>
+                                      {resumeData.map((item,key) => {
+                                            return(
+                                            <div key={key} id={item.resumeID} className="Dashboardtabcontent">
+                                              <img 
+                                                src={item.resumeImg} 
+                                                alt={item.resumeName} 
+                                                width="100%" 
+                                                height="auto"> 
+                                              </img>
+                                            </div>)
+                                        })}
+                                      </div>
                                     </section>
                                   </div>
                                 </Col>

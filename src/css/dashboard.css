@@ -9,7 +9,40 @@
   --bs-gutter-x: 0px !important;
   --bs-gutter-y: 0px !important;
 }
-
+.mandatoryinfotext{
+  width: 100%;
+  padding: 4px 20px 4px 20px;
+}
+.selecttext{
+  width: 100%;
+}
+.dashboard-rightCard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 0px 5px 0px 5px;
+}
+.dashboard-lefttCard{
+  cursor: pointer;
+  width: 100%;
+  padding-top: 10px;
+}
+.Dashboardtablinks{
+  width: 100%;
+  border-radius: 10px;
+  padding: 3px;
+  background-color: transparent;
+}
+.leftCardBorder{
+  border-radius: 10px;
+  padding: 6px;
+}
+.dashboard-lefttCard .activetab {
+  width: 100%;
+  border-radius: 10px;
+  background-color: black;
+}
        
 /* Mobile View */
 @media (max-width: 767px) {
@@ -28,7 +61,21 @@
     display: inline-block;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%);
     padding: 20px;
-}
+  }
+  .mandatoryinfotext p{
+    font-size: 12px;
+    font-family: 'Nunito', sans-serif;
+    color: red;
+  }
+  .selecttext h5{
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .Dashboardtablinks img{
+    width: 100%;
+    max-height: auto;
+    border-radius: 10px;
+  }
 }
 
 /* Tablet View */
@@ -52,7 +99,21 @@
     display: inline-block;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%);
     padding: 20px;
-}
+  }
+  .mandatoryinfotext p{
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    color: red;
+  }
+  .selecttext h5{
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .Dashboardtablinks img{
+    width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+  }
 }
 
 /* Desktop View */
@@ -73,7 +134,21 @@
     display: inline-block;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%);
     padding: 20px;
-}
+  }
+  .mandatoryinfotext p{
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    color: red;
+  }
+  .selecttext h5{
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .Dashboardtablinks img{
+    width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+  }
 }
 
 
