@@ -27,7 +27,7 @@ const themes = {
     footerSocialIconcolor: "#000000",
     footerCopyrighttext: "#000000",
     cardColor: "#FFFFFF",
-    cardLeftBorderColor: "#b9f2ff",
+    cardLeftBorderColor: "rgb(245 255 250)",
   },
 };
 

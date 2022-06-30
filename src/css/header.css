@@ -274,8 +274,9 @@ p {
     width: 100%;
     height: fit-content;
     position: -webkit-sticky;
-    position: fixed;
+    position: fixed !important;
     top: 0;
+    z-index: 1;
   }
 
   .header-Desktop {
@@ -314,8 +315,9 @@ p {
     width: 100%;
     height: fit-content;
     position: -webkit-sticky;
-    position: fixed;
+    position: fixed !important;
     top: 0;
+    z-index: 1;
   }
 
   .header-Mobile {
@@ -355,8 +357,9 @@ p {
     width: 100%;
     height: fit-content;
     position: -webkit-sticky;
-    position: fixed;
+    position: fixed !important;
     top: 0;
+    z-index: 1;
   }
 
   .header-Mobile {

@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useContext, Fragment } from 'react';
+import React, { memo, useState, useEffect, useContext, useCallback, Fragment } from 'react';
 import '../css/dashboard.css'
 import Loader from '../common/loader'
 import HeaderScreen from '../common/header';
@@ -14,7 +14,7 @@ import { faHome, faQuestionCircle, faCommentDots, faHeart } from '@fortawesome/f
 
 const DashboardScreen = memo(() => {
 
-    const [{theme,isDark}, toggleTheme] = useContext(ThemeContext);
+    const [{theme,isDark}] = useContext(ThemeContext);
     const [RadioVal, setRadioVal] = useState('Resume 1');
     const [idVal, setIdVal] = useState(97);
     const navigate = useNavigate();
@@ -26,31 +26,6 @@ const DashboardScreen = memo(() => {
  
     const homeClick = () => {
         navigate("/home");
-    }
-
-    const filterforImage = (item) => {
-      if(item.resumeName === RadioVal)
-      {
-          return true
-      }
-      else
-      {
-          return false
-      }
-    }
-
-    function resumeTabClick(evt, resumeName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("Dashboardtabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("Dashboardtablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" activetab", "");
-      }
-      document.getElementById(resumeName).style.display = "block";
-      evt.currentTarget.className += " activetab";
     }
 
     function InstructionsModal(props) {
@@ -89,14 +64,49 @@ const DashboardScreen = memo(() => {
         );
       }
 
+      function resumeTabClick(evt, resumeName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("Dashboardtabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("Dashboardtablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" activetab", "");
+        }
+        document.getElementById(resumeName).style.display = "block";
+        evt.currentTarget.className += " activetab";
+        checkactive();
+      }
 
+      const checkactive = useCallback(() => {
+        const cardActive = document.querySelectorAll(".Dashboardtablinks");
+        for(let i=0 ; i<cardActive.length ; i++)
+        {
+          if(cardActive[i].classList.contains('activetab'))
+          {
+            if(isDark === false)
+            {
+              cardActive[i].style.backgroundColor = 'black';
+            }
+            else
+            {
+              cardActive[i].style.backgroundColor = 'white';
+            }
+          }
+          else
+          {
+              cardActive[i].style.backgroundColor = 'transparent';
+          }
+        }
+      },[isDark]) 
 
       useEffect(() => {
         document.getElementById("defaultTabOpen").click();
         if (spin) {
           setTimeout(() => setSpin(false), 2000);
         }
-      }, [spin]);
+      }, [spin,checkactive]);
 
     return (
         <Fragment>
@@ -136,6 +146,9 @@ const DashboardScreen = memo(() => {
                                                   src={item.resumeImg} 
                                                   alt={item.resumeName}> 
                                                 </img>
+                                                <div className='resumecardNameText'>
+                                                  <p>{item.resumeName}</p>
+                                                </div>
                                               </div>
                                             </div>)
                                         })}
