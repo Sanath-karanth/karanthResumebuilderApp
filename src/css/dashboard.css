@@ -1,77 +1,95 @@
-
 /* ALL Views */
 
-.HeadContainer-dashboard h1, h2, h3, h4, h5, h6, p {
+.HeadContainer-dashboard h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0 !important;
   padding: 0 !important;
 }
+
 .container-guttersforDashboard {
   --bs-gutter-x: 0px !important;
   --bs-gutter-y: 0px !important;
 }
-.mandatoryinfotext{
+
+.mandatoryinfotext {
   width: 100%;
   padding: 4px 20px 4px 20px;
 }
-.selecttext{
+
+.selecttext {
   width: 100%;
 }
-.dashboard-rightCard{
+
+.dashboard-rightCard {
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
   padding: 0px 5px 0px 5px;
 }
-.dashboard-lefttCard{
+
+.dashboard-lefttCard {
   cursor: pointer;
   width: 100%;
   padding-top: 10px;
 }
-.Dashboardtablinks{
+
+.Dashboardtablinks {
   width: 100%;
   border-radius: 10px;
   padding: 3px;
   background-color: transparent;
 }
-.leftCardBorder{
+
+.leftCardBorder {
   border-radius: 10px;
   padding: 6px;
 }
+
 .dashboard-lefttCard .activetab {
   width: 100%;
   border-radius: 10px;
   background-color: black;
 }
-       
+
 /* Mobile View */
 @media (max-width: 767px) {
-  .HeadContainer-dashboard{
-      margin: 0 auto;
-      max-width: 1280px;
-      height: fit-content;
+  .HeadContainer-dashboard {
+    margin: 0 auto;
+    max-width: 1280px;
+    height: fit-content;
   }
-  .MainCont-dashboard{
+
+  .MainCont-dashboard {
     padding-top: 85px;
     padding-bottom: 20px;
   }
-  .dashboard-card{
+
+  .dashboard-card {
     border-radius: 8px;
     width: 100%;
     display: inline-block;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%);
     padding: 20px;
   }
-  .mandatoryinfotext p{
+
+  .mandatoryinfotext p {
     font-size: 12px;
     font-family: 'Nunito', sans-serif;
     color: red;
   }
-  .selecttext h5{
+
+  .selecttext h5 {
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
   }
-  .Dashboardtablinks img{
+
+  .Dashboardtablinks img {
     width: 100%;
     max-height: auto;
     border-radius: 10px;
@@ -79,37 +97,43 @@
 }
 
 /* Tablet View */
-@media (min-width: 768px) and (max-width: 1199px){
-  .MainContainer-dashboard{
-      width: 100%;
-      height: fit-content;
-  }    
-  .HeadContainer-dashboard{
-      margin: 0 auto;
-      max-width: 1280px;
-      height: fit-content;
+@media (min-width: 768px) and (max-width: 1199px) {
+  .MainContainer-dashboard {
+    width: 100%;
+    height: fit-content;
   }
-  .MainCont-dashboard{
+
+  .HeadContainer-dashboard {
+    margin: 0 auto;
+    max-width: 1280px;
+    height: fit-content;
+  }
+
+  .MainCont-dashboard {
     padding-top: 85px;
     padding-bottom: 20px;
   }
-  .dashboard-card{
+
+  .dashboard-card {
     border-radius: 8px;
     width: 100%;
     display: inline-block;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%);
     padding: 20px;
   }
-  .mandatoryinfotext p{
+
+  .mandatoryinfotext p {
     font-size: 14px;
     font-family: 'Nunito', sans-serif;
     color: red;
   }
-  .selecttext h5{
+
+  .selecttext h5 {
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
   }
-  .Dashboardtablinks img{
+
+  .Dashboardtablinks img {
     width: 100%;
     max-height: 300px;
     border-radius: 10px;
@@ -118,33 +142,38 @@
 
 /* Desktop View */
 @media (min-width: 1200px) {
-  .HeadContainer-dashboard{
-      margin: 0 auto;
-      background-color: aqua;
-      max-width: 1280px;
-      height: fit-content;
+  .HeadContainer-dashboard {
+    margin: 0 auto;
+    background-color: aqua;
+    max-width: 1280px;
+    height: fit-content;
   }
-  .MainCont-dashboard{
+
+  .MainCont-dashboard {
     padding-top: 85px;
     padding-bottom: 20px;
   }
-  .dashboard-card{
+
+  .dashboard-card {
     border-radius: 8px;
     width: 100%;
     display: inline-block;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%);
     padding: 20px;
   }
-  .mandatoryinfotext p{
+
+  .mandatoryinfotext p {
     font-size: 14px;
     font-family: 'Nunito', sans-serif;
     color: red;
   }
-  .selecttext h5{
+
+  .selecttext h5 {
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
   }
-  .Dashboardtablinks img{
+
+  .Dashboardtablinks img {
     width: 100%;
     max-height: 300px;
     border-radius: 10px;
@@ -158,18 +187,18 @@
 
 /* Large Sektop View */
 @media (min-width: 1367px) {
-  .HeadContainer-dashboard{
-      margin: 0 auto;
-      max-width: 1300px;
-      height: fit-content;
+  .HeadContainer-dashboard {
+    margin: 0 auto;
+    max-width: 1300px;
+    height: fit-content;
   }
-  
+
 }
 
 @media (min-width: 1729px) {
-  .SubContainer-dashboard{
-      margin: 0 auto;
-      max-width: 1728px;
-      height: fit-content;
+  .SubContainer-dashboard {
+    margin: 0 auto;
+    max-width: 1728px;
+    height: fit-content;
   }
 }

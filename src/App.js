@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  Routes,
-  Route,
-} from 'react-router-dom';
-import { AuthProvider } from "./contexts/AuthContext"
-import SplashPage from './components/splashScreen';
-import DashboardPage from './components/dashboardScreen';
-
+import { Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
+import SplashPage from "./components/splashScreen";
+import DashboardPage from "./components/dashboardScreen";
 
 const App = () => {
   return (
@@ -20,8 +16,6 @@ const App = () => {
 };
 
 export default App;
-
-
 
 // import logo from './logo.svg';
 // import './App.css';

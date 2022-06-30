@@ -1,360 +1,414 @@
-
-
 /* ---  All Views   ---- */
 
 .container-guttersforfooter {
-  --bs-gutter-x: 0px !important;
-  --bs-gutter-y: 0px !important;
+    --bs-gutter-x: 0px !important;
+    --bs-gutter-y: 0px !important;
 }
-.footer-sub-container{
-  padding: 20px 25px 20px 25px;
-  height: fit-content;
+
+.footer-sub-container {
+    padding: 20px 25px 20px 25px;
+    height: fit-content;
 }
-.footer-copyright p{
-  font-size: 12px;
-  font-family: 'Nunito', sans-serif;
+
+.footer-copyright p {
+    font-size: 12px;
+    font-family: 'Nunito', sans-serif;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-footerlogo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-footerlogo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Mobile View */
 @media (max-width: 767px) {
-  .footergutters{
-      --bs-gutter-y: 20px !important;
-  }
-  .footer-headleft-text{
-      text-align: left;
-  }
-  .footer-headleft-text h4{
-      font-size: 20px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: bolder;
-      text-transform: capitalize;
-  }
-  .footer-subleft-textIcon-cont{
-    display: flex;
-    justify-content: row;
-    text-align: left;
-    padding: 5px 0px 5px 0px;
-  }
-  .footer-subleft-textIcon-cont h6{
-      font-size: 14px;
-      font-family: 'Nunito', sans-serif;
-      margin-top: 8px;
-      padding-left: 12px;
-  }
-  .footericonstyle{
-    margin-top: 2px;
-    margin-right: 8px;
-  }
-  .footer-headcenter-text{
-      text-align: left;
-  }
-  .footer-headcenter-text h4{
-      font-size: 20px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: bolder;
-      text-transform: capitalize;
-  }
-  .footer-subcenter-text{
-      display: flex;
-      justify-content: row;
-      text-align: left;
-      padding: 5px 0px 5px 0px;
-  }
+    .footergutters {
+        --bs-gutter-y: 20px !important;
+    }
 
-  .footer-subcenter-text h6{
-      font-size: 14px;
-      font-family: 'Nunito', sans-serif;
-      margin-top: 8px;
-  }
-  .footer-headright-text{
-      text-align: left;
-  }
-  .footer-headright-text h4{
-      font-size: 20px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: bolder;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-  }
-  .footer-subright-text{
-      text-align: left;
-      padding: 5px 20px 0px 0px;
-  }
-  .footer-subright-text p{
-      font-size: 12px;
-      font-family: 'Nunito', sans-serif;
-      line-height: 1.8em;
-  }
-  .App-footerlogo {
-    height: 50px;
-    width: 50px;
-    margin-top: -18px;
-    pointer-events: none;
-  }
-  .social-icons-container{
-      justify-content: center;
-      text-align: center;
-      padding-top: 14px;
-  }
-  .socialIcon-cont{
-      width: 40px;
-      height: 40px;
-      display: inline-block;
-      padding: 6px 0px 0px 0px;
-      border-style: solid;
-      border-radius: 50%;
-      border-width: 1px;
-      border-color: #929A9D;
-      margin: 0px 10px 12px 10px;
-  }
-  .socialIcon-cont a,
-  .socialIcon-cont a:hover{
-      text-decoration: none !important;
-      opacity: 0.75;
-  }
-  .socialicon{
-      width: 40px;
-      height: 40px;
-      transition: all .3s ease-out;
-  }
-  .socialicon:hover{
-      text-decoration: none !important;
-      opacity: 0.9;
-      transform: scale(1.2);
-  }
+    .footer-headleft-text {
+        text-align: left;
+    }
+
+    .footer-headleft-text h4 {
+        font-size: 20px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+        text-transform: capitalize;
+    }
+
+    .footer-subleft-textIcon-cont {
+        display: flex;
+        justify-content: row;
+        text-align: left;
+        padding: 5px 0px 5px 0px;
+    }
+
+    .footer-subleft-textIcon-cont h6 {
+        font-size: 14px;
+        font-family: 'Nunito', sans-serif;
+        margin-top: 8px;
+        padding-left: 12px;
+    }
+
+    .footericonstyle {
+        margin-top: 2px;
+        margin-right: 8px;
+    }
+
+    .footer-headcenter-text {
+        text-align: left;
+    }
+
+    .footer-headcenter-text h4 {
+        font-size: 20px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+        text-transform: capitalize;
+    }
+
+    .footer-subcenter-text {
+        display: flex;
+        justify-content: row;
+        text-align: left;
+        padding: 5px 0px 5px 0px;
+    }
+
+    .footer-subcenter-text h6 {
+        font-size: 14px;
+        font-family: 'Nunito', sans-serif;
+        margin-top: 8px;
+    }
+
+    .footer-headright-text {
+        text-align: left;
+    }
+
+    .footer-headright-text h4 {
+        font-size: 20px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+    }
+
+    .footer-subright-text {
+        text-align: left;
+        padding: 5px 20px 0px 0px;
+    }
+
+    .footer-subright-text p {
+        font-size: 12px;
+        font-family: 'Nunito', sans-serif;
+        line-height: 1.8em;
+    }
+
+    .App-footerlogo {
+        height: 50px;
+        width: 50px;
+        margin-top: -18px;
+        pointer-events: none;
+    }
+
+    .social-icons-container {
+        justify-content: center;
+        text-align: center;
+        padding-top: 14px;
+    }
+
+    .socialIcon-cont {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        padding: 6px 0px 0px 0px;
+        border-style: solid;
+        border-radius: 50%;
+        border-width: 1px;
+        border-color: #929A9D;
+        margin: 0px 10px 12px 10px;
+    }
+
+    .socialIcon-cont a,
+    .socialIcon-cont a:hover {
+        text-decoration: none !important;
+        opacity: 0.75;
+    }
+
+    .socialicon {
+        width: 40px;
+        height: 40px;
+        transition: all .3s ease-out;
+    }
+
+    .socialicon:hover {
+        text-decoration: none !important;
+        opacity: 0.9;
+        transform: scale(1.2);
+    }
 }
 
 /* Tablet View */
-@media (min-width: 768px) and (max-width: 1199px){
-  .footergutters{
-      --bs-gutter-x: 10px !important;
-  }
-  .footer-headleft-text{
-      text-align: left;
-  }
-  .footer-headleft-text h4{
-      font-size: 24px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: bolder;
-      text-transform: capitalize;
-  }
-  .footer-subleft-textIcon-cont{
-      display: flex;
-      justify-content: row;
-      text-align: left;
-      padding: 5px 0px 5px 0px;
-  }
-  .footer-subleft-textIcon-cont h6{
-      font-size: 16px;
-      font-family: 'Nunito', sans-serif;
-      margin-top: 8px;
-      padding-left: 12px;
-  }
-  .footericonstyle{
-    margin-top: 2px;
-    margin-right: 8px;
-  }
-  .footer-headcenter-text{
-      text-align: left;
-  }
-  .footer-headcenter-text h4{
-      font-size: 24px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: bolder;
-      text-transform: capitalize;
-  }
-  .footer-subcenter-text{
-      display: flex;
-      justify-content: row;
-      text-align: left;
-      padding: 5px 0px 5px 0px;
-  }
+@media (min-width: 768px) and (max-width: 1199px) {
+    .footergutters {
+        --bs-gutter-x: 10px !important;
+    }
 
-  .footer-subcenter-text h6{
-      font-size: 16px;
-      font-family: 'Nunito', sans-serif;
-      margin-top: 8px;
-  }
-  .footer-headright-text{
-      text-align: left;
-  }
-  .footer-headright-text h4{
-      font-size: 20px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: bolder;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-  }
-  .footer-subright-text{
-      text-align: left;
-      padding: 5px 20px 0px 0px;
-  }
-  .footer-subright-text p{
-      font-size: 12px;
-      font-family: 'Nunito', sans-serif;
-      line-height: 1.6em;
-  }
-  .App-footerlogo {
-    height: 50px;
-    width: 50px;
-    margin-top: -14px;
-    pointer-events: none;
-  }
-  .social-icons-container{
-      justify-content: center;
-      text-align: center;
-      padding-top: 10px;
-  }
-  .socialIcon-cont{
-      width: 40px;
-      height: 40px;
-      display: inline-block;
-      padding: 6px 0px 0px 0px;
-      border-style: solid;
-      border-radius: 50%;
-      border-width: 1px;
-      border-color: #929A9D;
-      margin: 0px 10px 12px 10px;
-  }
-  .socialIcon-cont a,
-  .socialIcon-cont a:hover{
-      text-decoration: none !important;
-      opacity: 0.75;
-  }
-  .socialicon{
-      width: 40px;
-      height: 40px;
-      transition: all .3s ease-out;
-  }
-  .socialicon:hover{
-      text-decoration: none !important;
-      opacity: 0.9;
-      transform: scale(1.2);
-  }
+    .footer-headleft-text {
+        text-align: left;
+    }
+
+    .footer-headleft-text h4 {
+        font-size: 24px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+        text-transform: capitalize;
+    }
+
+    .footer-subleft-textIcon-cont {
+        display: flex;
+        justify-content: row;
+        text-align: left;
+        padding: 5px 0px 5px 0px;
+    }
+
+    .footer-subleft-textIcon-cont h6 {
+        font-size: 16px;
+        font-family: 'Nunito', sans-serif;
+        margin-top: 8px;
+        padding-left: 12px;
+    }
+
+    .footericonstyle {
+        margin-top: 2px;
+        margin-right: 8px;
+    }
+
+    .footer-headcenter-text {
+        text-align: left;
+    }
+
+    .footer-headcenter-text h4 {
+        font-size: 24px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+        text-transform: capitalize;
+    }
+
+    .footer-subcenter-text {
+        display: flex;
+        justify-content: row;
+        text-align: left;
+        padding: 5px 0px 5px 0px;
+    }
+
+    .footer-subcenter-text h6 {
+        font-size: 16px;
+        font-family: 'Nunito', sans-serif;
+        margin-top: 8px;
+    }
+
+    .footer-headright-text {
+        text-align: left;
+    }
+
+    .footer-headright-text h4 {
+        font-size: 20px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+    }
+
+    .footer-subright-text {
+        text-align: left;
+        padding: 5px 20px 0px 0px;
+    }
+
+    .footer-subright-text p {
+        font-size: 12px;
+        font-family: 'Nunito', sans-serif;
+        line-height: 1.6em;
+    }
+
+    .App-footerlogo {
+        height: 50px;
+        width: 50px;
+        margin-top: -14px;
+        pointer-events: none;
+    }
+
+    .social-icons-container {
+        justify-content: center;
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    .socialIcon-cont {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        padding: 6px 0px 0px 0px;
+        border-style: solid;
+        border-radius: 50%;
+        border-width: 1px;
+        border-color: #929A9D;
+        margin: 0px 10px 12px 10px;
+    }
+
+    .socialIcon-cont a,
+    .socialIcon-cont a:hover {
+        text-decoration: none !important;
+        opacity: 0.75;
+    }
+
+    .socialicon {
+        width: 40px;
+        height: 40px;
+        transition: all .3s ease-out;
+    }
+
+    .socialicon:hover {
+        text-decoration: none !important;
+        opacity: 0.9;
+        transform: scale(1.2);
+    }
 }
 
 /* Desktop View */
 @media (min-width: 1200px) {
-  .footergutters{
-      --bs-gutter-x: 0px !important;
-  }
-  .footer-headleft-text{
-      text-align: left;
-  }
-  .footer-headleft-text h4{
-      font-size: 24px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: bolder;
-      text-transform: capitalize;
-  }
-  .footer-subleft-textIcon-cont{
-      display: flex;
-      justify-content: row;
-      text-align: left;
-      padding: 5px 0px 5px 0px;
-  }
-  .footer-subleft-textIcon-cont h6{
-      font-size: 16px;
-      font-family: 'Nunito', sans-serif;
-      margin-top: 8px;
-      padding-left: 12px;
-  }
-  .footericonstyle{
-      margin-top: 2px;
-      margin-right: 8px;
-  }
-  .footer-headcenter-text{
-      text-align: left;
-  }
-  .footer-headcenter-text h4{
-      font-size: 24px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: bolder;
-      text-transform: capitalize;
-  }
-  .footer-subcenter-text{
-      display: flex;
-      justify-content: row;
-      text-align: left;
-      padding: 5px 0px 5px 0px;
-  }
-  .footer-subcenter-text h6{
-      font-size: 16px;
-      font-family: 'Nunito', sans-serif;
-      margin-top: 8px;
-  }
-  .footer-headright-text{
-      text-align: left;
-  }
-  .footer-headright-text h4{
-      font-size: 26px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: bolder;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-  }
-  .footer-subright-text{
-      text-align: left;
-      padding: 5px 30px 0px 0px;
-  }
-  .footer-subright-text p{
-      font-size: 12px;
-      font-family: 'Nunito', sans-serif;
-      line-height: 1.8em;
-  }
-  .App-footerlogo {
-    height: 50px;
-    width: 50px;
-    margin-top: -14px;
-    pointer-events: none;
-  }
-  .social-icons-container{
-      justify-content: center;
-      text-align: center;
-      padding-top: 10px;
-  }
-  .socialIcon-cont{
-      width: 40px;
-      height: 40px;
-      display: inline-block;
-      padding: 6px 0px 0px 0px;
-      border-style: solid;
-      border-radius: 50%;
-      border-width: 1px;
-      border-color: #929A9D;
-      margin: 0px 10px 12px 10px;
-  }
-  .socialIcon-cont a,
-  .socialIcon-cont a:hover{
-      text-decoration: none !important;
-      opacity: 0.75;
-  }
-  .socialicon{
-      width: 40px;
-      height: 40px;
-      transition: all .3s ease-out;
-  }
-  .socialicon:hover{
-      text-decoration: none !important;
-      opacity: 0.9;
-      transform: scale(1.2);
-  }
-  
+    .footergutters {
+        --bs-gutter-x: 0px !important;
+    }
+
+    .footer-headleft-text {
+        text-align: left;
+    }
+
+    .footer-headleft-text h4 {
+        font-size: 24px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+        text-transform: capitalize;
+    }
+
+    .footer-subleft-textIcon-cont {
+        display: flex;
+        justify-content: row;
+        text-align: left;
+        padding: 5px 0px 5px 0px;
+    }
+
+    .footer-subleft-textIcon-cont h6 {
+        font-size: 16px;
+        font-family: 'Nunito', sans-serif;
+        margin-top: 8px;
+        padding-left: 12px;
+    }
+
+    .footericonstyle {
+        margin-top: 2px;
+        margin-right: 8px;
+    }
+
+    .footer-headcenter-text {
+        text-align: left;
+    }
+
+    .footer-headcenter-text h4 {
+        font-size: 24px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+        text-transform: capitalize;
+    }
+
+    .footer-subcenter-text {
+        display: flex;
+        justify-content: row;
+        text-align: left;
+        padding: 5px 0px 5px 0px;
+    }
+
+    .footer-subcenter-text h6 {
+        font-size: 16px;
+        font-family: 'Nunito', sans-serif;
+        margin-top: 8px;
+    }
+
+    .footer-headright-text {
+        text-align: left;
+    }
+
+    .footer-headright-text h4 {
+        font-size: 26px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+    }
+
+    .footer-subright-text {
+        text-align: left;
+        padding: 5px 30px 0px 0px;
+    }
+
+    .footer-subright-text p {
+        font-size: 12px;
+        font-family: 'Nunito', sans-serif;
+        line-height: 1.8em;
+    }
+
+    .App-footerlogo {
+        height: 50px;
+        width: 50px;
+        margin-top: -14px;
+        pointer-events: none;
+    }
+
+    .social-icons-container {
+        justify-content: center;
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    .socialIcon-cont {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        padding: 6px 0px 0px 0px;
+        border-style: solid;
+        border-radius: 50%;
+        border-width: 1px;
+        border-color: #929A9D;
+        margin: 0px 10px 12px 10px;
+    }
+
+    .socialIcon-cont a,
+    .socialIcon-cont a:hover {
+        text-decoration: none !important;
+        opacity: 0.75;
+    }
+
+    .socialicon {
+        width: 40px;
+        height: 40px;
+        transition: all .3s ease-out;
+    }
+
+    .socialicon:hover {
+        text-decoration: none !important;
+        opacity: 0.9;
+        transform: scale(1.2);
+    }
+
 }
-
-
