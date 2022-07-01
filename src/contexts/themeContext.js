@@ -14,6 +14,7 @@ const themes = {
     footerCopyrighttext: "#61DBFB",
     cardColor: "#343a40",
     cardLeftBorderColor: "#343a40",
+    buttonColor: "light",
   },
   light: {
     backgroundColor: "#eceef4",
@@ -28,6 +29,7 @@ const themes = {
     footerCopyrighttext: "#000000",
     cardColor: "#FFFFFF",
     cardLeftBorderColor: "rgb(245 255 250)",
+    buttonColor: "dark",
   },
 };
 

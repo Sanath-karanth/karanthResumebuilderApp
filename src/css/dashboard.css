@@ -67,6 +67,12 @@ p {
   font-family: 'Nunito', sans-serif;
 }
 
+.db-Proceedbutton button {
+  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+  text-transform: uppercase;
+}
+
 /* Mobile View */
 @media (max-width: 767px) {
   .HeadContainer-dashboard {

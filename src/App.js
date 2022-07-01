@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import SplashPage from "./components/splashScreen";
 import DashboardPage from "./components/dashboardScreen";
+import ResumeFormPage from "./components/resumeFormScreen";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SplashPage />}></Route>
         <Route path="dashboard" element={<DashboardPage />}></Route>
+        <Route path="resumeform" element={<ResumeFormPage />}></Route>
       </Routes>
     </AuthProvider>
   );
