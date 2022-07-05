@@ -266,6 +266,33 @@ p {
 }
 
 
+/* ------------------    Modal Styles    ----------------------- */
+
+.modal-title p {
+  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bolder;
+}
+
+.modal-header span {
+  font-size: 18px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bolder;
+  color: red;
+}
+
+.modal-desp {
+  font-size: 16px;
+  font-family: 'Nunito', sans-serif;
+  color: green;
+}
+
+.modal-button {
+  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+}
+
+
 /* Mobile View ---------------------------------------------------------------------------------*/
 @media (max-width: 767px) {
   .HeadContainer-header {

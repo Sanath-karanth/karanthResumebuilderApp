@@ -205,7 +205,6 @@ p {
 @media (min-width: 1200px) {
   .HeadContainer-dashboard {
     margin: 0 auto;
-    background-color: aqua;
     max-width: 1280px;
     height: fit-content;
   }
