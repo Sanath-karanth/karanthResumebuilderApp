@@ -10,7 +10,7 @@ const SplashScreen = () => {
 
     React.useEffect(() => {
         const timer = window.setInterval(() => {
-          navigate("/dashboard", { replace: true });
+          navigate("/dashboard", { replace: false });
         }, 2000);
         return () => { 
           window.clearInterval(timer);
