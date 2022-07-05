@@ -28,6 +28,13 @@ p {
   justify-content: flex-end;
   align-items: center;
 }
+.headerBackCol{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
 
 .resumebuilderTitle-cont {
   display: flex;
@@ -79,9 +86,16 @@ p {
   height: 16px;
   width: 16px;
 }
+.headerIconsDesktopBack {
+  padding-right: 2px;
+  margin-bottom: 0px;
+  height: 16px;
+  width: 16px;
+}
 
 .headertabsMobile {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 16px;
   padding: 5px;

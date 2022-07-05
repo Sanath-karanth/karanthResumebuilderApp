@@ -30,6 +30,7 @@ const DashboardScreen = memo(() => {
   const navigate = useNavigate();
   let currentyear = moment().format("YYYY");
   const [spin, setSpin] = useState(true);
+  const headertextValue = 'dashboard';
 
   const homeClick = () => {
     navigate("/home");
@@ -92,7 +93,7 @@ const DashboardScreen = memo(() => {
               color: theme.color,
             }}
           >
-            <HeaderScreen />
+            <HeaderScreen headerData={headertextValue} />
             <div className="MainCont-dashboard">
               <Container fluid className="container-guttersforDashboard">
                 <div className="mandatoryinfotext">

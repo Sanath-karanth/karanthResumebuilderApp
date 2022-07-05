@@ -28,6 +28,7 @@ const ResumeFormScreen = memo(() => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { resumeid, resumename } = state;
+  const headertextValue = 'resumeform';
 
   const backClick = () => {
     navigate("/dashboard");
@@ -44,7 +45,7 @@ const ResumeFormScreen = memo(() => {
               color: theme.color,
             }}
           >
-            <HeaderScreen />
+            <HeaderScreen  headerData={headertextValue} />
             <div>
               <button onClick={backClick}>Back</button>
             </div>
