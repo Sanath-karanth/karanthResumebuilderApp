@@ -38,7 +38,7 @@ const DashboardScreen = memo(() => {
 
   const proceedClick = () => {
     navigate("../resumeform", {
-      replace: true,
+      replace: false,
       state: { resumeid: idVal, resumename: SelectedVal },
     });
   };
