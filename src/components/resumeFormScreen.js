@@ -22,6 +22,8 @@ import {
   faCommentDots,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
+import FresherFormScreen from "./fresherFormScreen";
+import ExperienceFormScreen from "./experienceFormScreen";
 
 const ResumeFormScreen = memo(() => {
   const [{ theme, isDark }] = useContext(ThemeContext);
@@ -99,8 +101,13 @@ const ResumeFormScreen = memo(() => {
                 </div>
               </div>
 
-              <h2>{resumeid}</h2>
-              <p>{resumename}</p>
+              <Container className="container-guttersforResumeform">
+                {fresherVal === true ? <FresherFormScreen /> : null}
+                {expVal === true ? <ExperienceFormScreen /> : null}
+              </Container>
+
+              {/* <h2>{resumeid}</h2>
+              <p>{resumename}</p> */}
             </div>
             <FooterScreen />
           </div>

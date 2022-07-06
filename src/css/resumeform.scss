@@ -15,14 +15,12 @@ p {
   --bs-gutter-x: 0px !important;
   --bs-gutter-y: 0px !important;
 }
-.rf-Tabs{
+.rf-Tabs {
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: center;
 }
-
-
 
 /* Mobile View */
 @media (max-width: 767px) {
@@ -34,16 +32,17 @@ p {
     padding-top: 85px;
     padding-bottom: 20px;
   }
-  .rf-Tabstxt{
+  .rf-Tabstxt {
     display: flex;
     flex-direction: row;
     text-align: center;
-    padding: 6px; 
+    padding: 6px;
     border-radius: 99px;
     background-color: white;
     transition: 2s ease-in-out;
     position: relative;
     width: 250px;
+    margin-bottom: 30px;
     * {
       z-index: 2;
     }
@@ -56,9 +55,9 @@ p {
     background-color: #e6eef9;
     z-index: 1;
     border-radius: 99px;
-    transition: 0.40s ease-out;
+    transition: 0.4s ease-out;
   }
-  .rf-freshertxt{
+  .rf-freshertxt {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,7 +69,7 @@ p {
     color: black;
     cursor: pointer;
   }
-  .rf-exptxt{
+  .rf-exptxt {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,10 +83,9 @@ p {
   .rf-freshertxt h2,
   .rf-exptxt h2 {
     font-size: 18px;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
   }
 }
-
 
 /* Tablet View */
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -104,16 +102,17 @@ p {
     padding-top: 85px;
     padding-bottom: 20px;
   }
-  .rf-Tabstxt{
+  .rf-Tabstxt {
     display: flex;
     flex-direction: row;
     text-align: center;
-    padding: 6px; 
+    padding: 6px;
     border-radius: 99px;
     background-color: white;
     transition: 2s ease-in-out;
     position: relative;
     width: 350px;
+    margin-bottom: 30px;
     * {
       z-index: 2;
     }
@@ -126,9 +125,9 @@ p {
     background-color: #e6eef9;
     z-index: 1;
     border-radius: 99px;
-    transition: 0.40s ease-out;
+    transition: 0.4s ease-out;
   }
-  .rf-freshertxt{
+  .rf-freshertxt {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -140,7 +139,7 @@ p {
     color: black;
     cursor: pointer;
   }
-  .rf-exptxt{
+  .rf-exptxt {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,7 +153,7 @@ p {
   .rf-freshertxt h2,
   .rf-exptxt h2 {
     font-size: 22px;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
   }
 }
 
@@ -169,16 +168,17 @@ p {
     padding-top: 85px;
     padding-bottom: 20px;
   }
-  .rf-Tabstxt{
+  .rf-Tabstxt {
     display: flex;
     flex-direction: row;
     text-align: center;
-    padding: 6px; 
+    padding: 6px;
     border-radius: 99px;
     background-color: white;
     transition: 2s ease-in-out;
     position: relative;
     width: 380px;
+    margin-bottom: 40px;
     * {
       z-index: 2;
     }
@@ -191,9 +191,9 @@ p {
     background-color: #e6eef9;
     z-index: 1;
     border-radius: 99px;
-    transition: 0.40s ease-out;
+    transition: 0.4s ease-out;
   }
-  .rf-freshertxt{
+  .rf-freshertxt {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,7 +205,7 @@ p {
     color: black;
     cursor: pointer;
   }
-  .rf-exptxt{
+  .rf-exptxt {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -219,14 +219,9 @@ p {
   .rf-freshertxt h2,
   .rf-exptxt h2 {
     font-size: 26px;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
   }
 }
-
-
-
-
-
 
 /* Large Sektop View */
 @media (min-width: 1367px) {
@@ -235,7 +230,6 @@ p {
     max-width: 1300px;
     height: fit-content;
   }
-
 }
 
 @media (min-width: 1729px) {

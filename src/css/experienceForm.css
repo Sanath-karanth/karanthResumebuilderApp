@@ -1,0 +1,52 @@
+/* ALL Views */
+
+.HeadContainer-dashboard h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.container-guttersforResumeform {
+    --bs-gutter-x: 0px !important;
+    --bs-gutter-y: 0px !important;
+}
+
+.rf-Tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+/* Mobile View */
+@media (max-width: 767px) {
+    .experience-form {
+        margin: 0 auto;
+        height: fit-content;
+    }
+}
+
+
+/* Tablet View */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .experience-form {
+        width: 100%;
+        height: fit-content;
+    }
+}
+
+
+/* Desktop View */
+@media (min-width: 1200px) {
+    .experience-form {
+        padding-top: 85px;
+        padding-bottom: 20px;
+    }
+}
