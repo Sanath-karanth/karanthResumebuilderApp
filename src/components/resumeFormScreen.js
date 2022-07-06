@@ -6,7 +6,7 @@ import React, {
   useCallback,
   Fragment,
 } from "react";
-import "../css/resumeform.css";
+import "../css/resumeform.scss";
 import Loader from "../common/loader";
 import HeaderScreen from "../common/header";
 import FooterScreen from "../common/footer";
@@ -28,11 +28,51 @@ const ResumeFormScreen = memo(() => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { resumeid, resumename } = state;
-  const headertextValue = 'resumeform';
+  const headertextValue = "resumeform";
+  const [fresherVal, setFresherVal] = useState(true);
+  const [expVal, setExpVal] = useState(false);
 
   const backClick = () => {
     navigate("/dashboard");
   };
+
+  const fresherClick = () => {
+    setFresherVal(true);
+    setExpVal(false);
+  };
+
+  const experienceClick = () => {
+    setFresherVal(false);
+    setExpVal(true);
+  };
+
+  //  --------------   Custom Tabs function   ------------- //
+
+  const tabsAction = useCallback(() => {
+    let getFresherColor = document.querySelector(".rf-freshertxt");
+    let getExpColor = document.querySelector(".rf-exptxt");
+    var glider = document.querySelector(".tabglider");
+
+    if (fresherVal === true) {
+      glider.style.transform = "translateX(0%)";
+      getFresherColor.style.color = "#185ee0";
+    } else {
+      getFresherColor.style.color = "black";
+    }
+
+    if (expVal === true) {
+      glider.style.transform = "translateX(100%)";
+      getExpColor.style.color = "#185ee0";
+    } else {
+      getExpColor.style.color = "black";
+    }
+  }, [fresherVal, expVal]);
+
+  useEffect(() => {
+    tabsAction();
+  }, [tabsAction]);
+
+  //  ------------------  Closes -------------
 
   return (
     <Fragment>
@@ -45,12 +85,23 @@ const ResumeFormScreen = memo(() => {
               color: theme.color,
             }}
           >
-            <HeaderScreen  headerData={headertextValue} />
-            <div>
-              <button onClick={backClick}>Back</button>
+            <HeaderScreen headerData={headertextValue} />
+            <div className="MainCont-resumeform">
+              <div className="rf-Tabs">
+                <div className="rf-Tabstxt">
+                  <span className="rf-freshertxt" onClick={fresherClick}>
+                    <h2>Fresher</h2>
+                  </span>
+                  <span className="rf-exptxt" onClick={experienceClick}>
+                    <h2>Experience</h2>
+                  </span>
+                  <span class="tabglider"></span>
+                </div>
+              </div>
+
+              <h2>{resumeid}</h2>
+              <p>{resumename}</p>
             </div>
-            <h2>{resumeid}</h2>
-            <p>{resumename}</p>
             <FooterScreen />
           </div>
         </div>

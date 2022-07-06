@@ -1,0 +1,250 @@
+/* ALL Views */
+
+.HeadContainer-dashboard h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.container-guttersforResumeform {
+  --bs-gutter-x: 0px !important;
+  --bs-gutter-y: 0px !important;
+}
+.rf-Tabs{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+
+
+/* Mobile View */
+@media (max-width: 767px) {
+  .HeadContainer-resumeform {
+    margin: 0 auto;
+    height: fit-content;
+  }
+  .MainCont-resumeform {
+    padding-top: 85px;
+    padding-bottom: 20px;
+  }
+  .rf-Tabstxt{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding: 6px; 
+    border-radius: 99px;
+    background-color: white;
+    transition: 2s ease-in-out;
+    position: relative;
+    width: 250px;
+    * {
+      z-index: 2;
+    }
+  }
+  .tabglider {
+    position: absolute;
+    display: flex;
+    height: 50px;
+    width: 120px;
+    background-color: #e6eef9;
+    z-index: 1;
+    border-radius: 99px;
+    transition: 0.25s ease-out;
+    transform: translateX(0%);
+  }
+  .rf-freshertxt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 200px;
+    border-radius: 99px;
+    padding: 2px;
+    transition: color 0.15s ease-in;
+    color: black;
+    cursor: pointer;
+  }
+  .rf-exptxt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 200px;
+    border-radius: 99px;
+    transition: color 0.15s ease-in;
+    color: black;
+    cursor: pointer;
+  }
+  .rf-freshertxt h2,
+  .rf-exptxt h2 {
+    font-size: 18px;
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+
+/* Tablet View */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .MainContainer-resumeform {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .HeadContainer-resumeform {
+    margin: 0 auto;
+    height: fit-content;
+  }
+  .MainCont-resumeform {
+    padding-top: 85px;
+    padding-bottom: 20px;
+  }
+  .rf-Tabstxt{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding: 6px; 
+    border-radius: 99px;
+    background-color: white;
+    transition: 2s ease-in-out;
+    position: relative;
+    width: 350px;
+    * {
+      z-index: 2;
+    }
+  }
+  .tabglider {
+    position: absolute;
+    display: flex;
+    height: 50px;
+    width: 170px;
+    background-color: #e6eef9;
+    z-index: 1;
+    border-radius: 99px;
+    transition: 0.25s ease-out;
+    transform: translateX(0%);
+  }
+  .rf-freshertxt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 200px;
+    border-radius: 99px;
+    padding: 2px;
+    transition: color 0.15s ease-in;
+    color: black;
+    cursor: pointer;
+  }
+  .rf-exptxt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 200px;
+    border-radius: 99px;
+    transition: color 0.15s ease-in;
+    color: black;
+    cursor: pointer;
+  }
+  .rf-freshertxt h2,
+  .rf-exptxt h2 {
+    font-size: 22px;
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+/* Desktop View */
+@media (min-width: 1200px) {
+  .HeadContainer-resumeform {
+    margin: 0 auto;
+    max-width: 1280px;
+    height: fit-content;
+  }
+  .MainCont-resumeform {
+    padding-top: 85px;
+    padding-bottom: 20px;
+  }
+  .rf-Tabstxt{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding: 6px; 
+    border-radius: 99px;
+    background-color: white;
+    transition: 2s ease-in-out;
+    position: relative;
+    width: 380px;
+    * {
+      z-index: 2;
+    }
+  }
+  .tabglider {
+    position: absolute;
+    display: flex;
+    height: 54px;
+    width: 185px;
+    background-color: #e6eef9;
+    z-index: 1;
+    border-radius: 99px;
+    transition: 0.25s ease-out;
+    transform: translateX(0%);
+  }
+  .rf-freshertxt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    width: 200px;
+    border-radius: 99px;
+    padding: 2px;
+    transition: color 0.15s ease-in;
+    color: black;
+    cursor: pointer;
+  }
+  .rf-exptxt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    width: 200px;
+    border-radius: 99px;
+    transition: color 0.15s ease-in;
+    color: black;
+    cursor: pointer;
+  }
+  .rf-freshertxt h2,
+  .rf-exptxt h2 {
+    font-size: 26px;
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+
+
+
+
+
+/* Large Sektop View */
+@media (min-width: 1367px) {
+  .HeadContainer-resumeform {
+    margin: 0 auto;
+    max-width: 1300px;
+    height: fit-content;
+  }
+
+}
+
+@media (min-width: 1729px) {
+  .SubContainer-resumeform {
+    margin: 0 auto;
+    max-width: 1728px;
+    height: fit-content;
+  }
+}

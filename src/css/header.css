@@ -317,7 +317,7 @@ p {
     position: -webkit-sticky;
     position: fixed !important;
     top: 0;
-    z-index: 1;
+    z-index: 10;
   }
 
   .header-Desktop {
@@ -358,7 +358,7 @@ p {
     position: -webkit-sticky;
     position: fixed !important;
     top: 0;
-    z-index: 1;
+    z-index: 10;
   }
 
   .header-Mobile {
@@ -400,7 +400,7 @@ p {
     position: -webkit-sticky;
     position: fixed !important;
     top: 0;
-    z-index: 1;
+    z-index: 10;
   }
 
   .header-Mobile {
