@@ -79,5 +79,7 @@ p {
     }
     .fresher-forms-cont{
         padding: 20px 40px 10px 40px;
+        border-radius: 5px;
+        opacity: 1;
     }
 }

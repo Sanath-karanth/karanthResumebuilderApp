@@ -15,6 +15,7 @@ const themes = {
     cardColor: "#343a40",
     cardLeftBorderColor: "#343a40",
     buttonColor: "light",
+    cardShadow: "0px 2px 15px rgba(255, 255, 255, 0.6)"
   },
   light: {
     backgroundColor: "#eceef4",
@@ -30,6 +31,7 @@ const themes = {
     cardColor: "#FFFFFF",
     cardLeftBorderColor: "rgb(245 255 250)",
     buttonColor: "dark",
+    cardShadow: "0px 3px 8px #00000029"
   },
 };
 

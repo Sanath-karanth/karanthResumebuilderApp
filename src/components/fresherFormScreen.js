@@ -121,7 +121,7 @@ const FresherFormScreen = memo(() => {
                 </p>
               </div>
               <div className="fresher-formContent">
-                <div className="fresher-forms-cont" style={{backgroundColor: 'white'}}>
+                <div className="fresher-forms-cont" style={{backgroundColor: theme.cardColor, boxShadow: theme.cardShadow}}>
                   {activeStep === 0 ? (
                     <Fragment>
                       <Formik
