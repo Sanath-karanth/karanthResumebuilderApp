@@ -16,11 +16,9 @@ p {
     --bs-gutter-y: 0px !important;
 }
 
-.rf-Tabs {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
+.stepTxt {
+   width: 100%;
+   height: fit-content;
 }
 
 
@@ -30,6 +28,17 @@ p {
     .fresher-form {
         padding: 15px;
     }
+    .stepTxt h4{
+        font-size: 12px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+    }
+    .fresher-formContent{
+        padding: 6px;
+    }
+    .fresher-forms-cont{
+        padding: 10px 20px 10px 20px;
+    }
 }
 
 
@@ -38,6 +47,17 @@ p {
     .fresher-form {
         padding: 15px;
     }
+    .stepTxt h4{
+        font-size: 18px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+    }
+    .fresher-formContent{
+        padding: 10px;
+    }
+    .fresher-forms-cont{
+        padding: 20px 30px 10px 30px;
+    }
 }
 
 
@@ -45,5 +65,19 @@ p {
 @media (min-width: 1200px) {
     .fresher-form {
         padding: 15px;
+    }
+    .stepTxt h4{
+        font-size: 20px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bolder;
+    }
+    .fresher-formContent{
+        padding: 10px;
+    }
+    .fresher-forms-cont{
+        padding: 0px 12px 0px 12px;
+    }
+    .fresher-forms-cont{
+        padding: 20px 40px 10px 40px;
     }
 }
