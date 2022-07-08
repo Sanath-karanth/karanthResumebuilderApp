@@ -13,8 +13,9 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Formik } from "formik";
+import Select from 'react-select'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleLeft,
@@ -38,6 +39,12 @@ const FresherFormScreen = memo(() => {
   const [{ theme, isDark }] = useContext(ThemeContext);
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+
+  const optionsdata = [
+    { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+  ]
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -147,8 +154,16 @@ const FresherFormScreen = memo(() => {
                           errors,
                         }) => (
                           <>
-                            <div className="row mb-4">
-                              <div className="col-md-6 p-2">
+                            <Row className="gx-0 mb-4">
+                              <Col
+                                xs={12}
+                                sm={12}
+                                md={6}
+                                lg={6}
+                                xl={6}
+                                xxl={6}
+                                className="p-2"
+                              >
                                 <label htmlFor="firstname" className="pb-2">
                                   Full Name
                                   <span className="asteriskkey">*</span>
@@ -161,7 +176,7 @@ const FresherFormScreen = memo(() => {
                                   </div>
                                   <input
                                     type="text"
-                                    className="form-control"
+                                    className="form-control selectContent"
                                     placeholder="Full name"
                                     // onChange={(e) => {
                                     //   handleChange(e);
@@ -176,16 +191,27 @@ const FresherFormScreen = memo(() => {
                                     {errors.fusername}
                                   </div>
                                 )}
-                              </div>
-                              <div className="col-md-6 p-2">
+                              </Col>
+                              <Col
+                                xs={12}
+                                sm={12}
+                                md={6}
+                                lg={6}
+                                xl={6}
+                                xxl={6}
+                                className="p-2"
+                              >
                                 <label htmlFor="lastname" className="pb-2">
                                   Role:
                                 </label>
-                                <select className="form-control form-select">
-                                  <option>Fresher</option>
-                                </select>
-                              </div>
-                            </div>
+                                <div>
+                                    <Select 
+                                        className="selectContent"
+                                        options={optionsdata} 
+                                        isClearable={true} />
+                                </div>
+                              </Col>
+                            </Row>
                           </>
                         )}
                       </Formik>

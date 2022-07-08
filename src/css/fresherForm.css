@@ -20,8 +20,12 @@ p {
    width: 100%;
    height: fit-content;
 }
-
-
+.selectContent{
+    font-family: 'Nunito', sans-serif;
+}
+input::placeholder {
+    font-family: 'Nunito', sans-serif;
+}
 
 /* Mobile View */
 @media (max-width: 767px) {
@@ -58,7 +62,7 @@ p {
         padding: 10px;
     }
     .fresher-forms-cont{
-        padding: 20px 30px 10px 30px;
+        padding: 20px 30px 20px 30px;
         border-radius: 5px;
         opacity: 1;
     }
@@ -82,8 +86,9 @@ p {
         padding: 0px 12px 0px 12px;
     }
     .fresher-forms-cont{
-        padding: 20px 40px 10px 40px;
+        padding: 20px 40px 20px 40px;
         border-radius: 5px;
         opacity: 1;
     }
+
 }

@@ -13,7 +13,7 @@ import { ThemeContext } from "../contexts/themeContext";
 import { resumeData } from "../json/json";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "rsuite";
-import { Container, Row, Col, Button, Card, Modal } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
