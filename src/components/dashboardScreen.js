@@ -7,12 +7,12 @@ import React, {
   Fragment,
 } from "react";
 import "../css/dashboard.css";
-import Loader from "../common/loader";
 import HeaderScreen from "../common/header";
 import FooterScreen from "../common/footer";
 import { ThemeContext } from "../contexts/themeContext";
 import { resumeData } from "../json/json";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "rsuite";
 import { Container, Row, Col, Button, Card, Modal } from "react-bootstrap";
 import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,7 +30,7 @@ const DashboardScreen = memo(() => {
   const navigate = useNavigate();
   let currentyear = moment().format("YYYY");
   const [spin, setSpin] = useState(true);
-  const headertextValue = 'dashboard';
+  const headertextValue = "dashboard";
 
   const homeClick = () => {
     navigate("/home");
@@ -82,6 +82,19 @@ const DashboardScreen = memo(() => {
     }
   }, [spin, checkactive]);
 
+  useEffect(() => {
+    if (spin) {
+      setTimeout(() => setSpin(false), 2000);
+    }
+  }, [spin]);
+
+  useEffect(() => {
+    var scrolltotopCont = document.querySelector(".scrolltotop");
+    scrolltotopCont.scrollIntoView({
+      behavior: "smooth",
+    });
+  });
+
   return (
     <Fragment>
       <div className="MainContainer-dashboard">
@@ -93,7 +106,21 @@ const DashboardScreen = memo(() => {
               color: theme.color,
             }}
           >
+            {spin ? (
+              <div className="loadercont">
+                <Loader
+                  size="md"
+                  speed="slow"
+                  inverse
+                  center
+                  vertical={true}
+                  backdrop={true}
+                  content="loading..."
+                />
+              </div>
+            ) : null}
             <HeaderScreen headerData={headertextValue} />
+            <div className="scrolltotop"></div>
             <div className="MainCont-dashboard">
               <Container fluid className="container-guttersforDashboard">
                 <div className="mandatoryinfotext">

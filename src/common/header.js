@@ -11,6 +11,7 @@ import {
   faHeart,
   faChevronLeft,
   faCommentDots,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderScreen = memo(({ headerData }) => {
@@ -27,7 +28,7 @@ const HeaderScreen = memo(({ headerData }) => {
     setInstructionmodalShow(true);
   };
 
-  const reviewClick = () => {
+  const aboutClick = () => {
     navigate("/dashboard");
   };
   const feedbackClick = () => {
@@ -217,13 +218,13 @@ const HeaderScreen = memo(({ headerData }) => {
                         </div>
                         <div
                           className="headertabsDesktoptext"
-                          onClick={reviewClick}
+                          onClick={aboutClick}
                         >
                           <FontAwesomeIcon
-                            icon={faHeart}
+                            icon={faUser}
                             className="headerIconsDesktop"
                           />
-                          <h4>Reviews</h4>
+                          <h4>About</h4>
                         </div>
                       </div>
                     </Col>
@@ -276,14 +277,25 @@ const HeaderScreen = memo(({ headerData }) => {
                       >
                         <div
                           className="headertabsMobileIcons"
-                          onClick={reviewClick}
+                          onClick={aboutClick}
                         >
                           <FontAwesomeIcon
-                            icon={faHeart}
+                            icon={faUser}
                             style={{ color: theme.tabIcons }}
                             className="headerIconsMobile"
                           />
-                          <p style={{ color: theme.tabIcons }}>Reviews</p>
+                          <p style={{ color: theme.tabIcons }}>About</p>
+                        </div>
+                        <div
+                          className="headertabsMobileIcons"
+                          onClick={feedbackClick}
+                        >
+                          <FontAwesomeIcon
+                            icon={faCommentDots}
+                            style={{ color: theme.tabIcons }}
+                            className="headerIconsMobile"
+                          />
+                          <p style={{ color: theme.tabIcons }}>Feedback</p>
                         </div>
                         <div
                           className="headertabsMobileIcons"
@@ -295,17 +307,6 @@ const HeaderScreen = memo(({ headerData }) => {
                             className="headerIconsMobile"
                           />
                           <p style={{ color: theme.tabIcons }}>Instructions</p>
-                        </div>
-                        <div
-                          className="headertabsMobileIcons"
-                          onClick={homeClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faHome}
-                            style={{ color: theme.tabIcons }}
-                            className="headerIconsMobile"
-                          />
-                          <p style={{ color: theme.tabIcons }}>Home</p>
                         </div>
                       </div>
                       <div className="headertoggle-cont">

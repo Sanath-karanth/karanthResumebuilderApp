@@ -11,6 +11,15 @@ p {
   padding: 0 !important;
 }
 
+.loadercont{
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 98;
+}
+
 .container-guttersforResumeform {
   --bs-gutter-x: 0px !important;
   --bs-gutter-y: 0px !important;
@@ -26,6 +35,7 @@ p {
 @media (max-width: 767px) {
   .HeadContainer-resumeform {
     margin: 0 auto;
+    width: 100%;
     height: fit-content;
   }
   .MainCont-resumeform {
@@ -96,6 +106,7 @@ p {
 
   .HeadContainer-resumeform {
     margin: 0 auto;
+    width: 100%;
     height: fit-content;
   }
   .MainCont-resumeform {
@@ -161,7 +172,7 @@ p {
 @media (min-width: 1200px) {
   .HeadContainer-resumeform {
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 1366px;
     height: fit-content;
   }
   .MainCont-resumeform {
@@ -227,7 +238,7 @@ p {
 @media (min-width: 1367px) {
   .HeadContainer-resumeform {
     margin: 0 auto;
-    max-width: 1300px;
+    max-width: 1366px;
     height: fit-content;
   }
 }

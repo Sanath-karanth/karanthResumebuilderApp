@@ -393,7 +393,7 @@ p {
 @media (min-width: 1200px) {
   .HeadContainer-header {
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 1366px;
     padding: 10px;
     width: 100%;
     height: fit-content;
@@ -444,7 +444,7 @@ p {
 @media (min-width: 1367px) {
   .HeadContainer-header {
     margin: 0 auto;
-    max-width: 1300px;
+    max-width: 1366px;
     height: fit-content;
   }
 }

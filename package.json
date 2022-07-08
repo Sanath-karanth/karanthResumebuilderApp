@@ -54,6 +54,7 @@
     "react-to-pdf": "^0.0.14",
     "react-view-pdf": "^1.0.0",
     "react-year-picker": "^0.3.7",
+    "rsuite": "^5.16.0",
     "sass": "^1.53.0",
     "spinners-react": "^1.0.7",
     "styled-components": "^5.3.5",

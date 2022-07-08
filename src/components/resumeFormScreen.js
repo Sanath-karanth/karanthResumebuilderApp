@@ -7,7 +7,7 @@ import React, {
   Fragment,
 } from "react";
 import "../css/resumeform.scss";
-import Loader from "../common/loader";
+import { Loader } from "rsuite";
 import HeaderScreen from "../common/header";
 import FooterScreen from "../common/footer";
 import { ThemeContext } from "../contexts/themeContext";
@@ -31,6 +31,7 @@ const ResumeFormScreen = memo(() => {
   const { state } = useLocation();
   const { resumeid, resumename } = state;
   const headertextValue = "resumeform";
+  const [spin, setSpin] = useState(true);
   const [fresherVal, setFresherVal] = useState(true);
   const [expVal, setExpVal] = useState(false);
 
@@ -72,7 +73,17 @@ const ResumeFormScreen = memo(() => {
 
   useEffect(() => {
     tabsAction();
+    var scrolltotopCont = document.querySelector(".scrolltotop");
+    scrolltotopCont.scrollIntoView({
+      behavior: "smooth",
+    });
   }, [tabsAction]);
+
+  useEffect(() => {
+    if (spin) {
+      setTimeout(() => setSpin(false), 2000);
+    }
+  }, [spin]);
 
   //  ------------------  Closes -------------
 
@@ -87,7 +98,21 @@ const ResumeFormScreen = memo(() => {
               color: theme.color,
             }}
           >
+            {spin ? (
+              <div className="loadercont">
+                <Loader
+                  size="md"
+                  speed="slow"
+                  inverse
+                  center
+                  vertical={true}
+                  backdrop={true}
+                  content="loading..."
+                />
+              </div>
+            ) : null}
             <HeaderScreen headerData={headertextValue} />
+            <div className="scrolltotop"></div>
             <div className="MainCont-resumeform">
               <div className="rf-Tabs">
                 <div className="rf-Tabstxt">
