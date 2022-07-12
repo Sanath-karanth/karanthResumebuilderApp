@@ -175,7 +175,7 @@ const FresherFormScreen = memo(() => {
   };
 
   const scrollToTopNextStep = () =>{
-    var scrolltotopContFresher = document.querySelector(".scrolltotop");
+    var scrolltotopContFresher = document.querySelector(".scrolltotopStep");
     scrolltotopContFresher.scrollIntoView(true,{
       behavior: "smooth",
     });
@@ -291,7 +291,7 @@ const FresherFormScreen = memo(() => {
         onHide={() => setSuggestmodalShow(false)}
       />
       <div className="fresher-form">
-      <div className="scrolltotop"></div>
+      <div className="scrolltotopStep"></div>
         <Box sx={{ width: "100%" }}>
           <Stepper activeStep={activeStep}>
             {steps.map((label, index) => {
