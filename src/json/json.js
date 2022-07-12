@@ -162,56 +162,78 @@ export const roleOptions = [
 
 export const summarysuggestOptions = [
   {
+    sid: 'S10',
+    ctext: 'Text Copied!',
     role: "Front-end Developer",
     summary:
       "Passionate front-end web developer with 3 years of experience using JavaScript, HTML5, and CSS to build all aspects of the user experience and user interface for client-facing landing pages. Specializes in using jQuery and AngularJS to build e-commerce sites.",
   },
   {
+    sid: 'S11',
+    ctext: 'Text Copied!',
     role: "Front-end Developer",
     summary:
       "Experienced Web Developer looking for opportunity to bring solid knowledge of programming, design, and media to a Front-end Developer position with BJ Company.",
   },
   {
+    sid: 'S12',
+    ctext: 'Text Copied!',
     role: "Front-end Developer",
     summary:
       "To obtain a responsible and challenging Front End Developer’s position where my education and work experience will have valuable application.",
   },
   {
+    sid: 'S13',
+    ctext: 'Text Copied!',
     role: "Front-end Developer",
     summary:
       "Meticulous web developer with over 2 years of front end experience and passion for responsive website design and a firm believer in the mobile-first approach. W3C certified. Implemented new responsive website approach which increased mobile traffic by 20%.",
   },
   {
+    sid: 'S14',
+    ctext: 'Text Copied!',
     role: "Front-end Developer",
     summary:
       "Experienced Associate Software Engineer with 2 years of demonstrated history of working in the IT industry seeking a responsible career opportunity as a Software developer. Skilled in ReactJS, React-Native, JavaScript ES6, and expertise in UI/UX designs and development for both Web and Mobile applications (Android and IOS).",
   },
   {
+    sid: 'S15',
+    ctext: 'Text Copied!',
     role: "Back-end Developer",
     summary:
       "Seeking a Backend Developer position with an outstanding career opportunity that will offer a rewarding work environment along with a winning team that will fully utilize management skills.",
   },
   {
+    sid: 'S16',
+    ctext: 'Text Copied!',
     role: "Back-end Developer",
     summary:
       "Hardworking, organized, Backend Developer professional with a proven background delivering sensible business technology solutions on time and under budget while working as a team member or team leader.",
   },
   {
+    sid: 'S17',
+    ctext: 'Text Copied!',
     role: "Back-end Developer",
     summary:
       "Backend Developer with 3+ years of experience in Optimizing applications for maximum speed and scalability, Co-operating with other front-end developers and product managers, Solving any problem that challenges.",
   },
   {
+    sid: 'S18',
+    ctext: 'Text Copied!',
     role: "Back-end Developer",
     summary:
       "Highly qualified Backend Developer with experience in the industry. Enjoy creative problem solving and getting exposure to multiple projects, and I would excel in the collaborative environment on which your company prides itself.",
   },
   {
+    sid: 'S19',
+    ctext: 'Text Copied!',
     role: "Full-Stack Developer",
     summary:
       "Full Stack Developer with 6+ years of hands-on experience designing, developing, and implementing applications and solutions using a range of technologies and programming languages. Seeking to leverage broad development experience and hands-on technical expertise in a challenging role as a Full-stack Developer.",
   },
   {
+    sid: 'S20',
+    ctext: 'Text Copied!',
     role: "Full-Stack Developer",
     summary:
       "Professional Full-Stack Developer with 5+ years of hands-on experience in developing scalable websites/applications using a wide range of front-end and back-end skills like HTML, CSS, Python, JavaScript, etc. Developed 10+ websites from scratch at scaler. Looking to further enhance HTML5, CSS3, JS ES6 skills as the future full stack developer.",

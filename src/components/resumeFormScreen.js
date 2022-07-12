@@ -122,7 +122,7 @@ const ResumeFormScreen = memo(() => {
                   <span className="rf-exptxt" onClick={experienceClick}>
                     <h2>Experience</h2>
                   </span>
-                  <span class="tabglider"></span>
+                  <span className="tabglider"></span>
                 </div>
               </div>
 

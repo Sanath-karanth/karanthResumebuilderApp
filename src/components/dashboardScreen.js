@@ -93,7 +93,7 @@ const DashboardScreen = memo(() => {
     scrolltotopCont.scrollIntoView({
       behavior: "smooth",
     });
-  });
+  }, []);
 
   return (
     <Fragment>
