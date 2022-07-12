@@ -675,8 +675,28 @@ const FresherFormScreen = memo(() => {
                 ) : null}
                 {activeStep === 2 ? ( //////////////// Step 2 form begins
                   <>
-                    <h3>Form 3</h3>
-                  </>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      pt: 4,
+                    }}
+                  >
+                    <Button
+                      color="inherit"
+                      variant="outlined"
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      sx={{ mr: 1 }}
+                    >
+                      Back
+                    </Button>
+                    <Box sx={{ flex: "1 1 auto" }} />
+                    <Button onClick={handleNext} variant="outlined">
+                      {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                    </Button>
+                  </Box>
+                </>
                 ) : null}
               </div>
             </Fragment>
