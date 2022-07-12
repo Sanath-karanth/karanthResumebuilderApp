@@ -172,8 +172,8 @@ const FresherFormScreen = memo(() => {
   const handleSubmitForm = async (values) => {
     console.log(values);
     handleNext();
-    var scrolltotopCont = document.querySelector(".scrolltotop");
-    scrolltotopCont.scrollIntoView({
+    var scrolltotopContFresher = document.querySelector(".scrolltotop");
+    scrolltotopContFresher.scrollIntoView({
       behavior: "smooth",
     });
   };
