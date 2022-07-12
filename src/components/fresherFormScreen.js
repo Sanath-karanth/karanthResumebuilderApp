@@ -316,9 +316,9 @@ const FresherFormScreen = memo(() => {
           ) : (
             <Fragment>
               <div className="mandatoryinfotext pt-4 pb-4">
-                <p className="text-danger">
+                <p>
                   <span className="asteriskkey">*</span> Please complete all the{" "}
-                  <b>steps</b> to get the complete resume.
+                  <b>Steps</b> to get the complete resume.
                 </p>
               </div>
               <div className="fresher-formContent">
