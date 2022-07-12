@@ -172,6 +172,10 @@ const FresherFormScreen = memo(() => {
   const handleSubmitForm = async (values) => {
     console.log(values);
     handleNext();
+    var scrolltotopCont = document.querySelector(".scrolltotop");
+    scrolltotopCont.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   const copySummaryText = (copytxtVal, sIdVal) => {
@@ -283,6 +287,7 @@ const FresherFormScreen = memo(() => {
         show={suggestmodalShow}
         onHide={() => setSuggestmodalShow(false)}
       />
+      <div className="scrolltotop"></div>
       <div className="fresher-form">
         <Box sx={{ width: "100%" }}>
           <Stepper activeStep={activeStep}>
