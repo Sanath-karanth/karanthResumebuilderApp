@@ -158,6 +158,13 @@ const FresherFormScreen = memo(() => {
     setActiveStep(0);
   };
 
+  const scrollToTopNextStep = () =>{
+    var scrolltotopContFresher = document.querySelector(".scrolltotop");
+    scrolltotopContFresher.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+
   const handleNext = () => {
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
@@ -170,18 +177,9 @@ const FresherFormScreen = memo(() => {
   };
 
   const handleSubmitForm = async (values) => {
+    scrollToTopNextStep();
     handleNext();
   };
-
-  const scrollToTopNextStep = () =>{
-    var scrolltotopContFresher = document.querySelector(".scrolltotop");
-    scrolltotopContFresher.scrollIntoView({
-      behavior: "smooth",
-    });
-  }
-  useEffect(() => {
-    scrollToTopNextStep();
-  },[handleSubmitForm]);
 
   const copySummaryText = (copytxtVal, sIdVal) => {
     console.log(copytxtVal);
