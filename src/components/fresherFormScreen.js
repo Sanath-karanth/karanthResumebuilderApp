@@ -166,6 +166,7 @@ const FresherFormScreen = memo(() => {
   }
 
   const handleNext = () => {
+    scrollToTopNextStep();
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -177,7 +178,6 @@ const FresherFormScreen = memo(() => {
   };
 
   const handleSubmitForm = async (values) => {
-    scrollToTopNextStep();
     handleNext();
   };
 
