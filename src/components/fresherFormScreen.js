@@ -297,7 +297,7 @@ const FresherFormScreen = memo(() => {
                 <Step key={label} {...stepProps}>
                   <StepLabel {...labelProps}>
                     <div
-                      className="stepTxt"
+                      className="stepTxtFresher"
                       style={{
                         color: theme.color,
                       }}
@@ -359,11 +359,11 @@ const FresherFormScreen = memo(() => {
                                   lg={6}
                                   xl={6}
                                   xxl={6}
-                                  className="p-2 mb-3"
+                                  className="p-2 mb-2"
                                 >
                                   <label
                                     htmlFor="firstname"
-                                    className="pb-2 labelText"
+                                    className="pb-2 labelTextFresher"
                                   >
                                     Full Name{"\n"}
                                     <span className="asteriskkey">*</span>
@@ -412,11 +412,11 @@ const FresherFormScreen = memo(() => {
                                   lg={6}
                                   xl={6}
                                   xxl={6}
-                                  className="p-2 mb-3"
+                                  className="p-2 mb-2"
                                 >
                                   <label
                                     htmlFor="role"
-                                    className="pb-2 labelText"
+                                    className="pb-2 labelTextFresher"
                                   >
                                     Role:
                                   </label>
@@ -437,11 +437,11 @@ const FresherFormScreen = memo(() => {
                                   lg={6}
                                   xl={6}
                                   xxl={6}
-                                  className="p-2 mb-3"
+                                  className="p-2 mb-2"
                                 >
                                   <label
                                     htmlFor="emailID"
-                                    className="pb-2 labelText"
+                                    className="pb-2 labelTextFresher"
                                   >
                                     Email ID{"\n"}
                                     <span className="asteriskkey">*</span>
@@ -490,11 +490,11 @@ const FresherFormScreen = memo(() => {
                                   lg={6}
                                   xl={6}
                                   xxl={6}
-                                  className="p-2 mb-3"
+                                  className="p-2 mb-2"
                                 >
                                   <label
                                     htmlFor="phoneno"
-                                    className="pb-2 labelText"
+                                    className="pb-2 labelTextFresher"
                                   >
                                     Phone No{"\n"}
                                     <span className="asteriskkey">*</span>
@@ -544,12 +544,12 @@ const FresherFormScreen = memo(() => {
                                   lg={12}
                                   xl={12}
                                   xxl={12}
-                                  className="p-2 mb-3"
+                                  className="p-2 mb-2"
                                 >
                                   <div className="labelFlex">
                                     <label
                                       htmlFor="summary"
-                                      className="pb-2 labelText"
+                                      className="pb-2 labelTextFresher"
                                     >
                                       Career Objective / Summary{"\n"}
                                       <span className="asteriskkey">*</span>

@@ -19,7 +19,7 @@ p {
    width: 100%;
    height: fit-content;
 }
-.selectContent{
+.selectContentExp{
     font-family: 'Nunito', sans-serif;
 }
 input::placeholder {
