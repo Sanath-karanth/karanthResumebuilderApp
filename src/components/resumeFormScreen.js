@@ -73,7 +73,7 @@ const ResumeFormScreen = memo(() => {
 
   useEffect(() => {
     tabsAction();
-    var scrolltotopCont = document.querySelector(".scrolltotop");
+    var scrolltotopCont = document.querySelector(".scrolltotopForm");
     scrolltotopCont.scrollIntoView({
       behavior: "smooth",
     });
@@ -112,7 +112,7 @@ const ResumeFormScreen = memo(() => {
               </div>
             ) : null}
             <HeaderScreen headerData={headertextValue} />
-            <div className="scrolltotop"></div>
+            <div className="scrolltotopForm"></div>
             <div className="MainCont-resumeform">
               <div className="rf-Tabs">
                 <div className="rf-Tabstxt">
