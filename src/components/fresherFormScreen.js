@@ -170,12 +170,11 @@ const FresherFormScreen = memo(() => {
   };
 
   const handleSubmitForm = async (values) => {
-    console.log(values);
-    handleNext();
     var scrolltotopContFresher = document.querySelector(".scrolltotop");
     scrolltotopContFresher.scrollIntoView({
       behavior: "smooth",
     });
+    handleNext();
   };
 
   const copySummaryText = (copytxtVal, sIdVal) => {
