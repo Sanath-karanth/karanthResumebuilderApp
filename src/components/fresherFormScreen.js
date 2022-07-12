@@ -170,16 +170,18 @@ const FresherFormScreen = memo(() => {
   };
 
   const handleSubmitForm = async (values) => {
-    scrollToTopNextStep();
     handleNext();
   };
 
   const scrollToTopNextStep = () =>{
-    var scrolltotopContFresher = document.querySelector(".scrolltotopStep");
+    var scrolltotopContFresher = document.querySelector(".scrolltotop");
     scrolltotopContFresher.scrollIntoView({
       behavior: "smooth",
     });
   }
+  useEffect(() => {
+    scrollToTopNextStep();
+  },[handleSubmitForm]);
 
   const copySummaryText = (copytxtVal, sIdVal) => {
     console.log(copytxtVal);
@@ -290,7 +292,7 @@ const FresherFormScreen = memo(() => {
         show={suggestmodalShow}
         onHide={() => setSuggestmodalShow(false)}
       />
-      <div className="scrolltotopStep"></div>
+      <div className="scrolltotop"></div>
       <div className="fresher-form">
         <Box sx={{ width: "100%" }}>
           <Stepper activeStep={activeStep}>
