@@ -159,9 +159,14 @@ const FresherFormScreen = memo(() => {
   };
 
   const scrollToTopNextStep = () =>{
-    var scrolltotopContFresher = document.querySelector(".scrolltotop");
-    scrolltotopContFresher.scrollIntoView({
-      behavior: "smooth",
+    // var scrolltotopContFresher = document.querySelector(".scrolltotop");
+    // scrolltotopContFresher.scrollIntoView({
+    //   behavior: "smooth",
+    // });
+    window.scroll({
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth'
     });
   }
 
