@@ -43,10 +43,12 @@ p {
     align-items: center;
     padding-top: 12px;
 }
-.alertBoxCont{
+
+.alertBoxCont {
     margin-left: 20px;
     display: none;
 }
+
 .alertBoxCont p {
     padding: 10px !important;
     font-size: 14px;
@@ -57,24 +59,29 @@ p {
     border-radius: 0.25rem;
 }
 
-.modal-title{
+.modal-title {
     font-size: 24px;
     font-family: 'Nunito', sans-serif;
     font-weight: bolder;
     color: black;
 }
-.modal-subtitle{
+
+.modal-subtitle {
     font-size: 20px;
     font-family: 'Nunito', sans-serif;
     font-weight: bolder;
     color: #01bad7;
 }
-.modal-roletxt{
+
+.modal-roletxt {
     font-size: 16px;
     font-family: 'Nunito', sans-serif;
     font-weight: bolder;
     color: navy;
 }
+.accordion-button {
+    padding: 0px 10px 0px 10px !important;
+  }
 
 @keyframes shake {
     25% {
@@ -127,6 +134,12 @@ input::placeholder {
         font-family: 'Nunito', sans-serif;
     }
 
+    .labelTitleTextFresher {
+        font-size: 15px;
+        font-family: 'Nunito', sans-serif;
+        color: #01bad7;
+    }
+
     .inputTxt {
         font-size: 12px !important;
         font-family: 'Nunito', sans-serif !important;
@@ -144,7 +157,8 @@ input::placeholder {
         padding-left: 5px;
         width: 50%;
     }
-    .modal-summarydesp{
+
+    .modal-summarydesp {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
@@ -185,6 +199,12 @@ input::placeholder {
         font-family: 'Nunito', sans-serif;
     }
 
+    .labelTitleTextFresher {
+        font-size: 16px;
+        font-family: 'Nunito', sans-serif;
+        color: #01bad7;
+    }
+
     .inputTxt {
         font-size: 14px !important;
         font-family: 'Nunito', sans-serif !important;
@@ -202,7 +222,8 @@ input::placeholder {
         font-family: 'Nunito', sans-serif;
         padding-left: 5px;
     }
-    .modal-summarydesp{
+
+    .modal-summarydesp {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
@@ -247,6 +268,12 @@ input::placeholder {
         font-family: 'Nunito', sans-serif;
     }
 
+    .labelTitleTextFresher {
+        font-size: 17px;
+        font-family: 'Nunito', sans-serif;
+        color: #01bad7;
+    }
+
     .inputTxt {
         font-size: 16px !important;
         font-family: 'Nunito', sans-serif !important;
@@ -264,7 +291,8 @@ input::placeholder {
         font-family: 'Nunito', sans-serif;
         padding-left: 5px;
     }
-    .modal-summarydesp{
+
+    .modal-summarydesp {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;

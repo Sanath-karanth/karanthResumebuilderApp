@@ -32,6 +32,7 @@ import {
   Card,
   Modal,
   Alert,
+  Accordion,
 } from "react-bootstrap";
 import { Formik, Form } from "formik";
 import Select from "react-select";
@@ -60,26 +61,51 @@ const FresherFormScreen = memo(() => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const [suggestmodalShow, setSuggestmodalShow] = useState(false);
+  const [isselectLoading, setIsselectLoading] = useState(true);
+  const [progSelectval, setProgSelectval] = useState("");
+  const [skillnullfresher, setSkillnullfresher] = useState(false);
 
+  ////////    Form 1 Variables
   const [fnameval, setFnameVal] = useState("");
   const [froleSelectval, setFroleSelectval] = useState(roleOptionsFresher[0]);
   const [femailval, setFemailVal] = useState("");
   const [fphoneval, setFphoneVal] = useState("");
   const [fsummaryval, setFsummaryVal] = useState("");
 
+  ///////    Form 2 Variables
+  const [projectonefresher, setProjectonefresher] = useState("");
+  const [projectonerolefresher, setProjectonerolefresher] = useState("");
+  const [projectonetech1fresher, setProjectonetech1fresher] = useState("");
+  const [projectonetech2fresher, setProjectonetech2fresher] = useState("");
+  const [projectonetech3fresher, setProjectonetech3fresher] = useState("");
+  const [projectonetech4fresher, setProjectonetech4fresher] = useState("");
+  const [projectonepoint1fresher, setProjectonepoint1fresher] = useState("");
+  const [projectonepoint2fresher, setProjectonepoint2fresher] = useState("");
+  const [projectonepoint3fresher, setProjectonepoint3fresher] = useState("");
+
+  const [projecttwofresher, setProjecttwofresher] = useState("");
+  const [projecttworolefresher, setProjecttworolefresher] = useState("");
+  const [projecttwotech1fresher, setProjecttwotech1fresher] = useState("");
+  const [projecttwotech2fresher, setProjecttwotech2fresher] = useState("");
+  const [projecttwotech3fresher, setProjecttwotech3fresher] = useState("");
+  const [projecttwopoint1fresher, setProjecttwopoint1fresher] = useState("");
+  const [projecttwopoint2fresher, setProjecttwopoint2fresher] = useState("");
+  const [projecttwopoint3fresher, setProjecttwopoint3fresher] = useState("");
+
   const initialValues = {
     fusername: fnameval,
     femail: femailval,
     fphoneno: fphoneval,
     fsummary: fsummaryval,
-    fprojectonename: "projectonefresher",
-    fprojectonerole: "projectonerolefresher",
-    fprojectonetech1: "projectonetech1fresher",
-    fprojectonetech2: "projectonetech2fresher",
-    fprojectonetech3: "projectonetech3fresher",
-    fprojectonepoint1: "projectonepoint1fresher",
-    fprojectonepoint2: "projectonepoint2fresher",
-    fprojectonepoint3: "projectonepoint3fresher",
+    fprojectonename: projectonefresher,
+    fprojectonerole: projectonerolefresher,
+    fprojectonetech1: projectonetech1fresher,
+    fprojectonetech2: projectonetech2fresher,
+    fprojectonetech3: projectonetech3fresher,
+    fprojectonetech4: projectonetech4fresher,
+    fprojectonepoint1: projectonepoint1fresher,
+    fprojectonepoint2: projectonepoint2fresher,
+    fprojectonepoint3: projectonepoint3fresher,
     fprojecttwoname: "projecttwofresher",
     fprojecttworole: "projecttworolefresher",
     fprojecttwotech1: "projecttwotech1fresher",
@@ -125,6 +151,24 @@ const FresherFormScreen = memo(() => {
     }),
   };
 
+  const fSkillColourStyles = {
+    control: (base) => ({
+      ...base,
+      backgroundColor: theme.inputFieldColor,
+      color: theme.inputTextColor,
+      border: "1px solid #ced4da",
+      boxShadow: theme.inputfieldShadow,
+    }),
+    option: (styles, { isFocused }) => ({
+      ...styles,
+      color: isFocused ? "navy" : "black",
+    }),
+    multiValueRemove: (styles) => ({
+      ...styles,
+      color: "black",
+    }),
+  };
+
   const isStepOptional = (step) => {
     return step === 1;
   };
@@ -158,16 +202,17 @@ const FresherFormScreen = memo(() => {
     setActiveStep(0);
   };
 
-  const scrollToTopNextStep = () =>{
+  const scrollToTopNextStep = () => {
     window.scroll({
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth'
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
-  }
+  };
 
   const handleNext = () => {
     scrollToTopNextStep();
+    setSkillnullfresher(true);
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -180,6 +225,23 @@ const FresherFormScreen = memo(() => {
 
   const handleSubmitForm = async (values) => {
     handleNext();
+  };
+
+  const programSelectFresher = (newValue) => {
+    if (newValue === null || newValue == "") {
+      newValue = [0];
+      setSkillnullfresher(true);
+      setIsselectLoading(true);
+    } else {
+      setSkillnullfresher(false);
+    }
+    const array = [];
+    newValue.map((obj) => {
+      array.push(obj.value);
+      setProgSelectval(array);
+      console.log("array-->", array);
+    });
+    setIsselectLoading(false);
   };
 
   const copySummaryText = (copytxtVal, sIdVal) => {
@@ -228,6 +290,28 @@ const FresherFormScreen = memo(() => {
       errors.fsummary = "Please enter the valid characters only.";
     }
 
+    if (!values.fprojectonename) {
+      errors.fprojectonename = "Project name is required!";
+    } else if (!/^[A-Za-z0-9\&\,\-\_\b ]+$/.test(values.fprojectonename)) {
+      errors.fprojectonename =
+        "Please enter a Valid Alphanumerical Characters only.";
+    }
+
+    if (!values.fprojectonerole) {
+      errors.fprojectonerole = "Project Role is required!";
+    } else if (!/^[A-Za-z\-\b ]+$/.test(values.fprojectonerole)) {
+      errors.fprojectonerole =
+        "Please enter a Valid Alphanumerical Characters only.";
+    }
+
+    if (!values.fprojectonetech1 || !values.fprojectonetech2 || !values.fprojectonetech3) {
+      errors.fprojectonetech1 = 'Please enter Atleast 3-4 Technologies.';
+  }
+
+  if (!values.fprojectonepoint1 || !values.fprojectonepoint2) {
+      errors.fprojectonepoint1 = 'Please enter Atleast 2-3 Points.';
+  }
+
     return errors;
   };
 
@@ -259,7 +343,9 @@ const FresherFormScreen = memo(() => {
               <Card key={key} className="m-3" border="secondary">
                 <Card.Header className="modal-roletxt">{item.role}</Card.Header>
                 <Card.Body>
-                  <Card.Text className="modal-summarydesp">{item.summary}</Card.Text>
+                  <Card.Text className="modal-summarydesp">
+                    {item.summary}
+                  </Card.Text>
                   <div className="copyContent">
                     <Button
                       variant="outlined"
@@ -330,7 +416,7 @@ const FresherFormScreen = memo(() => {
                 </p>
               </div>
               <div className="fresher-formContent">
-                {activeStep === 0 ? ( //////////////// Step 2 form begins
+                {activeStep === 0 ? ( //////////////// Step 1 form begins  //////////////////////////
                   <Fragment>
                     <Formik
                       initialValues={initialValues}
@@ -640,6 +726,889 @@ const FresherFormScreen = memo(() => {
                                 Back
                               </Button>
                               <Box sx={{ flex: "1 1 auto" }} />
+                              <Button
+                                type="submit"
+                                onClick={handleNext}
+                                variant="outlined"
+                              >
+                                {activeStep === steps.length - 1
+                                  ? "Finish"
+                                  : "Next"}
+                              </Button>
+                            </Box>
+                          </Form>
+                        </>
+                      )}
+                    </Formik>
+                  </Fragment>
+                ) : null}
+                {activeStep === 1 ? ( //////////////// Step 2 form begins  ////////////////////////////
+                  <Fragment>
+                    <Formik
+                      initialValues={initialValues}
+                      onSubmit={handleSubmitForm}
+                      validate={freshervalidate}
+                    >
+                      {({
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        touched,
+                        values,
+                        errors,
+                      }) => (
+                        <>
+                          <Form onSubmit={handleSubmit} autoComplete="off">
+                            <div
+                              className="fresher-forms-cont"
+                              style={{
+                                backgroundColor: theme.cardColor,
+                                boxShadow: theme.cardShadow,
+                              }}
+                            >
+                              <Row className="gx-0 mb-4">
+                                <Col ///////////////////////SkillSelect
+                                  xs={12}
+                                  sm={12}
+                                  md={12}
+                                  lg={12}
+                                  xl={12}
+                                  xxl={12}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Skills"
+                                    className="pb-2 labelTitleTextFresher"
+                                  >
+                                    Select your Skills{"\n"}
+                                    <span className="asteriskkey">*</span>
+                                  </label>
+                                  <Select
+                                    className="selectContent"
+                                    isMulti
+                                    closeMenuOnSelect={true}
+                                    isClearable={true}
+                                    styles={fSkillColourStyles}
+                                    isLoading={isselectLoading}
+                                    onChange={programSelectFresher}
+                                    options={langOptions}
+                                  />
+                                  {skillnullfresher === true && (
+                                    <div className="errortext pt-3">
+                                      Please select Atleast 3-4 Skills.
+                                    </div>
+                                  )}
+                                </Col>
+                                <Col ///////////////////////Phonenumber
+                                  xs={12}
+                                  sm={12}
+                                  md={12}
+                                  lg={12}
+                                  xl={12}
+                                  xxl={12}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Skills"
+                                    className="pb-2 labelTitleTextFresher"
+                                  >
+                                    Projects{"\n"}
+                                    <span className="asteriskkey">*</span>
+                                  </label>
+                                  <Accordion defaultActiveKey="0">
+                                    <Accordion.Item eventKey="0">  {/* Accordian 1  */}
+                                      <Accordion.Header>
+                                        <label
+                                          htmlFor="projectAccordian1"
+                                          className="labelTextFresher"
+                                        >
+                                          Project 1{"\n"}
+                                          <span className="asteriskkey">*</span>
+                                        </label>
+                                      </Accordion.Header>
+                                      <Accordion.Body
+                                        style={{
+                                          backgroundColor: theme.cardColor,
+                                          boxShadow: theme.cardShadow,
+                                        }}
+                                      >
+                                        <Row className="gx-0 mb-0">
+                                          <Col ///////////////////////Project Name
+                                            xs={12}
+                                            sm={12}
+                                            md={7}
+                                            lg={7}
+                                            xl={7}
+                                            xxl={7}
+                                            className="p-2 mb-2"
+                                          >
+                                            <div className="input-group">
+                                              <div className="input-group-prepend">
+                                                <div
+                                                  className="input-group-text h-100"
+                                                  style={{
+                                                    backgroundColor:
+                                                      theme.inputPrependColor,
+                                                    color: theme.inputIcon,
+                                                    boxShadow:
+                                                      theme.inputfieldShadow,
+                                                  }}
+                                                >
+                                                  <FontAwesomeIcon
+                                                    icon={faLightbulb}
+                                                  />
+                                                </div>
+                                              </div>
+                                              <input
+                                                type="text"
+                                                style={{
+                                                  backgroundColor:
+                                                    theme.inputFieldColor,
+                                                  color: theme.inputTextColor,
+                                                  boxShadow:
+                                                    theme.inputfieldShadow,
+                                                }}
+                                                className="form-control inputTxt"
+                                                placeholder="Project Name"
+                                                onChange={(e) => {
+                                                  handleChange(e);
+                                                  setProjectonefresher(
+                                                    e.target.value
+                                                  );
+                                                }}
+                                                value={values.fprojectonename}
+                                                name="fprojectonename"
+                                              ></input>
+                                            </div>
+                                            {errors.fprojectonename && (
+                                              <div className="errortext pt-2">
+                                                {errors.fprojectonename}
+                                              </div>
+                                            )}
+                                          </Col>
+                                          <Col ///////////////////////Project Role
+                                            xs={12}
+                                            sm={12}
+                                            md={5}
+                                            lg={5}
+                                            xl={5}
+                                            xxl={5}
+                                            className="p-2 mb-2"
+                                          >
+                                            <div className="input-group">
+                                              <input
+                                                type="text"
+                                                style={{
+                                                  backgroundColor:
+                                                    theme.inputFieldColor,
+                                                  color: theme.inputTextColor,
+                                                  boxShadow:
+                                                    theme.inputfieldShadow,
+                                                }}
+                                                className="form-control inputTxt"
+                                                placeholder="Role (Ex:Developer)"
+                                                onChange={(e) => {
+                                                  handleChange(e);
+                                                  setProjectonerolefresher(
+                                                    e.target.value
+                                                  );
+                                                }}
+                                                value={values.fprojectonerole}
+                                                name="fprojectonerole"
+                                              ></input>
+                                            </div>
+                                            {errors.fprojectonerole && (
+                                              <div className="errortext pt-2">
+                                                {errors.fprojectonerole}
+                                              </div>
+                                            )}
+                                          </Col>
+                                          <Col ///////////////////////Technology Names
+                                            xs={12}
+                                            sm={12}
+                                            md={12}
+                                            lg={12}
+                                            xl={12}
+                                            xxl={12}
+                                            className="p-2 mb-0"
+                                          >
+                                            <label
+                                              htmlFor="firstname"
+                                              className="pb-2 labelTextFresher"
+                                            >
+                                              Technologies used (Example: Java):
+                                              {"\n"}
+                                              <span className="asteriskkey">
+                                                *
+                                              </span>
+                                            </label>
+                                            <Row className="gx-0 mb-0">
+                                              <Col
+                                                xs={12}
+                                                sm={12}
+                                                md={4}
+                                                lg={4}
+                                                xl={4}
+                                                xxl={4}
+                                                className="p-2 mb-2"
+                                              >
+                                                <div className="input-group">
+                                                  <input
+                                                    type="text"
+                                                    style={{
+                                                      backgroundColor:
+                                                        theme.inputFieldColor,
+                                                      color:
+                                                        theme.inputTextColor,
+                                                      boxShadow:
+                                                        theme.inputfieldShadow,
+                                                    }}
+                                                    className="form-control inputTxt"
+                                                    placeholder="Technology 1"
+                                                    onChange={(e) => {
+                                                      handleChange(e);
+                                                      setProjectonetech1fresher(
+                                                        e.target.value
+                                                      );
+                                                    }}
+                                                    value={
+                                                      values.fprojectonetech1
+                                                    }
+                                                    name="fprojectonetech1"
+                                                  ></input>
+                                                </div>
+                                              </Col>
+                                              <Col
+                                                xs={12}
+                                                sm={12}
+                                                md={4}
+                                                lg={4}
+                                                xl={4}
+                                                xxl={4}
+                                                className="p-2 mb-2"
+                                              >
+                                                <div className="input-group">
+                                                  <input
+                                                    type="text"
+                                                    style={{
+                                                      backgroundColor:
+                                                        theme.inputFieldColor,
+                                                      color:
+                                                        theme.inputTextColor,
+                                                      boxShadow:
+                                                        theme.inputfieldShadow,
+                                                    }}
+                                                    className="form-control inputTxt"
+                                                    placeholder="Technology 2"
+                                                    onChange={(e) => {
+                                                      handleChange(e);
+                                                      setProjectonetech2fresher(
+                                                        e.target.value
+                                                      );
+                                                    }}
+                                                    value={
+                                                      values.fprojectonetech2
+                                                    }
+                                                    name="fprojectonetech2"
+                                                  ></input>
+                                                </div>
+                                              </Col>
+                                              <Col
+                                                xs={12}
+                                                sm={12}
+                                                md={4}
+                                                lg={4}
+                                                xl={4}
+                                                xxl={4}
+                                                className="p-2 mb-2"
+                                              >
+                                                <div className="input-group">
+                                                  <input
+                                                    type="text"
+                                                    style={{
+                                                      backgroundColor:
+                                                        theme.inputFieldColor,
+                                                      color:
+                                                        theme.inputTextColor,
+                                                      boxShadow:
+                                                        theme.inputfieldShadow,
+                                                    }}
+                                                    className="form-control inputTxt"
+                                                    placeholder="Technology 3"
+                                                    onChange={(e) => {
+                                                      handleChange(e);
+                                                      setProjectonetech3fresher(
+                                                        e.target.value
+                                                      );
+                                                    }}
+                                                    value={
+                                                      values.fprojectonetech3
+                                                    }
+                                                    name="fprojectonetech3"
+                                                  ></input>
+                                                </div>
+                                              </Col>
+                                              <Col
+                                                xs={12}
+                                                sm={12}
+                                                md={4}
+                                                lg={4}
+                                                xl={4}
+                                                xxl={4}
+                                                className="p-2 mb-0"
+                                              >
+                                                <div className="input-group">
+                                                  <input
+                                                    type="text"
+                                                    style={{
+                                                      backgroundColor:
+                                                        theme.inputFieldColor,
+                                                      color:
+                                                        theme.inputTextColor,
+                                                      boxShadow:
+                                                        theme.inputfieldShadow,
+                                                    }}
+                                                    className="form-control inputTxt"
+                                                    placeholder="Technology 4"
+                                                    onChange={(e) => {
+                                                      handleChange(e);
+                                                      setProjectonetech4fresher(
+                                                        e.target.value
+                                                      );
+                                                    }}
+                                                    value={
+                                                      values.fprojectonetech4
+                                                    }
+                                                    name="fprojectonetech4"
+                                                  ></input>
+                                                </div>
+                                              </Col>
+                                            </Row>
+                                            {errors.fprojectonetech1 && (
+                                              <div className="errortext p-2">
+                                                {errors.fprojectonetech1}
+                                              </div>
+                                            )}
+                                            <Col ///////////////////////Project Point 1
+                                              xs={12}
+                                              sm={12}
+                                              md={12}
+                                              lg={12}
+                                              xl={12}
+                                              xxl={12}
+                                              className="p-2 mt-1"
+                                            >
+                                              <div className="input-group">
+                                                <textarea
+                                                  style={{
+                                                    backgroundColor:
+                                                      theme.inputFieldColor,
+                                                    color: theme.inputTextColor,
+                                                    boxShadow:
+                                                      theme.inputfieldShadow,
+                                                  }}
+                                                  className="form-control inputTxt"
+                                                  placeholder="Enter point 1"
+                                                  rows="2"
+                                                  onChange={(e) => {
+                                                    handleChange(e);
+                                                    setProjectonepoint1fresher(
+                                                      e.target.value
+                                                    );
+                                                  }}
+                                                  value={
+                                                    values.fprojectonepoint1
+                                                  }
+                                                  name="fprojectonepoint1"
+                                                ></textarea>
+                                              </div>
+                                            </Col>
+                                            <Col ///////////////////////Project Point 2
+                                              xs={12}
+                                              sm={12}
+                                              md={12}
+                                              lg={12}
+                                              xl={12}
+                                              xxl={12}
+                                              className="p-2 mt-1"
+                                            >
+                                              <div className="input-group">
+                                                <textarea
+                                                  style={{
+                                                    backgroundColor:
+                                                      theme.inputFieldColor,
+                                                    color: theme.inputTextColor,
+                                                    boxShadow:
+                                                      theme.inputfieldShadow,
+                                                  }}
+                                                  className="form-control inputTxt"
+                                                  placeholder="Enter point 2"
+                                                  rows="2"
+                                                  onChange={(e) => {
+                                                    handleChange(e);
+                                                    setProjectonepoint2fresher(
+                                                      e.target.value
+                                                    );
+                                                  }}
+                                                  value={
+                                                    values.fprojectonepoint2
+                                                  }
+                                                  name="fprojectonepoint2"
+                                                ></textarea>
+                                              </div>
+                                            </Col>
+                                            <Col ///////////////////////Project Point 3
+                                              xs={12}
+                                              sm={12}
+                                              md={12}
+                                              lg={12}
+                                              xl={12}
+                                              xxl={12}
+                                              className="p-2 mt-1"
+                                            >
+                                              <div className="input-group">
+                                                <textarea
+                                                  style={{
+                                                    backgroundColor:
+                                                      theme.inputFieldColor,
+                                                    color: theme.inputTextColor,
+                                                    boxShadow:
+                                                      theme.inputfieldShadow,
+                                                  }}
+                                                  className="form-control inputTxt"
+                                                  placeholder="Enter point 3"
+                                                  rows="2"
+                                                  onChange={(e) => {
+                                                    handleChange(e);
+                                                    setProjectonepoint3fresher(
+                                                      e.target.value
+                                                    );
+                                                  }}
+                                                  value={
+                                                    values.fprojectonepoint3
+                                                  }
+                                                  name="fprojectonepoint3"
+                                                ></textarea>
+                                              </div>
+                                              {errors.fprojectonepoint1 && (
+                                                <div className="errortext pt-3">
+                                                  {errors.fprojectonepoint1}
+                                                </div>
+                                              )}
+                                            </Col>
+                                          </Col>
+                                        </Row>
+                                      </Accordion.Body>
+                                    </Accordion.Item>
+
+
+
+
+                                    <Accordion.Item eventKey="1">  {/* Accordian 2  */}
+                                      <Accordion.Header>
+                                        <label
+                                          htmlFor="projectAccordian1"
+                                          className="labelTextFresher"
+                                        >
+                                          Project 2 (Optional)
+                                        </label>
+                                      </Accordion.Header>
+                                      <Accordion.Body
+                                        style={{
+                                          backgroundColor: theme.cardColor,
+                                          boxShadow: theme.cardShadow,
+                                        }}
+                                      >
+                                        <Row className="gx-0 mb-0">
+                                          <Col ///////////////////////Project Name
+                                            xs={12}
+                                            sm={12}
+                                            md={7}
+                                            lg={7}
+                                            xl={7}
+                                            xxl={7}
+                                            className="p-2 mb-2"
+                                          >
+                                            <div className="input-group">
+                                              <div className="input-group-prepend">
+                                                <div
+                                                  className="input-group-text h-100"
+                                                  style={{
+                                                    backgroundColor:
+                                                      theme.inputPrependColor,
+                                                    color: theme.inputIcon,
+                                                    boxShadow:
+                                                      theme.inputfieldShadow,
+                                                  }}
+                                                >
+                                                  <FontAwesomeIcon
+                                                    icon={faLightbulb}
+                                                  />
+                                                </div>
+                                              </div>
+                                              <input
+                                                type="text"
+                                                style={{
+                                                  backgroundColor:
+                                                    theme.inputFieldColor,
+                                                  color: theme.inputTextColor,
+                                                  boxShadow:
+                                                    theme.inputfieldShadow,
+                                                }}
+                                                className="form-control inputTxt"
+                                                placeholder="Project Name"
+                                                onChange={(e) => {
+                                                  handleChange(e);
+                                                  setProjectonefresher(
+                                                    e.target.value
+                                                  );
+                                                }}
+                                                value={values.fprojectonename}
+                                                name="fprojectonename"
+                                              ></input>
+                                            </div>
+                                            {errors.fprojectonename && (
+                                              <div className="errortext pt-2">
+                                                {errors.fprojectonename}
+                                              </div>
+                                            )}
+                                          </Col>
+                                          <Col ///////////////////////Project Role
+                                            xs={12}
+                                            sm={12}
+                                            md={5}
+                                            lg={5}
+                                            xl={5}
+                                            xxl={5}
+                                            className="p-2 mb-2"
+                                          >
+                                            <div className="input-group">
+                                              <input
+                                                type="text"
+                                                style={{
+                                                  backgroundColor:
+                                                    theme.inputFieldColor,
+                                                  color: theme.inputTextColor,
+                                                  boxShadow:
+                                                    theme.inputfieldShadow,
+                                                }}
+                                                className="form-control inputTxt"
+                                                placeholder="Role (Ex:Developer)"
+                                                onChange={(e) => {
+                                                  handleChange(e);
+                                                  setProjectonerolefresher(
+                                                    e.target.value
+                                                  );
+                                                }}
+                                                value={values.fprojectonerole}
+                                                name="fprojectonerole"
+                                              ></input>
+                                            </div>
+                                            {errors.fprojectonerole && (
+                                              <div className="errortext pt-2">
+                                                {errors.fprojectonerole}
+                                              </div>
+                                            )}
+                                          </Col>
+                                          <Col ///////////////////////Technology Names
+                                            xs={12}
+                                            sm={12}
+                                            md={12}
+                                            lg={12}
+                                            xl={12}
+                                            xxl={12}
+                                            className="p-2 mb-0"
+                                          >
+                                            <label
+                                              htmlFor="firstname"
+                                              className="pb-2 labelTextFresher"
+                                            >
+                                              Technologies used (Example: Java):
+                                              {"\n"}
+                                              <span className="asteriskkey">
+                                                *
+                                              </span>
+                                            </label>
+                                            <Row className="gx-0 mb-0">
+                                              <Col
+                                                xs={12}
+                                                sm={12}
+                                                md={4}
+                                                lg={4}
+                                                xl={4}
+                                                xxl={4}
+                                                className="p-2 mb-2"
+                                              >
+                                                <div className="input-group">
+                                                  <input
+                                                    type="text"
+                                                    style={{
+                                                      backgroundColor:
+                                                        theme.inputFieldColor,
+                                                      color:
+                                                        theme.inputTextColor,
+                                                      boxShadow:
+                                                        theme.inputfieldShadow,
+                                                    }}
+                                                    className="form-control inputTxt"
+                                                    placeholder="Technology 1"
+                                                    onChange={(e) => {
+                                                      handleChange(e);
+                                                      setProjectonetech1fresher(
+                                                        e.target.value
+                                                      );
+                                                    }}
+                                                    value={
+                                                      values.fprojectonetech1
+                                                    }
+                                                    name="fprojectonetech1"
+                                                  ></input>
+                                                </div>
+                                              </Col>
+                                              <Col
+                                                xs={12}
+                                                sm={12}
+                                                md={4}
+                                                lg={4}
+                                                xl={4}
+                                                xxl={4}
+                                                className="p-2 mb-2"
+                                              >
+                                                <div className="input-group">
+                                                  <input
+                                                    type="text"
+                                                    style={{
+                                                      backgroundColor:
+                                                        theme.inputFieldColor,
+                                                      color:
+                                                        theme.inputTextColor,
+                                                      boxShadow:
+                                                        theme.inputfieldShadow,
+                                                    }}
+                                                    className="form-control inputTxt"
+                                                    placeholder="Technology 2"
+                                                    onChange={(e) => {
+                                                      handleChange(e);
+                                                      setProjectonetech2fresher(
+                                                        e.target.value
+                                                      );
+                                                    }}
+                                                    value={
+                                                      values.fprojectonetech2
+                                                    }
+                                                    name="fprojectonetech2"
+                                                  ></input>
+                                                </div>
+                                              </Col>
+                                              <Col
+                                                xs={12}
+                                                sm={12}
+                                                md={4}
+                                                lg={4}
+                                                xl={4}
+                                                xxl={4}
+                                                className="p-2 mb-2"
+                                              >
+                                                <div className="input-group">
+                                                  <input
+                                                    type="text"
+                                                    style={{
+                                                      backgroundColor:
+                                                        theme.inputFieldColor,
+                                                      color:
+                                                        theme.inputTextColor,
+                                                      boxShadow:
+                                                        theme.inputfieldShadow,
+                                                    }}
+                                                    className="form-control inputTxt"
+                                                    placeholder="Technology 3"
+                                                    onChange={(e) => {
+                                                      handleChange(e);
+                                                      setProjectonetech3fresher(
+                                                        e.target.value
+                                                      );
+                                                    }}
+                                                    value={
+                                                      values.fprojectonetech3
+                                                    }
+                                                    name="fprojectonetech3"
+                                                  ></input>
+                                                </div>
+                                              </Col>
+                                              <Col
+                                                xs={12}
+                                                sm={12}
+                                                md={4}
+                                                lg={4}
+                                                xl={4}
+                                                xxl={4}
+                                                className="p-2 mb-0"
+                                              >
+                                                <div className="input-group">
+                                                  <input
+                                                    type="text"
+                                                    style={{
+                                                      backgroundColor:
+                                                        theme.inputFieldColor,
+                                                      color:
+                                                        theme.inputTextColor,
+                                                      boxShadow:
+                                                        theme.inputfieldShadow,
+                                                    }}
+                                                    className="form-control inputTxt"
+                                                    placeholder="Technology 4"
+                                                    onChange={(e) => {
+                                                      handleChange(e);
+                                                      setProjectonetech4fresher(
+                                                        e.target.value
+                                                      );
+                                                    }}
+                                                    value={
+                                                      values.fprojectonetech4
+                                                    }
+                                                    name="fprojectonetech4"
+                                                  ></input>
+                                                </div>
+                                              </Col>
+                                            </Row>
+                                            {errors.fprojectonetech1 && (
+                                              <div className="errortext p-2">
+                                                {errors.fprojectonetech1}
+                                              </div>
+                                            )}
+                                            <Col ///////////////////////Project Point 1
+                                              xs={12}
+                                              sm={12}
+                                              md={12}
+                                              lg={12}
+                                              xl={12}
+                                              xxl={12}
+                                              className="p-2 mt-1"
+                                            >
+                                              <div className="input-group">
+                                                <textarea
+                                                  style={{
+                                                    backgroundColor:
+                                                      theme.inputFieldColor,
+                                                    color: theme.inputTextColor,
+                                                    boxShadow:
+                                                      theme.inputfieldShadow,
+                                                  }}
+                                                  className="form-control inputTxt"
+                                                  placeholder="Enter point 1"
+                                                  rows="2"
+                                                  onChange={(e) => {
+                                                    handleChange(e);
+                                                    setProjectonepoint1fresher(
+                                                      e.target.value
+                                                    );
+                                                  }}
+                                                  value={
+                                                    values.fprojectonepoint1
+                                                  }
+                                                  name="fprojectonepoint1"
+                                                ></textarea>
+                                              </div>
+                                            </Col>
+                                            <Col ///////////////////////Project Point 2
+                                              xs={12}
+                                              sm={12}
+                                              md={12}
+                                              lg={12}
+                                              xl={12}
+                                              xxl={12}
+                                              className="p-2 mt-1"
+                                            >
+                                              <div className="input-group">
+                                                <textarea
+                                                  style={{
+                                                    backgroundColor:
+                                                      theme.inputFieldColor,
+                                                    color: theme.inputTextColor,
+                                                    boxShadow:
+                                                      theme.inputfieldShadow,
+                                                  }}
+                                                  className="form-control inputTxt"
+                                                  placeholder="Enter point 2"
+                                                  rows="2"
+                                                  onChange={(e) => {
+                                                    handleChange(e);
+                                                    setProjectonepoint2fresher(
+                                                      e.target.value
+                                                    );
+                                                  }}
+                                                  value={
+                                                    values.fprojectonepoint2
+                                                  }
+                                                  name="fprojectonepoint2"
+                                                ></textarea>
+                                              </div>
+                                            </Col>
+                                            <Col ///////////////////////Project Point 3
+                                              xs={12}
+                                              sm={12}
+                                              md={12}
+                                              lg={12}
+                                              xl={12}
+                                              xxl={12}
+                                              className="p-2 mt-1"
+                                            >
+                                              <div className="input-group">
+                                                <textarea
+                                                  style={{
+                                                    backgroundColor:
+                                                      theme.inputFieldColor,
+                                                    color: theme.inputTextColor,
+                                                    boxShadow:
+                                                      theme.inputfieldShadow,
+                                                  }}
+                                                  className="form-control inputTxt"
+                                                  placeholder="Enter point 3"
+                                                  rows="2"
+                                                  onChange={(e) => {
+                                                    handleChange(e);
+                                                    setProjectonepoint3fresher(
+                                                      e.target.value
+                                                    );
+                                                  }}
+                                                  value={
+                                                    values.fprojectonepoint3
+                                                  }
+                                                  name="fprojectonepoint3"
+                                                ></textarea>
+                                              </div>
+                                              {errors.fprojectonepoint1 && (
+                                                <div className="errortext pt-3">
+                                                  {errors.fprojectonepoint1}
+                                                </div>
+                                              )}
+                                            </Col>
+                                          </Col>
+                                        </Row>
+                                      </Accordion.Body>
+                                    </Accordion.Item>
+                                  </Accordion>
+                                </Col>
+                               
+                              </Row>
+                            </div>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                pt: 4,
+                              }}
+                            >
+                              <Button
+                                color="inherit"
+                                variant="outlined"
+                                disabled={activeStep === 0}
+                                onClick={handleBack}
+                                sx={{ mr: 1 }}
+                              >
+                                Back
+                              </Button>
+                              <Box sx={{ flex: "1 1 auto" }} />
                               <Button type="submit" variant="outlined">
                                 {activeStep === steps.length - 1
                                   ? "Finish"
@@ -652,7 +1621,7 @@ const FresherFormScreen = memo(() => {
                     </Formik>
                   </Fragment>
                 ) : null}
-                {activeStep === 1 ? ( //////////////// Step 2 form begins
+                {activeStep === 2 ? ( //////////////// Step 3 form begins
                   <>
                     <Box
                       sx={{
@@ -676,31 +1645,6 @@ const FresherFormScreen = memo(() => {
                       </Button>
                     </Box>
                   </>
-                ) : null}
-                {activeStep === 2 ? ( //////////////// Step 2 form begins
-                  <>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      pt: 4,
-                    }}
-                  >
-                    <Button
-                      color="inherit"
-                      variant="outlined"
-                      disabled={activeStep === 0}
-                      onClick={handleBack}
-                      sx={{ mr: 1 }}
-                    >
-                      Back
-                    </Button>
-                    <Box sx={{ flex: "1 1 auto" }} />
-                    <Button onClick={handleNext} variant="outlined">
-                      {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                    </Button>
-                  </Box>
-                </>
                 ) : null}
               </div>
             </Fragment>
