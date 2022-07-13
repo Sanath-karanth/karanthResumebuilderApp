@@ -73,7 +73,7 @@ const ResumeFormScreen = memo(() => {
 
   useEffect(() => {
     tabsAction();
-    // var scrolltotopCont = document.querySelector(".scrolltotopForm");
+    var scrolltotopCont = document.querySelector(".scrolltotopForm");
     // scrolltotopCont.scrollIntoView({
     //   behavior: "smooth",
     // });
