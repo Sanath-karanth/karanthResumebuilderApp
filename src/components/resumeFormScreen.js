@@ -73,10 +73,15 @@ const ResumeFormScreen = memo(() => {
 
   useEffect(() => {
     tabsAction();
-    var scrolltotopCont = document.querySelector(".scrolltotopForm");
-    scrolltotopCont.scrollIntoView({
-      behavior: "smooth",
-    });
+    // var scrolltotopCont = document.querySelector(".scrolltotopForm");
+    // scrolltotopCont.scrollIntoView({
+    //   behavior: "smooth",
+    // });
+    window.scroll({
+      top: scrolltotopCont?.offsetParent.offsetTop,
+      behavior: 'smooth',
+      block: 'start',
+    })
   }, [tabsAction]);
 
   useEffect(() => {

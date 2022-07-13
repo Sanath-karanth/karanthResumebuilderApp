@@ -90,9 +90,14 @@ const DashboardScreen = memo(() => {
 
   useEffect(() => {
     var scrolltotopCont = document.querySelector(".scrolltotop");
-    scrolltotopCont.scrollIntoView({
-      behavior: "smooth",
-    });
+    // scrolltotopCont.scrollIntoView({
+    //   behavior: "smooth",
+    // });
+    window.scroll({
+      top: scrolltotopCont?.offsetParent.offsetTop,
+      behavior: 'smooth',
+      block: 'start',
+    })
   }, []);
 
   return (
