@@ -94,10 +94,10 @@ const DashboardScreen = memo(() => {
     //   behavior: "smooth",
     // });
     window.scroll({
-      top: scrolltotopCont?.offsetParent.offsetTop,
-      behavior: 'smooth',
-      block: 'start',
-    })
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth'
+    });
   }, []);
 
   return (
