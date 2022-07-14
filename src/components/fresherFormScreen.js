@@ -82,12 +82,14 @@ const FresherFormScreen = memo(() => {
   const [projectonepoint1fresher, setProjectonepoint1fresher] = useState("");
   const [projectonepoint2fresher, setProjectonepoint2fresher] = useState("");
   const [projectonepoint3fresher, setProjectonepoint3fresher] = useState("");
+  const [isCheckedProject, setIsCheckedProject] = useState(false);
 
   const [projecttwofresher, setProjecttwofresher] = useState("");
   const [projecttworolefresher, setProjecttworolefresher] = useState("");
   const [projecttwotech1fresher, setProjecttwotech1fresher] = useState("");
   const [projecttwotech2fresher, setProjecttwotech2fresher] = useState("");
   const [projecttwotech3fresher, setProjecttwotech3fresher] = useState("");
+  const [projecttwotech4fresher, setProjecttwotech4fresher] = useState("");
   const [projecttwopoint1fresher, setProjecttwopoint1fresher] = useState("");
   const [projecttwopoint2fresher, setProjecttwopoint2fresher] = useState("");
   const [projecttwopoint3fresher, setProjecttwopoint3fresher] = useState("");
@@ -106,14 +108,15 @@ const FresherFormScreen = memo(() => {
     fprojectonepoint1: projectonepoint1fresher,
     fprojectonepoint2: projectonepoint2fresher,
     fprojectonepoint3: projectonepoint3fresher,
-    fprojecttwoname: "projecttwofresher",
-    fprojecttworole: "projecttworolefresher",
-    fprojecttwotech1: "projecttwotech1fresher",
-    fprojecttwotech2: "projecttwotech2fresher",
-    fprojecttwotech3: "projecttwotech3fresher",
-    fprojecttwopoint1: "projecttwopoint1fresher",
-    fprojecttwopoint2: "projecttwopoint2fresher",
-    fprojecttwopoint3: "projecttwopoint3fresher",
+    fprojecttwoname: projecttwofresher,
+    fprojecttworole: projecttworolefresher,
+    fprojecttwotech1: projecttwotech1fresher,
+    fprojecttwotech2: projecttwotech2fresher,
+    fprojecttwotech3: projecttwotech3fresher,
+    fprojecttwotech4: projecttwotech4fresher,
+    fprojecttwopoint1: projecttwopoint1fresher,
+    fprojecttwopoint2: projecttwopoint2fresher,
+    fprojecttwopoint3: projecttwopoint3fresher,
     fstream: "streamfresher",
     funiversity: "universityfresher",
     fyearfrom: "yearfromval",
@@ -181,7 +184,20 @@ const FresherFormScreen = memo(() => {
     setSuggestmodalShow(true);
   };
 
+  const project2checkClick = () => {
+    setIsCheckedProject(!isCheckedProject);
+  };
+
+  const scrollToTopNextStep = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
   const handleBack = () => {
+    scrollToTopNextStep();
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
@@ -200,14 +216,6 @@ const FresherFormScreen = memo(() => {
 
   const handleReset = () => {
     setActiveStep(0);
-  };
-
-  const scrollToTopNextStep = () => {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
   };
 
   const handleNext = () => {
@@ -304,13 +312,43 @@ const FresherFormScreen = memo(() => {
         "Please enter a Valid Alphanumerical Characters only.";
     }
 
-    if (!values.fprojectonetech1 || !values.fprojectonetech2 || !values.fprojectonetech3) {
-      errors.fprojectonetech1 = 'Please enter Atleast 3-4 Technologies.';
-  }
+    if (
+      !values.fprojectonetech1 ||
+      !values.fprojectonetech2 ||
+      !values.fprojectonetech3
+    ) {
+      errors.fprojectonetech1 = "Please enter Atleast 3-4 Technologies.";
+    }
 
-  if (!values.fprojectonepoint1 || !values.fprojectonepoint2) {
-      errors.fprojectonepoint1 = 'Please enter Atleast 2-3 Points.';
-  }
+    if (!values.fprojectonepoint1 || !values.fprojectonepoint2) {
+      errors.fprojectonepoint1 = "Please enter Atleast 2-3 Points.";
+    }
+
+    if (isCheckedProject === true) {
+      if (!values.fprojecttwoname) {
+        errors.fprojecttwoname = "Project name is required!";
+      } else if (!/^[A-Za-z0-9\&\,\-\_\b ]+$/.test(values.fprojecttwoname)) {
+        errors.fprojecttwoname =
+          "Please enter a Valid Alphanumerical Characters only.";
+      }
+
+      if (!values.fprojecttworole) {
+        errors.fprojecttworole = "Project Role is required!";
+      } else if (!/^[A-Za-z\-\b ]+$/.test(values.fprojecttworole)) {
+        errors.fprojecttworole =
+          "Please enter a Valid Alphanumerical Characters only.";
+      }
+      if (
+        !values.fprojecttwotech1 ||
+        !values.fprojecttwotech2 ||
+        !values.fprojecttwotech3
+      ) {
+        errors.fprojecttwotech1 = "Please enter Atleast 3-4 Technologies.";
+      }
+      if (!values.fprojecttwopoint1 || !values.fprojecttwopoint2) {
+        errors.fprojecttwopoint1 = "Please enter Atleast 2-3 Points.";
+      }
+    }
 
     return errors;
   };
@@ -816,7 +854,9 @@ const FresherFormScreen = memo(() => {
                                     <span className="asteriskkey">*</span>
                                   </label>
                                   <Accordion defaultActiveKey="0">
-                                    <Accordion.Item eventKey="0">  {/* Accordian 1  */}
+                                    <Accordion.Item eventKey="0">
+                                      {" "}
+                                      {/* Accordian 1  */}
                                       <Accordion.Header>
                                         <label
                                           htmlFor="projectAccordian1"
@@ -1201,10 +1241,9 @@ const FresherFormScreen = memo(() => {
                                       </Accordion.Body>
                                     </Accordion.Item>
 
-
-
-
-                                    <Accordion.Item eventKey="1">  {/* Accordian 2  */}
+                                    <Accordion.Item eventKey="1">
+                                      {" "}
+                                      {/* Accordian 2 pending */}
                                       <Accordion.Header>
                                         <label
                                           htmlFor="projectAccordian1"
@@ -1219,6 +1258,22 @@ const FresherFormScreen = memo(() => {
                                           boxShadow: theme.cardShadow,
                                         }}
                                       >
+                                        <div className="p-2">
+                                          <input
+                                            type="checkbox"
+                                            style={{
+                                              height: "15px",
+                                              width: "15px",
+                                            }}
+                                            checked={isCheckedProject}
+                                            onChange={project2checkClick}
+                                          />
+                                          <span className="checkboxtextFresher">
+                                            &nbsp;&nbsp;Please Checkmark this
+                                            only if&nbsp;
+                                            <b>Project 2</b> is required.
+                                          </span>
+                                        </div>
                                         <Row className="gx-0 mb-0">
                                           <Col ///////////////////////Project Name
                                             xs={12}
@@ -1259,17 +1314,17 @@ const FresherFormScreen = memo(() => {
                                                 placeholder="Project Name"
                                                 onChange={(e) => {
                                                   handleChange(e);
-                                                  setProjectonefresher(
+                                                  setProjecttwofresher(
                                                     e.target.value
                                                   );
                                                 }}
-                                                value={values.fprojectonename}
-                                                name="fprojectonename"
+                                                value={values.fprojecttwoname}
+                                                name="fprojecttwoname"
                                               ></input>
                                             </div>
-                                            {errors.fprojectonename && (
+                                            {errors.fprojecttwoname && (
                                               <div className="errortext pt-2">
-                                                {errors.fprojectonename}
+                                                {errors.fprojecttwoname}
                                               </div>
                                             )}
                                           </Col>
@@ -1296,17 +1351,17 @@ const FresherFormScreen = memo(() => {
                                                 placeholder="Role (Ex:Developer)"
                                                 onChange={(e) => {
                                                   handleChange(e);
-                                                  setProjectonerolefresher(
+                                                  setProjecttworolefresher(
                                                     e.target.value
                                                   );
                                                 }}
-                                                value={values.fprojectonerole}
-                                                name="fprojectonerole"
+                                                value={values.fprojecttworole}
+                                                name="fprojecttworole"
                                               ></input>
                                             </div>
-                                            {errors.fprojectonerole && (
+                                            {errors.fprojecttworole && (
                                               <div className="errortext pt-2">
-                                                {errors.fprojectonerole}
+                                                {errors.fprojecttworole}
                                               </div>
                                             )}
                                           </Col>
@@ -1354,14 +1409,14 @@ const FresherFormScreen = memo(() => {
                                                     placeholder="Technology 1"
                                                     onChange={(e) => {
                                                       handleChange(e);
-                                                      setProjectonetech1fresher(
+                                                      setProjecttwotech1fresher(
                                                         e.target.value
                                                       );
                                                     }}
                                                     value={
-                                                      values.fprojectonetech1
+                                                      values.fprojecttwotech1
                                                     }
-                                                    name="fprojectonetech1"
+                                                    name="fprojecttwotech1"
                                                   ></input>
                                                 </div>
                                               </Col>
@@ -1389,14 +1444,14 @@ const FresherFormScreen = memo(() => {
                                                     placeholder="Technology 2"
                                                     onChange={(e) => {
                                                       handleChange(e);
-                                                      setProjectonetech2fresher(
+                                                      setProjecttwotech2fresher(
                                                         e.target.value
                                                       );
                                                     }}
                                                     value={
-                                                      values.fprojectonetech2
+                                                      values.fprojecttwotech2
                                                     }
-                                                    name="fprojectonetech2"
+                                                    name="fprojecttwotech2"
                                                   ></input>
                                                 </div>
                                               </Col>
@@ -1424,14 +1479,14 @@ const FresherFormScreen = memo(() => {
                                                     placeholder="Technology 3"
                                                     onChange={(e) => {
                                                       handleChange(e);
-                                                      setProjectonetech3fresher(
+                                                      setProjecttwotech3fresher(
                                                         e.target.value
                                                       );
                                                     }}
                                                     value={
-                                                      values.fprojectonetech3
+                                                      values.fprojecttwotech3
                                                     }
-                                                    name="fprojectonetech3"
+                                                    name="fprojecttwotech3"
                                                   ></input>
                                                 </div>
                                               </Col>
@@ -1459,21 +1514,21 @@ const FresherFormScreen = memo(() => {
                                                     placeholder="Technology 4"
                                                     onChange={(e) => {
                                                       handleChange(e);
-                                                      setProjectonetech4fresher(
+                                                      setProjecttwotech4fresher(
                                                         e.target.value
                                                       );
                                                     }}
                                                     value={
-                                                      values.fprojectonetech4
+                                                      values.fprojecttwotech4
                                                     }
-                                                    name="fprojectonetech4"
+                                                    name="fprojecttwotech4"
                                                   ></input>
                                                 </div>
                                               </Col>
                                             </Row>
-                                            {errors.fprojectonetech1 && (
+                                            {errors.fprojecttwotech1 && (
                                               <div className="errortext p-2">
-                                                {errors.fprojectonetech1}
+                                                {errors.fprojecttwotech1}
                                               </div>
                                             )}
                                             <Col ///////////////////////Project Point 1
@@ -1499,14 +1554,14 @@ const FresherFormScreen = memo(() => {
                                                   rows="2"
                                                   onChange={(e) => {
                                                     handleChange(e);
-                                                    setProjectonepoint1fresher(
+                                                    setProjecttwopoint1fresher(
                                                       e.target.value
                                                     );
                                                   }}
                                                   value={
-                                                    values.fprojectonepoint1
+                                                    values.fprojecttwopoint1
                                                   }
-                                                  name="fprojectonepoint1"
+                                                  name="fprojecttwopoint1"
                                                 ></textarea>
                                               </div>
                                             </Col>
@@ -1533,14 +1588,14 @@ const FresherFormScreen = memo(() => {
                                                   rows="2"
                                                   onChange={(e) => {
                                                     handleChange(e);
-                                                    setProjectonepoint2fresher(
+                                                    setProjecttwopoint2fresher(
                                                       e.target.value
                                                     );
                                                   }}
                                                   value={
-                                                    values.fprojectonepoint2
+                                                    values.fprojecttwopoint2
                                                   }
-                                                  name="fprojectonepoint2"
+                                                  name="fprojecttwopoint2"
                                                 ></textarea>
                                               </div>
                                             </Col>
@@ -1567,19 +1622,19 @@ const FresherFormScreen = memo(() => {
                                                   rows="2"
                                                   onChange={(e) => {
                                                     handleChange(e);
-                                                    setProjectonepoint3fresher(
+                                                    setProjecttwopoint3fresher(
                                                       e.target.value
                                                     );
                                                   }}
                                                   value={
-                                                    values.fprojectonepoint3
+                                                    values.fprojecttwopoint3
                                                   }
-                                                  name="fprojectonepoint3"
+                                                  name="fprojecttwopoint3"
                                                 ></textarea>
                                               </div>
-                                              {errors.fprojectonepoint1 && (
+                                              {errors.fprojecttwopoint1 && (
                                                 <div className="errortext pt-3">
-                                                  {errors.fprojectonepoint1}
+                                                  {errors.fprojecttwopoint1}
                                                 </div>
                                               )}
                                             </Col>
@@ -1589,7 +1644,6 @@ const FresherFormScreen = memo(() => {
                                     </Accordion.Item>
                                   </Accordion>
                                 </Col>
-                               
                               </Row>
                             </div>
                             <Box
@@ -1609,7 +1663,11 @@ const FresherFormScreen = memo(() => {
                                 Back
                               </Button>
                               <Box sx={{ flex: "1 1 auto" }} />
-                              <Button type="submit" variant="outlined">
+                              <Button
+                                type="submit"
+                                variant="outlined"
+                                onClick={handleNext}
+                              >
                                 {activeStep === steps.length - 1
                                   ? "Finish"
                                   : "Next"}
@@ -1622,29 +1680,113 @@ const FresherFormScreen = memo(() => {
                   </Fragment>
                 ) : null}
                 {activeStep === 2 ? ( //////////////// Step 3 form begins
-                  <>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        pt: 4,
-                      }}
+                  <Fragment>
+                    <Formik
+                      initialValues={initialValues}
+                      onSubmit={handleSubmitForm}
+                      validate={freshervalidate}
                     >
-                      <Button
-                        color="inherit"
-                        variant="outlined"
-                        disabled={activeStep === 0}
-                        onClick={handleBack}
-                        sx={{ mr: 1 }}
-                      >
-                        Back
-                      </Button>
-                      <Box sx={{ flex: "1 1 auto" }} />
-                      <Button onClick={handleNext} variant="outlined">
-                        {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                      </Button>
-                    </Box>
-                  </>
+                      {({
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        touched,
+                        values,
+                        errors,
+                      }) => (
+                        <>
+                          <Form onSubmit={handleSubmit} autoComplete="off">
+                            <div
+                              className="fresher-forms-cont"
+                              style={{
+                                backgroundColor: theme.cardColor,
+                                boxShadow: theme.cardShadow,
+                              }}
+                            >
+                              <Row className="gx-0 mb-4">
+                                <Col ///////////////////////SkillSelect
+                                  xs={12}
+                                  sm={12}
+                                  md={12}
+                                  lg={12}
+                                  xl={12}
+                                  xxl={12}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Skills"
+                                    className="pb-2 labelTitleTextFresher"
+                                  >
+                                    Education Details{"\n"}
+                                    <span className="asteriskkey">*</span>
+                                  </label>
+                                  <Select
+                                    className="selectContent"
+                                    isMulti
+                                    closeMenuOnSelect={true}
+                                    isClearable={true}
+                                    styles={fSkillColourStyles}
+                                    isLoading={isselectLoading}
+                                    onChange={programSelectFresher}
+                                    options={langOptions}
+                                  />
+                                  {skillnullfresher === true && (
+                                    <div className="errortext pt-3">
+                                      Please select Atleast 3-4 Skills.
+                                    </div>
+                                  )}
+                                </Col>
+                                <Col ///////////////////////Phonenumber
+                                  xs={12}
+                                  sm={12}
+                                  md={12}
+                                  lg={12}
+                                  xl={12}
+                                  xxl={12}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Skills"
+                                    className="pb-2 labelTitleTextFresher"
+                                  >
+                                    Projects{"\n"}
+                                    <span className="asteriskkey">*</span>
+                                  </label>
+                                </Col>
+                              </Row>
+                            </div>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                pt: 4,
+                              }}
+                            >
+                              <Button
+                                color="inherit"
+                                variant="outlined"
+                                disabled={activeStep === 0}
+                                onClick={handleBack}
+                                sx={{ mr: 1 }}
+                              >
+                                Back
+                              </Button>
+                              <Box sx={{ flex: "1 1 auto" }} />
+                              <Button
+                                type="submit"
+                                variant="outlined"
+                                // onClick={handleNext}
+                              >
+                                {activeStep === steps.length - 1
+                                  ? "Finish"
+                                  : "Next"}
+                              </Button>
+                            </Box>
+                          </Form>
+                        </>
+                      )}
+                    </Formik>
+                  </Fragment>
                 ) : null}
               </div>
             </Fragment>

@@ -79,9 +79,16 @@ p {
     font-weight: bolder;
     color: navy;
 }
+
 .accordion-button {
     padding: 0px 10px 0px 10px !important;
-  }
+}
+
+.checkboxtextFresher {
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    color: #df4759;
+}
 
 @keyframes shake {
     25% {
