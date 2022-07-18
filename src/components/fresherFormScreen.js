@@ -622,6 +622,7 @@ const FresherFormScreen = memo((props) => {
                                       options={roleOptionsFresher}
                                       defaultValue={froleSelectval}
                                       isDisabled={true}
+                                      isSearchable={false}
                                     />
                                   </div>
                                 </Col>
@@ -889,6 +890,7 @@ const FresherFormScreen = memo((props) => {
                                     isMulti
                                     closeMenuOnSelect={true}
                                     isClearable={true}
+                                    isSearchable={false}
                                     styles={fSkillColourStyles}
                                     isLoading={isselectLoading}
                                     onChange={programSelectFresher}
