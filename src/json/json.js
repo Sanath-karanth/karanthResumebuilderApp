@@ -88,6 +88,7 @@ export const yearData = [
   { year: "2020", label: "2020" },
   { year: "2021", label: "2021" },
   { year: "2022", label: "2022" },
+  { year: "2023", label: "2023" },
 ];
 
 export const yearfromData = [
@@ -106,6 +107,7 @@ export const yearfromData = [
   { year: "2020", label: "2020" },
   { year: "2021", label: "2021" },
   { year: "2022", label: "2022" },
+  { year: "2023", label: "2023" },
 ];
 
 export const yeartoData = [
@@ -124,6 +126,7 @@ export const yeartoData = [
   { year: "2020", label: "2020" },
   { year: "2021", label: "2021" },
   { year: "2022", label: "2022" },
+  { year: "2023", label: "2023" },
   { year: "Present", label: "Present" },
 ];
 

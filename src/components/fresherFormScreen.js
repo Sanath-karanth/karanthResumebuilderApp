@@ -56,7 +56,7 @@ import {
 const steps = ["Step 1", "Step 2", "Step 3"];
 const roleOptionsFresher = [{ value: "Fresher", label: "Fresher" }];
 
-const FresherFormScreen = memo(() => {
+const FresherFormScreen = memo((props) => {
   const [{ theme }] = useContext(ThemeContext);
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
@@ -67,7 +67,7 @@ const FresherFormScreen = memo(() => {
 
   ////////    Form 1 Variables
   const [fnameval, setFnameVal] = useState("");
-  const [froleSelectval, setFroleSelectval] = useState(roleOptionsFresher[0]);
+  const [froleSelectval, setFroleSelectVal] = useState(roleOptionsFresher[0]);
   const [femailval, setFemailVal] = useState("");
   const [fphoneval, setFphoneVal] = useState("");
   const [fsummaryval, setFsummaryVal] = useState("");
@@ -94,6 +94,18 @@ const FresherFormScreen = memo(() => {
   const [projecttwopoint2fresher, setProjecttwopoint2fresher] = useState("");
   const [projecttwopoint3fresher, setProjecttwopoint3fresher] = useState("");
 
+  ///////    Form 3 Variables
+  const [eduSelectval, setEduSelectVal] = useState("B.E");
+  const [fstreamval, setFstreamVal] = useState("");
+  const [funiversitynameval, setFuniversitynameVal] = useState("");
+  const [fmonthfromval, setFmonthfromVal] = useState("January");
+  const [fyearfromval, setFfromyearVal] = useState("2015");
+  const [fyeartoval, setFtoyearVal] = useState("2019");
+  const [fcoursenameval, setFcoursenameVal] = useState("");
+  const [fplatnameval, setFplatnameVal] = useState("");
+  const [fcertificatemonthval, setFcertificatemonthVal] = useState("January");
+  const [fcertificateyearval, setFcertificateyearVal] = useState("2020");
+
   const initialValues = {
     fusername: fnameval,
     femail: femailval,
@@ -117,19 +129,10 @@ const FresherFormScreen = memo(() => {
     fprojecttwopoint1: projecttwopoint1fresher,
     fprojecttwopoint2: projecttwopoint2fresher,
     fprojecttwopoint3: projecttwopoint3fresher,
-    fstream: "streamfresher",
-    funiversity: "universityfresher",
-    fyearfrom: "yearfromval",
-    fyearto: "yeartoval",
-    fcoursename: "coursenamefresher",
-    fplatform: "platnamefresher",
-    ecompanyname: "companynamework1",
-    ecompanylocation: "companylocation1",
-    erole: "rolework1",
-    eworkyearfrom1: "workoneyearfromval",
-    eworkyearto1: "workoneyeartoval",
-    eworkonepoint1: "workonepoint1exp",
-    eworkonepoint2: "workonepoint2exp",
+    fstream: fstreamval,
+    funiversity: funiversitynameval,
+    fcoursename: fcoursenameval,
+    fplatform: fplatnameval,
   };
 
   const fRoleColourStyles = {
@@ -252,6 +255,30 @@ const FresherFormScreen = memo(() => {
     setIsselectLoading(false);
   };
 
+  const educationSelect = (e) => {
+    setEduSelectVal(e.target.value);
+  };
+
+  const monthfromSelect = (e) => {
+    setFmonthfromVal(e.target.value);
+  };
+
+  const yearfromdropdownSelect = (e) => {
+    setFfromyearVal(e.target.value);
+  };
+
+  const yeartodropdownSelect = (e) => {
+    setFtoyearVal(e.target.value);
+  };
+
+  const certificatemonthSelect = (e) => {
+    setFcertificatemonthVal(e.target.value);
+  };
+
+  const certificateyearSelect = (e) => {
+    setFcertificateyearVal(e.target.value);
+  };
+
   const copySummaryText = (copytxtVal, sIdVal) => {
     console.log(copytxtVal);
     var copyText = copytxtVal;
@@ -267,7 +294,7 @@ const FresherFormScreen = memo(() => {
     }
   };
 
-  const freshervalidate = (values) => {
+  const freshervalidateStep1 = (values) => {
     const errors = {};
 
     if (!values.fusername) {
@@ -297,6 +324,12 @@ const FresherFormScreen = memo(() => {
     ) {
       errors.fsummary = "Please enter the valid characters only.";
     }
+
+    return errors;
+  };
+
+  const freshervalidateStep2 = (values) => {
+    const errors = {};
 
     if (!values.fprojectonename) {
       errors.fprojectonename = "Project name is required!";
@@ -353,8 +386,38 @@ const FresherFormScreen = memo(() => {
     return errors;
   };
 
+  const freshervalidateStep3 = (values) => {
+    const errors = {};
+
+    if (!values.fstream) {
+      errors.fstream = "Education stream is required!";
+    } else if (!/^[A-Za-z\b ]+$/.test(values.fstream)) {
+      errors.fstream = "Please enter the valid characters only.";
+    }
+
+    if (!values.funiversity) {
+      errors.funiversity = "University name is required!";
+    } else if (!/^[A-Za-z\b ]+$/.test(values.funiversity)) {
+      errors.funiversity = "Please enter the valid characters only.";
+    }
+
+    if (!values.fcoursename) {
+      errors.fcoursename = "Course name is required!";
+    } else if (!/^[A-Za-z\b ]+$/.test(values.fcoursename)) {
+      errors.fcoursename = "Please enter the valid characters only.";
+    }
+
+    if (!values.fplatform) {
+      errors.fplatform = "Platfrom name is required!";
+    } else if (!/^[A-Za-z\b ]+$/.test(values.fplatform)) {
+      errors.fplatform = "Please enter the valid characters only.";
+    }
+
+    return errors;
+  };
+
   useEffect(() => {
-    setFroleSelectval(roleOptionsFresher[0].value);
+    setFroleSelectVal(roleOptionsFresher[0]);
   }, [froleSelectval]);
 
   function SuggesionModal(props) {
@@ -459,7 +522,7 @@ const FresherFormScreen = memo(() => {
                     <Formik
                       initialValues={initialValues}
                       onSubmit={handleSubmitForm}
-                      validate={freshervalidate}
+                      validate={freshervalidateStep1}
                     >
                       {({
                         handleChange,
@@ -522,7 +585,7 @@ const FresherFormScreen = memo(() => {
                                         boxShadow: theme.inputfieldShadow,
                                       }}
                                       className="form-control inputTxt"
-                                      placeholder="Full name"
+                                      placeholder="Enter Full name"
                                       onChange={(e) => {
                                         handleChange(e);
                                         setFnameVal(e.target.value);
@@ -766,7 +829,7 @@ const FresherFormScreen = memo(() => {
                               <Box sx={{ flex: "1 1 auto" }} />
                               <Button
                                 type="submit"
-                                onClick={handleNext}
+                                onClick={handleNext} 
                                 variant="outlined"
                               >
                                 {activeStep === steps.length - 1
@@ -785,7 +848,7 @@ const FresherFormScreen = memo(() => {
                     <Formik
                       initialValues={initialValues}
                       onSubmit={handleSubmitForm}
-                      validate={freshervalidate}
+                      validate={freshervalidateStep2}
                     >
                       {({
                         handleChange,
@@ -837,7 +900,7 @@ const FresherFormScreen = memo(() => {
                                     </div>
                                   )}
                                 </Col>
-                                <Col ///////////////////////Phonenumber
+                                <Col ///////////////////////Projects
                                   xs={12}
                                   sm={12}
                                   md={12}
@@ -847,7 +910,7 @@ const FresherFormScreen = memo(() => {
                                   className="p-2 mb-2"
                                 >
                                   <label
-                                    htmlFor="Skills"
+                                    htmlFor="Projects"
                                     className="pb-2 labelTitleTextFresher"
                                   >
                                     Projects{"\n"}
@@ -978,9 +1041,7 @@ const FresherFormScreen = memo(() => {
                                             >
                                               Technologies used (Example: Java):
                                               {"\n"}
-                                              <span className="asteriskkey">
-                                                *
-                                              </span>
+                                              <span className="asteriskkey">*</span>
                                             </label>
                                             <Row className="gx-0 mb-0">
                                               <Col
@@ -1380,9 +1441,7 @@ const FresherFormScreen = memo(() => {
                                             >
                                               Technologies used (Example: Java):
                                               {"\n"}
-                                              <span className="asteriskkey">
-                                                *
-                                              </span>
+                                              <span className="asteriskkey">*</span>
                                             </label>
                                             <Row className="gx-0 mb-0">
                                               <Col
@@ -1684,7 +1743,7 @@ const FresherFormScreen = memo(() => {
                     <Formik
                       initialValues={initialValues}
                       onSubmit={handleSubmitForm}
-                      validate={freshervalidate}
+                      validate={freshervalidateStep3}
                     >
                       {({
                         handleChange,
@@ -1704,54 +1763,491 @@ const FresherFormScreen = memo(() => {
                               }}
                             >
                               <Row className="gx-0 mb-4">
-                                <Col ///////////////////////SkillSelect
+                                <label
+                                  htmlFor="Skills"
+                                  className="pb-2 labelTitleTextFresher"
+                                >
+                                  Education Details{"\n"}
+                                  <span className="asteriskkey">*</span>
+                                </label>
+
+                                <Col ///////////////////////Degree Select
                                   xs={12}
                                   sm={12}
-                                  md={12}
-                                  lg={12}
-                                  xl={12}
-                                  xxl={12}
+                                  md={4}
+                                  lg={2}
+                                  xl={2}
+                                  xxl={2}
                                   className="p-2 mb-2"
                                 >
                                   <label
                                     htmlFor="Skills"
-                                    className="pb-2 labelTitleTextFresher"
+                                    className="pb-2 labelTextFresher"
                                   >
-                                    Education Details{"\n"}
+                                    Select Degree
+                                  </label>
+                                  <select
+                                    style={{
+                                      backgroundColor: theme.inputFieldColor,
+                                      color: theme.inputTextColor,
+                                      boxShadow: theme.inputfieldShadow,
+                                    }}
+                                    className="form-control form-select"
+                                    onChange={educationSelect}
+                                    value={eduSelectval}
+                                  >
+                                    {educationOptions.map((item, keyindex) => {
+                                      return (
+                                        <option
+                                          key={keyindex}
+                                          value={item.eduname}
+                                        >
+                                          {item.label}
+                                        </option>
+                                      );
+                                    })}
+                                  </select>
+                                </Col>
+                                <Col ///////////////////////Stream
+                                  xs={12}
+                                  sm={12}
+                                  md={8}
+                                  lg={4}
+                                  xl={4}
+                                  xxl={4}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Skills"
+                                    className="pb-2 labelTextFresher"
+                                  >
+                                    Enter Stream{"\n"}
                                     <span className="asteriskkey">*</span>
                                   </label>
-                                  <Select
-                                    className="selectContent"
-                                    isMulti
-                                    closeMenuOnSelect={true}
-                                    isClearable={true}
-                                    styles={fSkillColourStyles}
-                                    isLoading={isselectLoading}
-                                    onChange={programSelectFresher}
-                                    options={langOptions}
-                                  />
-                                  {skillnullfresher === true && (
-                                    <div className="errortext pt-3">
-                                      Please select Atleast 3-4 Skills.
+                                  <div className="input-group">
+                                    <input
+                                      type="text"
+                                      style={{
+                                        backgroundColor: theme.inputFieldColor,
+                                        color: theme.inputTextColor,
+                                        boxShadow: theme.inputfieldShadow,
+                                      }}
+                                      className="form-control inputTxt"
+                                      placeholder="Computer Science"
+                                      onChange={(e) => {
+                                        handleChange(e);
+                                        setFstreamVal(e.target.value);
+                                      }}
+                                      value={values.fstream}
+                                      name="fstream"
+                                    ></input>
+                                  </div>
+                                  {errors.fstream && (
+                                    <div className="errortext pt-2">
+                                      {errors.fstream}
                                     </div>
                                   )}
                                 </Col>
-                                <Col ///////////////////////Phonenumber
+
+                                <Col //////////////////////  University Name
                                   xs={12}
                                   sm={12}
                                   md={12}
-                                  lg={12}
-                                  xl={12}
-                                  xxl={12}
+                                  lg={6}
+                                  xl={6}
+                                  xxl={6}
                                   className="p-2 mb-2"
                                 >
                                   <label
                                     htmlFor="Skills"
-                                    className="pb-2 labelTitleTextFresher"
+                                    className="pb-2 labelTextFresher"
                                   >
-                                    Projects{"\n"}
+                                    Enter University Name{"\n"}
                                     <span className="asteriskkey">*</span>
                                   </label>
+                                  <div className="input-group">
+                                    <div className="input-group-prepend">
+                                      <div
+                                        className="input-group-text h-100"
+                                        style={{
+                                          backgroundColor:
+                                            theme.inputPrependColor,
+                                          color: theme.inputIcon,
+                                          boxShadow: theme.inputfieldShadow,
+                                        }}
+                                      >
+                                        <FontAwesomeIcon
+                                          icon={faGraduationCap}
+                                        />
+                                      </div>
+                                    </div>
+                                    <input
+                                      type="text"
+                                      style={{
+                                        backgroundColor: theme.inputFieldColor,
+                                        color: theme.inputTextColor,
+                                        boxShadow: theme.inputfieldShadow,
+                                      }}
+                                      className="form-control inputTxt"
+                                      placeholder="Ex: Visveswaraya Technological University"
+                                      onChange={(e) => {
+                                        handleChange(e);
+                                        setFuniversitynameVal(e.target.value);
+                                      }}
+                                      value={values.funiversity}
+                                      name="funiversity"
+                                    ></input>
+                                  </div>
+                                  {errors.funiversity && (
+                                    <div className="errortext pt-2">
+                                      {errors.funiversity}
+                                    </div>
+                                  )}
+                                </Col>
+                                <Col ///////////////////////Degree Month
+                                  xs={12}
+                                  sm={12}
+                                  md={4}
+                                  lg={6}
+                                  xl={6}
+                                  xxl={6}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Months"
+                                    className="pb-2 labelTextFresher"
+                                  >
+                                    Select Month
+                                  </label>
+                                  <select
+                                    style={{
+                                      backgroundColor: theme.inputFieldColor,
+                                      color: theme.inputTextColor,
+                                      boxShadow: theme.inputfieldShadow,
+                                    }}
+                                    className="form-control form-select"
+                                    onChange={monthfromSelect}
+                                    value={fmonthfromval}
+                                  >
+                                    {monthNames.map((item, keyindex) => {
+                                      return (
+                                        <option
+                                          key={keyindex}
+                                          value={item.eduname}
+                                        >
+                                          {item.label}
+                                        </option>
+                                      );
+                                    })}
+                                  </select>
+                                </Col>
+                                <Col ///////////////////////Year From
+                                  xs={12}
+                                  sm={12}
+                                  md={4}
+                                  lg={3}
+                                  xl={3}
+                                  xxl={3}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Years"
+                                    className="pb-2 labelTextFresher"
+                                  >
+                                    Year From:
+                                  </label>
+                                  <div className="input-group">
+                                    <div className="input-group-prepend">
+                                      <div
+                                        className="input-group-text h-100"
+                                        style={{
+                                          backgroundColor:
+                                            theme.inputPrependColor,
+                                          color: theme.inputIcon,
+                                          boxShadow: theme.inputfieldShadow,
+                                        }}
+                                      >
+                                        <FontAwesomeIcon
+                                          icon={faGraduationCap}
+                                        />
+                                      </div>
+                                    </div>
+                                    <select
+                                      style={{
+                                        backgroundColor: theme.inputFieldColor,
+                                        color: theme.inputTextColor,
+                                        boxShadow: theme.inputfieldShadow,
+                                      }}
+                                      className="form-control form-select"
+                                      onChange={yearfromdropdownSelect}
+                                      value={fyearfromval}
+                                    >
+                                      {yearfromData.map((item, keyindex) => {
+                                        return (
+                                          <option
+                                            key={keyindex}
+                                            value={item.eduname}
+                                          >
+                                            {item.label}
+                                          </option>
+                                        );
+                                      })}
+                                    </select>
+                                  </div>
+                                </Col>
+                                <Col ///////////////////////Year To
+                                  xs={12}
+                                  sm={12}
+                                  md={4}
+                                  lg={3}
+                                  xl={3}
+                                  xxl={3}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Years"
+                                    className="pb-2 labelTextFresher"
+                                  >
+                                    Year To:
+                                  </label>
+                                  <div className="input-group">
+                                    <div className="input-group-prepend">
+                                      <div
+                                        className="input-group-text h-100"
+                                        style={{
+                                          backgroundColor:
+                                            theme.inputPrependColor,
+                                          color: theme.inputIcon,
+                                          boxShadow: theme.inputfieldShadow,
+                                        }}
+                                      >
+                                        <FontAwesomeIcon
+                                          icon={faGraduationCap}
+                                        />
+                                      </div>
+                                    </div>
+                                    <select
+                                      style={{
+                                        backgroundColor: theme.inputFieldColor,
+                                        color: theme.inputTextColor,
+                                        boxShadow: theme.inputfieldShadow,
+                                      }}
+                                      className="form-control form-select"
+                                      onChange={yeartodropdownSelect}
+                                      value={fyeartoval}
+                                    >
+                                      {yeartoData.map((item, keyindex) => {
+                                        return (
+                                          <option
+                                            key={keyindex}
+                                            value={item.eduname}
+                                          >
+                                            {item.label}
+                                          </option>
+                                        );
+                                      })}
+                                    </select>
+                                  </div>
+                                </Col>
+                              </Row>
+
+                              <Row className="gx-0 mb-4">
+                                <label
+                                  htmlFor="Skills"
+                                  className="pb-2 labelTitleTextFresher"
+                                >
+                                  Certificate Details{"\n"}
+                                  <span className="asteriskkey">*</span>
+                                </label>
+
+                                <Col ///////////////////////Course Name
+                                  xs={12}
+                                  sm={12}
+                                  md={6}
+                                  lg={6}
+                                  xl={6}
+                                  xxl={6}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Skills"
+                                    className="pb-2 labelTextFresher"
+                                  >
+                                    Enter Course Name{"\n"}
+                                    <span className="asteriskkey">*</span>
+                                  </label>
+                                  <div className="input-group">
+                                    <div className="input-group-prepend">
+                                      <div
+                                        className="input-group-text h-100"
+                                        style={{
+                                          backgroundColor:
+                                            theme.inputPrependColor,
+                                          color: theme.inputIcon,
+                                          boxShadow: theme.inputfieldShadow,
+                                        }}
+                                      >
+                                        <FontAwesomeIcon
+                                          icon={faGraduationCap}
+                                        />
+                                      </div>
+                                    </div>
+                                    <input
+                                      type="text"
+                                      style={{
+                                        backgroundColor: theme.inputFieldColor,
+                                        color: theme.inputTextColor,
+                                        boxShadow: theme.inputfieldShadow,
+                                      }}
+                                      className="form-control inputTxt"
+                                      placeholder="Ex: AWS Cloud"
+                                      onChange={(e) => {
+                                        handleChange(e);
+                                        setFcoursenameVal(e.target.value);
+                                      }}
+                                      value={values.fcoursename}
+                                      name="fcoursename"
+                                    ></input>
+                                  </div>
+                                  {errors.fcoursename && (
+                                    <div className="errortext pt-2">
+                                      {errors.fcoursename}
+                                    </div>
+                                  )}
+                                </Col>
+                                <Col ///////////////////////Platform Name
+                                  xs={12}
+                                  sm={12}
+                                  md={6}
+                                  lg={6}
+                                  xl={6}
+                                  xxl={6}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Skills"
+                                    className="pb-2 labelTextFresher"
+                                  >
+                                    Platform Name{"\n"}
+                                    <span className="asteriskkey">*</span>
+                                  </label>
+                                  <div className="input-group">
+                                    <input
+                                      type="text"
+                                      style={{
+                                        backgroundColor: theme.inputFieldColor,
+                                        color: theme.inputTextColor,
+                                        boxShadow: theme.inputfieldShadow,
+                                      }}
+                                      className="form-control inputTxt"
+                                      placeholder="Ex: Udemy"
+                                      onChange={(e) => {
+                                        handleChange(e);
+                                        setFplatnameVal(e.target.value);
+                                      }}
+                                      value={values.fplatform}
+                                      name="fplatform"
+                                    ></input>
+                                  </div>
+                                  {errors.fplatform && (
+                                    <div className="errortext pt-2">
+                                      {errors.fplatform}
+                                    </div>
+                                  )}
+                                </Col>
+
+                                <Col ///////////////////////Issued Month
+                                  xs={12}
+                                  sm={12}
+                                  md={4}
+                                  lg={4}
+                                  xl={4}
+                                  xxl={4}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Years"
+                                    className="pb-2 labelTextFresher"
+                                  >
+                                    Issued Month:
+                                  </label>
+                                  <div className="input-group">
+                                    <select
+                                      style={{
+                                        backgroundColor: theme.inputFieldColor,
+                                        color: theme.inputTextColor,
+                                        boxShadow: theme.inputfieldShadow,
+                                      }}
+                                      className="form-control form-select"
+                                      onChange={certificatemonthSelect}
+                                      value={fcertificatemonthval}
+                                    >
+                                      {monthNames.map((item, keyindex) => {
+                                        return (
+                                          <option
+                                            key={keyindex}
+                                            value={item.eduname}
+                                          >
+                                            {item.label}
+                                          </option>
+                                        );
+                                      })}
+                                    </select>
+                                  </div>
+                                </Col>
+                                <Col ///////////////////////Issued Year
+                                  xs={12}
+                                  sm={12}
+                                  md={4}
+                                  lg={3}
+                                  xl={3}
+                                  xxl={3}
+                                  className="p-2 mb-2"
+                                >
+                                  <label
+                                    htmlFor="Years"
+                                    className="pb-2 labelTextFresher"
+                                  >
+                                    Issued Year:
+                                  </label>
+                                  <div className="input-group">
+                                    <div className="input-group-prepend">
+                                      <div
+                                        className="input-group-text h-100"
+                                        style={{
+                                          backgroundColor:
+                                            theme.inputPrependColor,
+                                          color: theme.inputIcon,
+                                          boxShadow: theme.inputfieldShadow,
+                                        }}
+                                      >
+                                        <FontAwesomeIcon
+                                          icon={faGraduationCap}
+                                        />
+                                      </div>
+                                    </div>
+                                    <select
+                                      style={{
+                                        backgroundColor: theme.inputFieldColor,
+                                        color: theme.inputTextColor,
+                                        boxShadow: theme.inputfieldShadow,
+                                      }}
+                                      className="form-control form-select"
+                                      onChange={certificateyearSelect}
+                                      value={fcertificateyearval}
+                                    >
+                                      {yearData.map((item, keyindex) => {
+                                        return (
+                                          <option
+                                            key={keyindex}
+                                            value={item.eduname}
+                                          >
+                                            {item.label}
+                                          </option>
+                                        );
+                                      })}
+                                    </select>
+                                  </div>
                                 </Col>
                               </Row>
                             </div>
