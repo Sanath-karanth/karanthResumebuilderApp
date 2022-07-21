@@ -132,8 +132,8 @@ const ResumeFormScreen = memo(() => {
               </div>
 
               <Container className="container-guttersforResumeform">
-                {fresherVal === true ? <FresherFormScreen /> : null}
-                {expVal === true ? <ExperienceFormScreen /> : null}
+                {fresherVal === true ? <FresherFormScreen resumeIDInfo={resumeid} resumenameInfo={resumename} /> : null}
+                {expVal === true ? <ExperienceFormScreen resumeIDInfo={resumeid} resumenameInfo={resumename} /> : null}
               </Container>
 
               {/* <h2>{resumeid}</h2>

@@ -3,7 +3,7 @@ import React, {
   useState,
   useEffect,
   useContext,
-  useCallback,
+  createRef,
   Fragment,
 } from "react";
 import "../css/fresherForm.css";
@@ -36,6 +36,7 @@ import {
 } from "react-bootstrap";
 import { Formik, Form } from "formik";
 import Select from "react-select";
+import Pdf from "react-to-pdf";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleLeft,
@@ -56,14 +57,21 @@ import {
 const steps = ["Step 1", "Step 2", "Step 3"];
 const roleOptionsFresher = [{ value: "Fresher", label: "Fresher" }];
 
-const FresherFormScreen = memo((props) => {
+const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
   const [{ theme }] = useContext(ThemeContext);
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+  const pdffileref = createRef();
+  const [activeStep, setActiveStep] = useState(0);
+  const [skipped, setSkipped] = useState(new Set());
   const [suggestmodalShow, setSuggestmodalShow] = useState(false);
   const [isselectLoading, setIsselectLoading] = useState(true);
   const [progSelectval, setProgSelectval] = useState("");
   const [skillnullfresher, setSkillnullfresher] = useState(false);
+  const pdfSizeoptions = {
+    orientation: "portrait",
+    unit: "in",
+    format: [12, 15],
+    // format: resumeIDInfo == "Resume11" ? [10, 14] : [8, 16],
+  };
 
   ////////    Form 1 Variables
   const [fnameval, setFnameVal] = useState("");
@@ -472,6 +480,165 @@ const FresherFormScreen = memo((props) => {
     );
   }
 
+  const ResumeDesign1 = () => {
+    return (
+      <Fragment>
+        <div className="ResumeFormdisplay-cont" ref={pdffileref}>
+          <Container>
+            <Row className="gx-0">
+              <Col
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                xxl={12}
+                className="p-2"
+              >
+                <div className="resume1Username">
+                  <h3>{fnameval}</h3>
+                </div>
+                <div className="resume1Role">
+                  <h4>Fresher</h4>
+                </div>
+                <div className="resume1Mail">
+                  <h5>{femailval}</h5>
+                </div>
+                <div className="resume1Phone">
+                  <h5>{fphoneval}</h5>
+                </div>
+              </Col>
+            </Row>
+            <Row className="gx-0 mb-2">
+              <Col
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                xxl={12}
+                className="p-2"
+              >
+                <div className="resume1Heading">
+                  <h4 className="text-info">Professional Summary</h4>
+                  <p>
+                    Passionate front-end web developer with 3 years of
+                    experience using JavaScript, HTML5, and CSS to build all
+                    aspects of the user experience and user interface for
+                    client-facing landing pages. Specializes in using jQuery and
+                    AngularJS to build e-commerce sites.
+                  </p>
+                </div>
+              </Col>
+              <Row className="gx-0 mb-2">
+                <Col xs={12} sm={12} md={8} lg={8} xl={8} xxl={8} className="p-2">
+                  <div className="resume1Heading">
+                    <h4 className="text-info">PROJECTS</h4>
+                  </div>
+                  <div className="resume1Project-cont">
+                    <h4>{projectonefresher}</h4>
+                    <h5>{projectonerolefresher}</h5>
+                    {projectonetech1fresher === "" ? null : (
+                      <p>
+                        Technologies used: {projectonetech1fresher},
+                        {projectonetech2fresher},{projectonetech3fresher}
+                      </p>
+                    )}
+                    <ul>
+                      {projectonepoint1fresher === "" ? null : (
+                        <li>{projectonepoint1fresher}</li>
+                      )}
+                      {projectonepoint2fresher === "" ? null : (
+                        <li>{projectonepoint2fresher}</li>
+                      )}
+                      {projectonepoint3fresher === "" ? null : (
+                        <li>{projectonepoint3fresher}</li>
+                      )}
+                    </ul>
+                  </div>
+
+                  {isCheckedProject ? (
+                    <div className="resume1Project-cont">
+                      <h4>{projecttwofresher}</h4>
+                      <h5>{projecttworolefresher}</h5>
+                      {projecttwotech1fresher === "" ? null : (
+                        <p>
+                          Technologies used: {projecttwotech1fresher},
+                          {projecttwotech2fresher},{projecttwotech3fresher}
+                        </p>
+                      )}
+                      <ul>
+                        {projecttwopoint1fresher === "" ? null : (
+                          <li>{projecttwopoint1fresher}</li>
+                        )}
+                        {projecttwopoint2fresher === "" ? null : (
+                          <li>{projecttwopoint2fresher}</li>
+                        )}
+                        {projecttwopoint3fresher === "" ? null : (
+                          <li>{projecttwopoint3fresher}</li>
+                        )}
+                      </ul>
+                    </div>
+                  ) : null}
+                </Col>
+                <Col xs={12} sm={12} md={4} lg={4} xl={4} xxl={4} className="p-2">
+                  <div className="resume1Heading">
+                    <h4 className="text-info">Skills</h4>
+                  </div>
+                  <div className="resume1Skills">
+                    {progSelectval === ""
+                      ? null
+                      : progSelectval.map((item, key) => {
+                          return (
+                            <p key={key}>
+                              {item}
+                            </p>
+                          );
+                        })}
+                  </div>
+                  <div className="resume1Heading mt-2">
+                    <h4 className="text-info">Education</h4>
+                  </div>
+                  <div className="resume1Education">
+                    <h4>{eduSelectval} ({fstreamval})</h4>
+                    <h5>{funiversitynameval}</h5>
+                    <p>{fmonthfromval} {fyearfromval}-{fyeartoval}</p>
+                  </div>
+
+                  <div className="resume1Heading mt-2">
+                    <h4 className="text-info">Certificates</h4>
+                  </div>
+                  <div className="resume1Certification">
+                    <h4>{fcoursenameval}</h4>
+                    <h5>{fplatnameval}</h5>
+                    <p>{fcertificatemonthval} {fcertificateyearval}</p>
+                  </div>
+                </Col>
+              </Row>
+            </Row>
+          </Container>
+        </div>
+
+        <div style={{ paddingLeft: 20 }}>
+          <Pdf
+            targetRef={pdffileref}
+            x={0}
+            y={0}
+            scale={1.15}
+            options={pdfSizeoptions}
+            filename="FresherResume.pdf"
+          >
+            {({ toPdf }) => (
+              <Button onClick={toPdf} variant="dark" size="md">
+                Generate PDF
+              </Button>
+            )}
+          </Pdf>
+        </div>
+      </Fragment>
+    );
+  };
+
   return (
     <Fragment>
       <SuggesionModal
@@ -506,7 +673,8 @@ const FresherFormScreen = memo((props) => {
           </Stepper>
           {activeStep === steps.length ? (
             <Fragment>
-              <h6>All steps completed - you&apos;re finished</h6>
+              {/* <h6>All steps completed - you&apos;re finished</h6> */}
+              <ResumeDesign1 />
             </Fragment>
           ) : (
             <Fragment>
@@ -830,7 +998,7 @@ const FresherFormScreen = memo((props) => {
                               <Box sx={{ flex: "1 1 auto" }} />
                               <Button
                                 type="submit"
-                                onClick={handleNext} 
+                                onClick={handleNext}
                                 variant="outlined"
                               >
                                 {activeStep === steps.length - 1
@@ -1043,7 +1211,9 @@ const FresherFormScreen = memo((props) => {
                                             >
                                               Technologies used (Example: Java):
                                               {"\n"}
-                                              <span className="asteriskkey">*</span>
+                                              <span className="asteriskkey">
+                                                *
+                                              </span>
                                             </label>
                                             <Row className="gx-0 mb-0">
                                               <Col
@@ -1443,7 +1613,9 @@ const FresherFormScreen = memo((props) => {
                                             >
                                               Technologies used (Example: Java):
                                               {"\n"}
-                                              <span className="asteriskkey">*</span>
+                                              <span className="asteriskkey">
+                                                *
+                                              </span>
                                             </label>
                                             <Row className="gx-0 mb-0">
                                               <Col
@@ -1783,7 +1955,7 @@ const FresherFormScreen = memo((props) => {
                                   className="p-2 mb-2"
                                 >
                                   <label
-                                    htmlFor="Skills"
+                                    htmlFor="Degree"
                                     className="pb-2 labelTextFresher"
                                   >
                                     Select Degree
@@ -1820,7 +1992,7 @@ const FresherFormScreen = memo((props) => {
                                   className="p-2 mb-2"
                                 >
                                   <label
-                                    htmlFor="Skills"
+                                    htmlFor="Stream"
                                     className="pb-2 labelTextFresher"
                                   >
                                     Enter Stream{"\n"}
@@ -1861,7 +2033,7 @@ const FresherFormScreen = memo((props) => {
                                   className="p-2 mb-2"
                                 >
                                   <label
-                                    htmlFor="Skills"
+                                    htmlFor="University"
                                     className="pb-2 labelTextFresher"
                                   >
                                     Enter University Name{"\n"}
@@ -1956,7 +2128,7 @@ const FresherFormScreen = memo((props) => {
                                     htmlFor="Years"
                                     className="pb-2 labelTextFresher"
                                   >
-                                    Year From:
+                                    Year From
                                   </label>
                                   <div className="input-group">
                                     <div className="input-group-prepend">
@@ -1969,9 +2141,7 @@ const FresherFormScreen = memo((props) => {
                                           boxShadow: theme.inputfieldShadow,
                                         }}
                                       >
-                                        <FontAwesomeIcon
-                                          icon={faGraduationCap}
-                                        />
+                                        <FontAwesomeIcon icon={faCalendar} />
                                       </div>
                                     </div>
                                     <select
@@ -2010,7 +2180,7 @@ const FresherFormScreen = memo((props) => {
                                     htmlFor="Years"
                                     className="pb-2 labelTextFresher"
                                   >
-                                    Year To:
+                                    Year To
                                   </label>
                                   <div className="input-group">
                                     <div className="input-group-prepend">
@@ -2023,9 +2193,7 @@ const FresherFormScreen = memo((props) => {
                                           boxShadow: theme.inputfieldShadow,
                                         }}
                                       >
-                                        <FontAwesomeIcon
-                                          icon={faGraduationCap}
-                                        />
+                                        <FontAwesomeIcon icon={faCalendar} />
                                       </div>
                                     </div>
                                     <select
@@ -2055,7 +2223,7 @@ const FresherFormScreen = memo((props) => {
 
                               <Row className="gx-0 mb-4">
                                 <label
-                                  htmlFor="Skills"
+                                  htmlFor="Certificate Details"
                                   className="pb-2 labelTitleTextFresher"
                                 >
                                   Certificate Details{"\n"}
@@ -2072,7 +2240,7 @@ const FresherFormScreen = memo((props) => {
                                   className="p-2 mb-2"
                                 >
                                   <label
-                                    htmlFor="Skills"
+                                    htmlFor="CourseName"
                                     className="pb-2 labelTextFresher"
                                   >
                                     Enter Course Name{"\n"}
@@ -2089,9 +2257,7 @@ const FresherFormScreen = memo((props) => {
                                           boxShadow: theme.inputfieldShadow,
                                         }}
                                       >
-                                        <FontAwesomeIcon
-                                          icon={faGraduationCap}
-                                        />
+                                        <FontAwesomeIcon icon={faAward} />
                                       </div>
                                     </div>
                                     <input
@@ -2127,7 +2293,7 @@ const FresherFormScreen = memo((props) => {
                                   className="p-2 mb-2"
                                 >
                                   <label
-                                    htmlFor="Skills"
+                                    htmlFor="Platform Name"
                                     className="pb-2 labelTextFresher"
                                   >
                                     Platform Name{"\n"}
@@ -2168,10 +2334,10 @@ const FresherFormScreen = memo((props) => {
                                   className="p-2 mb-2"
                                 >
                                   <label
-                                    htmlFor="Years"
+                                    htmlFor="Month"
                                     className="pb-2 labelTextFresher"
                                   >
-                                    Issued Month:
+                                    Issued Month
                                   </label>
                                   <div className="input-group">
                                     <select
@@ -2207,10 +2373,10 @@ const FresherFormScreen = memo((props) => {
                                   className="p-2 mb-2"
                                 >
                                   <label
-                                    htmlFor="Years"
+                                    htmlFor="Year"
                                     className="pb-2 labelTextFresher"
                                   >
-                                    Issued Year:
+                                    Issued Year
                                   </label>
                                   <div className="input-group">
                                     <div className="input-group-prepend">
@@ -2223,9 +2389,7 @@ const FresherFormScreen = memo((props) => {
                                           boxShadow: theme.inputfieldShadow,
                                         }}
                                       >
-                                        <FontAwesomeIcon
-                                          icon={faGraduationCap}
-                                        />
+                                        <FontAwesomeIcon icon={faCalendar} />
                                       </div>
                                     </div>
                                     <select
@@ -2273,7 +2437,7 @@ const FresherFormScreen = memo((props) => {
                               <Button
                                 type="submit"
                                 variant="outlined"
-                                // onClick={handleNext}
+                                onClick={handleNext}
                               >
                                 {activeStep === steps.length - 1
                                   ? "Finish"
