@@ -23,6 +23,8 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
   Container,
   Row,
@@ -31,7 +33,6 @@ import {
   OverlayTrigger,
   Card,
   Modal,
-  Alert,
   Accordion,
 } from "react-bootstrap";
 import { Formik, Form } from "formik";
@@ -49,7 +50,8 @@ import {
   faGraduationCap,
   faAward,
   faCalendar,
-  faBriefcase,
+  faDownload,
+  faFileArrowDown,
   faCommentDots,
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
@@ -57,11 +59,15 @@ import {
 const steps = ["Step 1", "Step 2", "Step 3"];
 const roleOptionsFresher = [{ value: "Fresher", label: "Fresher" }];
 
-const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
+const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const [{ theme }] = useContext(ThemeContext);
   const pdffileref = createRef();
+  const resumeIDval = resumeIDInfo;
+  const resumeNameval = resumenameInfo;
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
+  const [preview, setPreview] = useState(false);
+  const [eyeicon, setEyeicon] = useState(false);
   const [suggestmodalShow, setSuggestmodalShow] = useState(false);
   const [isselectLoading, setIsselectLoading] = useState(true);
   const [progSelectval, setProgSelectval] = useState("");
@@ -69,9 +75,11 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
   const pdfSizeoptions = {
     orientation: "portrait",
     unit: "in",
-    format: [12, 15],
+    format: [13.5, 15],
     // format: resumeIDInfo == "Resume11" ? [10, 14] : [8, 16],
   };
+
+  console.log("resumeidvalue---> ", resumeIDInfo);
 
   ////////    Form 1 Variables
   const [fnameval, setFnameVal] = useState("");
@@ -197,6 +205,11 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
 
   const project2checkClick = () => {
     setIsCheckedProject(!isCheckedProject);
+  };
+
+  const previewClick = () => {
+    setPreview(true);
+    setEyeicon(true);
   };
 
   const scrollToTopNextStep = () => {
@@ -483,6 +496,47 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
   const ResumeDesign1 = () => {
     return (
       <Fragment>
+        <div className="pt-0">
+          <Pdf
+            targetRef={pdffileref}
+            x={0}
+            y={0}
+            scale={1.15}
+            options={pdfSizeoptions}
+            filename="FresherResume.pdf"
+          >
+            {({ toPdf }) => (
+              <>
+                <hr></hr>
+                <div className="generatepdfBtn">
+                  <Button
+                    variant="outlined"
+                    endIcon={
+                      <FontAwesomeIcon
+                        icon={faFileArrowDown}
+                        color={theme.color}
+                      />
+                    }
+                    onClick={toPdf}
+                    sx={{ color: theme.color, borderColor: theme.color }}
+                  >
+                    Generate PDF
+                  </Button>
+                </div>
+                <div className="generatepdfBtn finalStep pt-3">
+                  <p>
+                    Kindly request you to please give your valuable{" "}
+                    <mark>
+                      <b>Feedback!</b>
+                    </mark>
+                    . Go to home and you can find feedback there.
+                  </p>
+                </div>
+              </>
+            )}
+          </Pdf>
+        </div>
+
         <div className="ResumeFormdisplay-cont" ref={pdffileref}>
           <Container>
             <Row className="gx-0">
@@ -496,16 +550,16 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
                 className="p-2"
               >
                 <div className="resume1Username">
-                  <h3>{fnameval}</h3>
+                  <h3 style={{color: '#000000'}}>{fnameval}</h3>
                 </div>
                 <div className="resume1Role">
-                  <h4>Fresher</h4>
+                  <h4 style={{color: '#000000'}}>Fresher</h4>
                 </div>
                 <div className="resume1Mail">
-                  <h5>{femailval}</h5>
+                  <h5 style={{color: '#000000'}}>{femailval}</h5>
                 </div>
                 <div className="resume1Phone">
-                  <h5>{fphoneval}</h5>
+                  <h5 style={{color: '#000000'}}>{fphoneval}</h5>
                 </div>
               </Col>
             </Row>
@@ -521,17 +575,19 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
               >
                 <div className="resume1Heading">
                   <h4 className="text-info">Professional Summary</h4>
-                  <p>
-                    Passionate front-end web developer with 3 years of
-                    experience using JavaScript, HTML5, and CSS to build all
-                    aspects of the user experience and user interface for
-                    client-facing landing pages. Specializes in using jQuery and
-                    AngularJS to build e-commerce sites.
-                  </p>
+                  <p>{fsummaryval}</p>
                 </div>
               </Col>
               <Row className="gx-0 mb-2">
-                <Col xs={12} sm={12} md={8} lg={8} xl={8} xxl={8} className="p-2">
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={8}
+                  lg={8}
+                  xl={8}
+                  xxl={8}
+                  className="p-2"
+                >
                   <div className="resume1Heading">
                     <h4 className="text-info">PROJECTS</h4>
                   </div>
@@ -581,7 +637,15 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
                     </div>
                   ) : null}
                 </Col>
-                <Col xs={12} sm={12} md={4} lg={4} xl={4} xxl={4} className="p-2">
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  lg={4}
+                  xl={4}
+                  xxl={4}
+                  className="p-2"
+                >
                   <div className="resume1Heading">
                     <h4 className="text-info">Skills</h4>
                   </div>
@@ -589,20 +653,20 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
                     {progSelectval === ""
                       ? null
                       : progSelectval.map((item, key) => {
-                          return (
-                            <p key={key}>
-                              {item}
-                            </p>
-                          );
+                          return <p key={key}>{item}</p>;
                         })}
                   </div>
                   <div className="resume1Heading mt-2">
                     <h4 className="text-info">Education</h4>
                   </div>
                   <div className="resume1Education">
-                    <h4>{eduSelectval} ({fstreamval})</h4>
+                    <h4>
+                      {eduSelectval} ({fstreamval})
+                    </h4>
                     <h5>{funiversitynameval}</h5>
-                    <p>{fmonthfromval} {fyearfromval}-{fyeartoval}</p>
+                    <p>
+                      {fmonthfromval} {fyearfromval}-{fyeartoval}
+                    </p>
                   </div>
 
                   <div className="resume1Heading mt-2">
@@ -611,15 +675,23 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
                   <div className="resume1Certification">
                     <h4>{fcoursenameval}</h4>
                     <h5>{fplatnameval}</h5>
-                    <p>{fcertificatemonthval} {fcertificateyearval}</p>
+                    <p>
+                      {fcertificatemonthval} {fcertificateyearval}
+                    </p>
                   </div>
                 </Col>
               </Row>
             </Row>
           </Container>
         </div>
+      </Fragment>
+    );
+  };
 
-        <div style={{ paddingLeft: 20 }}>
+  const ResumeDesign2 = () => {
+    return (
+      <Fragment>
+        <div className="pt-0">
           <Pdf
             targetRef={pdffileref}
             x={0}
@@ -629,11 +701,184 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
             filename="FresherResume.pdf"
           >
             {({ toPdf }) => (
-              <Button onClick={toPdf} variant="dark" size="md">
-                Generate PDF
-              </Button>
+              <>
+                <hr></hr>
+                <div className="generatepdfBtn">
+                  <Button
+                    variant="outlined"
+                    endIcon={
+                      <FontAwesomeIcon
+                        icon={faFileArrowDown}
+                        color={theme.color}
+                      />
+                    }
+                    onClick={toPdf}
+                    sx={{ color: theme.color, borderColor: theme.color }}
+                  >
+                    Generate PDF
+                  </Button>
+                </div>
+                <div className="generatepdfBtn finalStep pt-3">
+                  <p>
+                    Kindly request you to please give your valuable{" "}
+                    <mark>
+                      <b>Feedback!</b>
+                    </mark>
+                    . Go to home and you can find feedback there.
+                  </p>
+                </div>
+              </>
             )}
           </Pdf>
+        </div>
+
+        <div className="ResumeFormdisplay-cont" ref={pdffileref}>
+          <Container style={{border: '1px solid #DDDDDD'}}>
+            <Row className="gx-0">
+              <Col
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                xxl={12}
+              >
+                <div style={{backgroundColor: '#16365D',padding: '12px'}}>
+                  <div className="resume1Username">
+                    <h3 style={{color: '#FFFFFF'}}>{fnameval}</h3>
+                  </div>
+                  <div className="resume1Role">
+                    <h4 style={{color: '#FFFFFF'}}>Fresher</h4>
+                  </div>
+                  <div className="resume1Mail">
+                    <h5 style={{color: '#FFFFFF'}}>{femailval}</h5>
+                  </div>
+                  <div className="resume1Phone">
+                    <h5 style={{color: '#FFFFFF'}}>{fphoneval}</h5>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            <Row className="gx-0 mb-2">
+              <Col
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                xxl={12}
+                className="p-2"
+              >
+                <div className="resume1Heading">
+                  <h4 className="text-info">Professional Summary</h4>
+                  <p>{fsummaryval}</p>
+                </div>
+              </Col>
+              <Row className="gx-0 mb-2">
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={8}
+                  lg={8}
+                  xl={8}
+                  xxl={8}
+                  className="p-2"
+                >
+                  <div className="resume1Heading">
+                    <h4 className="text-info">PROJECTS</h4>
+                  </div>
+                  <div className="resume1Project-cont">
+                    <h4>{projectonefresher}</h4>
+                    <h5>{projectonerolefresher}</h5>
+                    {projectonetech1fresher === "" ? null : (
+                      <p>
+                        Technologies used: {projectonetech1fresher},
+                        {projectonetech2fresher},{projectonetech3fresher}
+                      </p>
+                    )}
+                    <ul>
+                      {projectonepoint1fresher === "" ? null : (
+                        <li>{projectonepoint1fresher}</li>
+                      )}
+                      {projectonepoint2fresher === "" ? null : (
+                        <li>{projectonepoint2fresher}</li>
+                      )}
+                      {projectonepoint3fresher === "" ? null : (
+                        <li>{projectonepoint3fresher}</li>
+                      )}
+                    </ul>
+                  </div>
+
+                  {isCheckedProject ? (
+                    <div className="resume1Project-cont">
+                      <h4>{projecttwofresher}</h4>
+                      <h5>{projecttworolefresher}</h5>
+                      {projecttwotech1fresher === "" ? null : (
+                        <p>
+                          Technologies used: {projecttwotech1fresher},
+                          {projecttwotech2fresher},{projecttwotech3fresher}
+                        </p>
+                      )}
+                      <ul>
+                        {projecttwopoint1fresher === "" ? null : (
+                          <li>{projecttwopoint1fresher}</li>
+                        )}
+                        {projecttwopoint2fresher === "" ? null : (
+                          <li>{projecttwopoint2fresher}</li>
+                        )}
+                        {projecttwopoint3fresher === "" ? null : (
+                          <li>{projecttwopoint3fresher}</li>
+                        )}
+                      </ul>
+                    </div>
+                  ) : null}
+                </Col>
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  lg={4}
+                  xl={4}
+                  xxl={4}
+                  className="p-2"
+                >
+                  <div className="resume1Heading">
+                    <h4 className="text-info">Skills</h4>
+                  </div>
+                  <div className="resume1Skills">
+                    {progSelectval === ""
+                      ? null
+                      : progSelectval.map((item, key) => {
+                          return <p key={key}>{item}</p>;
+                        })}
+                  </div>
+                  <div className="resume1Heading mt-2">
+                    <h4 className="text-info">Education</h4>
+                  </div>
+                  <div className="resume1Education">
+                    <h4>
+                      {eduSelectval} ({fstreamval})
+                    </h4>
+                    <h5>{funiversitynameval}</h5>
+                    <p>
+                      {fmonthfromval} {fyearfromval}-{fyeartoval}
+                    </p>
+                  </div>
+
+                  <div className="resume1Heading mt-2">
+                    <h4 className="text-info">Certificates</h4>
+                  </div>
+                  <div className="resume1Certification">
+                    <h4>{fcoursenameval}</h4>
+                    <h5>{fplatnameval}</h5>
+                    <p>
+                      {fcertificatemonthval} {fcertificateyearval}
+                    </p>
+                  </div>
+                </Col>
+              </Row>
+            </Row>
+          </Container>
         </div>
       </Fragment>
     );
@@ -673,8 +918,43 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
           </Stepper>
           {activeStep === steps.length ? (
             <Fragment>
-              {/* <h6>All steps completed - you&apos;re finished</h6> */}
-              <ResumeDesign1 />
+              <div className="finalStep pt-3">
+                <p>
+                  Well done{" "}
+                  <mark>
+                    <b>Buddy!</b>
+                  </mark>{" "}
+                  You have completed all the <b>Steps</b> - Now click on{" "}
+                  <b style={{ color: "red" }}>Preview</b> to get generate PDF
+                  button.
+                </p>
+              </div>
+              <div className="previewbutton pt-2">
+                <Button
+                  variant="outlined"
+                  size="large"
+                  sx={{ color: theme.color, borderColor: theme.color }}
+                  startIcon={
+                    eyeicon === true ? (
+                      <RemoveRedEyeIcon sx={{ color: "green" }} />
+                    ) : (
+                      <VisibilityOffIcon sx={{ color: "red" }} />
+                    )
+                  }
+                  onClick={previewClick}
+                >
+                  PREVIEW
+                </Button>
+              </div>
+              {preview === true ? (
+                resumeIDInfo == "Resume11" ? (
+                  <ResumeDesign1 />
+                ) : resumeIDInfo == "Resume12" ? (
+                  <ResumeDesign2 />
+                ) : resumeIDInfo == "Resume13" ? (
+                  <ResumeDesign1 />
+                ) : null
+              ) : null}
             </Fragment>
           ) : (
             <Fragment>
@@ -1179,7 +1459,7 @@ const FresherFormScreen = memo((resumeIDInfo, resumenameInfo) => {
                                                     theme.inputfieldShadow,
                                                 }}
                                                 className="form-control inputTxt"
-                                                placeholder="Role (Ex:Developer)"
+                                                placeholder="Role (Ex:Developer/Tester)"
                                                 onChange={(e) => {
                                                   handleChange(e);
                                                   setProjectonerolefresher(
