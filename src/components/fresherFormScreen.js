@@ -72,11 +72,16 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const [isselectLoading, setIsselectLoading] = useState(true);
   const [progSelectval, setProgSelectval] = useState("");
   const [skillnullfresher, setSkillnullfresher] = useState(false);
-  const pdfSizeoptions = {
+  const pdfSizeoptionsResume1 = {
     orientation: "portrait",
     unit: "in",
-    format: [13.5, 15],
+    format: [12, 12],
     // format: resumeIDInfo == "Resume11" ? [10, 14] : [8, 16],
+  };
+  const pdfSizeoptionsResume2 = {
+    orientation: "portrait",
+    unit: "in",
+    format: [13.5, 13.5],
   };
 
   console.log("resumeidvalue---> ", resumeIDInfo);
@@ -502,7 +507,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
             x={0}
             y={0}
             scale={1.15}
-            options={pdfSizeoptions}
+            options={pdfSizeoptionsResume1}
             filename="FresherResume.pdf"
           >
             {({ toPdf }) => (
@@ -697,7 +702,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
             x={0}
             y={0}
             scale={1.15}
-            options={pdfSizeoptions}
+            options={pdfSizeoptionsResume2}
             filename="FresherResume.pdf"
           >
             {({ toPdf }) => (
@@ -733,7 +738,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
         </div>
 
         <div className="ResumeFormdisplay-cont" ref={pdffileref}>
-          <Container style={{border: '1px solid #DDDDDD'}}>
+          <Container style={{border: '1px solid #DDDDDD',height: '182vh'}}>
             <Row className="gx-0">
               <Col
                 xs={12}
@@ -743,7 +748,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                 xl={12}
                 xxl={12}
               >
-                <div style={{backgroundColor: '#16365D',padding: '12px'}}>
+                <div style={{backgroundColor: '#16365D',padding: '16px'}}>
                   <div className="resume1Username">
                     <h3 style={{color: '#FFFFFF'}}>{fnameval}</h3>
                   </div>
@@ -759,35 +764,25 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                 </div>
               </Col>
             </Row>
-            <Row className="gx-0 mb-2">
+            <Row className="gx-0 mb-2 p-4">
               <Col
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                xl={12}
-                xxl={12}
+                xs={9}
+                sm={9}
+                md={9}
+                lg={9}
+                xl={9}
+                xxl={9}
                 className="p-2"
               >
-                <div className="resume1Heading">
-                  <h4 className="text-info">Professional Summary</h4>
+                <div className="resume2Heading pb-3">
+                  <h4 style={{color:'#D13C39'}}>Professional Summary</h4>
                   <p>{fsummaryval}</p>
                 </div>
-              </Col>
-              <Row className="gx-0 mb-2">
-                <Col
-                  xs={12}
-                  sm={12}
-                  md={8}
-                  lg={8}
-                  xl={8}
-                  xxl={8}
-                  className="p-2"
-                >
+
                   <div className="resume1Heading">
-                    <h4 className="text-info">PROJECTS</h4>
+                    <h4 style={{color:'#D13C39'}}>PROJECTS</h4>
                   </div>
-                  <div className="resume1Project-cont">
+                  <div className="resume2Project-cont pb-2">
                     <h4>{projectonefresher}</h4>
                     <h5>{projectonerolefresher}</h5>
                     {projectonetech1fresher === "" ? null : (
@@ -810,7 +805,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   </div>
 
                   {isCheckedProject ? (
-                    <div className="resume1Project-cont">
+                    <div className="resume2Project-cont">
                       <h4>{projecttwofresher}</h4>
                       <h5>{projecttworolefresher}</h5>
                       {projecttwotech1fresher === "" ? null : (
@@ -832,18 +827,18 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                       </ul>
                     </div>
                   ) : null}
-                </Col>
-                <Col
-                  xs={12}
-                  sm={12}
-                  md={4}
-                  lg={4}
-                  xl={4}
-                  xxl={4}
+              </Col>
+              <Col
+                  xs={3}
+                  sm={3}
+                  md={3}
+                  lg={3}
+                  xl={3}
+                  xxl={3}
                   className="p-2"
                 >
                   <div className="resume1Heading">
-                    <h4 className="text-info">Skills</h4>
+                    <h4 style={{color:'#D13C39'}}>Skills</h4>
                   </div>
                   <div className="resume1Skills">
                     {progSelectval === ""
@@ -853,7 +848,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                         })}
                   </div>
                   <div className="resume1Heading mt-2">
-                    <h4 className="text-info">Education</h4>
+                    <h4 style={{color:'#D13C39'}}>Education</h4>
                   </div>
                   <div className="resume1Education">
                     <h4>
@@ -866,7 +861,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   </div>
 
                   <div className="resume1Heading mt-2">
-                    <h4 className="text-info">Certificates</h4>
+                    <h4 style={{color:'#D13C39'}}>Certificates</h4>
                   </div>
                   <div className="resume1Certification">
                     <h4>{fcoursenameval}</h4>
@@ -876,7 +871,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                     </p>
                   </div>
                 </Col>
-              </Row>
             </Row>
           </Container>
         </div>
