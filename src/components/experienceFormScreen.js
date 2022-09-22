@@ -78,7 +78,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const pdfSizeoptionsResume1 = {
     orientation: "portrait",
     unit: "in",
-    format: [12, 12],
+    format: [12, 13.5],
     // format: resumeIDInfo == "Resume11" ? [10, 14] : [8, 16],
   };
   const pdfSizeoptionsResume2 = {
@@ -151,27 +151,27 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const [projectonepoint3exp, setprojectonepoint3exp] = useState("");
   const [isCheckedProject, setIsCheckedProject] = useState(false);
 
-  const [projecttwofresher, setProjecttwofresher] = useState("");
-  const [projecttworolefresher, setProjecttworolefresher] = useState("");
-  const [projecttwotech1fresher, setProjecttwotech1fresher] = useState("");
-  const [projecttwotech2fresher, setProjecttwotech2fresher] = useState("");
-  const [projecttwotech3fresher, setProjecttwotech3fresher] = useState("");
-  const [projecttwotech4fresher, setProjecttwotech4fresher] = useState("");
-  const [projecttwopoint1fresher, setProjecttwopoint1fresher] = useState("");
-  const [projecttwopoint2fresher, setProjecttwopoint2fresher] = useState("");
-  const [projecttwopoint3fresher, setProjecttwopoint3fresher] = useState("");
+  const [projecttwoexp, setprojecttwoexp] = useState("");
+  const [projecttworoleexp, setprojecttworoleexp] = useState("");
+  const [projecttwotech1exp, setprojecttwotech1exp] = useState("");
+  const [projecttwotech2exp, setprojecttwotech2exp] = useState("");
+  const [projecttwotech3exp, setprojecttwotech3exp] = useState("");
+  const [projecttwotech4exp, setprojecttwotech4exp] = useState("");
+  const [projecttwopoint1exp, setprojecttwopoint1exp] = useState("");
+  const [projecttwopoint2exp, setprojecttwopoint2exp] = useState("");
+  const [projecttwopoint3exp, setprojecttwopoint3exp] = useState("");
 
   ///////    Form 3 Variables
   const [eduSelectval, setEduSelectVal] = useState("B.E");
-  const [fstreamval, setFstreamVal] = useState("");
-  const [funiversitynameval, setFuniversitynameVal] = useState("");
-  const [fmonthfromval, setFmonthfromVal] = useState("January");
-  const [fyearfromval, setFfromyearVal] = useState("2015");
-  const [fyeartoval, setFtoyearVal] = useState("2019");
-  const [fcoursenameval, setFcoursenameVal] = useState("");
-  const [fplatnameval, setFplatnameVal] = useState("");
-  const [fcertificatemonthval, setFcertificatemonthVal] = useState("January");
-  const [fcertificateyearval, setFcertificateyearVal] = useState("2020");
+  const [estreamval, setEstreamVal] = useState("");
+  const [euniversitynameval, setEuniversitynameVal] = useState("");
+  const [emonthfromval, setEmonthfromVal] = useState("January");
+  const [eyearfromval, setEfromyearVal] = useState("2015");
+  const [eyeartoval, setEtoyearVal] = useState("2019");
+  const [ecoursenameval, setEcoursenameVal] = useState("");
+  const [eplatnameval, setEplatnameVal] = useState("");
+  const [ecertificatemonthval, setEcertificatemonthVal] = useState("January");
+  const [ecertificateyearval, setEcertificateyearVal] = useState("2020");
 
   const initialValues = {
     eusername: enameval,
@@ -206,19 +206,19 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
     eprojectonepoint2: projectonepoint2exp,
     eprojectonepoint3: projectonepoint3exp,
 
-    eprojecttwoname: projecttwofresher,
-    eprojecttworole: projecttworolefresher,
-    eprojecttwotech1: projecttwotech1fresher,
-    eprojecttwotech2: projecttwotech2fresher,
-    eprojecttwotech3: projecttwotech3fresher,
-    eprojecttwotech4: projecttwotech4fresher,
-    eprojecttwopoint1: projecttwopoint1fresher,
-    eprojecttwopoint2: projecttwopoint2fresher,
-    eprojecttwopoint3: projecttwopoint3fresher,
-    estream: fstreamval,
-    euniversity: funiversitynameval,
-    ecoursename: fcoursenameval,
-    eplatform: fplatnameval,
+    eprojecttwoname: projecttwoexp,
+    eprojecttworole: projecttworoleexp,
+    eprojecttwotech1: projecttwotech1exp,
+    eprojecttwotech2: projecttwotech2exp,
+    eprojecttwotech3: projecttwotech3exp,
+    eprojecttwotech4: projecttwotech4exp,
+    eprojecttwopoint1: projecttwopoint1exp,
+    eprojecttwopoint2: projecttwopoint2exp,
+    eprojecttwopoint3: projecttwopoint3exp,
+    estream: estreamval,
+    euniversity: euniversitynameval,
+    ecoursename: ecoursenameval,
+    eplatform: eplatnameval,
   };
 
   const fRoleColourStyles = {
@@ -420,23 +420,23 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   };
 
   const monthfromSelect = (e) => {
-    setFmonthfromVal(e.target.value);
+    setEmonthfromVal(e.target.value);
   };
 
   const yearfromdropdownSelect = (e) => {
-    setFfromyearVal(e.target.value);
+    setEfromyearVal(e.target.value);
   };
 
   const yeartodropdownSelect = (e) => {
-    setFtoyearVal(e.target.value);
+    setEtoyearVal(e.target.value);
   };
 
   const certificatemonthSelect = (e) => {
-    setFcertificatemonthVal(e.target.value);
+    setEcertificatemonthVal(e.target.value);
   };
 
   const certificateyearSelect = (e) => {
-    setFcertificateyearVal(e.target.value);
+    setEcertificateyearVal(e.target.value);
   };
 
   const copySummaryText = (copytxtVal, sIdVal) => {
@@ -454,7 +454,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
     }
   };
 
-  const freshervalidateStep1 = (values) => {
+  const experiencevalidateStep1 = (values) => {
     const errors = {};
 
     if (!values.eusername) {
@@ -488,7 +488,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
     return errors;
   };
 
-  const freshervalidateStep2 = (values) => {
+  const experiencevalidateStep2 = (values) => {
     const errors = {};
 
     if (!values.eworkCname1val) {
@@ -575,6 +575,8 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
       errors.eworkthreePointval = null;
     }
 
+    ///////  project 1 Validation
+
     if (!values.eprojectonename) {
       errors.eprojectonename = "Project name is required!";
     } else if (!/^[A-Za-z0-9\&\,\-\_\b ]+$/.test(values.eprojectonename)) {
@@ -591,7 +593,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
     if (
       !values.eprojectonetech1 ||
       !values.eprojectonetech2 ||
-      !values.eprojectonetech3 
+      !values.eprojectonetech3
     ) {
       errors.eprojectonetech = "Please enter Atleast 3-4 Technologies.";
     }
@@ -600,34 +602,61 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
       errors.eprojectonepoint = "Please enter Atleast 2-3 Points.";
     }
 
+    ///////  project 2 Validation
+
+    if (!values.eprojecttwoname) {
+      errors.eprojecttwoname = "Project name is required!";
+    } else if (!/^[A-Za-z0-9\&\,\-\_\b ]+$/.test(values.eprojecttwoname)) {
+      errors.eprojecttwoname =
+        "Please enter a Valid Alphanumerical Characters only.";
+    }
+
+    if (!values.eprojecttworole) {
+      errors.eprojecttworole = "Project Role is required!";
+    } else if (!/^[A-Za-z\-\b ]+$/.test(values.eprojecttworole)) {
+      errors.eprojecttworole =
+        "Please enter a Valid Alphanumerical Characters only.";
+    }
+    if (
+      !values.eprojecttwotech1 ||
+      !values.eprojecttwotech2 ||
+      !values.eprojecttwotech3
+    ) {
+      errors.eprojecttwotech = "Please enter Atleast 3-4 Technologies.";
+    }
+
+    if (!values.eprojecttwopoint1 || !values.eprojecttwopoint2) {
+      errors.eprojecttwopoint = "Please enter Atleast 2-3 Points.";
+    }
+
     return errors;
   };
 
-  const freshervalidateStep3 = (values) => {
+  const experiencevalidateStep3 = (values) => {
     const errors = {};
 
-    if (!values.fstream) {
-      errors.fstream = "Education stream is required!";
-    } else if (!/^[A-Za-z\b ]+$/.test(values.fstream)) {
-      errors.fstream = "Please enter the valid characters only.";
+    if (!values.estream) {
+      errors.estream = "Education stream is required!";
+    } else if (!/^[A-Za-z\b ]+$/.test(values.estream)) {
+      errors.estream = "Please enter the valid characters only.";
     }
 
-    if (!values.funiversity) {
-      errors.funiversity = "University name is required!";
-    } else if (!/^[A-Za-z\b ]+$/.test(values.funiversity)) {
-      errors.funiversity = "Please enter the valid characters only.";
+    if (!values.euniversity) {
+      errors.euniversity = "University name is required!";
+    } else if (!/^[A-Za-z\b ]+$/.test(values.euniversity)) {
+      errors.euniversity = "Please enter the valid characters only.";
     }
 
-    if (!values.fcoursename) {
-      errors.fcoursename = "Course name is required!";
-    } else if (!/^[A-Za-z\b ]+$/.test(values.fcoursename)) {
-      errors.fcoursename = "Please enter the valid characters only.";
+    if (!values.ecoursename) {
+      errors.ecoursename = "Course name is required!";
+    } else if (!/^[A-Za-z\b ]+$/.test(values.ecoursename)) {
+      errors.ecoursename = "Please enter the valid characters only.";
     }
 
-    if (!values.fplatform) {
-      errors.fplatform = "Platfrom name is required!";
-    } else if (!/^[A-Za-z\b ]+$/.test(values.fplatform)) {
-      errors.fplatform = "Please enter the valid characters only.";
+    if (!values.eplatform) {
+      errors.eplatform = "Platfrom name is required!";
+    } else if (!/^[A-Za-z\b ]+$/.test(values.eplatform)) {
+      errors.eplatform = "Please enter the valid characters only.";
     }
 
     return errors;
@@ -730,7 +759,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
         </div>
 
         <div className="ResumeFormdisplay-cont" ref={pdffileref}>
-          <Container>
+          <Container style={{ height: "185vh" }}>
             <Row className="gx-0">
               <Col
                 xs={12}
@@ -781,6 +810,75 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   className="p-2"
                 >
                   <div className="resume1Heading">
+                    <h4 className="text-info">WORK EXPERIENCE</h4>
+                  </div>
+                  <div className="resume1Project-cont">
+                    <h4>
+                      {eworkCname1val} - {eworkLoc1val}
+                    </h4>
+                    <h5>{eworkRole1val}</h5>
+                    <p>
+                      {workonemonthfromval} {workoneyearfromval} -{" "}
+                      {ispresentChecked1
+                        ? "Present"
+                        : `${workonemonthtoval} ${workoneyeartoval}`}
+                    </p>
+                    <ul>
+                      {workonepoint1exp === "" ? null : (
+                        <li>{workonepoint1exp}</li>
+                      )}
+                      {workonepoint2exp === "" ? null : (
+                        <li>{workonepoint2exp}</li>
+                      )}
+                    </ul>
+                  </div>
+                  {isworkChecked2 ? (
+                    <div className="resume1Project-cont">
+                      <h4>
+                        {eworkCname2val}
+                        {eworkLoc2val === "" ? null : ` - ${eworkLoc2val}`}
+                      </h4>
+                      <h5>{eworkRole2val}</h5>
+                      <p>
+                        {worktwomonthfromval} {worktwoyearfromval} -{" "}
+                        {ispresentChecked2
+                          ? "Present"
+                          : `${worktwomonthtoval} ${worktwoyeartoval}`}
+                      </p>
+                      <ul>
+                        {worktwopoint1exp === "" ? null : (
+                          <li>{worktwopoint1exp}</li>
+                        )}
+                        {worktwopoint2exp === "" ? null : (
+                          <li>{worktwopoint2exp}</li>
+                        )}
+                      </ul>
+                    </div>
+                  ) : null}
+                   {isworkChecked3 ? (
+                    <div className="resume1Project-cont">
+                      <h4>
+                        {eworkCname3val}
+                        {eworkLoc3val === "" ? null : ` - ${eworkLoc3val}`}
+                      </h4>
+                      <h5>{eworkRole3val}</h5>
+                      <p>
+                        {workthreemonthfromval} {workthreeyearfromval} -{" "}
+                        {ispresentChecked3
+                          ? "Present"
+                          : `${workthreemonthtoval} ${workthreeyeartoval}`}
+                      </p>
+                      <ul>
+                        {workthreepoint1exp === "" ? null : (
+                          <li>{workthreepoint1exp}</li>
+                        )}
+                        {workthreepoint2exp === "" ? null : (
+                          <li>{workthreepoint2exp}</li>
+                        )}
+                      </ul>
+                    </div>
+                  ) : null}
+                  <div className="resume1Heading">
                     <h4 className="text-info">PROJECTS</h4>
                   </div>
                   <div className="resume1Project-cont">
@@ -807,23 +905,23 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
 
                   {isCheckedProject ? (
                     <div className="resume1Project-cont">
-                      <h4>{projecttwofresher}</h4>
-                      <h5>{projecttworolefresher}</h5>
-                      {projecttwotech1fresher === "" ? null : (
+                      <h4>{projecttwoexp}</h4>
+                      <h5>{projecttworoleexp}</h5>
+                      {projecttwotech1exp === "" ? null : (
                         <p>
-                          Technologies used: {projecttwotech1fresher},
-                          {projecttwotech2fresher},{projecttwotech3fresher}
+                          Technologies used: {projecttwotech1exp},
+                          {projecttwotech2exp},{projecttwotech3exp}
                         </p>
                       )}
                       <ul>
-                        {projecttwopoint1fresher === "" ? null : (
-                          <li>{projecttwopoint1fresher}</li>
+                        {projecttwopoint1exp === "" ? null : (
+                          <li>{projecttwopoint1exp}</li>
                         )}
-                        {projecttwopoint2fresher === "" ? null : (
-                          <li>{projecttwopoint2fresher}</li>
+                        {projecttwopoint2exp === "" ? null : (
+                          <li>{projecttwopoint2exp}</li>
                         )}
-                        {projecttwopoint3fresher === "" ? null : (
-                          <li>{projecttwopoint3fresher}</li>
+                        {projecttwopoint3exp === "" ? null : (
+                          <li>{projecttwopoint3exp}</li>
                         )}
                       </ul>
                     </div>
@@ -853,11 +951,11 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   </div>
                   <div className="resume1Education">
                     <h4>
-                      {eduSelectval} ({fstreamval})
+                      {eduSelectval} ({estreamval})
                     </h4>
-                    <h5>{funiversitynameval}</h5>
+                    <h5>{euniversitynameval}</h5>
                     <p>
-                      {fmonthfromval} {fyearfromval}-{fyeartoval}
+                      {emonthfromval} {eyearfromval}-{eyeartoval}
                     </p>
                   </div>
 
@@ -865,10 +963,10 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                     <h4 className="text-info">Certificates</h4>
                   </div>
                   <div className="resume1Certification">
-                    <h4>{fcoursenameval}</h4>
-                    <h5>{fplatnameval}</h5>
+                    <h4>{ecoursenameval}</h4>
+                    <h5>{eplatnameval}</h5>
                     <p>
-                      {fcertificatemonthval} {fcertificateyearval}
+                      {ecertificatemonthval} {ecertificateyearval}
                     </p>
                   </div>
                 </Col>
@@ -925,7 +1023,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
         </div>
 
         <div className="ResumeFormdisplay-cont" ref={pdffileref}>
-          <Container style={{ border: "1px solid #DDDDDD", height: "182vh" }}>
+          <Container style={{ border: "1px solid #DDDDDD", height: "185vh" }}>
             <Row className="gx-0">
               <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
                 <div style={{ backgroundColor: "#16365D", padding: "16px" }}>
@@ -950,7 +1048,75 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   <h4 style={{ color: "#D13C39" }}>Professional Summary</h4>
                   <p>{esummaryval}</p>
                 </div>
-
+                <div className="resume1Heading">
+                    <h4 style={{ color: "#D13C39" }}>WORK EXPERIENCE</h4>
+                  </div>
+                  <div className="resume1Project-cont">
+                    <h4>
+                      {eworkCname1val} - {eworkLoc1val}
+                    </h4>
+                    <h5>{eworkRole1val}</h5>
+                    <p>
+                      {workonemonthfromval} {workoneyearfromval} -{" "}
+                      {ispresentChecked1
+                        ? "Present"
+                        : `${workonemonthtoval} ${workoneyeartoval}`}
+                    </p>
+                    <ul>
+                      {workonepoint1exp === "" ? null : (
+                        <li>{workonepoint1exp}</li>
+                      )}
+                      {workonepoint2exp === "" ? null : (
+                        <li>{workonepoint2exp}</li>
+                      )}
+                    </ul>
+                  </div>
+                  {isworkChecked2 ? (
+                    <div className="resume1Project-cont">
+                      <h4>
+                        {eworkCname2val}
+                        {eworkLoc2val === "" ? null : ` - ${eworkLoc2val}`}
+                      </h4>
+                      <h5>{eworkRole2val}</h5>
+                      <p>
+                        {worktwomonthfromval} {worktwoyearfromval} -{" "}
+                        {ispresentChecked2
+                          ? "Present"
+                          : `${worktwomonthtoval} ${worktwoyeartoval}`}
+                      </p>
+                      <ul>
+                        {worktwopoint1exp === "" ? null : (
+                          <li>{worktwopoint1exp}</li>
+                        )}
+                        {worktwopoint2exp === "" ? null : (
+                          <li>{worktwopoint2exp}</li>
+                        )}
+                      </ul>
+                    </div>
+                  ) : null}
+                   {isworkChecked3 ? (
+                    <div className="resume1Project-cont">
+                      <h4>
+                        {eworkCname3val}
+                        {eworkLoc3val === "" ? null : ` - ${eworkLoc3val}`}
+                      </h4>
+                      <h5>{eworkRole3val}</h5>
+                      <p>
+                        {workthreemonthfromval} {workthreeyearfromval} -{" "}
+                        {ispresentChecked3
+                          ? "Present"
+                          : `${workthreemonthtoval} ${workthreeyeartoval}`}
+                      </p>
+                      <ul>
+                        {workthreepoint1exp === "" ? null : (
+                          <li>{workthreepoint1exp}</li>
+                        )}
+                        {workthreepoint2exp === "" ? null : (
+                          <li>{workthreepoint2exp}</li>
+                        )}
+                      </ul>
+                    </div>
+                  ) : null}
                 <div className="resume1Heading">
                   <h4 style={{ color: "#D13C39" }}>PROJECTS</h4>
                 </div>
@@ -978,23 +1144,23 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
 
                 {isCheckedProject ? (
                   <div className="resume2Project-cont">
-                    <h4>{projecttwofresher}</h4>
-                    <h5>{projecttworolefresher}</h5>
-                    {projecttwotech1fresher === "" ? null : (
+                    <h4>{projecttwoexp}</h4>
+                    <h5>{projecttworoleexp}</h5>
+                    {projecttwotech1exp === "" ? null : (
                       <p>
-                        Technologies used: {projecttwotech1fresher},
-                        {projecttwotech2fresher},{projecttwotech3fresher}
+                        Technologies used: {projecttwotech1exp},
+                        {projecttwotech2exp},{projecttwotech3exp}
                       </p>
                     )}
                     <ul>
-                      {projecttwopoint1fresher === "" ? null : (
-                        <li>{projecttwopoint1fresher}</li>
+                      {projecttwopoint1exp === "" ? null : (
+                        <li>{projecttwopoint1exp}</li>
                       )}
-                      {projecttwopoint2fresher === "" ? null : (
-                        <li>{projecttwopoint2fresher}</li>
+                      {projecttwopoint2exp === "" ? null : (
+                        <li>{projecttwopoint2exp}</li>
                       )}
-                      {projecttwopoint3fresher === "" ? null : (
-                        <li>{projecttwopoint3fresher}</li>
+                      {projecttwopoint3exp === "" ? null : (
+                        <li>{projecttwopoint3exp}</li>
                       )}
                     </ul>
                   </div>
@@ -1016,11 +1182,11 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                 </div>
                 <div className="resume1Education">
                   <h4>
-                    {eduSelectval} ({fstreamval})
+                    {eduSelectval} ({estreamval})
                   </h4>
-                  <h5>{funiversitynameval}</h5>
+                  <h5>{euniversitynameval}</h5>
                   <p>
-                    {fmonthfromval} {fyearfromval}-{fyeartoval}
+                    {emonthfromval} {eyearfromval}-{eyeartoval}
                   </p>
                 </div>
 
@@ -1028,10 +1194,10 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   <h4 style={{ color: "#D13C39" }}>Certificates</h4>
                 </div>
                 <div className="resume1Certification">
-                  <h4>{fcoursenameval}</h4>
-                  <h5>{fplatnameval}</h5>
+                  <h4>{ecoursenameval}</h4>
+                  <h5>{eplatnameval}</h5>
                   <p>
-                    {fcertificatemonthval} {fcertificateyearval}
+                    {ecertificatemonthval} {ecertificateyearval}
                   </p>
                 </div>
               </Col>
@@ -1128,7 +1294,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                     <Formik
                       initialValues={initialValues}
                       onSubmit={handleSubmitForm}
-                      validate={freshervalidateStep1}
+                      validate={experiencevalidateStep1}
                     >
                       {({
                         handleChange,
@@ -1470,7 +1636,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                     <Formik
                       initialValues={initialValues}
                       onSubmit={handleSubmitForm}
-                      validate={freshervalidateStep2}
+                      validate={experiencevalidateStep2}
                     >
                       {({
                         handleChange,
@@ -2514,7 +2680,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   </Fragment>
                                 ) : null}
 
-                                <div className="p-2">
+                                {/* <div className="p-2">
                                   <input
                                     type="checkbox"
                                     style={{
@@ -2531,7 +2697,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                       (Check this If Applicable)
                                     </span>
                                   </span>
-                                </div>
+                                </div> */}
 
                                 {isworkChecked3 ? (
                                   <Fragment>
@@ -3512,17 +3678,17 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                 placeholder="Project Name"
                                                 onChange={(e) => {
                                                   handleChange(e);
-                                                  setProjecttwofresher(
+                                                  setprojecttwoexp(
                                                     e.target.value
                                                   );
                                                 }}
-                                                value={values.fprojecttwoname}
-                                                name="fprojecttwoname"
+                                                value={values.eprojecttwoname}
+                                                name="eprojecttwoname"
                                               ></input>
                                             </div>
-                                            {errors.fprojecttwoname && (
+                                            {errors.eprojecttwoname && (
                                               <div className="errortext pt-2">
-                                                {errors.fprojecttwoname}
+                                                {errors.eprojecttwoname}
                                               </div>
                                             )}
                                           </Col>
@@ -3549,17 +3715,17 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                 placeholder="Role (Ex:Developer)"
                                                 onChange={(e) => {
                                                   handleChange(e);
-                                                  setProjecttworolefresher(
+                                                  setprojecttworoleexp(
                                                     e.target.value
                                                   );
                                                 }}
-                                                value={values.fprojecttworole}
-                                                name="fprojecttworole"
+                                                value={values.eprojecttworole}
+                                                name="eprojecttworole"
                                               ></input>
                                             </div>
-                                            {errors.fprojecttworole && (
+                                            {errors.eprojecttworole && (
                                               <div className="errortext pt-2">
-                                                {errors.fprojecttworole}
+                                                {errors.eprojecttworole}
                                               </div>
                                             )}
                                           </Col>
@@ -3607,14 +3773,14 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                     placeholder="Technology 1"
                                                     onChange={(e) => {
                                                       handleChange(e);
-                                                      setProjecttwotech1fresher(
+                                                      setprojecttwotech1exp(
                                                         e.target.value
                                                       );
                                                     }}
                                                     value={
-                                                      values.fprojecttwotech1
+                                                      values.eprojecttwotech1
                                                     }
-                                                    name="fprojecttwotech1"
+                                                    name="eprojecttwotech1"
                                                   ></input>
                                                 </div>
                                               </Col>
@@ -3642,14 +3808,14 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                     placeholder="Technology 2"
                                                     onChange={(e) => {
                                                       handleChange(e);
-                                                      setProjecttwotech2fresher(
+                                                      setprojecttwotech2exp(
                                                         e.target.value
                                                       );
                                                     }}
                                                     value={
-                                                      values.fprojecttwotech2
+                                                      values.eprojecttwotech2
                                                     }
-                                                    name="fprojecttwotech2"
+                                                    name="eprojecttwotech2"
                                                   ></input>
                                                 </div>
                                               </Col>
@@ -3677,14 +3843,14 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                     placeholder="Technology 3"
                                                     onChange={(e) => {
                                                       handleChange(e);
-                                                      setProjecttwotech3fresher(
+                                                      setprojecttwotech3exp(
                                                         e.target.value
                                                       );
                                                     }}
                                                     value={
-                                                      values.fprojecttwotech3
+                                                      values.eprojecttwotech3
                                                     }
-                                                    name="fprojecttwotech3"
+                                                    name="eprojecttwotech3"
                                                   ></input>
                                                 </div>
                                               </Col>
@@ -3712,21 +3878,21 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                     placeholder="Technology 4"
                                                     onChange={(e) => {
                                                       handleChange(e);
-                                                      setProjecttwotech4fresher(
+                                                      setprojecttwotech4exp(
                                                         e.target.value
                                                       );
                                                     }}
                                                     value={
-                                                      values.fprojecttwotech4
+                                                      values.eprojecttwotech4
                                                     }
-                                                    name="fprojecttwotech4"
+                                                    name="eprojecttwotech4"
                                                   ></input>
                                                 </div>
                                               </Col>
                                             </Row>
-                                            {errors.fprojecttwotech1 && (
+                                            {errors.eprojecttwotech && (
                                               <div className="errortext p-2">
-                                                {errors.fprojecttwotech1}
+                                                {errors.eprojecttwotech}
                                               </div>
                                             )}
                                             <Col ///////////////////////Project Point 1
@@ -3752,14 +3918,14 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                   rows="2"
                                                   onChange={(e) => {
                                                     handleChange(e);
-                                                    setProjecttwopoint1fresher(
+                                                    setprojecttwopoint1exp(
                                                       e.target.value
                                                     );
                                                   }}
                                                   value={
-                                                    values.fprojecttwopoint1
+                                                    values.eprojecttwopoint1
                                                   }
-                                                  name="fprojecttwopoint1"
+                                                  name="eprojecttwopoint1"
                                                 ></textarea>
                                               </div>
                                             </Col>
@@ -3786,14 +3952,14 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                   rows="2"
                                                   onChange={(e) => {
                                                     handleChange(e);
-                                                    setProjecttwopoint2fresher(
+                                                    setprojecttwopoint2exp(
                                                       e.target.value
                                                     );
                                                   }}
                                                   value={
-                                                    values.fprojecttwopoint2
+                                                    values.eprojecttwopoint2
                                                   }
-                                                  name="fprojecttwopoint2"
+                                                  name="eprojecttwopoint2"
                                                 ></textarea>
                                               </div>
                                             </Col>
@@ -3820,19 +3986,19 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                   rows="2"
                                                   onChange={(e) => {
                                                     handleChange(e);
-                                                    setProjecttwopoint3fresher(
+                                                    setprojecttwopoint3exp(
                                                       e.target.value
                                                     );
                                                   }}
                                                   value={
-                                                    values.fprojecttwopoint3
+                                                    values.eprojecttwopoint3
                                                   }
-                                                  name="fprojecttwopoint3"
+                                                  name="eprojecttwopoint3"
                                                 ></textarea>
                                               </div>
-                                              {errors.fprojecttwopoint1 && (
+                                              {errors.eprojecttwopoint && (
                                                 <div className="errortext pt-3">
-                                                  {errors.fprojecttwopoint1}
+                                                  {errors.eprojecttwopoint}
                                                 </div>
                                               )}
                                             </Col>
@@ -3882,7 +4048,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                     <Formik
                       initialValues={initialValues}
                       onSubmit={handleSubmitForm}
-                      validate={freshervalidateStep3}
+                      validate={experiencevalidateStep3}
                     >
                       {({
                         handleChange,
@@ -3975,15 +4141,15 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                       placeholder="Computer Science"
                                       onChange={(e) => {
                                         handleChange(e);
-                                        setFstreamVal(e.target.value);
+                                        setEstreamVal(e.target.value);
                                       }}
-                                      value={values.fstream}
-                                      name="fstream"
+                                      value={values.estream}
+                                      name="estream"
                                     ></input>
                                   </div>
-                                  {errors.fstream && (
+                                  {errors.estream && (
                                     <div className="errortext pt-2">
-                                      {errors.fstream}
+                                      {errors.estream}
                                     </div>
                                   )}
                                 </Col>
@@ -4031,15 +4197,15 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                       placeholder="Ex: Visveswaraya Technological University"
                                       onChange={(e) => {
                                         handleChange(e);
-                                        setFuniversitynameVal(e.target.value);
+                                        setEuniversitynameVal(e.target.value);
                                       }}
-                                      value={values.funiversity}
-                                      name="funiversity"
+                                      value={values.euniversity}
+                                      name="euniversity"
                                     ></input>
                                   </div>
-                                  {errors.funiversity && (
+                                  {errors.euniversity && (
                                     <div className="errortext pt-2">
-                                      {errors.funiversity}
+                                      {errors.euniversity}
                                     </div>
                                   )}
                                 </Col>
@@ -4066,7 +4232,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                     }}
                                     className="form-control form-select"
                                     onChange={monthfromSelect}
-                                    value={fmonthfromval}
+                                    value={emonthfromval}
                                   >
                                     {monthNames.map((item, keyindex) => {
                                       return (
@@ -4117,7 +4283,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                       }}
                                       className="form-control form-select"
                                       onChange={yearfromdropdownSelect}
-                                      value={fyearfromval}
+                                      value={eyearfromval}
                                     >
                                       {yearfromData.map((item, keyindex) => {
                                         return (
@@ -4169,7 +4335,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                       }}
                                       className="form-control form-select"
                                       onChange={yeartodropdownSelect}
-                                      value={fyeartoval}
+                                      value={eyeartoval}
                                     >
                                       {yeartoData.map((item, keyindex) => {
                                         return (
@@ -4236,15 +4402,15 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                       placeholder="Ex: AWS Cloud"
                                       onChange={(e) => {
                                         handleChange(e);
-                                        setFcoursenameVal(e.target.value);
+                                        setEcoursenameVal(e.target.value);
                                       }}
-                                      value={values.fcoursename}
-                                      name="fcoursename"
+                                      value={values.ecoursename}
+                                      name="ecoursename"
                                     ></input>
                                   </div>
-                                  {errors.fcoursename && (
+                                  {errors.ecoursename && (
                                     <div className="errortext pt-2">
-                                      {errors.fcoursename}
+                                      {errors.ecoursename}
                                     </div>
                                   )}
                                 </Col>
@@ -4276,15 +4442,15 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                       placeholder="Ex: Udemy"
                                       onChange={(e) => {
                                         handleChange(e);
-                                        setFplatnameVal(e.target.value);
+                                        setEplatnameVal(e.target.value);
                                       }}
-                                      value={values.fplatform}
-                                      name="fplatform"
+                                      value={values.eplatform}
+                                      name="eplatform"
                                     ></input>
                                   </div>
-                                  {errors.fplatform && (
+                                  {errors.eplatform && (
                                     <div className="errortext pt-2">
-                                      {errors.fplatform}
+                                      {errors.eplatform}
                                     </div>
                                   )}
                                 </Col>
@@ -4313,7 +4479,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                       }}
                                       className="form-control form-select"
                                       onChange={certificatemonthSelect}
-                                      value={fcertificatemonthval}
+                                      value={ecertificatemonthval}
                                     >
                                       {monthNames.map((item, keyindex) => {
                                         return (
@@ -4365,7 +4531,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                       }}
                                       className="form-control form-select"
                                       onChange={certificateyearSelect}
-                                      value={fcertificateyearval}
+                                      value={ecertificateyearval}
                                     >
                                       {yearData.map((item, keyindex) => {
                                         return (
