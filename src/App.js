@@ -4,6 +4,8 @@ import { AuthProvider } from "./contexts/AuthContext";
 import SplashPage from "./components/splashScreen";
 import DashboardPage from "./components/dashboardScreen";
 import ResumeFormPage from "./components/resumeFormScreen";
+import FeedbackPage from "./components/feedbackScreen";
+import AboutPage from "./components/aboutScreen";
 import DemoPage from "./components/demo";
 
 const App = () => {
@@ -13,6 +15,8 @@ const App = () => {
         <Route path="/" element={<SplashPage />}></Route>
         <Route path="dashboard" element={<DashboardPage />}></Route>
         <Route path="resumeform" element={<ResumeFormPage />}></Route>
+        <Route path="feedback" element={<FeedbackPage />}></Route>
+        <Route path="about" element={<AboutPage />}></Route>
         <Route path="demo" element={<DemoPage />}></Route>
       </Routes>
     </AuthProvider>

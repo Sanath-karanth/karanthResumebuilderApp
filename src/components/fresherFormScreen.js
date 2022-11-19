@@ -25,6 +25,7 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import CancelIcon from "@mui/icons-material/Cancel";
 import {
   Container,
   Row,
@@ -35,6 +36,7 @@ import {
   Modal,
   Accordion,
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import Select from "react-select";
 import Pdf from "react-to-pdf";
@@ -62,6 +64,7 @@ const roleOptionsFresher = [{ value: "Fresher", label: "Fresher" }];
 const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const [{ theme }] = useContext(ThemeContext);
   const pdffileref = createRef();
+  const navigate = useNavigate();
   const resumeIDval = resumeIDInfo;
   const resumeNameval = resumenameInfo;
   const [activeStep, setActiveStep] = useState(0);
@@ -81,10 +84,8 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const pdfSizeoptionsResume2 = {
     orientation: "portrait",
     unit: "in",
-    format: [13.5, 13.5],
+    format: [13.5, 16.5],
   };
-
-  console.log("resumeidvalue---> ", resumeIDInfo);
 
   ////////    Form 1 Variables
   const [fnameval, setFnameVal] = useState("");
@@ -215,6 +216,10 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const previewClick = () => {
     setPreview(true);
     setEyeicon(true);
+  };
+
+  const exitClick = () => {
+    navigate("/dashboard");
   };
 
   const scrollToTopNextStep = () => {
@@ -527,6 +532,15 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   >
                     Generate PDF
                   </Button>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    sx={{ color: theme.color, borderColor: theme.color }}
+                    startIcon={<CancelIcon sx={{ color: "red" }} />}
+                    onClick={exitClick}
+                  >
+                    EXIT
+                  </Button>
                 </div>
                 <div className="generatepdfBtn finalStep pt-3">
                   <p>
@@ -555,16 +569,16 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                 className="p-2"
               >
                 <div className="resume1Username">
-                  <h3 style={{color: '#000000'}}>{fnameval}</h3>
+                  <h3 style={{ color: "#000000" }}>{fnameval}</h3>
                 </div>
                 <div className="resume1Role">
-                  <h4 style={{color: '#000000'}}>Fresher</h4>
+                  <h4 style={{ color: "#000000" }}>Fresher</h4>
                 </div>
                 <div className="resume1Mail">
-                  <h5 style={{color: '#000000'}}>{femailval}</h5>
+                  <h5 style={{ color: "#000000" }}>{femailval}</h5>
                 </div>
                 <div className="resume1Phone">
-                  <h5 style={{color: '#000000'}}>{fphoneval}</h5>
+                  <h5 style={{ color: "#000000" }}>{fphoneval}</h5>
                 </div>
               </Col>
             </Row>
@@ -722,6 +736,15 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   >
                     Generate PDF
                   </Button>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    sx={{ color: theme.color, borderColor: theme.color }}
+                    startIcon={<CancelIcon sx={{ color: "red" }} />}
+                    onClick={exitClick}
+                  >
+                    EXIT
+                  </Button>
                 </div>
                 <div className="generatepdfBtn finalStep pt-3">
                   <p>
@@ -738,139 +761,116 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
         </div>
 
         <div className="ResumeFormdisplay-cont" ref={pdffileref}>
-          <Container style={{border: '1px solid #DDDDDD',height: '182vh'}}>
+          <Container style={{ border: "1px solid #DDDDDD", height: "190vh" }}>
             <Row className="gx-0">
-              <Col
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                xl={12}
-                xxl={12}
-              >
-                <div style={{backgroundColor: '#16365D',padding: '16px'}}>
+              <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+                <div style={{ backgroundColor: "#16365D", padding: "16px" }}>
                   <div className="resume1Username">
-                    <h3 style={{color: '#FFFFFF'}}>{fnameval}</h3>
+                    <h3 style={{ color: "#FFFFFF" }}>{fnameval}</h3>
                   </div>
                   <div className="resume1Role">
-                    <h4 style={{color: '#FFFFFF'}}>Fresher</h4>
+                    <h4 style={{ color: "#FFFFFF" }}>Fresher</h4>
                   </div>
                   <div className="resume1Mail">
-                    <h5 style={{color: '#FFFFFF'}}>{femailval}</h5>
+                    <h5 style={{ color: "#FFFFFF" }}>{femailval}</h5>
                   </div>
                   <div className="resume1Phone">
-                    <h5 style={{color: '#FFFFFF'}}>{fphoneval}</h5>
+                    <h5 style={{ color: "#FFFFFF" }}>{fphoneval}</h5>
                   </div>
                 </div>
               </Col>
             </Row>
             <Row className="gx-0 mb-2 p-4">
-              <Col
-                xs={9}
-                sm={9}
-                md={9}
-                lg={9}
-                xl={9}
-                xxl={9}
-                className="p-2"
-              >
+              <Col xs={9} sm={9} md={9} lg={9} xl={9} xxl={9} className="p-2">
                 <div className="resume2Heading pb-3">
-                  <h4 style={{color:'#D13C39'}}>Professional Summary</h4>
+                  <h4 style={{ color: "#D13C39" }}>Professional Summary</h4>
                   <p>{fsummaryval}</p>
                 </div>
 
-                  <div className="resume1Heading">
-                    <h4 style={{color:'#D13C39'}}>PROJECTS</h4>
-                  </div>
-                  <div className="resume2Project-cont pb-2">
-                    <h4>{projectonefresher}</h4>
-                    <h5>{projectonerolefresher}</h5>
-                    {projectonetech1fresher === "" ? null : (
+                <div className="resume1Heading">
+                  <h4 style={{ color: "#D13C39" }}>PROJECTS</h4>
+                </div>
+                <div className="resume2Project-cont pb-2">
+                  <h4>{projectonefresher}</h4>
+                  <h5>{projectonerolefresher}</h5>
+                  {projectonetech1fresher === "" ? null : (
+                    <p>
+                      Technologies used: {projectonetech1fresher},
+                      {projectonetech2fresher},{projectonetech3fresher}
+                    </p>
+                  )}
+                  <ul>
+                    {projectonepoint1fresher === "" ? null : (
+                      <li>{projectonepoint1fresher}</li>
+                    )}
+                    {projectonepoint2fresher === "" ? null : (
+                      <li>{projectonepoint2fresher}</li>
+                    )}
+                    {projectonepoint3fresher === "" ? null : (
+                      <li>{projectonepoint3fresher}</li>
+                    )}
+                  </ul>
+                </div>
+
+                {isCheckedProject ? (
+                  <div className="resume2Project-cont">
+                    <h4>{projecttwofresher}</h4>
+                    <h5>{projecttworolefresher}</h5>
+                    {projecttwotech1fresher === "" ? null : (
                       <p>
-                        Technologies used: {projectonetech1fresher},
-                        {projectonetech2fresher},{projectonetech3fresher}
+                        Technologies used: {projecttwotech1fresher},
+                        {projecttwotech2fresher},{projecttwotech3fresher}
                       </p>
                     )}
                     <ul>
-                      {projectonepoint1fresher === "" ? null : (
-                        <li>{projectonepoint1fresher}</li>
+                      {projecttwopoint1fresher === "" ? null : (
+                        <li>{projecttwopoint1fresher}</li>
                       )}
-                      {projectonepoint2fresher === "" ? null : (
-                        <li>{projectonepoint2fresher}</li>
+                      {projecttwopoint2fresher === "" ? null : (
+                        <li>{projecttwopoint2fresher}</li>
                       )}
-                      {projectonepoint3fresher === "" ? null : (
-                        <li>{projectonepoint3fresher}</li>
+                      {projecttwopoint3fresher === "" ? null : (
+                        <li>{projecttwopoint3fresher}</li>
                       )}
                     </ul>
                   </div>
-
-                  {isCheckedProject ? (
-                    <div className="resume2Project-cont">
-                      <h4>{projecttwofresher}</h4>
-                      <h5>{projecttworolefresher}</h5>
-                      {projecttwotech1fresher === "" ? null : (
-                        <p>
-                          Technologies used: {projecttwotech1fresher},
-                          {projecttwotech2fresher},{projecttwotech3fresher}
-                        </p>
-                      )}
-                      <ul>
-                        {projecttwopoint1fresher === "" ? null : (
-                          <li>{projecttwopoint1fresher}</li>
-                        )}
-                        {projecttwopoint2fresher === "" ? null : (
-                          <li>{projecttwopoint2fresher}</li>
-                        )}
-                        {projecttwopoint3fresher === "" ? null : (
-                          <li>{projecttwopoint3fresher}</li>
-                        )}
-                      </ul>
-                    </div>
-                  ) : null}
+                ) : null}
               </Col>
-              <Col
-                  xs={3}
-                  sm={3}
-                  md={3}
-                  lg={3}
-                  xl={3}
-                  xxl={3}
-                  className="p-2"
-                >
-                  <div className="resume1Heading">
-                    <h4 style={{color:'#D13C39'}}>Skills</h4>
-                  </div>
-                  <div className="resume1Skills">
-                    {progSelectval === ""
-                      ? null
-                      : progSelectval.map((item, key) => {
-                          return <p key={key}>{item}</p>;
-                        })}
-                  </div>
-                  <div className="resume1Heading mt-2">
-                    <h4 style={{color:'#D13C39'}}>Education</h4>
-                  </div>
-                  <div className="resume1Education">
-                    <h4>
-                      {eduSelectval} ({fstreamval})
-                    </h4>
-                    <h5>{funiversitynameval}</h5>
-                    <p>
-                      {fmonthfromval} {fyearfromval}-{fyeartoval}
-                    </p>
-                  </div>
+              <Col xs={3} sm={3} md={3} lg={3} xl={3} xxl={3} className="p-2">
+                <div className="resume1Heading">
+                  <h4 style={{ color: "#D13C39" }}>Skills</h4>
+                </div>
+                <div className="resume1Skills">
+                  {progSelectval === ""
+                    ? null
+                    : progSelectval.map((item, key) => {
+                        return <p key={key}>{item}</p>;
+                      })}
+                </div>
+                <div className="resume1Heading mt-2">
+                  <h4 style={{ color: "#D13C39" }}>Education</h4>
+                </div>
+                <div className="resume1Education">
+                  <h4>
+                    {eduSelectval} ({fstreamval})
+                  </h4>
+                  <h5>{funiversitynameval}</h5>
+                  <p>
+                    {fmonthfromval} {fyearfromval}-{fyeartoval}
+                  </p>
+                </div>
 
-                  <div className="resume1Heading mt-2">
-                    <h4 style={{color:'#D13C39'}}>Certificates</h4>
-                  </div>
-                  <div className="resume1Certification">
-                    <h4>{fcoursenameval}</h4>
-                    <h5>{fplatnameval}</h5>
-                    <p>
-                      {fcertificatemonthval} {fcertificateyearval}
-                    </p>
-                  </div>
-                </Col>
+                <div className="resume1Heading mt-2">
+                  <h4 style={{ color: "#D13C39" }}>Certificates</h4>
+                </div>
+                <div className="resume1Certification">
+                  <h4>{fcoursenameval}</h4>
+                  <h5>{fplatnameval}</h5>
+                  <p>
+                    {fcertificatemonthval} {fcertificateyearval}
+                  </p>
+                </div>
+              </Col>
             </Row>
           </Container>
         </div>
@@ -941,11 +941,11 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                 </Button>
               </div>
               {preview === true ? (
-                resumeIDInfo == "Resume11" ? (
+                resumeIDInfo === "Resume11" ? (
                   <ResumeDesign1 />
-                ) : resumeIDInfo == "Resume12" ? (
+                ) : resumeIDInfo === "Resume12" ? (
                   <ResumeDesign2 />
-                ) : resumeIDInfo == "Resume13" ? (
+                ) : resumeIDInfo === "Resume13" ? (
                   <ResumeDesign1 />
                 ) : null
               ) : null}

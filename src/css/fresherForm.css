@@ -89,31 +89,36 @@ p {
     font-family: 'Nunito', sans-serif;
     color: #df4759;
 }
-.previewbutton{
+
+.previewbutton {
     display: flex;
     justify-content: center;
 }
-.finalStep{
+
+.finalStep {
     display: flex;
     justify-content: center;
 }
+
 .previewbutton button {
     font-size: 14px;
     font-family: 'Nunito', sans-serif;
     font-weight: bolder;
     text-transform: uppercase;
-  }
+}
 
-.generatepdfBtn{
+.generatepdfBtn {
     display: flex;
+    gap: 20px;
     justify-content: center;
 }
+
 .generatepdfBtn button {
     font-size: 14px;
     font-family: 'Nunito', sans-serif;
     font-weight: bolder;
     text-transform: uppercase;
-  }
+}
 
 @keyframes shake {
     25% {
@@ -196,15 +201,16 @@ input::placeholder {
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .finalStep p{
+
+    .finalStep p {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #4BB543;
     }
 
-     /* ---  Resume designs  --- */
+    /* ---  Resume designs  --- */
 
-     .ResumeFormdisplay-cont {
+    .ResumeFormdisplay-cont {
         width: 100%;
         height: 100%;
         padding: 20px 30px 20px 30px;
@@ -215,110 +221,126 @@ input::placeholder {
         border-radius: 5px;
     }
 
-    .resume1Username h3{
+    .resume1Username h3 {
         font-size: 28px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 40px;
     }
-    .resume1Role h4{
+
+    .resume1Role h4 {
         font-size: 20px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 25px;
     }
-    .resume1Mail h5{
+
+    .resume1Mail h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 25px;
     }
-    .resume1Phone h5{
+
+    .resume1Phone h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 25px;
     }
-    .resume1Heading h4{
+
+    .resume1Heading h4 {
         font-size: 18px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
         text-transform: uppercase;
     }
-    .resume1Heading{
+
+    .resume1Heading {
         width: 90%;
     }
-    .resume1Heading p{
+
+    .resume1Heading p {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume1Project-cont h4{
+
+    .resume1Project-cont h4 {
         font-size: 17px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
         text-transform: uppercase;
     }
-    .resume1Project-cont h5{
+
+    .resume1Project-cont h5 {
         font-size: 15px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Project-cont p{
+
+    .resume1Project-cont p {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
 
-    .resume1Project-cont li{
+    .resume1Project-cont li {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         width: 95%;
     }
-    .resume1Skills p{
+
+    .resume1Skills p {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Education h4{
+
+    .resume1Education h4 {
         font-size: 16px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Education h5{
+
+    .resume1Education h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume1Education p{
-        font-size: 12px;
-        font-family: 'Nunito', sans-serif;
-        color: #000000;
-    }
-    .resume1Certification h4{
-        font-size: 16px;
-        font-family: 'Nunito', sans-serif;
-        color: #000000;
-        font-weight: bolder;
-    }
-    .resume1Certification h5{
-        font-size: 14px;
-        font-family: 'Nunito', sans-serif;
-        color: #000000;
-    }
-    .resume1Certification p{
+
+    .resume1Education p {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
 
-    
+    .resume1Certification h4 {
+        font-size: 16px;
+        font-family: 'Nunito', sans-serif;
+        color: #000000;
+        font-weight: bolder;
+    }
+
+    .resume1Certification h5 {
+        font-size: 14px;
+        font-family: 'Nunito', sans-serif;
+        color: #000000;
+    }
+
+    .resume1Certification p {
+        font-size: 12px;
+        font-family: 'Nunito', sans-serif;
+        color: #000000;
+    }
+
+
 }
 
 
@@ -385,7 +407,8 @@ input::placeholder {
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .finalStep p{
+
+    .finalStep p {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #4BB543;
@@ -404,104 +427,120 @@ input::placeholder {
         border-radius: 5px;
     }
 
-    .resume1Username h3{
+    .resume1Username h3 {
         font-size: 28px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 40px;
     }
-    .resume1Role h4{
+
+    .resume1Role h4 {
         font-size: 20px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 25px;
     }
-    .resume1Mail h5{
+
+    .resume1Mail h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 25px;
     }
-    .resume1Phone h5{
+
+    .resume1Phone h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 25px;
     }
-    .resume1Heading h4{
+
+    .resume1Heading h4 {
         font-size: 18px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
         text-transform: uppercase;
     }
-    .resume1Heading{
+
+    .resume1Heading {
         width: 90%;
     }
-    .resume1Heading p{
+
+    .resume1Heading p {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume1Project-cont h4{
+
+    .resume1Project-cont h4 {
         font-size: 17px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
         text-transform: uppercase;
     }
-    .resume1Project-cont h5{
+
+    .resume1Project-cont h5 {
         font-size: 15px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Project-cont p{
+
+    .resume1Project-cont p {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
 
-    .resume1Project-cont li{
+    .resume1Project-cont li {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         width: 95%;
     }
-    .resume1Skills p{
+
+    .resume1Skills p {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Education h4{
+
+    .resume1Education h4 {
         font-size: 16px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Education h5{
+
+    .resume1Education h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume1Education p{
+
+    .resume1Education p {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume1Certification h4{
+
+    .resume1Certification h4 {
         font-size: 16px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Certification h5{
+
+    .resume1Certification h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume1Certification p{
+
+    .resume1Certification p {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
@@ -578,7 +617,7 @@ input::placeholder {
         color: #000000;
     }
 
-    .finalStep p{
+    .finalStep p {
         font-size: 18px;
         font-family: 'Nunito', sans-serif;
         color: #4BB543;
@@ -597,104 +636,120 @@ input::placeholder {
         border-radius: 5px;
     }
 
-    .resume1Username h3{
+    .resume1Username h3 {
         font-size: 28px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 40px;
     }
-    .resume1Role h4{
+
+    .resume1Role h4 {
         font-size: 20px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 25px;
     }
-    .resume1Mail h5{
+
+    .resume1Mail h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 25px;
     }
-    .resume1Phone h5{
+
+    .resume1Phone h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         font-weight: bolder;
         line-height: 25px;
     }
-    .resume1Heading h4{
+
+    .resume1Heading h4 {
         font-size: 18px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
         text-transform: uppercase;
     }
-    .resume1Heading{
+
+    .resume1Heading {
         width: 90%;
     }
-    .resume1Heading p{
+
+    .resume1Heading p {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume1Project-cont h4{
+
+    .resume1Project-cont h4 {
         font-size: 17px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
         text-transform: uppercase;
     }
-    .resume1Project-cont h5{
+
+    .resume1Project-cont h5 {
         font-size: 15px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Project-cont p{
+
+    .resume1Project-cont p {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
 
-    .resume1Project-cont li{
+    .resume1Project-cont li {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         width: 95%;
     }
-    .resume1Skills p{
+
+    .resume1Skills p {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Education h4{
+
+    .resume1Education h4 {
         font-size: 16px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Education h5{
+
+    .resume1Education h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume1Education p{
+
+    .resume1Education p {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume1Certification h4{
+
+    .resume1Certification h4 {
         font-size: 16px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume1Certification h5{
+
+    .resume1Certification h5 {
         font-size: 14px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume1Certification p{
+
+    .resume1Certification p {
         font-size: 12px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
@@ -703,37 +758,43 @@ input::placeholder {
     .resume2Heading {
         width: 90%;
     }
-    .resume2Heading h4{
+
+    .resume2Heading h4 {
         font-size: 18px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
         text-transform: uppercase;
     }
-    .resume2Heading p{
+
+    .resume2Heading p {
         font-size: 17px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume2Project-cont h4{
+
+    .resume2Project-cont h4 {
         font-size: 17px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
         text-transform: uppercase;
     }
-    .resume2Project-cont h5{
+
+    .resume2Project-cont h5 {
         font-size: 16px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
         font-weight: bolder;
     }
-    .resume2Project-cont p{
+
+    .resume2Project-cont p {
         font-size: 16px;
         font-family: 'Nunito', sans-serif;
         color: #000000;
     }
-    .resume2Project-cont li{
+
+    .resume2Project-cont li {
         font-size: 15px;
         font-family: 'Nunito', sans-serif;
         color: #000000;

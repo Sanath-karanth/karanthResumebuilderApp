@@ -94,9 +94,9 @@ const DashboardScreen = memo(() => {
     //   behavior: "smooth",
     // });
     window.scroll({
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth'
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
   }, []);
 
@@ -133,6 +133,10 @@ const DashboardScreen = memo(() => {
                     <span className="asteriskkey">*</span> Please read all the{" "}
                     <b>Instructions</b> present within the Header before
                     proceed!
+                  </p>
+                  <p>
+                    <span className="asteriskkey">*</span> Also please share
+                    your valuable <b>feedback</b> at the end.
                   </p>
                 </div>
                 <Row className="gx-0">

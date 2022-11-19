@@ -35,6 +35,7 @@ import {
   Modal,
   Accordion,
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import Select from "react-select";
 import Pdf from "react-to-pdf";
@@ -59,12 +60,14 @@ import {
   faBuilding,
   faLandmark,
 } from "@fortawesome/free-solid-svg-icons";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const steps = ["Step 1", "Step 2", "Step 3"];
 
 const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const [{ theme }] = useContext(ThemeContext);
   const pdffileref = createRef();
+  const navigate = useNavigate();
   const resumeIDval = resumeIDInfo;
   const resumeNameval = resumenameInfo;
   const [activeStep, setActiveStep] = useState(0);
@@ -84,10 +87,8 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const pdfSizeoptionsResume2 = {
     orientation: "portrait",
     unit: "in",
-    format: [13.5, 13.5],
+    format: [13.5, 16.5],
   };
-
-  console.log("resumeidvalue---> ", resumeIDInfo);
 
   ////////    Form 1 Variables
   const [enameval, setEnameval] = useState("");
@@ -280,6 +281,10 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const previewClick = () => {
     setPreview(true);
     setEyeicon(true);
+  };
+
+  const exitClick = () => {
+    navigate("/dashboard");
   };
 
   const scrollToTopNextStep = () => {
@@ -743,6 +748,15 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   >
                     Generate PDF
                   </Button>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    sx={{ color: theme.color, borderColor: theme.color }}
+                    startIcon={<CancelIcon sx={{ color: "red" }} />}
+                    onClick={exitClick}
+                  >
+                    EXIT
+                  </Button>
                 </div>
                 <div className="generatepdfBtn finalStep pt-3">
                   <p>
@@ -759,7 +773,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
         </div>
 
         <div className="ResumeFormdisplay-cont" ref={pdffileref}>
-          <Container style={{ height: "185vh" }}>
+          <Container style={{ height: "100%" }}>
             <Row className="gx-0">
               <Col
                 xs={12}
@@ -855,7 +869,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                       </ul>
                     </div>
                   ) : null}
-                   {isworkChecked3 ? (
+                  {isworkChecked3 ? (
                     <div className="resume1Project-cont">
                       <h4>
                         {eworkCname3val}
@@ -1007,6 +1021,15 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   >
                     Generate PDF
                   </Button>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    sx={{ color: theme.color, borderColor: theme.color }}
+                    startIcon={<CancelIcon sx={{ color: "red" }} />}
+                    onClick={exitClick}
+                  >
+                    EXIT
+                  </Button>
                 </div>
                 <div className="generatepdfBtn finalStep pt-3">
                   <p>
@@ -1023,7 +1046,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
         </div>
 
         <div className="ResumeFormdisplay-cont" ref={pdffileref}>
-          <Container style={{ border: "1px solid #DDDDDD", height: "185vh" }}>
+          <Container style={{ border: "1px solid #DDDDDD", height: "100%" }}>
             <Row className="gx-0">
               <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
                 <div style={{ backgroundColor: "#16365D", padding: "16px" }}>
@@ -1049,74 +1072,74 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   <p>{esummaryval}</p>
                 </div>
                 <div className="resume1Heading">
-                    <h4 style={{ color: "#D13C39" }}>WORK EXPERIENCE</h4>
-                  </div>
+                  <h4 style={{ color: "#D13C39" }}>WORK EXPERIENCE</h4>
+                </div>
+                <div className="resume1Project-cont">
+                  <h4>
+                    {eworkCname1val} - {eworkLoc1val}
+                  </h4>
+                  <h5>{eworkRole1val}</h5>
+                  <p>
+                    {workonemonthfromval} {workoneyearfromval} -{" "}
+                    {ispresentChecked1
+                      ? "Present"
+                      : `${workonemonthtoval} ${workoneyeartoval}`}
+                  </p>
+                  <ul>
+                    {workonepoint1exp === "" ? null : (
+                      <li>{workonepoint1exp}</li>
+                    )}
+                    {workonepoint2exp === "" ? null : (
+                      <li>{workonepoint2exp}</li>
+                    )}
+                  </ul>
+                </div>
+                {isworkChecked2 ? (
                   <div className="resume1Project-cont">
                     <h4>
-                      {eworkCname1val} - {eworkLoc1val}
+                      {eworkCname2val}
+                      {eworkLoc2val === "" ? null : ` - ${eworkLoc2val}`}
                     </h4>
-                    <h5>{eworkRole1val}</h5>
+                    <h5>{eworkRole2val}</h5>
                     <p>
-                      {workonemonthfromval} {workoneyearfromval} -{" "}
-                      {ispresentChecked1
+                      {worktwomonthfromval} {worktwoyearfromval} -{" "}
+                      {ispresentChecked2
                         ? "Present"
-                        : `${workonemonthtoval} ${workoneyeartoval}`}
+                        : `${worktwomonthtoval} ${worktwoyeartoval}`}
                     </p>
                     <ul>
-                      {workonepoint1exp === "" ? null : (
-                        <li>{workonepoint1exp}</li>
+                      {worktwopoint1exp === "" ? null : (
+                        <li>{worktwopoint1exp}</li>
                       )}
-                      {workonepoint2exp === "" ? null : (
-                        <li>{workonepoint2exp}</li>
+                      {worktwopoint2exp === "" ? null : (
+                        <li>{worktwopoint2exp}</li>
                       )}
                     </ul>
                   </div>
-                  {isworkChecked2 ? (
-                    <div className="resume1Project-cont">
-                      <h4>
-                        {eworkCname2val}
-                        {eworkLoc2val === "" ? null : ` - ${eworkLoc2val}`}
-                      </h4>
-                      <h5>{eworkRole2val}</h5>
-                      <p>
-                        {worktwomonthfromval} {worktwoyearfromval} -{" "}
-                        {ispresentChecked2
-                          ? "Present"
-                          : `${worktwomonthtoval} ${worktwoyeartoval}`}
-                      </p>
-                      <ul>
-                        {worktwopoint1exp === "" ? null : (
-                          <li>{worktwopoint1exp}</li>
-                        )}
-                        {worktwopoint2exp === "" ? null : (
-                          <li>{worktwopoint2exp}</li>
-                        )}
-                      </ul>
-                    </div>
-                  ) : null}
-                   {isworkChecked3 ? (
-                    <div className="resume1Project-cont">
-                      <h4>
-                        {eworkCname3val}
-                        {eworkLoc3val === "" ? null : ` - ${eworkLoc3val}`}
-                      </h4>
-                      <h5>{eworkRole3val}</h5>
-                      <p>
-                        {workthreemonthfromval} {workthreeyearfromval} -{" "}
-                        {ispresentChecked3
-                          ? "Present"
-                          : `${workthreemonthtoval} ${workthreeyeartoval}`}
-                      </p>
-                      <ul>
-                        {workthreepoint1exp === "" ? null : (
-                          <li>{workthreepoint1exp}</li>
-                        )}
-                        {workthreepoint2exp === "" ? null : (
-                          <li>{workthreepoint2exp}</li>
-                        )}
-                      </ul>
-                    </div>
-                  ) : null}
+                ) : null}
+                {isworkChecked3 ? (
+                  <div className="resume1Project-cont">
+                    <h4>
+                      {eworkCname3val}
+                      {eworkLoc3val === "" ? null : ` - ${eworkLoc3val}`}
+                    </h4>
+                    <h5>{eworkRole3val}</h5>
+                    <p>
+                      {workthreemonthfromval} {workthreeyearfromval} -{" "}
+                      {ispresentChecked3
+                        ? "Present"
+                        : `${workthreemonthtoval} ${workthreeyeartoval}`}
+                    </p>
+                    <ul>
+                      {workthreepoint1exp === "" ? null : (
+                        <li>{workthreepoint1exp}</li>
+                      )}
+                      {workthreepoint2exp === "" ? null : (
+                        <li>{workthreepoint2exp}</li>
+                      )}
+                    </ul>
+                  </div>
+                ) : null}
                 <div className="resume1Heading">
                   <h4 style={{ color: "#D13C39" }}>PROJECTS</h4>
                 </div>
@@ -1271,11 +1294,11 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                 </Button>
               </div>
               {preview === true ? (
-                resumeIDInfo == "Resume11" ? (
+                resumeIDInfo === "Resume11" ? (
                   <ResumeDesign1 />
-                ) : resumeIDInfo == "Resume12" ? (
+                ) : resumeIDInfo === "Resume12" ? (
                   <ResumeDesign2 />
-                ) : resumeIDInfo == "Resume13" ? (
+                ) : resumeIDInfo === "Resume13" ? (
                   <ResumeDesign1 />
                 ) : null
               ) : null}

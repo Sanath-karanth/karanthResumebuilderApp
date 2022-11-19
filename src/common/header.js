@@ -29,17 +29,20 @@ const HeaderScreen = memo(({ headerData }) => {
   };
 
   const aboutClick = () => {
-    navigate("/dashboard");
+    navigate("/about");
   };
   const feedbackClick = () => {
-    navigate("/dashboard");
+    navigate("/feedback");
   };
   const backClick = (event) => {
     if (headerData === "resumeform") {
       setBackmodalShow(true);
     }
-    if (headerData === "dashboard" || headerData === "about" || headerData === "feedback") 
-    {
+    if (
+      headerData === "dashboard" ||
+      headerData === "about" ||
+      headerData === "feedback"
+    ) {
       navigate(-1);
     }
   };
@@ -79,8 +82,8 @@ const HeaderScreen = memo(({ headerData }) => {
                   </li>
                   <li>
                     After filling all the details in the form, Go to the end of
-                    the form and click the button to get the Generate PDF
-                    button.
+                    the form and click on <b>PREVIEW</b> button to get the{" "}
+                    <b>GENERATE PDF</b> button.
                   </li>
                   <li>
                     <b>
@@ -95,7 +98,7 @@ const HeaderScreen = memo(({ headerData }) => {
                     with proper PDF layout.
                   </li>
                   <li>
-                    Kindly Request you to please provide your valuable{" "}
+                    Kindly Request you to please share your valuable{" "}
                     <b>feedback</b> at the end.
                   </li>
                 </ol>
@@ -140,6 +143,416 @@ const HeaderScreen = memo(({ headerData }) => {
     );
   }
 
+  const HeaderDashboard = () => {
+    return (
+      <Fragment>
+        {headerData === "dashboard" ? (
+          <Container fluid className="container-guttersforheader">
+            <div className="header-Desktop">
+              <Row className="gx-0">
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  lg={3}
+                  xl={3}
+                  xxl={4}
+                  className="headertitleCol"
+                >
+                  <div className="resumebuilderTitle-cont">
+                    <div className="headerlogo">
+                      <img
+                        src="./images/atom.png"
+                        className="Appheader-logo"
+                        alt="AppLogo"
+                      />
+                    </div>
+                    <div className="headertitle">
+                      <h3>Resume Builder</h3>
+                    </div>
+                  </div>
+                </Col>
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  lg={6}
+                  xl={6}
+                  xxl={4}
+                  className="headertabsCol"
+                >
+                  <div className="headertabsDesktop">
+                    <div className="headertabsDesktoptext" onClick={homeClick}>
+                      <FontAwesomeIcon
+                        icon={faHome}
+                        className="headerIconsDesktop"
+                      />
+                      <h4>Home</h4>
+                    </div>
+                    <div
+                      className="headertabsDesktoptext"
+                      onClick={instructionClick}
+                    >
+                      <FontAwesomeIcon
+                        icon={faQuestionCircle}
+                        className="headerIconsDesktop"
+                      />
+                      <h4>Instructions</h4>
+                    </div>
+                    <div className="headertabsDesktoptext" onClick={aboutClick}>
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        className="headerIconsDesktop"
+                      />
+                      <h4>About</h4>
+                    </div>
+                  </div>
+                </Col>
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={2}
+                  lg={3}
+                  xl={3}
+                  xxl={4}
+                  className="headerthemeCol"
+                >
+                  <div
+                    className="headertabsDesktoptext"
+                    onClick={feedbackClick}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCommentDots}
+                      className="headerIconsDesktop"
+                    />
+                    <h4>Feedback</h4>
+                  </div>
+                  <div className="headertoggle-cont">
+                    <ToggleButton onChange={toggleTheme}></ToggleButton>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+            {/* -------------------  Mobile view   ----------------- */}
+            <div className="header-Mobile">
+              <Row className="gx-0">
+                <Col xs={4} sm={4} className="headertitleCol">
+                  <div className="resumebuilderTitle-cont">
+                    <div className="headerlogo">
+                      <img
+                        src="./images/atom.png"
+                        className="Appheader-logo"
+                        alt="AppLogo"
+                      />
+                    </div>
+                    <div className="headertitle">
+                      <h3>Resume Builder</h3>
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={8} sm={8} className="headerthemeCol">
+                  <div
+                    className="headertabsMobile"
+                    style={{ backgroundColor: theme.tabIconsBgColor }}
+                  >
+                    <div className="headertabsMobileIcons" onClick={aboutClick}>
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        style={{ color: theme.tabIcons }}
+                        className="headerIconsMobile"
+                      />
+                      <p style={{ color: theme.tabIcons }}>About</p>
+                    </div>
+                    <div
+                      className="headertabsMobileIcons"
+                      onClick={feedbackClick}
+                    >
+                      <FontAwesomeIcon
+                        icon={faCommentDots}
+                        style={{ color: theme.tabIcons }}
+                        className="headerIconsMobile"
+                      />
+                      <p style={{ color: theme.tabIcons }}>Feedback</p>
+                    </div>
+                    <div
+                      className="headertabsMobileIcons"
+                      onClick={instructionClick}
+                    >
+                      <FontAwesomeIcon
+                        icon={faQuestionCircle}
+                        style={{ color: theme.tabIcons }}
+                        className="headerIconsMobile"
+                      />
+                      <p style={{ color: theme.tabIcons }}>Instructions</p>
+                    </div>
+                  </div>
+                  <div className="headertoggle-cont">
+                    <ToggleButton onChange={toggleTheme}></ToggleButton>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Container>
+        ) : null}
+      </Fragment>
+    );
+  };
+
+  const HeaderResumeForm = () => {
+    return (
+      <Fragment>
+        {headerData === "resumeform" ? (
+          <Container fluid className="container-guttersforheader">
+            <div className="header-Desktop">
+              <Row className="gx-0">
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  lg={3}
+                  xl={3}
+                  xxl={4}
+                  className="headertitleCol"
+                >
+                  <div className="resumebuilderTitle-cont">
+                    <div className="headerlogo">
+                      <img
+                        src="./images/atom.png"
+                        className="Appheader-logo"
+                        alt="AppLogo"
+                      />
+                    </div>
+                    <div className="headertitle">
+                      <h3>Resume Builder</h3>
+                    </div>
+                  </div>
+                </Col>
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  lg={6}
+                  xl={6}
+                  xxl={4}
+                  className="headertabsCol"
+                >
+                  <div className="headertabsDesktop">
+                    <div className="headertabsDesktoptext" onClick={homeClick}>
+                      <FontAwesomeIcon
+                        icon={faHome}
+                        className="headerIconsDesktop"
+                      />
+                      <h4>Home</h4>
+                    </div>
+                    <div
+                      className="headertabsDesktoptext"
+                      onClick={instructionClick}
+                    >
+                      <FontAwesomeIcon
+                        icon={faQuestionCircle}
+                        className="headerIconsDesktop"
+                      />
+                      <h4>Instructions</h4>
+                    </div>
+                    <div className="headertabsDesktoptext" onClick={aboutClick}>
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        className="headerIconsDesktop"
+                      />
+                      <h4>About</h4>
+                    </div>
+                  </div>
+                </Col>
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={2}
+                  lg={3}
+                  xl={3}
+                  xxl={4}
+                  className="headerthemeCol"
+                >
+                  <div
+                    className="headertabsDesktoptext"
+                    onClick={feedbackClick}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCommentDots}
+                      className="headerIconsDesktop"
+                    />
+                    <h4>Feedback</h4>
+                  </div>
+                  <div className="headertoggle-cont">
+                    <ToggleButton onChange={toggleTheme}></ToggleButton>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+            {/* -------------------  Mobile view   ----------------- */}
+            <div className="header-Mobile">
+              <Row className="gx-0">
+                <Col xs={4} sm={4} className="headertitleCol">
+                  <div className="resumebuilderTitle-cont">
+                    <div className="headerlogo">
+                      <img
+                        src="./images/atom.png"
+                        className="Appheader-logo"
+                        alt="AppLogo"
+                      />
+                    </div>
+                    <div className="headertitle">
+                      <h3>Resume Builder</h3>
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={8} sm={8} className="headerthemeCol">
+                  <div
+                    className="headertabsMobile"
+                    style={{ backgroundColor: theme.tabIconsBgColor }}
+                  >
+                    <div className="headertabsMobileIcons" onClick={aboutClick}>
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        style={{ color: theme.tabIcons }}
+                        className="headerIconsMobile"
+                      />
+                      <p style={{ color: theme.tabIcons }}>About</p>
+                    </div>
+                    <div
+                      className="headertabsMobileIcons"
+                      onClick={feedbackClick}
+                    >
+                      <FontAwesomeIcon
+                        icon={faCommentDots}
+                        style={{ color: theme.tabIcons }}
+                        className="headerIconsMobile"
+                      />
+                      <p style={{ color: theme.tabIcons }}>Feedback</p>
+                    </div>
+                    <div
+                      className="headertabsMobileIcons"
+                      onClick={instructionClick}
+                    >
+                      <FontAwesomeIcon
+                        icon={faQuestionCircle}
+                        style={{ color: theme.tabIcons }}
+                        className="headerIconsMobile"
+                      />
+                      <p style={{ color: theme.tabIcons }}>Instructions</p>
+                    </div>
+                  </div>
+                  <div className="headertoggle-cont">
+                    <ToggleButton onChange={toggleTheme}></ToggleButton>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Container>
+        ) : null}
+      </Fragment>
+    );
+  };
+
+  const HeaderAbout = () => {
+    return (
+      <Fragment>
+        {headerData === "about" ? (
+          <Container fluid className="container-guttersforheader">
+            <div className="header-Desktop">
+              <Row className="gx-0">
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={8}
+                  lg={8}
+                  xl={8}
+                  xxl={8}
+                  className="headertabsCol"
+                >
+                  <div className="headertabsDesktop">
+                    <div className="headertabsDesktoptext" onClick={backClick}>
+                      <FontAwesomeIcon
+                        icon={faChevronLeft}
+                        className="headerIconsDesktopBack"
+                      />
+                      <h4>Back</h4>
+                    </div>
+                    <div className="headertabsDesktoptext" onClick={homeClick}>
+                      <FontAwesomeIcon
+                        icon={faHome}
+                        className="headerIconsDesktop"
+                      />
+                      <h4>Home</h4>
+                    </div>
+                  </div>
+                </Col>
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  lg={4}
+                  xl={4}
+                  xxl={4}
+                  className="headerthemeCol"
+                >
+                  <div
+                    className="headertabsDesktoptext"
+                    onClick={feedbackClick}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCommentDots}
+                      className="headerIconsDesktop"
+                    />
+                    <h4>Feedback</h4>
+                  </div>
+                  <div className="headertoggle-cont">
+                    <ToggleButton onChange={toggleTheme}></ToggleButton>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+            {/* -------------------  Mobile view   ----------------- */}
+            <div className="header-Mobile">
+              <Row className="gx-0">
+                <Col xs={8} sm={8} className="headerBackCol">
+                  <div
+                    className="headertabsMobile"
+                    style={{ backgroundColor: theme.tabIconsBgColor }}
+                  >
+                    <div className="headertabsMobileIcons" onClick={backClick}>
+                      <FontAwesomeIcon
+                        icon={faChevronLeft}
+                        style={{ color: theme.tabIcons }}
+                        className="headerIconsMobile"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className="headertabsMobile"
+                    style={{ backgroundColor: theme.tabIconsBgColor }}
+                  >
+                    <div className="headertabsMobileIcons" onClick={homeClick}>
+                      <FontAwesomeIcon
+                        icon={faHome}
+                        style={{ color: theme.tabIcons }}
+                        className="headerIconsMobile"
+                      />
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={4} sm={4} className="headerthemeCol">
+                  <div className="headertoggle-cont">
+                    <ToggleButton onChange={toggleTheme}></ToggleButton>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Container>
+        ) : null}
+      </Fragment>
+    );
+  };
+
   return (
     <Fragment>
       <InstructionsModal
@@ -160,269 +573,9 @@ const HeaderScreen = memo(({ headerData }) => {
               boxShadow: theme.shadowBottomColor,
             }}
           >
-            {headerData === "dashboard" ? (
-              <Container fluid className="container-guttersforheader">
-                <div className="header-Desktop">
-                  <Row className="gx-0">
-                    <Col
-                      xs={12}
-                      sm={12}
-                      md={4}
-                      lg={3}
-                      xl={3}
-                      xxl={4}
-                      className="headertitleCol"
-                    >
-                      <div className="resumebuilderTitle-cont">
-                        <div className="headerlogo">
-                          <img
-                            src="./images/atom.png"
-                            className="Appheader-logo"
-                            alt="AppLogo"
-                          />
-                        </div>
-                        <div className="headertitle">
-                          <h3>Resume Builder</h3>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col
-                      xs={12}
-                      sm={12}
-                      md={6}
-                      lg={6}
-                      xl={6}
-                      xxl={4}
-                      className="headertabsCol"
-                    >
-                      <div className="headertabsDesktop">
-                        <div
-                          className="headertabsDesktoptext"
-                          onClick={homeClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faHome}
-                            className="headerIconsDesktop"
-                          />
-                          <h4>Home</h4>
-                        </div>
-                        <div
-                          className="headertabsDesktoptext"
-                          onClick={instructionClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faQuestionCircle}
-                            className="headerIconsDesktop"
-                          />
-                          <h4>Instructions</h4>
-                        </div>
-                        <div
-                          className="headertabsDesktoptext"
-                          onClick={aboutClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faUser}
-                            className="headerIconsDesktop"
-                          />
-                          <h4>About</h4>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col
-                      xs={12}
-                      sm={12}
-                      md={2}
-                      lg={3}
-                      xl={3}
-                      xxl={4}
-                      className="headerthemeCol"
-                    >
-                      <div
-                        className="headertabsDesktoptext"
-                        onClick={feedbackClick}
-                      >
-                        <FontAwesomeIcon
-                          icon={faCommentDots}
-                          className="headerIconsDesktop"
-                        />
-                        <h4>Feedback</h4>
-                      </div>
-                      <div className="headertoggle-cont">
-                        <ToggleButton onChange={toggleTheme}></ToggleButton>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-                {/* -------------------  Mobile view   ----------------- */}
-                <div className="header-Mobile">
-                  <Row className="gx-0">
-                    <Col xs={4} sm={4} className="headertitleCol">
-                      <div className="resumebuilderTitle-cont">
-                        <div className="headerlogo">
-                          <img
-                            src="./images/atom.png"
-                            className="Appheader-logo"
-                            alt="AppLogo"
-                          />
-                        </div>
-                        <div className="headertitle">
-                          <h3>Resume Builder</h3>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col xs={8} sm={8} className="headerthemeCol">
-                      <div
-                        className="headertabsMobile"
-                        style={{ backgroundColor: theme.tabIconsBgColor }}
-                      >
-                        <div
-                          className="headertabsMobileIcons"
-                          onClick={aboutClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faUser}
-                            style={{ color: theme.tabIcons }}
-                            className="headerIconsMobile"
-                          />
-                          <p style={{ color: theme.tabIcons }}>About</p>
-                        </div>
-                        <div
-                          className="headertabsMobileIcons"
-                          onClick={feedbackClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faCommentDots}
-                            style={{ color: theme.tabIcons }}
-                            className="headerIconsMobile"
-                          />
-                          <p style={{ color: theme.tabIcons }}>Feedback</p>
-                        </div>
-                        <div
-                          className="headertabsMobileIcons"
-                          onClick={instructionClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faQuestionCircle}
-                            style={{ color: theme.tabIcons }}
-                            className="headerIconsMobile"
-                          />
-                          <p style={{ color: theme.tabIcons }}>Instructions</p>
-                        </div>
-                      </div>
-                      <div className="headertoggle-cont">
-                        <ToggleButton onChange={toggleTheme}></ToggleButton>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-              </Container>
-            ) : null}
-
-            {headerData === "resumeform" ? (
-              <Container fluid className="container-guttersforheader">
-                <div className="header-Desktop">
-                  <Row className="gx-0">
-                    <Col
-                      xs={12}
-                      sm={12}
-                      md={8}
-                      lg={8}
-                      xl={8}
-                      xxl={8}
-                      className="headertabsCol"
-                    >
-                      <div className="headertabsDesktop">
-                        <div
-                          className="headertabsDesktoptext"
-                          onClick={backClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faChevronLeft}
-                            className="headerIconsDesktopBack"
-                          />
-                          <h4>Back</h4>
-                        </div>
-                        <div
-                          className="headertabsDesktoptext"
-                          onClick={homeClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faHome}
-                            className="headerIconsDesktop"
-                          />
-                          <h4>Home</h4>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col
-                      xs={12}
-                      sm={12}
-                      md={4}
-                      lg={4}
-                      xl={4}
-                      xxl={4}
-                      className="headerthemeCol"
-                    >
-                      <div
-                        className="headertabsDesktoptext"
-                        onClick={feedbackClick}
-                      >
-                        <FontAwesomeIcon
-                          icon={faCommentDots}
-                          className="headerIconsDesktop"
-                        />
-                        <h4>Feedback</h4>
-                      </div>
-                      <div className="headertoggle-cont">
-                        <ToggleButton onChange={toggleTheme}></ToggleButton>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-                {/* -------------------  Mobile view   ----------------- */}
-                <div className="header-Mobile">
-                  <Row className="gx-0">
-                    <Col xs={8} sm={8} className="headerBackCol">
-                      <div
-                        className="headertabsMobile"
-                        style={{ backgroundColor: theme.tabIconsBgColor }}
-                      >
-                        <div
-                          className="headertabsMobileIcons"
-                          onClick={backClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faChevronLeft}
-                            style={{ color: theme.tabIcons }}
-                            className="headerIconsMobile"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className="headertabsMobile"
-                        style={{ backgroundColor: theme.tabIconsBgColor }}
-                      >
-                        <div
-                          className="headertabsMobileIcons"
-                          onClick={homeClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faHome}
-                            style={{ color: theme.tabIcons }}
-                            className="headerIconsMobile"
-                          />
-                        </div>
-                      </div>
-                    </Col>
-                    <Col xs={4} sm={4} className="headerthemeCol">
-                      <div className="headertoggle-cont">
-                        <ToggleButton onChange={toggleTheme}></ToggleButton>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-              </Container>
-            ) : null}
+            <HeaderDashboard />
+            <HeaderResumeForm />
+            <HeaderAbout />
           </div>
         </div>
       </div>
