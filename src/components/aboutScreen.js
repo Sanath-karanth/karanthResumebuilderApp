@@ -1,21 +1,16 @@
-import React, { memo, useState, useEffect, useContext, Fragment } from "react";
+import React, { memo, Fragment } from "react";
 import "../css/about.css";
 import HeaderScreen from "../common/header";
-import { ThemeContext } from "../contexts/themeContext";
-import { Container, Row, Col, Card, Modal, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
-  faUser,
   faPhone,
   faLocationDot,
   faBriefcase,
 } from "@fortawesome/free-solid-svg-icons";
 
 const AboutScreen = () => {
-  const [{ theme }] = useContext(ThemeContext);
-  const navigate = useNavigate();
   const headertextValue = "about";
   return (
     <Fragment>
