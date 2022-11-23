@@ -6,6 +6,7 @@ import DashboardPage from "./components/dashboardScreen";
 import ResumeFormPage from "./components/resumeFormScreen";
 import FeedbackPage from "./components/feedbackScreen";
 import AboutPage from "./components/aboutScreen";
+import ReviewPage from "./components/reviewScreen";
 import DemoPage from "./components/demo";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="resumeform" element={<ResumeFormPage />}></Route>
         <Route path="feedback" element={<FeedbackPage />}></Route>
         <Route path="about" element={<AboutPage />}></Route>
+        <Route path="review" element={<ReviewPage />}></Route>
         <Route path="demo" element={<DemoPage />}></Route>
       </Routes>
     </AuthProvider>

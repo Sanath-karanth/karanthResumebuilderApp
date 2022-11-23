@@ -1,34 +1,20 @@
-import React, { memo, useState, useContext, Fragment, useEffect } from "react";
+import React, { memo, useState, useContext, Fragment } from "react";
 import "../../css/header.css";
 import { ThemeContext } from "../../contexts/themeContext";
 import ToggleButton from "../toggle";
 import { Container, Row, Col, Card, Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faChevronLeft,
-  faCommentDots,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHome, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderScreen = memo(({ headerData }) => {
   const [{ theme }, toggleTheme] = useContext(ThemeContext);
   const navigate = useNavigate();
   const [instructionmodalShow, setInstructionmodalShow] = useState(false);
   const [backmodalShow, setBackmodalShow] = useState(false);
-  const [reviewshow, setReviewshow] = useState(false);
 
   const homeClick = () => {
     navigate("/dashboard");
-  };
-
-  const reviewClick = () => {
-    navigate("/review");
-  };
-
-  const feedbackClick = () => {
-    navigate("/feedback");
   };
 
   const backClick = (event) => {
@@ -48,19 +34,6 @@ const HeaderScreen = memo(({ headerData }) => {
     event.preventDefault();
     navigate("/dashboard", { replace: true });
   };
-
-  const reviewstoreCheck = async () => {
-    let userstorevalue = localStorage.getItem("UserName");
-    if (userstorevalue === "sanathorthotech") {
-      setReviewshow(true);
-    } else {
-      setReviewshow(false);
-    }
-  };
-
-  useEffect(() => {
-    reviewstoreCheck();
-  }, []);
 
   function InstructionsModal(props) {
     return (
@@ -174,7 +147,7 @@ const HeaderScreen = memo(({ headerData }) => {
               boxShadow: theme.shadowBottomColor,
             }}
           >
-            {headerData === "about" ? (
+            {headerData === "review" ? (
               <Container fluid className="container-guttersforheader">
                 <div className="header-Desktop">
                   <Row className="gx-0">
@@ -208,18 +181,6 @@ const HeaderScreen = memo(({ headerData }) => {
                           />
                           <h4>Home</h4>
                         </div>
-                        {reviewshow && (
-                          <div
-                            className="headertabsDesktoptext"
-                            onClick={reviewClick}
-                          >
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              className="headerIconsDesktop"
-                            />
-                            <h4>Reviews</h4>
-                          </div>
-                        )}
                       </div>
                     </Col>
                     <Col
@@ -231,16 +192,6 @@ const HeaderScreen = memo(({ headerData }) => {
                       xxl={4}
                       className="headerthemeCol"
                     >
-                      <div
-                        className="headertabsDesktoptext"
-                        onClick={feedbackClick}
-                      >
-                        <FontAwesomeIcon
-                          icon={faCommentDots}
-                          className="headerIconsDesktop"
-                        />
-                        <h4>Feedback</h4>
-                      </div>
                       <div className="headertoggle-cont">
                         <ToggleButton onChange={toggleTheme}></ToggleButton>
                       </div>
