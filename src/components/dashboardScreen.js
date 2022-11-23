@@ -7,7 +7,7 @@ import React, {
   Fragment,
 } from "react";
 import "../css/dashboard.css";
-import HeaderScreen from "../common/header";
+import HeaderScreen from "../common/header/dashboardheader";
 import FooterScreen from "../common/footer";
 import { ThemeContext } from "../contexts/themeContext";
 import { resumeData } from "../json/json";

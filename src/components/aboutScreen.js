@@ -1,6 +1,6 @@
 import React, { memo, Fragment } from "react";
 import "../css/about.css";
-import HeaderScreen from "../common/header";
+import HeaderScreen from "../common/header/aboutheader";
 import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

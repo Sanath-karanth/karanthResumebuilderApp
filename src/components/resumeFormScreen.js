@@ -8,36 +8,22 @@ import React, {
 } from "react";
 import "../css/resumeform.scss";
 import { Loader } from "rsuite";
-import HeaderScreen from "../common/header";
+import HeaderScreen from "../common/header/resumeheader";
 import FooterScreen from "../common/footer";
 import { ThemeContext } from "../contexts/themeContext";
-import { resumeData } from "../json/json";
-import { useNavigate, useLocation } from "react-router-dom";
-import { Container, Row, Col, Button, Card, Modal } from "react-bootstrap";
-import moment from "moment";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faQuestionCircle,
-  faCommentDots,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
+import { useLocation } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import FresherFormScreen from "./fresherFormScreen";
 import ExperienceFormScreen from "./experienceFormScreen";
 
 const ResumeFormScreen = memo(() => {
-  const [{ theme, isDark }] = useContext(ThemeContext);
-  const navigate = useNavigate();
+  const [{ theme }] = useContext(ThemeContext);
   const { state } = useLocation();
   const { resumeid, resumename } = state;
   const headertextValue = "resumeform";
   const [spin, setSpin] = useState(true);
   const [fresherVal, setFresherVal] = useState(true);
   const [expVal, setExpVal] = useState(false);
-
-  const backClick = () => {
-    navigate("/dashboard");
-  };
 
   const fresherClick = () => {
     setFresherVal(true);
@@ -78,9 +64,9 @@ const ResumeFormScreen = memo(() => {
     //   behavior: "smooth",
     // });
     window.scroll({
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth'
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
   }, [tabsAction]);
 
@@ -132,12 +118,19 @@ const ResumeFormScreen = memo(() => {
               </div>
 
               <Container className="container-guttersforResumeform">
-                {fresherVal === true ? <FresherFormScreen resumeIDInfo={resumeid} resumenameInfo={resumename} /> : null}
-                {expVal === true ? <ExperienceFormScreen resumeIDInfo={resumeid} resumenameInfo={resumename} /> : null}
+                {fresherVal === true ? (
+                  <FresherFormScreen
+                    resumeIDInfo={resumeid}
+                    resumenameInfo={resumename}
+                  />
+                ) : null}
+                {expVal === true ? (
+                  <ExperienceFormScreen
+                    resumeIDInfo={resumeid}
+                    resumenameInfo={resumename}
+                  />
+                ) : null}
               </Container>
-
-              {/* <h2>{resumeid}</h2>
-              <p>{resumename}</p> */}
             </div>
             <FooterScreen />
           </div>
