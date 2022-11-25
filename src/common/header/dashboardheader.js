@@ -15,6 +15,7 @@ import {
 const HeaderScreen = memo(({ headerData }) => {
   const [{ theme }, toggleTheme] = useContext(ThemeContext);
   const navigate = useNavigate();
+
   const [instructionmodalShow, setInstructionmodalShow] = useState(false);
   const [backmodalShow, setBackmodalShow] = useState(false);
 
@@ -244,7 +245,7 @@ const HeaderScreen = memo(({ headerData }) => {
                     </Col>
                   </Row>
                 </div>
-                {/* -------------------  Mobile view   ----------------- */}
+                {/* -------------------  Mobile header view   ----------------- */}
                 <div className="header-Mobile">
                   <Row className="gx-0">
                     <Col xs={4} sm={4} className="headertitleCol">

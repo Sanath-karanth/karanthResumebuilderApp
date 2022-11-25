@@ -14,27 +14,15 @@ import { resumeData } from "../json/json";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "rsuite";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import moment from "moment";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faQuestionCircle,
-  faCommentDots,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
 
 const DashboardScreen = memo(() => {
   const [{ theme, isDark }] = useContext(ThemeContext);
+  const navigate = useNavigate();
+
+  const headertextValue = "dashboard";
   const [SelectedVal, setSelectedVal] = useState("");
   const [idVal, setIdVal] = useState("");
-  const navigate = useNavigate();
-  let currentyear = moment().format("YYYY");
   const [spin, setSpin] = useState(true);
-  const headertextValue = "dashboard";
-
-  const homeClick = () => {
-    navigate("/home");
-  };
 
   const proceedClick = () => {
     navigate("../resumeform", {
@@ -89,10 +77,6 @@ const DashboardScreen = memo(() => {
   }, [spin]);
 
   useEffect(() => {
-    // var scrolltotopCont = document.querySelector(".scrolltotop");
-    // scrolltotopCont.scrollIntoView({
-    //   behavior: "smooth",
-    // });
     window.scroll({
       top: 0,
       left: 0,
