@@ -15,6 +15,7 @@ import {
 const HeaderScreen = memo(({ headerData }) => {
   const [{ theme }, toggleTheme] = useContext(ThemeContext);
   const navigate = useNavigate();
+
   const [instructionmodalShow, setInstructionmodalShow] = useState(false);
   const [backmodalShow, setBackmodalShow] = useState(false);
   const [reviewshow, setReviewshow] = useState(false);
@@ -31,7 +32,7 @@ const HeaderScreen = memo(({ headerData }) => {
     navigate("/feedback");
   };
 
-  const backClick = (event) => {
+  const backClick = () => {
     if (headerData === "resumeform") {
       setBackmodalShow(true);
     }
@@ -247,7 +248,7 @@ const HeaderScreen = memo(({ headerData }) => {
                     </Col>
                   </Row>
                 </div>
-                {/* -------------------  Mobile view   ----------------- */}
+                {/* -------------------  Mobile header view   ----------------- */}
                 <div className="header-Mobile">
                   <Row className="gx-0">
                     <Col xs={8} sm={8} className="headerBackCol">
