@@ -316,4 +316,4 @@ const HeaderScreen = memo(({ headerData }) => {
   );
 });
 
-export default HeaderScreen;
+export default memo(HeaderScreen);

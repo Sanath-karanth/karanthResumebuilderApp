@@ -216,4 +216,4 @@ const DashboardScreen = memo(() => {
   );
 });
 
-export default DashboardScreen;
+export default memo(DashboardScreen);
