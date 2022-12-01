@@ -7,14 +7,14 @@ import React, {
   Fragment,
 } from "react";
 import "../css/resumeform.scss";
-import { Loader } from "rsuite";
 import HeaderScreen from "../common/header/resumeheader";
 import FooterScreen from "../common/footer";
 import { ThemeContext } from "../contexts/themeContext";
-import { useLocation } from "react-router-dom";
-import { Container } from "react-bootstrap";
 import FresherFormScreen from "./fresherFormScreen";
 import ExperienceFormScreen from "./experienceFormScreen";
+import { useLocation } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import { Loader } from "rsuite";
 
 const ResumeFormScreen = memo(() => {
   const [{ theme }] = useContext(ThemeContext);
@@ -59,10 +59,6 @@ const ResumeFormScreen = memo(() => {
 
   useEffect(() => {
     tabsAction();
-    // var scrolltotopCont = document.querySelector(".scrolltotopForm");
-    // scrolltotopCont.scrollIntoView({
-    //   behavior: "smooth",
-    // });
     window.scroll({
       top: 0,
       left: 0,
