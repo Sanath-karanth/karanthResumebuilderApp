@@ -7,23 +7,30 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
-  faQuestionCircle,
   faCommentDots,
+  faQuestionCircle,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderScreen = memo(({ headerData }) => {
-  const [{ theme }, toggleTheme] = useContext(ThemeContext);
+  const [{ theme, isDark }, toggleTheme] = useContext(ThemeContext);
   const navigate = useNavigate();
+
   const [instructionmodalShow, setInstructionmodalShow] = useState(false);
   const [backmodalShow, setBackmodalShow] = useState(false);
 
   const homeClick = () => {
-    navigate("/dashboard");
-  };
-
-  const instructionClick = () => {
-    setInstructionmodalShow(true);
+    if (headerData === "resumeform") {
+      setBackmodalShow(true);
+    }
+    if (
+      headerData === "dashboard" ||
+      headerData === "about" ||
+      headerData === "feedback" ||
+      headerData === "review"
+    ) {
+      navigate("/dashboard");
+    }
   };
 
   const aboutClick = () => {
@@ -32,6 +39,10 @@ const HeaderScreen = memo(({ headerData }) => {
 
   const feedbackClick = () => {
     navigate("/feedback");
+  };
+
+  const instructionClick = () => {
+    setInstructionmodalShow(true);
   };
 
   const modalYesClick = (event) => {
@@ -70,8 +81,9 @@ const HeaderScreen = memo(({ headerData }) => {
                   </li>
                   <li>
                     After filling all the details in the form, Go to the end of
-                    the form and click on <b>PREVIEW</b> button to get the{" "}
-                    <b>GENERATE PDF</b> button.
+                    the form and click on{" "}
+                    <b style={{ color: "#df4759" }}>PREVIEW</b> button to get
+                    the <b style={{ color: "#df4759" }}>GENERATE PDF</b> button.
                   </li>
                   <li>
                     <b>
@@ -81,13 +93,14 @@ const HeaderScreen = memo(({ headerData }) => {
                     the details with short descriptions.
                   </li>
                   <li>
-                    Kindly use <b>Laptop</b>, <b>Desktop</b> or{" "}
-                    <b>Mobile Desktop Site's</b> Chrome for generating resume
-                    with proper PDF layout.
+                    Kindly use <b style={{ color: "#df4759" }}>Laptop</b>,{" "}
+                    <b style={{ color: "#df4759" }}>Desktop</b> or{" "}
+                    <b style={{ color: "#df4759" }}>Mobile Desktop Site's</b>{" "}
+                    Chrome for generating resume with proper PDF layout.
                   </li>
                   <li>
                     Kindly Request you to please share your valuable{" "}
-                    <b>feedback</b> at the end.
+                    <b style={{ color: "#df4759" }}>feedback</b> at the end.
                   </li>
                 </ol>
               </Card.Text>
@@ -158,32 +171,10 @@ const HeaderScreen = memo(({ headerData }) => {
                     <Col
                       xs={12}
                       sm={12}
-                      md={4}
-                      lg={3}
-                      xl={3}
-                      xxl={4}
-                      className="headertitleCol"
-                    >
-                      <div className="resumebuilderTitle-cont">
-                        <div className="headerlogo">
-                          <img
-                            src="./images/atom.png"
-                            className="Appheader-logo"
-                            alt="AppLogo"
-                          />
-                        </div>
-                        <div className="headertitle">
-                          <h3>Resume Builder</h3>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col
-                      xs={12}
-                      sm={12}
-                      md={6}
-                      lg={6}
-                      xl={6}
-                      xxl={4}
+                      md={8}
+                      lg={8}
+                      xl={8}
+                      xxl={8}
                       className="headertabsCol"
                     >
                       <div className="headertabsDesktop">
@@ -222,9 +213,9 @@ const HeaderScreen = memo(({ headerData }) => {
                     <Col
                       xs={12}
                       sm={12}
-                      md={2}
-                      lg={3}
-                      xl={3}
+                      md={4}
+                      lg={4}
+                      xl={4}
                       xxl={4}
                       className="headerthemeCol"
                     >
@@ -239,29 +230,48 @@ const HeaderScreen = memo(({ headerData }) => {
                         <h4>Feedback</h4>
                       </div>
                       <div className="headertoggle-cont">
-                        <ToggleButton onChange={toggleTheme}></ToggleButton>
+                        <ToggleButton
+                          onChange={toggleTheme}
+                          defaultChecked={isDark}
+                        ></ToggleButton>
                       </div>
                     </Col>
                   </Row>
                 </div>
-                {/* -------------------  Mobile view   ----------------- */}
+                {/* -------------------  Mobile header view   ----------------- */}
                 <div className="header-Mobile">
                   <Row className="gx-0">
-                    <Col xs={4} sm={4} className="headertitleCol">
-                      <div className="resumebuilderTitle-cont">
-                        <div className="headerlogo">
-                          <img
-                            src="./images/atom.png"
-                            className="Appheader-logo"
-                            alt="AppLogo"
+                    <Col xs={8} sm={8} className="headerBackCol">
+                      <div
+                        className="headertabsMobile"
+                        style={{ backgroundColor: theme.tabIconsBgColor }}
+                      >
+                        <div
+                          className="headertabsMobileIcons"
+                          onClick={homeClick}
+                        >
+                          <FontAwesomeIcon
+                            icon={faHome}
+                            style={{ color: theme.tabIcons }}
+                            className="headerIconsMobile"
                           />
                         </div>
-                        <div className="headertitle">
-                          <h3>Resume Builder</h3>
+                      </div>
+                      <div
+                        className="headertabsMobile"
+                        style={{ backgroundColor: theme.tabIconsBgColor }}
+                      >
+                        <div
+                          className="headertabsMobileIcons"
+                          onClick={instructionClick}
+                        >
+                          <FontAwesomeIcon
+                            icon={faQuestionCircle}
+                            style={{ color: theme.tabIcons }}
+                            className="headerIconsMobile"
+                          />
                         </div>
                       </div>
-                    </Col>
-                    <Col xs={8} sm={8} className="headerthemeCol">
                       <div
                         className="headertabsMobile"
                         style={{ backgroundColor: theme.tabIconsBgColor }}
@@ -275,8 +285,12 @@ const HeaderScreen = memo(({ headerData }) => {
                             style={{ color: theme.tabIcons }}
                             className="headerIconsMobile"
                           />
-                          <p style={{ color: theme.tabIcons }}>About</p>
                         </div>
+                      </div>
+                      <div
+                        className="headertabsMobile"
+                        style={{ backgroundColor: theme.tabIconsBgColor }}
+                      >
                         <div
                           className="headertabsMobileIcons"
                           onClick={feedbackClick}
@@ -286,22 +300,15 @@ const HeaderScreen = memo(({ headerData }) => {
                             style={{ color: theme.tabIcons }}
                             className="headerIconsMobile"
                           />
-                          <p style={{ color: theme.tabIcons }}>Feedback</p>
-                        </div>
-                        <div
-                          className="headertabsMobileIcons"
-                          onClick={instructionClick}
-                        >
-                          <FontAwesomeIcon
-                            icon={faQuestionCircle}
-                            style={{ color: theme.tabIcons }}
-                            className="headerIconsMobile"
-                          />
-                          <p style={{ color: theme.tabIcons }}>Instructions</p>
                         </div>
                       </div>
+                    </Col>
+                    <Col xs={4} sm={4} className="headerthemeCol">
                       <div className="headertoggle-cont">
-                        <ToggleButton onChange={toggleTheme}></ToggleButton>
+                        <ToggleButton
+                          onChange={toggleTheme}
+                          defaultChecked={isDark}
+                        ></ToggleButton>
                       </div>
                     </Col>
                   </Row>

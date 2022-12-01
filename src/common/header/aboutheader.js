@@ -1,8 +1,8 @@
 import React, { memo, useState, useContext, Fragment, useEffect } from "react";
 import "../../css/header.css";
 import { ThemeContext } from "../../contexts/themeContext";
-import ToggleButton from "../toggle";
-import { Container, Row, Col, Card, Modal, Button } from "react-bootstrap";
+// import ToggleButton from "../toggle";
+import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,11 +13,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderScreen = memo(({ headerData }) => {
-  const [{ theme }, toggleTheme] = useContext(ThemeContext);
+  const [{ theme }] = useContext(ThemeContext);
   const navigate = useNavigate();
 
-  const [instructionmodalShow, setInstructionmodalShow] = useState(false);
-  const [backmodalShow, setBackmodalShow] = useState(false);
   const [reviewshow, setReviewshow] = useState(false);
 
   const homeClick = () => {
@@ -33,21 +31,7 @@ const HeaderScreen = memo(({ headerData }) => {
   };
 
   const backClick = () => {
-    if (headerData === "resumeform") {
-      setBackmodalShow(true);
-    }
-    if (
-      headerData === "dashboard" ||
-      headerData === "about" ||
-      headerData === "feedback"
-    ) {
-      navigate(-1);
-    }
-  };
-
-  const modalYesClick = (event) => {
-    event.preventDefault();
-    navigate("/dashboard", { replace: true });
+    navigate(-1);
   };
 
   const reviewstoreCheck = async () => {
@@ -63,108 +47,8 @@ const HeaderScreen = memo(({ headerData }) => {
     reviewstoreCheck();
   }, []);
 
-  function InstructionsModal(props) {
-    return (
-      <Modal
-        scrollable
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title
-            className="modal-title"
-            id="contained-modal-title-vcenter"
-          >
-            <p>Instructions</p>
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Card className="m-3" border="secondary">
-            <Card.Header className="modal-header">
-              <span>* Important Instructions</span>
-            </Card.Header>
-            <Card.Body>
-              <Card.Text className="modal-desp">
-                <ol>
-                  <li>
-                    Please fill all the details in the form to get the complete
-                    resume.
-                  </li>
-                  <li>
-                    After filling all the details in the form, Go to the end of
-                    the form and click on <b>PREVIEW</b> button to get the{" "}
-                    <b>GENERATE PDF</b> button.
-                  </li>
-                  <li>
-                    <b>
-                      <u>Note:</u>
-                    </b>{" "}
-                    Resume will be restricted to only one page of PDF. So, Fill
-                    the details with short descriptions.
-                  </li>
-                  <li>
-                    Kindly use <b>Laptop</b>, <b>Desktop</b> or{" "}
-                    <b>Mobile Desktop Site's</b> Chrome for generating resume
-                    with proper PDF layout.
-                  </li>
-                  <li>
-                    Kindly Request you to please share your valuable{" "}
-                    <b>feedback</b> at the end.
-                  </li>
-                </ol>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button className="modal-button" onClick={props.onHide}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-
-  function BackClickedModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="sm"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Are you sure?
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>All the changes will be lost.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={props.onHide}>
-            NO
-          </Button>
-          <Button variant="danger" onClick={modalYesClick}>
-            YES
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-
   return (
     <Fragment>
-      <InstructionsModal
-        show={instructionmodalShow}
-        onHide={() => setInstructionmodalShow(false)}
-      />
-      <BackClickedModal
-        show={backmodalShow}
-        onHide={() => setBackmodalShow(false)}
-      />
       <div className="MainContainer-header">
         <div className="SubContainer-header">
           <div
@@ -242,9 +126,12 @@ const HeaderScreen = memo(({ headerData }) => {
                         />
                         <h4>Feedback</h4>
                       </div>
-                      <div className="headertoggle-cont">
-                        <ToggleButton onChange={toggleTheme}></ToggleButton>
-                      </div>
+                      {/* <div className="headertoggle-cont">
+                        <ToggleButton
+                          onChange={toggleTheme}
+                          defaultChecked={isDark}
+                        ></ToggleButton>
+                      </div> */}
                     </Col>
                   </Row>
                 </div>
@@ -282,11 +169,47 @@ const HeaderScreen = memo(({ headerData }) => {
                           />
                         </div>
                       </div>
+
+                      <div
+                        className="headertabsMobile"
+                        style={{ backgroundColor: theme.tabIconsBgColor }}
+                      >
+                        <div
+                          className="headertabsMobileIcons"
+                          onClick={feedbackClick}
+                        >
+                          <FontAwesomeIcon
+                            icon={faCommentDots}
+                            style={{ color: theme.tabIcons }}
+                            className="headerIconsMobile"
+                          />
+                        </div>
+                      </div>
+                      {reviewshow && (
+                        <div
+                          className="headertabsMobile"
+                          style={{ backgroundColor: theme.tabIconsBgColor }}
+                        >
+                          <div
+                            className="headertabsMobileIcons"
+                            onClick={reviewClick}
+                          >
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              style={{ color: theme.tabIcons }}
+                              className="headerIconsMobile"
+                            />
+                          </div>
+                        </div>
+                      )}
                     </Col>
                     <Col xs={4} sm={4} className="headerthemeCol">
-                      <div className="headertoggle-cont">
-                        <ToggleButton onChange={toggleTheme}></ToggleButton>
-                      </div>
+                      {/* <div className="headertoggle-cont">
+                        <ToggleButton
+                          onChange={toggleTheme}
+                          defaultChecked={isDark}
+                        ></ToggleButton>
+                      </div> */}
                     </Col>
                   </Row>
                 </div>

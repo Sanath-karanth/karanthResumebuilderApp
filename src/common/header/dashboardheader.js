@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderScreen = memo(({ headerData }) => {
-  const [{ theme }, toggleTheme] = useContext(ThemeContext);
+  const [{ theme, isDark }, toggleTheme] = useContext(ThemeContext);
   const navigate = useNavigate();
 
   const [instructionmodalShow, setInstructionmodalShow] = useState(false);
@@ -71,8 +71,9 @@ const HeaderScreen = memo(({ headerData }) => {
                   </li>
                   <li>
                     After filling all the details in the form, Go to the end of
-                    the form and click on <b>PREVIEW</b> button to get the{" "}
-                    <b>GENERATE PDF</b> button.
+                    the form and click on{" "}
+                    <b style={{ color: "#df4759" }}>PREVIEW</b> button to get
+                    the <b style={{ color: "#df4759" }}>GENERATE PDF</b> button.
                   </li>
                   <li>
                     <b>
@@ -82,13 +83,14 @@ const HeaderScreen = memo(({ headerData }) => {
                     the details with short descriptions.
                   </li>
                   <li>
-                    Kindly use <b>Laptop</b>, <b>Desktop</b> or{" "}
-                    <b>Mobile Desktop Site's</b> Chrome for generating resume
-                    with proper PDF layout.
+                    Kindly use <b style={{ color: "#df4759" }}>Laptop</b>,{" "}
+                    <b style={{ color: "#df4759" }}>Desktop</b> or{" "}
+                    <b style={{ color: "#df4759" }}>Mobile Desktop Site's</b>{" "}
+                    Chrome for generating resume with proper PDF layout.
                   </li>
                   <li>
                     Kindly Request you to please share your valuable{" "}
-                    <b>feedback</b> at the end.
+                    <b style={{ color: "#df4759" }}>feedback</b> at the end.
                   </li>
                 </ol>
               </Card.Text>
@@ -240,7 +242,10 @@ const HeaderScreen = memo(({ headerData }) => {
                         <h4>Feedback</h4>
                       </div>
                       <div className="headertoggle-cont">
-                        <ToggleButton onChange={toggleTheme}></ToggleButton>
+                        <ToggleButton
+                          onChange={toggleTheme}
+                          defaultChecked={isDark}
+                        ></ToggleButton>
                       </div>
                     </Col>
                   </Row>
@@ -302,7 +307,10 @@ const HeaderScreen = memo(({ headerData }) => {
                         </div>
                       </div>
                       <div className="headertoggle-cont">
-                        <ToggleButton onChange={toggleTheme}></ToggleButton>
+                        <ToggleButton
+                          onChange={toggleTheme}
+                          defaultChecked={isDark}
+                        ></ToggleButton>
                       </div>
                     </Col>
                   </Row>

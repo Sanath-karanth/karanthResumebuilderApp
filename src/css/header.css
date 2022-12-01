@@ -28,7 +28,8 @@ p {
   justify-content: flex-end;
   align-items: center;
 }
-.headerBackCol{
+
+.headerBackCol {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -86,6 +87,7 @@ p {
   height: 16px;
   width: 16px;
 }
+
 .headerIconsDesktopBack {
   padding-right: 2px;
   margin-bottom: 0px;
@@ -137,8 +139,6 @@ p {
   height: 17px;
   width: 17px;
 }
-
-
 
 
 /* -----------------------    Resume builder Text Animation styles    ---------------------- */
