@@ -10,7 +10,7 @@ import {
   faBriefcase,
 } from "@fortawesome/free-solid-svg-icons";
 
-const AboutScreen = () => {
+const AboutScreen = memo(() => {
   const headertextValue = "about";
   return (
     <Fragment>
@@ -145,6 +145,6 @@ const AboutScreen = () => {
       </div>
     </Fragment>
   );
-};
+});
 
 export default memo(AboutScreen);

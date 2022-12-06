@@ -15,7 +15,6 @@ import {
   yearData,
   yearfromData,
   yeartoData,
-  roleOptions,
   summarysuggestOptions,
 } from "../json/json";
 import Box from "@mui/material/Box";
@@ -42,7 +41,6 @@ import Select from "react-select";
 import Pdf from "react-to-pdf";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAngleLeft,
   faUser,
   faEnvelope,
   faPhone,
@@ -52,21 +50,17 @@ import {
   faGraduationCap,
   faAward,
   faCalendar,
-  faDownload,
   faFileArrowDown,
-  faCommentDots,
-  faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 const steps = ["Step 1", "Step 2", "Step 3"];
 const roleOptionsFresher = [{ value: "Fresher", label: "Fresher" }];
 
-const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
+const FresherFormScreen = memo(({ resumeIDInfo }) => {
   const [{ theme }] = useContext(ThemeContext);
-  const pdffileref = createRef();
   const navigate = useNavigate();
-  const resumeIDval = resumeIDInfo;
-  const resumeNameval = resumenameInfo;
+  const pdffileref = createRef();
+
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
   const [preview, setPreview] = useState(false);
@@ -197,9 +191,9 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
     }),
   };
 
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
+  // const isStepOptional = (step) => {
+  //   return step === 1;
+  // };
 
   const isStepSkipped = (step) => {
     return skipped.has(step);
@@ -235,22 +229,22 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      throw new Error("You can't skip a step that isn't optional.");
-    }
+  // const handleSkip = () => {
+  //   if (!isStepOptional(activeStep)) {
+  //     throw new Error("You can't skip a step that isn't optional.");
+  //   }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
-  };
+  //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  //   setSkipped((prevSkipped) => {
+  //     const newSkipped = new Set(prevSkipped.values());
+  //     newSkipped.add(activeStep);
+  //     return newSkipped;
+  //   });
+  // };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  // };
 
   const handleNext = () => {
     scrollToTopNextStep();
@@ -265,12 +259,12 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
     setSkipped(newSkipped);
   };
 
-  const handleSubmitForm = async (values) => {
+  const handleSubmitForm = async () => {
     handleNext();
   };
 
   const programSelectFresher = (newValue) => {
-    if (newValue === null || newValue == "") {
+    if (newValue === null || newValue === "") {
       newValue = [0];
       setSkillnullfresher(true);
       setIsselectLoading(true);
@@ -278,6 +272,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
       setSkillnullfresher(false);
     }
     const array = [];
+    // eslint-disable-next-line array-callback-return
     newValue.map((obj) => {
       array.push(obj.value);
       setProgSelectval(array);
@@ -350,9 +345,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
 
     if (!values.fsummary) {
       errors.fsummary = "Career Objective / Summary is required!";
-    } else if (
-      !/^[a-zA-Z0-9\&\)\(\+\/\.\,\:\;\'\"\-\b\s ]+$/g.test(values.fsummary)
-    ) {
+    } else if (!/^[a-zA-Z0-9&)(+/.,:;'"\-\b\s ]+$/g.test(values.fsummary)) {
       errors.fsummary = "Please enter the valid characters only.";
     }
 
@@ -364,7 +357,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
 
     if (!values.fprojectonename) {
       errors.fprojectonename = "Project name is required!";
-    } else if (!/^[A-Za-z0-9\&\,\-\_\b ]+$/.test(values.fprojectonename)) {
+    } else if (!/^[A-Za-z0-9&,\-_\b ]+$/.test(values.fprojectonename)) {
       errors.fprojectonename =
         "Please enter a Valid Alphanumerical Characters only.";
     }
@@ -391,7 +384,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
     if (isCheckedProject === true) {
       if (!values.fprojecttwoname) {
         errors.fprojecttwoname = "Project name is required!";
-      } else if (!/^[A-Za-z0-9\&\,\-\_\b ]+$/.test(values.fprojecttwoname)) {
+      } else if (!/^[A-Za-z0-9&,\-_\b ]+$/.test(values.fprojecttwoname)) {
         errors.fprojecttwoname =
           "Please enter a Valid Alphanumerical Characters only.";
       }
@@ -559,15 +552,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
         <div className="ResumeFormdisplay-cont" ref={pdffileref}>
           <Container>
             <Row className="gx-0">
-              <Col
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                xl={12}
-                xxl={12}
-                className="p-2"
-              >
+              <Col xs={12} sm={12} md={12} lg={12} xl={12} className="p-2">
                 <div className="resume1Username">
                   <h3 style={{ color: "#000000" }}>{fnameval}</h3>
                 </div>
@@ -583,30 +568,14 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
               </Col>
             </Row>
             <Row className="gx-0 mb-2">
-              <Col
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                xl={12}
-                xxl={12}
-                className="p-2"
-              >
+              <Col xs={12} sm={12} md={12} lg={12} xl={12} className="p-2">
                 <div className="resume1Heading">
                   <h4 className="text-info">Professional Summary</h4>
                   <p>{fsummaryval}</p>
                 </div>
               </Col>
               <Row className="gx-0 mb-2">
-                <Col
-                  xs={12}
-                  sm={12}
-                  md={8}
-                  lg={8}
-                  xl={8}
-                  xxl={8}
-                  className="p-2"
-                >
+                <Col xs={12} sm={12} md={8} lg={8} xl={8} className="p-2">
                   <div className="resume1Heading">
                     <h4 className="text-info">PROJECTS</h4>
                   </div>
@@ -656,15 +625,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                     </div>
                   ) : null}
                 </Col>
-                <Col
-                  xs={12}
-                  sm={12}
-                  md={4}
-                  lg={4}
-                  xl={4}
-                  xxl={4}
-                  className="p-2"
-                >
+                <Col xs={12} sm={12} md={4} lg={4} xl={4} className="p-2">
                   <div className="resume1Heading">
                     <h4 className="text-info">Skills</h4>
                   </div>
@@ -763,7 +724,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
         <div className="ResumeFormdisplay-cont" ref={pdffileref}>
           <Container style={{ border: "1px solid #DDDDDD", height: "190vh" }}>
             <Row className="gx-0">
-              <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+              <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                 <div style={{ backgroundColor: "#16365D", padding: "16px" }}>
                   <div className="resume1Username">
                     <h3 style={{ color: "#FFFFFF" }}>{fnameval}</h3>
@@ -781,7 +742,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
               </Col>
             </Row>
             <Row className="gx-0 mb-2 p-4">
-              <Col xs={9} sm={9} md={9} lg={9} xl={9} xxl={9} className="p-2">
+              <Col xs={9} sm={9} md={9} lg={9} xl={9} className="p-2">
                 <div className="resume2Heading pb-3">
                   <h4 style={{ color: "#D13C39" }}>Professional Summary</h4>
                   <p>{fsummaryval}</p>
@@ -836,7 +797,7 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                   </div>
                 ) : null}
               </Col>
-              <Col xs={3} sm={3} md={3} lg={3} xl={3} xxl={3} className="p-2">
+              <Col xs={3} sm={3} md={3} lg={3} xl={3} className="p-2">
                 <div className="resume1Heading">
                   <h4 style={{ color: "#D13C39" }}>Skills</h4>
                 </div>
@@ -995,7 +956,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={6}
                                   lg={6}
                                   xl={6}
-                                  xxl={6}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -1048,7 +1008,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={6}
                                   lg={6}
                                   xl={6}
-                                  xxl={6}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -1074,7 +1033,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={6}
                                   lg={6}
                                   xl={6}
-                                  xxl={6}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -1127,7 +1085,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={6}
                                   lg={6}
                                   xl={6}
-                                  xxl={6}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -1181,7 +1138,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={12}
                                   lg={12}
                                   xl={12}
-                                  xxl={12}
                                   className="p-2 mb-2"
                                 >
                                   <div className="labelFlex">
@@ -1317,7 +1273,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={12}
                                   lg={12}
                                   xl={12}
-                                  xxl={12}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -1350,7 +1305,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={12}
                                   lg={12}
                                   xl={12}
-                                  xxl={12}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -1386,7 +1340,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                             md={7}
                                             lg={7}
                                             xl={7}
-                                            xxl={7}
                                             className="p-2 mb-2"
                                           >
                                             <div className="input-group">
@@ -1439,7 +1392,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                             md={5}
                                             lg={5}
                                             xl={5}
-                                            xxl={5}
                                             className="p-2 mb-2"
                                           >
                                             <div className="input-group">
@@ -1476,7 +1428,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                             md={12}
                                             lg={12}
                                             xl={12}
-                                            xxl={12}
                                             className="p-2 mb-0"
                                           >
                                             <label
@@ -1496,7 +1447,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                 md={4}
                                                 lg={4}
                                                 xl={4}
-                                                xxl={4}
                                                 className="p-2 mb-2"
                                               >
                                                 <div className="input-group">
@@ -1531,7 +1481,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                 md={4}
                                                 lg={4}
                                                 xl={4}
-                                                xxl={4}
                                                 className="p-2 mb-2"
                                               >
                                                 <div className="input-group">
@@ -1566,7 +1515,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                 md={4}
                                                 lg={4}
                                                 xl={4}
-                                                xxl={4}
                                                 className="p-2 mb-2"
                                               >
                                                 <div className="input-group">
@@ -1601,7 +1549,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                 md={4}
                                                 lg={4}
                                                 xl={4}
-                                                xxl={4}
                                                 className="p-2 mb-0"
                                               >
                                                 <div className="input-group">
@@ -1642,7 +1589,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                               md={12}
                                               lg={12}
                                               xl={12}
-                                              xxl={12}
                                               className="p-2 mt-1"
                                             >
                                               <div className="input-group">
@@ -1676,7 +1622,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                               md={12}
                                               lg={12}
                                               xl={12}
-                                              xxl={12}
                                               className="p-2 mt-1"
                                             >
                                               <div className="input-group">
@@ -1710,7 +1655,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                               md={12}
                                               lg={12}
                                               xl={12}
-                                              xxl={12}
                                               className="p-2 mt-1"
                                             >
                                               <div className="input-group">
@@ -1788,7 +1732,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                             md={7}
                                             lg={7}
                                             xl={7}
-                                            xxl={7}
                                             className="p-2 mb-2"
                                           >
                                             <div className="input-group">
@@ -1841,7 +1784,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                             md={5}
                                             lg={5}
                                             xl={5}
-                                            xxl={5}
                                             className="p-2 mb-2"
                                           >
                                             <div className="input-group">
@@ -1878,7 +1820,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                             md={12}
                                             lg={12}
                                             xl={12}
-                                            xxl={12}
                                             className="p-2 mb-0"
                                           >
                                             <label
@@ -1898,7 +1839,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                 md={4}
                                                 lg={4}
                                                 xl={4}
-                                                xxl={4}
                                                 className="p-2 mb-2"
                                               >
                                                 <div className="input-group">
@@ -1933,7 +1873,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                 md={4}
                                                 lg={4}
                                                 xl={4}
-                                                xxl={4}
                                                 className="p-2 mb-2"
                                               >
                                                 <div className="input-group">
@@ -1968,7 +1907,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                 md={4}
                                                 lg={4}
                                                 xl={4}
-                                                xxl={4}
                                                 className="p-2 mb-2"
                                               >
                                                 <div className="input-group">
@@ -2003,7 +1941,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                                 md={4}
                                                 lg={4}
                                                 xl={4}
-                                                xxl={4}
                                                 className="p-2 mb-0"
                                               >
                                                 <div className="input-group">
@@ -2044,7 +1981,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                               md={12}
                                               lg={12}
                                               xl={12}
-                                              xxl={12}
                                               className="p-2 mt-1"
                                             >
                                               <div className="input-group">
@@ -2078,7 +2014,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                               md={12}
                                               lg={12}
                                               xl={12}
-                                              xxl={12}
                                               className="p-2 mt-1"
                                             >
                                               <div className="input-group">
@@ -2112,7 +2047,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                               md={12}
                                               lg={12}
                                               xl={12}
-                                              xxl={12}
                                               className="p-2 mt-1"
                                             >
                                               <div className="input-group">
@@ -2225,7 +2159,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={4}
                                   lg={2}
                                   xl={2}
-                                  xxl={2}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -2262,7 +2195,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={8}
                                   lg={4}
                                   xl={4}
-                                  xxl={4}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -2303,7 +2235,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={12}
                                   lg={6}
                                   xl={6}
-                                  xxl={6}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -2358,7 +2289,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={4}
                                   lg={6}
                                   xl={6}
-                                  xxl={6}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -2395,7 +2325,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={4}
                                   lg={3}
                                   xl={3}
-                                  xxl={3}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -2447,7 +2376,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={4}
                                   lg={3}
                                   xl={3}
-                                  xxl={3}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -2510,7 +2438,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={6}
                                   lg={6}
                                   xl={6}
-                                  xxl={6}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -2563,7 +2490,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={6}
                                   lg={6}
                                   xl={6}
-                                  xxl={6}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -2604,7 +2530,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={4}
                                   lg={4}
                                   xl={4}
-                                  xxl={4}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -2643,7 +2568,6 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                   md={4}
                                   lg={3}
                                   xl={3}
-                                  xxl={3}
                                   className="p-2 mb-2"
                                 >
                                   <label
@@ -2733,4 +2657,4 @@ const FresherFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   );
 });
 
-export default FresherFormScreen;
+export default memo(FresherFormScreen);

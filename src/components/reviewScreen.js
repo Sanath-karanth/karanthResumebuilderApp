@@ -9,10 +9,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Avatar from "@mui/material/Avatar";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const ReviewScreen = () => {
+const ReviewScreen = memo(() => {
   const [{ theme }] = useContext(ThemeContext);
   const headertextValue = "review";
   const { getAlldata, deletedata } = useAuth();
+  
   const [carddatavalues, setCarddatavalues] = useState([]);
   const [deletemodalShow, setDeletemodalShow] = useState(false);
   const [tablenull, setTablenull] = useState(false);
@@ -230,6 +231,6 @@ const ReviewScreen = () => {
       </div>
     </Fragment>
   );
-};
+});
 
 export default memo(ReviewScreen);

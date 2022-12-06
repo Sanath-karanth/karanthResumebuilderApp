@@ -136,4 +136,4 @@ const ResumeFormScreen = memo(() => {
   );
 });
 
-export default ResumeFormScreen;
+export default memo(ResumeFormScreen);

@@ -1,11 +1,4 @@
-import React, {
-  memo,
-  useState,
-  useEffect,
-  useContext,
-  useCallback,
-  Fragment,
-} from "react";
+import React, { memo, useState, useContext, Fragment } from "react";
 import "../css/feedback.css";
 import HeaderScreen from "../common/header/feedbackheader";
 import { ThemeContext } from "../contexts/themeContext";
@@ -17,12 +10,12 @@ import { Formik } from "formik";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 
-const FeedbackScreen = () => {
-  const [{ theme, isDark }] = useContext(ThemeContext);
+const FeedbackScreen = memo(() => {
+  const [{ theme }] = useContext(ThemeContext);
   const headertextValue = "feedback";
-  const headertextShow = "feedback";
   const navigate = useNavigate();
   const { createdata } = useAuth();
+
   let feedbackdate = moment().format("LLL");
   const [usernameval, setUsernameval] = useState("");
   const [feedbackval, setFeedbackval] = useState("");
@@ -47,7 +40,7 @@ const FeedbackScreen = () => {
     if (!values.feedback) {
       errors.feedback = "* Feedback is required!";
     } else if (
-      !/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?\b\s ]+$/g.test(
+      !/^[a-zA-Z0-9!@#$%^&*()_+\-={};':"\\|,.<>/?\b\s ]+$/g.test(
         values.feedback
       )
     ) {
@@ -235,6 +228,6 @@ const FeedbackScreen = () => {
       </div>
     </Fragment>
   );
-};
+});
 
 export default memo(FeedbackScreen);

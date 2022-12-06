@@ -1,13 +1,13 @@
-import React from "react";
+import React, { memo, useEffect } from "react";
 import "../css/Splashlottiestyle.css";
-import Lottie from "lottie-react-web";
 import animation from "../lotties/12549-document-check.json";
+import Lottie from "lottie-react-web";
 import { useNavigate } from "react-router-dom";
 
-const SplashScreen = () => {
+const SplashScreen = memo(() => {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = window.setInterval(() => {
       navigate("/dashboard", { replace: false });
     }, 2000);
@@ -29,6 +29,6 @@ const SplashScreen = () => {
       </header>
     </div>
   );
-};
+});
 
-export default SplashScreen;
+export default memo(SplashScreen);

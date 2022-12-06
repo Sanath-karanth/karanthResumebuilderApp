@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import SplashPage from "./components/splashScreen";
@@ -9,7 +9,7 @@ import AboutPage from "./components/aboutScreen";
 import ReviewPage from "./components/reviewScreen";
 import DemoPage from "./components/demo";
 
-const App = () => {
+const App = memo(() => {
   return (
     <AuthProvider>
       <Routes>
@@ -23,9 +23,9 @@ const App = () => {
       </Routes>
     </AuthProvider>
   );
-};
+});
 
-export default App;
+export default memo(App);
 
 // import logo from './logo.svg';
 // import './App.css';

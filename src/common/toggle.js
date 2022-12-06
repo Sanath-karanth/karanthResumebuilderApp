@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,7 +18,7 @@ const UncheckedIcon = () => (
   </>
 );
 
-const ToggleButton = (props) => {
+const ToggleButton = memo((props) => {
   const [toggle, setToggle] = useState(false);
   const { defaultChecked, onChange, disabled, className } = props;
 
@@ -78,7 +78,7 @@ const ToggleButton = (props) => {
       />
     </div>
   );
-};
+});
 
 ToggleButton.defaultProps = {
   icons: {
@@ -101,4 +101,4 @@ ToggleButton.propTypes = {
   ]),
 };
 
-export default ToggleButton;
+export default memo(ToggleButton);
