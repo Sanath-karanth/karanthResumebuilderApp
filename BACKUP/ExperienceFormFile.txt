@@ -106,13 +106,26 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const [worktwopoint1exp, setWorktwopoint1exp] = useState("");
   const [worktwopoint2exp, setWorktwopoint2exp] = useState("");
 
+  const [eworkCname3val, setEworkCname3Val] = useState("");
+  const [eworkLoc3val, setEworkLoc3Val] = useState("");
+  const [eworkRole3val, setEworkRole3Val] = useState("");
+  const [workthreemonthfromval, setWorkthreemonthfromval] = useState("January");
+  const [workthreemonthtoval, setWorkthreemonthtoval] = useState("May");
+  const [workthreeyearfromval, setWorkthreeFromyearval] = useState("2015");
+  const [workthreeyeartoval, setWorkthreeToyearval] = useState("2019");
+  const [workthreepoint1exp, setWorkthreepoint1exp] = useState("");
+  const [workthreepoint2exp, setWorkthreepoint2exp] = useState("");
+
   const [isworkChecked2, setIsworkChecked2] = useState(false);
+  const [isworkChecked3, setIsworkChecked3] = useState(false);
 
   const [ispresentChecked1, setIspresentChecked1] = useState(false);
   const [ispresentChecked2, setIspresentChecked2] = useState(false);
+  const [ispresentChecked3, setIspresentChecked3] = useState(false);
 
   const [disablemonthyear1, setDisablemonthyear1] = useState(false);
   const [disablemonthyear2, setDisablemonthyear2] = useState(false);
+  const [disablemonthyear3, setDisablemonthyear3] = useState(false);
 
   ////  Accordian Project Variables
   const [projectoneexp, setprojectoneexp] = useState("");
@@ -164,6 +177,12 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
     eworkRole2val: eworkRole2val,
     eworktwoPoint1val: worktwopoint1exp,
     eworktwoPoint2val: worktwopoint2exp,
+
+    eworkCname3val: eworkCname3val,
+    eworkLoc3val: eworkLoc3val,
+    eworkRole3val: eworkRole3val,
+    eworkthreePoint1val: workthreepoint1exp,
+    eworkthreePoint2val: workthreepoint2exp,
 
     eprojectonename: projectoneexp,
     eprojectonerole: projectoneroleexp,
@@ -348,8 +367,25 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
     setWorktwoToyearval(e.target.value);
   };
 
+  const workthreemonthfromSelect = (e) => {
+    setWorkthreemonthfromval(e.target.value);
+  };
+  const workthreemonthtoSelect = (e) => {
+    setWorkthreemonthtoval(e.target.value);
+  };
+  const workthreeyearfromSelect = (e) => {
+    setWorkthreeFromyearval(e.target.value);
+  };
+  const workthreeyeartoSelect = (e) => {
+    setWorkthreeToyearval(e.target.value);
+  };
+
   const work2checkClick = () => {
     setIsworkChecked2(!isworkChecked2);
+  };
+
+  const work3checkClick = () => {
+    setIsworkChecked3(!isworkChecked3);
   };
 
   const present1checkClick = () => {
@@ -360,6 +396,11 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
   const present2checkClick = () => {
     setIspresentChecked2(!ispresentChecked2);
     setDisablemonthyear2(!disablemonthyear2);
+  };
+
+  const present3checkClick = () => {
+    setIspresentChecked3(!ispresentChecked3);
+    setDisablemonthyear3(!disablemonthyear3);
   };
 
   ////  Form 3 Functions
@@ -786,7 +827,29 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                       </ul>
                     </div>
                   ) : null}
-
+                  {isworkChecked3 ? (
+                    <div className="resume1Project-cont">
+                      <h4>
+                        {eworkCname3val}
+                        {eworkLoc3val === "" ? null : ` - ${eworkLoc3val}`}
+                      </h4>
+                      <h5>{eworkRole3val}</h5>
+                      <p>
+                        {workthreemonthfromval} {workthreeyearfromval} -{" "}
+                        {ispresentChecked3
+                          ? "Present"
+                          : `${workthreemonthtoval} ${workthreeyeartoval}`}
+                      </p>
+                      <ul>
+                        {workthreepoint1exp === "" ? null : (
+                          <li>{workthreepoint1exp}</li>
+                        )}
+                        {workthreepoint2exp === "" ? null : (
+                          <li>{workthreepoint2exp}</li>
+                        )}
+                      </ul>
+                    </div>
+                  ) : null}
                   <div className="resume1Heading">
                     <h4 className="text-info">PROJECTS</h4>
                   </div>
@@ -1004,7 +1067,29 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                     </ul>
                   </div>
                 ) : null}
-
+                {isworkChecked3 ? (
+                  <div className="resume1Project-cont">
+                    <h4>
+                      {eworkCname3val}
+                      {eworkLoc3val === "" ? null : ` - ${eworkLoc3val}`}
+                    </h4>
+                    <h5>{eworkRole3val}</h5>
+                    <p>
+                      {workthreemonthfromval} {workthreeyearfromval} -{" "}
+                      {ispresentChecked3
+                        ? "Present"
+                        : `${workthreemonthtoval} ${workthreeyeartoval}`}
+                    </p>
+                    <ul>
+                      {workthreepoint1exp === "" ? null : (
+                        <li>{workthreepoint1exp}</li>
+                      )}
+                      {workthreepoint2exp === "" ? null : (
+                        <li>{workthreepoint2exp}</li>
+                      )}
+                    </ul>
+                  </div>
+                ) : null}
                 <div className="resume1Heading">
                   <h4 style={{ color: "#D13C39" }}>PROJECTS</h4>
                 </div>
@@ -2536,6 +2621,515 @@ const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
                                           {errors.eworktwoPointval && (
                                             <div className="errortext pt-3">
                                               {errors.eworktwoPointval}
+                                            </div>
+                                          )}
+                                        </Col>
+                                      </Row>
+                                    </Col>
+                                  </Fragment>
+                                ) : null}
+
+                                <div className="p-2">
+                                  <input
+                                    type="checkbox"
+                                    style={{
+                                      height: "15px",
+                                      width: "15px",
+                                    }}
+                                    checked={isworkChecked2}
+                                    onChange={work3checkClick}
+                                  />
+                                  <span className="labelTitleTextExperience">
+                                    &nbsp;&nbsp;Work Experience 3
+                                    <span className="leftcardcheckboxtext text-danger">
+                                      {" "}
+                                      (Check this If Applicable)
+                                    </span>
+                                  </span>
+                                </div>
+
+                                {isworkChecked3 ? (
+                                  <Fragment>
+                                    <Col ///////////////////////  Work experience 3 starts here
+                                      xs={12}
+                                      sm={12}
+                                      md={12}
+                                      lg={12}
+                                      xl={12}
+                                      className="p-2"
+                                    >
+                                      <Row className="gx-0">
+                                        <Col /////////////////////// Company Name
+                                          xs={12}
+                                          sm={12}
+                                          md={5}
+                                          lg={5}
+                                          xl={5}
+                                          className="p-2 mb-2"
+                                        >
+                                          <label
+                                            htmlFor="Stream"
+                                            className="pb-2 labelTextExperience"
+                                          >
+                                            Company Name{"\n"}
+                                            <span className="asteriskkey">
+                                              *
+                                            </span>
+                                          </label>
+                                          <div className="input-group">
+                                            <div className="input-group-prepend">
+                                              <div
+                                                className="input-group-text h-100"
+                                                style={{
+                                                  backgroundColor:
+                                                    theme.inputPrependColor,
+                                                  color: theme.inputIcon,
+                                                  boxShadow:
+                                                    theme.inputfieldShadow,
+                                                }}
+                                              >
+                                                <FontAwesomeIcon
+                                                  icon={faLandmark}
+                                                />
+                                              </div>
+                                            </div>
+                                            <input
+                                              type="text"
+                                              style={{
+                                                backgroundColor:
+                                                  theme.inputFieldColor,
+                                                color: theme.inputTextColor,
+                                                boxShadow:
+                                                  theme.inputfieldShadow,
+                                              }}
+                                              className="form-control inputTxt"
+                                              placeholder="Enter full name"
+                                              onChange={(e) => {
+                                                handleChange(e);
+                                                setEworkCname3Val(
+                                                  e.target.value
+                                                );
+                                              }}
+                                              value={values.eworkCname3val}
+                                              name="eworkCname3val"
+                                            ></input>
+                                          </div>
+                                          {errors.eworkCname3val && (
+                                            <div className="errortext pt-2">
+                                              {errors.eworkCname3val}
+                                            </div>
+                                          )}
+                                        </Col>
+
+                                        <Col //////////////////////  Location
+                                          xs={12}
+                                          sm={12}
+                                          md={3}
+                                          lg={3}
+                                          xl={3}
+                                          className="p-2 mb-2"
+                                        >
+                                          <label
+                                            htmlFor="University"
+                                            className="pb-2 labelTextExperience"
+                                          >
+                                            Location{"\n"}
+                                            <span className="asteriskkey">
+                                              *
+                                            </span>
+                                          </label>
+                                          <div className="input-group">
+                                            <div className="input-group-prepend">
+                                              <div
+                                                className="input-group-text h-100"
+                                                style={{
+                                                  backgroundColor:
+                                                    theme.inputPrependColor,
+                                                  color: theme.inputIcon,
+                                                  boxShadow:
+                                                    theme.inputfieldShadow,
+                                                }}
+                                              >
+                                                <FontAwesomeIcon
+                                                  icon={faLocationDot}
+                                                />
+                                              </div>
+                                            </div>
+                                            <input
+                                              type="text"
+                                              style={{
+                                                backgroundColor:
+                                                  theme.inputFieldColor,
+                                                color: theme.inputTextColor,
+                                                boxShadow:
+                                                  theme.inputfieldShadow,
+                                              }}
+                                              className="form-control inputTxt"
+                                              placeholder="Company location"
+                                              onChange={(e) => {
+                                                handleChange(e);
+                                                setEworkLoc3Val(e.target.value);
+                                              }}
+                                              value={values.eworkLoc3val}
+                                              name="eworkLoc3val"
+                                            ></input>
+                                          </div>
+                                          {errors.eworkLoc3val && (
+                                            <div className="errortext pt-2">
+                                              {errors.eworkLoc3val}
+                                            </div>
+                                          )}
+                                        </Col>
+
+                                        <Col ////////////////////  Work Role
+                                          xs={12}
+                                          sm={12}
+                                          md={4}
+                                          lg={4}
+                                          xl={4}
+                                          className="p-2 mb-2"
+                                        >
+                                          <label
+                                            htmlFor="Degree"
+                                            className="pb-2 labelTextExperience"
+                                          >
+                                            Role{"\n"}
+                                            <span className="asteriskkey">
+                                              *
+                                            </span>
+                                          </label>
+                                          <div className="input-group">
+                                            <div className="input-group-prepend">
+                                              <div
+                                                className="input-group-text h-100"
+                                                style={{
+                                                  backgroundColor:
+                                                    theme.inputPrependColor,
+                                                  color: theme.inputIcon,
+                                                  boxShadow:
+                                                    theme.inputfieldShadow,
+                                                }}
+                                              >
+                                                <FontAwesomeIcon
+                                                  icon={faBriefcase}
+                                                />
+                                              </div>
+                                            </div>
+                                            <input
+                                              type="text"
+                                              style={{
+                                                backgroundColor:
+                                                  theme.inputFieldColor,
+                                                color: theme.inputTextColor,
+                                                boxShadow:
+                                                  theme.inputfieldShadow,
+                                              }}
+                                              className="form-control inputTxt"
+                                              placeholder="Ex: Software Engineer"
+                                              onChange={(e) => {
+                                                handleChange(e);
+                                                setEworkRole3Val(
+                                                  e.target.value
+                                                );
+                                              }}
+                                              value={values.eworkRole3val}
+                                              name="eworkRole3val"
+                                            ></input>
+                                          </div>
+                                          {errors.eworkRole3val && (
+                                            <div className="errortext pt-2">
+                                              {errors.eworkRole3val}
+                                            </div>
+                                          )}
+                                        </Col>
+
+                                        <Col ///////////////////////Work Month From
+                                          xs={12}
+                                          sm={12}
+                                          md={3}
+                                          lg={3}
+                                          xl={3}
+                                          className="p-2 mb-2"
+                                        >
+                                          <label
+                                            htmlFor="Months"
+                                            className="pb-2 labelTextExperience"
+                                          >
+                                            Month From
+                                          </label>
+                                          <select
+                                            style={{
+                                              backgroundColor:
+                                                theme.inputFieldColor,
+                                              color: theme.inputTextColor,
+                                              boxShadow: theme.inputfieldShadow,
+                                            }}
+                                            className="form-control form-select"
+                                            onChange={workthreemonthfromSelect}
+                                            value={workthreemonthfromval}
+                                          >
+                                            {monthNames.map(
+                                              (item, keyindex) => {
+                                                return (
+                                                  <option
+                                                    key={keyindex}
+                                                    value={item.eduname}
+                                                  >
+                                                    {item.label}
+                                                  </option>
+                                                );
+                                              }
+                                            )}
+                                          </select>
+                                        </Col>
+
+                                        <Col ///////////////////////Year From
+                                          xs={12}
+                                          sm={12}
+                                          md={3}
+                                          lg={3}
+                                          xl={3}
+                                          className="p-2 mb-2"
+                                        >
+                                          <label
+                                            htmlFor="Years"
+                                            className="pb-2 labelTextExperience"
+                                          >
+                                            Year From
+                                          </label>
+                                          <div className="input-group">
+                                            <div className="input-group-prepend">
+                                              <div
+                                                className="input-group-text h-100"
+                                                style={{
+                                                  backgroundColor:
+                                                    theme.inputPrependColor,
+                                                  color: theme.inputIcon,
+                                                  boxShadow:
+                                                    theme.inputfieldShadow,
+                                                }}
+                                              >
+                                                <FontAwesomeIcon
+                                                  icon={faCalendar}
+                                                />
+                                              </div>
+                                            </div>
+                                            <select
+                                              style={{
+                                                backgroundColor:
+                                                  theme.inputFieldColor,
+                                                color: theme.inputTextColor,
+                                                boxShadow:
+                                                  theme.inputfieldShadow,
+                                              }}
+                                              className="form-control form-select"
+                                              onChange={workthreeyearfromSelect}
+                                              value={workthreeyearfromval}
+                                            >
+                                              {yearfromData.map(
+                                                (item, keyindex) => {
+                                                  return (
+                                                    <option
+                                                      key={keyindex}
+                                                      value={item.eduname}
+                                                    >
+                                                      {item.label}
+                                                    </option>
+                                                  );
+                                                }
+                                              )}
+                                            </select>
+                                          </div>
+                                        </Col>
+                                        <Col ///////////////////////Work Month To
+                                          xs={12}
+                                          sm={12}
+                                          md={3}
+                                          lg={3}
+                                          xl={3}
+                                          className="p-2 mb-2"
+                                        >
+                                          <label
+                                            htmlFor="Months"
+                                            className="pb-2 labelTextExperience"
+                                          >
+                                            Month To
+                                          </label>
+                                          <select
+                                            style={{
+                                              backgroundColor:
+                                                disablemonthyear3 === false &&
+                                                theme.inputFieldColor,
+                                              color:
+                                                disablemonthyear3 === false &&
+                                                theme.inputTextColor,
+                                              boxShadow: theme.inputfieldShadow,
+                                            }}
+                                            className="form-control form-select"
+                                            onChange={workthreemonthtoSelect}
+                                            value={workthreemonthtoval}
+                                            disabled={disablemonthyear3}
+                                          >
+                                            {monthNames.map(
+                                              (item, keyindex) => {
+                                                return (
+                                                  <option
+                                                    key={keyindex}
+                                                    value={item.eduname}
+                                                  >
+                                                    {item.label}
+                                                  </option>
+                                                );
+                                              }
+                                            )}
+                                          </select>
+                                        </Col>
+                                        <Col ///////////////////////Year To
+                                          xs={12}
+                                          sm={12}
+                                          md={4}
+                                          lg={3}
+                                          xl={3}
+                                          className="p-2 mb-2"
+                                        >
+                                          <label
+                                            htmlFor="Years"
+                                            className="pb-2 labelTextExperience"
+                                          >
+                                            Year To
+                                          </label>
+                                          <div className="input-group">
+                                            <div className="input-group-prepend">
+                                              <div
+                                                className="input-group-text h-100"
+                                                style={{
+                                                  backgroundColor:
+                                                    disablemonthyear3 ===
+                                                      false &&
+                                                    theme.inputPrependColor,
+                                                  color:
+                                                    disablemonthyear3 ===
+                                                      false && theme.inputIcon,
+                                                  boxShadow:
+                                                    theme.inputfieldShadow,
+                                                }}
+                                              >
+                                                <FontAwesomeIcon
+                                                  icon={faCalendar}
+                                                />
+                                              </div>
+                                            </div>
+                                            <select
+                                              style={{
+                                                backgroundColor:
+                                                  disablemonthyear3 === false &&
+                                                  theme.inputFieldColor,
+                                                color:
+                                                  disablemonthyear3 === false &&
+                                                  theme.inputTextColor,
+                                                boxShadow:
+                                                  theme.inputfieldShadow,
+                                              }}
+                                              className="form-control form-select"
+                                              onChange={workthreeyeartoSelect}
+                                              value={workthreeyeartoval}
+                                              disabled={disablemonthyear3}
+                                            >
+                                              {yeartoData.map(
+                                                (item, keyindex) => {
+                                                  return (
+                                                    <option
+                                                      key={keyindex}
+                                                      value={item.eduname}
+                                                    >
+                                                      {item.label}
+                                                    </option>
+                                                  );
+                                                }
+                                              )}
+                                            </select>
+                                          </div>
+                                        </Col>
+
+                                        <div className="p-2">
+                                          <input
+                                            type="checkbox"
+                                            style={{
+                                              height: "15px",
+                                              width: "15px",
+                                            }}
+                                            checked={ispresentChecked3}
+                                            onChange={present3checkClick}
+                                          />
+                                          <span className="leftcardcheckboxtext text-danger">
+                                            &nbsp;&nbsp;Present
+                                          </span>
+                                        </div>
+
+                                        <Col ///////////////////////Work Point 1
+                                          xs={12}
+                                          sm={12}
+                                          md={12}
+                                          lg={12}
+                                          xl={12}
+                                          className="p-2"
+                                        >
+                                          <div className="input-group">
+                                            <textarea
+                                              style={{
+                                                backgroundColor:
+                                                  theme.inputFieldColor,
+                                                color: theme.inputTextColor,
+                                                boxShadow:
+                                                  theme.inputfieldShadow,
+                                              }}
+                                              className="form-control inputTxt"
+                                              placeholder="Enter point 1"
+                                              rows="2"
+                                              onChange={(e) => {
+                                                handleChange(e);
+                                                setWorkthreepoint1exp(
+                                                  e.target.value
+                                                );
+                                              }}
+                                              value={values.eworkthreePoint1val}
+                                              name="eworkthreePoint1val"
+                                            ></textarea>
+                                          </div>
+                                        </Col>
+                                        <Col ///////////////////////Work Point 2
+                                          xs={12}
+                                          sm={12}
+                                          md={12}
+                                          lg={12}
+                                          xl={12}
+                                          className="p-2 mb-3"
+                                        >
+                                          <div className="input-group">
+                                            <textarea
+                                              style={{
+                                                backgroundColor:
+                                                  theme.inputFieldColor,
+                                                color: theme.inputTextColor,
+                                                boxShadow:
+                                                  theme.inputfieldShadow,
+                                              }}
+                                              className="form-control inputTxt"
+                                              placeholder="Enter point 2"
+                                              rows="2"
+                                              onChange={(e) => {
+                                                handleChange(e);
+                                                setWorkthreepoint2exp(
+                                                  e.target.value
+                                                );
+                                              }}
+                                              value={values.eworkthreePoint2val}
+                                              name="eworkthreePoint2val"
+                                            ></textarea>
+                                          </div>
+                                          {errors.eworkthreePointval && (
+                                            <div className="errortext pt-3">
+                                              {errors.eworkthreePointval}
                                             </div>
                                           )}
                                         </Col>

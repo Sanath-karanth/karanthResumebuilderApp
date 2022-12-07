@@ -1228,7 +1228,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                               <Box sx={{ flex: "1 1 auto" }} />
                               <Button
                                 type="submit"
-                                onClick={handleNext}
+                                onClick={handleSubmit}
                                 variant="outlined"
                               >
                                 {activeStep === steps.length - 1
