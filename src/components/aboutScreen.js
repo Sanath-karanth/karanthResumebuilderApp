@@ -1,5 +1,6 @@
-import React, { memo, Fragment } from "react";
+import React, { memo, Fragment, useContext } from "react";
 import "../css/about.css";
+import { ThemeContext } from "../contexts/themeContext";
 import HeaderScreen from "../common/header/aboutheader";
 import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +13,7 @@ import {
 
 const AboutScreen = memo(() => {
   const headertextValue = "about";
+  const [{ theme }] = useContext(ThemeContext);
   return (
     <Fragment>
       <div className="MainContainer-about">
@@ -60,39 +62,42 @@ const AboutScreen = memo(() => {
                           industry's standard dummy text ever since the
                         </p>
                         <div className="abt-social-icon-cont">
-                          <span className="socialicon-cont">
-                            <div className="icon-cont">
-                              <a
-                                href="http://www.gmail.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <i className="fa fa-google-plus socialicon"></i>
-                              </a>
-                            </div>
-                          </span>
-                          <span className="socialicon-cont">
-                            <div className="icon-cont">
-                              <a
-                                href="https://www.facebook.com/sanaths.karanth/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <i className="fa fa-facebook socialicon"></i>
-                              </a>
-                            </div>
-                          </span>
-                          <span className="socialicon-cont">
-                            <div className="icon-cont">
-                              <a
-                                href="https://www.linkedin.com/in/sanath-s-karanth-758bbb176"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <i className="fa fa-linkedin-square socialicon"></i>
-                              </a>
-                            </div>
-                          </span>
+                          <div className="socialicon-cont">
+                            <a
+                              href="http://www.gmail.com"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <i
+                                className="fa fa-google-plus socialicon-abt"
+                                style={{ color: theme.footerSocialIconcolor }}
+                              ></i>
+                            </a>
+                          </div>
+                          <div className="socialicon-cont">
+                            <a
+                              href="https://www.facebook.com/sanaths.karanth/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <i
+                                className="fa fa-facebook socialicon-abt"
+                                style={{ color: theme.footerSocialIconcolor }}
+                              ></i>
+                            </a>
+                          </div>
+                          <div className="socialicon-cont">
+                            <a
+                              href="https://www.linkedin.com/in/sanath-s-karanth-758bbb176"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <i
+                                className="fa fa-linkedin-square socialicon-abt"
+                                style={{ color: theme.footerSocialIconcolor }}
+                              ></i>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>

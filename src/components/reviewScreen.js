@@ -13,7 +13,7 @@ const ReviewScreen = memo(() => {
   const [{ theme }] = useContext(ThemeContext);
   const headertextValue = "review";
   const { getAlldata, deletedata } = useAuth();
-  
+
   const [carddatavalues, setCarddatavalues] = useState([]);
   const [deletemodalShow, setDeletemodalShow] = useState(false);
   const [tablenull, setTablenull] = useState(false);
@@ -206,13 +206,11 @@ const ReviewScreen = memo(() => {
                                   </div>
                                 </Col>
                               </Row>
-
+                              <hr style={{ margin: "6px 0px 8px 0px" }}></hr>
                               <Row>
                                 <Col>
                                   <div className="reviewcard-feedback-decription">
-                                    <p style={{ paddingTop: "20px" }}>
-                                      {item.feedback}
-                                    </p>
+                                    <p>{item.feedback}</p>
                                   </div>
                                 </Col>
                               </Row>

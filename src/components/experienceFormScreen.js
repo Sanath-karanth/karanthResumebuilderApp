@@ -52,7 +52,7 @@ import {
 
 const steps = ["Step 1", "Step 2", "Step 3"];
 
-const ExperienceFormScreen = memo(({ resumeIDInfo, resumenameInfo }) => {
+const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
   const [{ theme }] = useContext(ThemeContext);
   const pdffileref = createRef();
   const navigate = useNavigate();
