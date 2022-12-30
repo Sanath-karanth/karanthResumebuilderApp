@@ -93,8 +93,8 @@ const FooterScreen = memo(() => {
               <p>
                 A good Resume builder is a very most important thing for all the
                 job seekers who can get their job easier through the valuable
-                document called 'Resume/CV'. And here, I help you all to do it
-                better by creating your own resume with the help of my
+                document called 'Resume/CV'. And here, I will help you all to do
+                it better by creating your own resume with the help of my
                 application called as{" "}
                 <b style={{ color: "#707070" }}>Resume Builder</b>. Now it's
                 your time to create your resume at no cost.

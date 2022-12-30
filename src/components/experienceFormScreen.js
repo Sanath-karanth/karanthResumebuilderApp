@@ -1,4 +1,11 @@
-import React, { memo, useState, useContext, createRef, Fragment } from "react";
+import React, {
+  memo,
+  useState,
+  useContext,
+  createRef,
+  Fragment,
+  useCallback,
+} from "react";
 import "../css/experienceForm.css";
 import { ThemeContext } from "../contexts/themeContext";
 import {
@@ -62,9 +69,9 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
   const [preview, setPreview] = useState(false);
   const [eyeicon, setEyeicon] = useState(false);
   const [suggestmodalShow, setSuggestmodalShow] = useState(false);
+  const [backmodalShow, setBackmodalShow] = useState(false);
   const [isselectLoading, setIsselectLoading] = useState(true);
   const [progSelectval, setProgSelectval] = useState("");
-  const [skillnullexperience, setSkillnullexperience] = useState(false);
   const pdfSizeoptionsResume1 = {
     orientation: "portrait",
     unit: "in",
@@ -74,7 +81,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
   const pdfSizeoptionsResume2 = {
     orientation: "portrait",
     unit: "in",
-    format: [13.5, 16.5],
+    format: [13.5, 15],
   };
 
   ////////    Form 1 Variables
@@ -86,6 +93,11 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
 
   ///////    Form 2 Variables
   ////  Work Experience Variables
+
+  const [skillnullexp, setSkillnullexp] = useState(false);
+  const [skillmaxexp, setSkillmaxexp] = useState(false);
+  const [skillclear, setSkillClear] = useState(true);
+
   const [eworkCname1val, setEworkCname1Val] = useState("");
   const [eworkLoc1val, setEworkLoc1Val] = useState("");
   const [eworkRole1val, setEworkRole1Val] = useState("");
@@ -248,7 +260,12 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
   };
 
   const exitClick = () => {
-    navigate("/dashboard");
+    setBackmodalShow(true);
+  };
+
+  const modalYesClick = (event) => {
+    event.preventDefault();
+    navigate("/dashboard", { replace: true });
   };
 
   const scrollToTopNextStep = () => {
@@ -283,7 +300,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
 
   const handleNext = () => {
     scrollToTopNextStep();
-    setSkillnullexperience(true);
+    // setSkillnullexperience(true);
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -298,23 +315,36 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
     handleNext();
   };
 
-  const programSelectFresher = (newValue) => {
-    if (newValue === null || newValue === "") {
-      newValue = [0];
-      setSkillnullexperience(true);
-      setIsselectLoading(true);
-    } else {
-      setSkillnullexperience(false);
-    }
-    const array = [];
-    // eslint-disable-next-line array-callback-return
-    newValue.map((obj) => {
-      array.push(obj.value);
-      setProgSelectval(array);
-      console.log("array-->", array);
-    });
-    setIsselectLoading(false);
-  };
+  const programSelectExperience = useCallback(
+    (newValue) => {
+      // console.log("array-->", newValue);
+      if (newValue === null || newValue === "") {
+        newValue = [];
+        setSkillmaxexp(true);
+        setIsselectLoading(true);
+      } else {
+        setSkillmaxexp(false);
+        setIsselectLoading(false);
+        setProgSelectval(
+          Array.isArray(newValue) ? newValue.map((x) => x.label) : []
+        );
+      }
+      setIsselectLoading(false);
+      if (!progSelectval[1]) {
+        setSkillmaxexp(true);
+      } else {
+        setSkillmaxexp(false);
+      }
+      if (newValue.length === 0) {
+        setSkillnullexp(true);
+        setSkillClear(false);
+      } else {
+        setSkillnullexp(false);
+        setSkillClear(true);
+      }
+    },
+    [progSelectval]
+  );
 
   //////   Form 1 Functions
   const workroleSelect = (e) => {
@@ -437,6 +467,12 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
   const experiencevalidateStep2 = (values) => {
     const errors = {};
 
+    if (progSelectval.length === 0) {
+      setSkillnullexp(true);
+    } else {
+      setSkillnullexp(false);
+    }
+
     if (!values.eworkCname1val) {
       errors.eworkCname1val = "Company name is required!";
     } else if (!/^[A-Za-z&,\-_\b ]+$/.test(values.eworkCname1val)) {
@@ -455,70 +491,40 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
       errors.eworkRole1val = "Please enter the valid characters only.";
     }
 
-    if (!values.eworkCname2val) {
-      errors.eworkCname2val = "Company name is required!";
-    } else if (!/^[A-Za-z&,\-_\b ]+$/.test(values.eworkCname2val)) {
-      errors.eworkCname2val = "Please enter a Valid Company name.";
-    }
-
-    if (!values.eworkLoc2val) {
-      errors.eworkLoc2val = "Company Location is required!";
-    } else if (!/^[A-Za-z\b ]+$/.test(values.eworkLoc2val)) {
-      errors.eworkLoc2val = "Please enter a Valid Company Location.";
-    }
-
-    if (!values.eworkRole2val) {
-      errors.eworkRole2val = "Role is required!";
-    } else if (!/^[A-Za-z\b ]+$/.test(values.eworkRole2val)) {
-      errors.eworkRole2val = "Please enter the valid characters only.";
-    }
-
-    if (!values.eworkCname3val) {
-      errors.eworkCname3val = "Company name is required!";
-    } else if (!/^[A-Za-z&,\-_\b ]+$/.test(values.eworkCname3val)) {
-      errors.eworkCname3val = "Please enter a Valid Company name.";
-    }
-
-    if (!values.eworkLoc3val) {
-      errors.eworkLoc3val = "Company Location is required!";
-    } else if (!/^[A-Za-z\b ]+$/.test(values.eworkLoc3val)) {
-      errors.eworkLoc3val = "Please enter a Valid Company Location.";
-    }
-
-    if (!values.eworkRole3val) {
-      errors.eworkRole3val = "Role is required!";
-    } else if (!/^[A-Za-z\b ]+$/.test(values.eworkRole3val)) {
-      errors.eworkRole3val = "Please enter the valid characters only.";
-    }
-
     if (!values.eworkonePoint1val) {
-      errors.eworkonePoint1val = "Please enter Atleast 1 Work Exp point.";
+      errors.eworkonePoint1val = "Please enter Atleast 1-2 Work Exp point.";
     }
     if (!values.eworkonePoint1val || !values.eworkonePoint2val) {
-      errors.eworkonePointval = "Please enter Atleast 1 Work Exp point.";
+      errors.eworkonePointval = "Please enter Atleast 1-2 Work Exp point.";
     }
-    if (values.eworkonePoint1val || values.eworkonePoint2val) {
-      errors.eworkonePointval = null;
-    }
+    // if (values.eworkonePoint1val || values.eworkonePoint2val) {
+    //   errors.eworkonePointval = null;
+    // }
 
-    if (!values.eworktwoPoint1val) {
-      errors.eworktwoPoint1val = "Please enter Atleast 1 Work Exp point.";
-    }
-    if (!values.eworktwoPoint1val || !values.eworktwoPoint2val) {
-      errors.eworktwoPointval = "Please enter Atleast 1 Work Exp point.";
-    }
-    if (values.eworktwoPoint1val || values.eworktwoPoint2val) {
-      errors.eworktwoPointval = null;
-    }
+    if (isworkChecked2 === true) {
+      if (!values.eworkCname2val) {
+        errors.eworkCname2val = "Company name is required!";
+      } else if (!/^[A-Za-z&,\-_\b ]+$/.test(values.eworkCname2val)) {
+        errors.eworkCname2val = "Please enter a Valid Company name.";
+      }
 
-    if (!values.eworkthreePoint1val) {
-      errors.eworkthreePoint1val = "Please enter Atleast 1 Work Exp point.";
-    }
-    if (!values.eworkthreePoint1val || !values.eworkthreePoint2val) {
-      errors.eworkthreePointval = "Please enter Atleast 1 Work Exp point.";
-    }
-    if (values.eworkthreePoint1val || values.eworkthreePoint2val) {
-      errors.eworkthreePointval = null;
+      if (!values.eworkLoc2val) {
+        errors.eworkLoc2val = "Company Location is required!";
+      } else if (!/^[A-Za-z\b ]+$/.test(values.eworkLoc2val)) {
+        errors.eworkLoc2val = "Please enter a Valid Company Location.";
+      }
+
+      if (!values.eworkRole2val) {
+        errors.eworkRole2val = "Role is required!";
+      } else if (!/^[A-Za-z\b ]+$/.test(values.eworkRole2val)) {
+        errors.eworkRole2val = "Please enter the valid characters only.";
+      }
+      if (!values.eworktwoPoint1val) {
+        errors.eworktwoPoint1val = "Please enter Atleast 1-2 Work Exp point.";
+      }
+      if (!values.eworktwoPoint1val || !values.eworktwoPoint2val) {
+        errors.eworktwoPointval = "Please enter Atleast 1-2 Work Exp point.";
+      }
     }
 
     ///////  project 1 Validation
@@ -550,31 +556,32 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
 
     ///////  project 2 Validation
 
-    if (!values.eprojecttwoname) {
-      errors.eprojecttwoname = "Project name is required!";
-    } else if (!/^[A-Za-z0-9&,\-_\b ]+$/.test(values.eprojecttwoname)) {
-      errors.eprojecttwoname =
-        "Please enter a Valid Alphanumerical Characters only.";
-    }
+    if (isCheckedProject === true) {
+      if (!values.eprojecttwoname) {
+        errors.eprojecttwoname = "Project name is required!";
+      } else if (!/^[A-Za-z0-9&,\-_\b ]+$/.test(values.eprojecttwoname)) {
+        errors.eprojecttwoname =
+          "Please enter a Valid Alphanumerical Characters only.";
+      }
 
-    if (!values.eprojecttworole) {
-      errors.eprojecttworole = "Project Role is required!";
-    } else if (!/^[A-Za-z\-\b ]+$/.test(values.eprojecttworole)) {
-      errors.eprojecttworole =
-        "Please enter a Valid Alphanumerical Characters only.";
-    }
-    if (
-      !values.eprojecttwotech1 ||
-      !values.eprojecttwotech2 ||
-      !values.eprojecttwotech3
-    ) {
-      errors.eprojecttwotech = "Please enter Atleast 3-4 Technologies.";
-    }
+      if (!values.eprojecttworole) {
+        errors.eprojecttworole = "Project Role is required!";
+      } else if (!/^[A-Za-z\-\b ]+$/.test(values.eprojecttworole)) {
+        errors.eprojecttworole =
+          "Please enter a Valid Alphanumerical Characters only.";
+      }
+      if (
+        !values.eprojecttwotech1 ||
+        !values.eprojecttwotech2 ||
+        !values.eprojecttwotech3
+      ) {
+        errors.eprojecttwotech = "Please enter Atleast 3-4 Technologies.";
+      }
 
-    if (!values.eprojecttwopoint1 || !values.eprojecttwopoint2) {
-      errors.eprojecttwopoint = "Please enter Atleast 2-3 Points.";
+      if (!values.eprojecttwopoint1 || !values.eprojecttwopoint2) {
+        errors.eprojecttwopoint = "Please enter Atleast 2-3 Points.";
+      }
     }
-
     return errors;
   };
 
@@ -660,6 +667,45 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
     );
   }
 
+  function BackClickedModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Are you sure?
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>All the changes will be lost.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="outlined"
+            color="info"
+            className="modal-btn"
+            onClick={props.onHide}
+          >
+            NO
+          </Button>
+          <div style={{ paddingLeft: "10px" }}></div>
+          <Button
+            variant="contained"
+            color="error"
+            className="modal-btn"
+            onClick={modalYesClick}
+          >
+            YES
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
   const ResumeDesign1 = () => {
     return (
       <Fragment>
@@ -670,7 +716,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
             y={0}
             scale={1.15}
             options={pdfSizeoptionsResume1}
-            filename="FresherResume.pdf"
+            filename="ExperienceResume.pdf"
           >
             {({ toPdf }) => (
               <>
@@ -889,7 +935,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
             y={0}
             scale={1.15}
             options={pdfSizeoptionsResume2}
-            filename="FresherResume.pdf"
+            filename="ExperienceResume.pdf"
           >
             {({ toPdf }) => (
               <>
@@ -1101,6 +1147,10 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
       <SuggesionModal
         show={suggestmodalShow}
         onHide={() => setSuggestmodalShow(false)}
+      />
+      <BackClickedModal
+        show={backmodalShow}
+        onHide={() => setBackmodalShow(false)}
       />
       <div className="experience-form">
         <Box sx={{ width: "100%" }}>
@@ -1501,8 +1551,8 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                               <Box sx={{ flex: "1 1 auto" }} />
                               <Button
                                 type="submit"
-                                onClick={handleNext}
                                 variant="outlined"
+                                onClick={handleSubmit}
                               >
                                 {activeStep === steps.length - 1
                                   ? "Finish"
@@ -1559,16 +1609,24 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                     className="selectContent"
                                     isMulti
                                     closeMenuOnSelect={true}
-                                    isClearable={true}
-                                    isSearchable={false}
+                                    isClearable={skillclear}
+                                    isSearchable={true}
                                     styles={skillColourStyles}
                                     isLoading={isselectLoading}
-                                    onChange={programSelectFresher}
+                                    onChange={programSelectExperience}
+                                    value={langOptions.filter((obj) =>
+                                      progSelectval.includes(obj.label)
+                                    )}
                                     options={langOptions}
                                   />
-                                  {skillnullexperience === true && (
+                                  {skillmaxexp && (
                                     <div className="errortext pt-3">
                                       Please select Atleast 3-4 Skills.
+                                    </div>
+                                  )}
+                                  {skillnullexp && (
+                                    <div className="errortext pt-3">
+                                      Please Select the required Skills!
                                     </div>
                                   )}
                                 </Col>
@@ -3354,7 +3412,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                               <Button
                                 type="submit"
                                 variant="outlined"
-                                onClick={handleNext}
+                                onClick={handleSubmit}
                               >
                                 {activeStep === steps.length - 1
                                   ? "Finish"
@@ -3882,7 +3940,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                               <Button
                                 type="submit"
                                 variant="outlined"
-                                onClick={handleNext}
+                                onClick={handleSubmit}
                               >
                                 {activeStep === steps.length - 1
                                   ? "Finish"

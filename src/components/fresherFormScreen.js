@@ -5,6 +5,7 @@ import React, {
   useContext,
   createRef,
   Fragment,
+  useCallback,
 } from "react";
 import "../css/fresherForm.css";
 import { ThemeContext } from "../contexts/themeContext";
@@ -66,9 +67,9 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
   const [preview, setPreview] = useState(false);
   const [eyeicon, setEyeicon] = useState(false);
   const [suggestmodalShow, setSuggestmodalShow] = useState(false);
+  const [backmodalShow, setBackmodalShow] = useState(false);
   const [isselectLoading, setIsselectLoading] = useState(true);
-  const [progSelectval, setProgSelectval] = useState("");
-  const [skillnullfresher, setSkillnullfresher] = useState(false);
+  const [progSelectval, setProgSelectval] = useState([]);
   const pdfSizeoptionsResume1 = {
     orientation: "portrait",
     unit: "in",
@@ -78,7 +79,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
   const pdfSizeoptionsResume2 = {
     orientation: "portrait",
     unit: "in",
-    format: [13.5, 16.5],
+    format: [14, 14],
   };
 
   ////////    Form 1 Variables
@@ -89,6 +90,9 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
   const [fsummaryval, setFsummaryVal] = useState("");
 
   ///////    Form 2 Variables
+  const [skillnullfresher, setSkillnullfresher] = useState(false);
+  const [skillmaxfresher, setSkillmaxfresher] = useState(false);
+  const [skillclear, setSkillClear] = useState(true);
   const [projectonefresher, setProjectonefresher] = useState("");
   const [projectonerolefresher, setProjectonerolefresher] = useState("");
   const [projectonetech1fresher, setProjectonetech1fresher] = useState("");
@@ -213,7 +217,12 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
   };
 
   const exitClick = () => {
-    navigate("/dashboard");
+    setBackmodalShow(true);
+  };
+
+  const modalYesClick = (event) => {
+    event.preventDefault();
+    navigate("/dashboard", { replace: true });
   };
 
   const scrollToTopNextStep = () => {
@@ -248,7 +257,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
 
   const handleNext = () => {
     scrollToTopNextStep();
-    setSkillnullfresher(true);
+    // setSkillnullfresher(true);
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -263,23 +272,36 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
     handleNext();
   };
 
-  const programSelectFresher = (newValue) => {
-    if (newValue === null || newValue === "") {
-      newValue = [0];
-      setSkillnullfresher(true);
-      setIsselectLoading(true);
-    } else {
-      setSkillnullfresher(false);
-    }
-    const array = [];
-    // eslint-disable-next-line array-callback-return
-    newValue.map((obj) => {
-      array.push(obj.value);
-      setProgSelectval(array);
-      console.log("array-->", array);
-    });
-    setIsselectLoading(false);
-  };
+  const programSelectFresher = useCallback(
+    (newValue) => {
+      // console.log("array-->", newValue);
+      if (newValue === null || newValue === "") {
+        newValue = [];
+        setSkillmaxfresher(true);
+        setIsselectLoading(true);
+      } else {
+        setSkillmaxfresher(false);
+        setIsselectLoading(false);
+        setProgSelectval(
+          Array.isArray(newValue) ? newValue.map((x) => x.label) : []
+        );
+      }
+      setIsselectLoading(false);
+      if (!progSelectval[1]) {
+        setSkillmaxfresher(true);
+      } else {
+        setSkillmaxfresher(false);
+      }
+      if (newValue.length === 0) {
+        setSkillnullfresher(true);
+        setSkillClear(false);
+      } else {
+        setSkillnullfresher(false);
+        setSkillClear(true);
+      }
+    },
+    [progSelectval]
+  );
 
   const educationSelect = (e) => {
     setEduSelectVal(e.target.value);
@@ -355,6 +377,15 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
   const freshervalidateStep2 = (values) => {
     const errors = {};
 
+    ///////  project 1 Validation
+    // console.log("initial values --> ", values);
+
+    if (progSelectval.length === 0) {
+      setSkillnullfresher(true);
+    } else {
+      setSkillnullfresher(false);
+    }
+
     if (!values.fprojectonename) {
       errors.fprojectonename = "Project name is required!";
     } else if (!/^[A-Za-z0-9&,\-_\b ]+$/.test(values.fprojectonename)) {
@@ -380,6 +411,8 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
     if (!values.fprojectonepoint1 || !values.fprojectonepoint2) {
       errors.fprojectonepoint1 = "Please enter Atleast 2-3 Points.";
     }
+
+    ///////  project 2 Validation
 
     if (isCheckedProject === true) {
       if (!values.fprojecttwoname) {
@@ -491,6 +524,45 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  function BackClickedModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Are you sure?
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>All the changes will be lost.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="outlined"
+            color="info"
+            className="modal-btn"
+            onClick={props.onHide}
+          >
+            NO
+          </Button>
+          <div style={{ paddingLeft: "10px" }}></div>
+          <Button
+            variant="contained"
+            color="error"
+            className="modal-btn"
+            onClick={modalYesClick}
+          >
+            YES
+          </Button>
         </Modal.Footer>
       </Modal>
     );
@@ -844,6 +916,10 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
       <SuggesionModal
         show={suggestmodalShow}
         onHide={() => setSuggestmodalShow(false)}
+      />
+      <BackClickedModal
+        show={backmodalShow}
+        onHide={() => setBackmodalShow(false)}
       />
       <div className="fresher-form">
         <Box sx={{ width: "100%" }}>
@@ -1286,16 +1362,28 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                     className="selectContent"
                                     isMulti
                                     closeMenuOnSelect={true}
-                                    isClearable={true}
-                                    isSearchable={false}
+                                    isClearable={skillclear}
+                                    isSearchable={true}
                                     styles={fSkillColourStyles}
                                     isLoading={isselectLoading}
                                     onChange={programSelectFresher}
+                                    value={langOptions.filter((obj) =>
+                                      progSelectval.includes(obj.label)
+                                    )}
                                     options={langOptions}
                                   />
-                                  {skillnullfresher === true && (
+                                  {/* <p>
+                                    Selected{" "}
+                                    {JSON.stringify(progSelectval, null, 2)}
+                                  </p> */}
+                                  {skillmaxfresher && (
                                     <div className="errortext pt-3">
                                       Please select Atleast 3-4 Skills.
+                                    </div>
+                                  )}
+                                  {skillnullfresher && (
+                                    <div className="errortext pt-3">
+                                      Please Select the required Skills!
                                     </div>
                                   )}
                                 </Col>
@@ -2107,7 +2195,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                               <Button
                                 type="submit"
                                 variant="outlined"
-                                onClick={handleNext}
+                                onClick={handleSubmit}
                               >
                                 {activeStep === steps.length - 1
                                   ? "Finish"
@@ -2635,7 +2723,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                               <Button
                                 type="submit"
                                 variant="outlined"
-                                onClick={handleNext}
+                                onClick={handleSubmit}
                               >
                                 {activeStep === steps.length - 1
                                   ? "Finish"
