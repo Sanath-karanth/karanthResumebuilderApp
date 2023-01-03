@@ -166,7 +166,7 @@ export const summarysuggestOptions = [
   {
     sid: "S09",
     ctext: "Text Copied!",
-    role: "Career Objective 1",
+    role: "Front-end Developer",
     summary:
       "Seeking for responsible career opportunity as a front-end developer position to work in a firm with a professional work driven environment where I can utilize and apply my knowledge, skills which would enable me to grow while fulfilling organizational goals.",
   },

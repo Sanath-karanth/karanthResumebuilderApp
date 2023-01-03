@@ -138,11 +138,11 @@ const FeedbackScreen = memo(() => {
                             <Form>
                               <Form.Group id="username" className="mb-2">
                                 <Form.Label className="labeltext pb-1">
-                                  User Name
+                                  <b>UserName</b>
                                 </Form.Label>
                                 <Form.Control
                                   type="text"
-                                  placeholder="Enter Full name"
+                                  placeholder="Enter your full name"
                                   autoComplete="off"
                                   id="placeholdertext"
                                   name="username"
@@ -160,13 +160,13 @@ const FeedbackScreen = memo(() => {
                               )}
                               <Form.Group id="feedback" className="mb-2">
                                 <Form.Label className="labeltext pb-1">
-                                  Feedback
+                                  <b>Feedback</b>
                                 </Form.Label>
                                 <Form.Control
                                   type="text"
                                   as="textarea"
                                   style={{ height: "100px" }}
-                                  placeholder="Enter your Valuable Feedback"
+                                  placeholder="Enter your valuable feedback"
                                   id="placeholdertext"
                                   name="feedback"
                                   value={values.feedback}

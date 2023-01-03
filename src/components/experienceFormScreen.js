@@ -103,8 +103,8 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
   const [eworkRole1val, setEworkRole1Val] = useState("");
   const [workonemonthfromval, setWorkonemonthfromval] = useState("January");
   const [workonemonthtoval, setWorkonemonthtoval] = useState("May");
-  const [workoneyearfromval, setWorkoneFromyearval] = useState("2015");
-  const [workoneyeartoval, setWorkoneToyearval] = useState("2019");
+  const [workoneyearfromval, setWorkoneFromyearval] = useState("2008");
+  const [workoneyeartoval, setWorkoneToyearval] = useState("2009");
   const [workonepoint1exp, setWorkonepoint1exp] = useState("");
   const [workonepoint2exp, setWorkonepoint2exp] = useState("");
 
@@ -113,8 +113,8 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
   const [eworkRole2val, setEworkRole2Val] = useState("");
   const [worktwomonthfromval, setWorktwomonthfromval] = useState("January");
   const [worktwomonthtoval, setWorktwomonthtoval] = useState("May");
-  const [worktwoyearfromval, setWorktwoFromyearval] = useState("2015");
-  const [worktwoyeartoval, setWorktwoToyearval] = useState("2019");
+  const [worktwoyearfromval, setWorktwoFromyearval] = useState("2008");
+  const [worktwoyeartoval, setWorktwoToyearval] = useState("2009");
   const [worktwopoint1exp, setWorktwopoint1exp] = useState("");
   const [worktwopoint2exp, setWorktwopoint2exp] = useState("");
 
@@ -153,8 +153,8 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
   const [estreamval, setEstreamVal] = useState("");
   const [euniversitynameval, setEuniversitynameVal] = useState("");
   const [emonthfromval, setEmonthfromVal] = useState("January");
-  const [eyearfromval, setEfromyearVal] = useState("2015");
-  const [eyeartoval, setEtoyearVal] = useState("2019");
+  const [eyearfromval, setEfromyearVal] = useState("2008");
+  const [eyeartoval, setEtoyearVal] = useState("2009");
   const [ecoursenameval, setEcoursenameVal] = useState("");
   const [eplatnameval, setEplatnameVal] = useState("");
   const [ecertificatemonthval, setEcertificatemonthVal] = useState("January");
@@ -280,23 +280,6 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
     scrollToTopNextStep();
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
-  // const handleSkip = () => {
-  //   if (!isStepOptional(activeStep)) {
-  //     throw new Error("You can't skip a step that isn't optional.");
-  //   }
-
-  //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  //   setSkipped((prevSkipped) => {
-  //     const newSkipped = new Set(prevSkipped.values());
-  //     newSkipped.add(activeStep);
-  //     return newSkipped;
-  //   });
-  // };
-
-  // const handleReset = () => {
-  //   setActiveStep(0);
-  // };
 
   const handleNext = () => {
     scrollToTopNextStep();
@@ -438,7 +421,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
     if (!values.eusername) {
       errors.eusername = "Username is required!";
     } else if (!/^[A-Za-z\b ]+$/.test(values.eusername)) {
-      errors.eusername = "Please enter a Valid username.";
+      errors.eusername = "Please enter a valid username.";
     }
 
     if (!values.eemail) {
@@ -446,13 +429,13 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.eemail)
     ) {
-      errors.eemail = "Please enter a Valid Email ID.";
+      errors.eemail = "Please enter a valid Email ID.";
     }
 
     if (!values.ephoneno) {
       errors.ephoneno = "Phone no is required!";
     } else if (!/[6-9]\d{9}$/i.test(values.ephoneno)) {
-      errors.ephoneno = "Please enter a Valid 10-digit phone number.";
+      errors.ephoneno = "Please enter a valid 10-digit phone number.";
     }
 
     if (!values.esummary) {
@@ -476,13 +459,13 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
     if (!values.eworkCname1val) {
       errors.eworkCname1val = "Company name is required!";
     } else if (!/^[A-Za-z&,\-_\b ]+$/.test(values.eworkCname1val)) {
-      errors.eworkCname1val = "Please enter a Valid Company name.";
+      errors.eworkCname1val = "Please enter a valid Company name.";
     }
 
     if (!values.eworkLoc1val) {
       errors.eworkLoc1val = "Company Location is required!";
     } else if (!/^[A-Za-z\b ]+$/.test(values.eworkLoc1val)) {
-      errors.eworkLoc1val = "Please enter a Valid Company Location.";
+      errors.eworkLoc1val = "Please enter a valid Company Location.";
     }
 
     if (!values.eworkRole1val) {
@@ -492,10 +475,10 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
     }
 
     if (!values.eworkonePoint1val) {
-      errors.eworkonePoint1val = "Please enter Atleast 1-2 Work Exp point.";
+      errors.eworkonePoint1val = "Please enter atleast 1-2 Work Exp point.";
     }
     if (!values.eworkonePoint1val || !values.eworkonePoint2val) {
-      errors.eworkonePointval = "Please enter Atleast 1-2 Work Exp point.";
+      errors.eworkonePointval = "Please enter atleast 1-2 Work Exp point.";
     }
     // if (values.eworkonePoint1val || values.eworkonePoint2val) {
     //   errors.eworkonePointval = null;
@@ -505,13 +488,13 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
       if (!values.eworkCname2val) {
         errors.eworkCname2val = "Company name is required!";
       } else if (!/^[A-Za-z&,\-_\b ]+$/.test(values.eworkCname2val)) {
-        errors.eworkCname2val = "Please enter a Valid Company name.";
+        errors.eworkCname2val = "Please enter a valid Company name.";
       }
 
       if (!values.eworkLoc2val) {
         errors.eworkLoc2val = "Company Location is required!";
       } else if (!/^[A-Za-z\b ]+$/.test(values.eworkLoc2val)) {
-        errors.eworkLoc2val = "Please enter a Valid Company Location.";
+        errors.eworkLoc2val = "Please enter a valid Company Location.";
       }
 
       if (!values.eworkRole2val) {
@@ -520,10 +503,10 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
         errors.eworkRole2val = "Please enter the valid characters only.";
       }
       if (!values.eworktwoPoint1val) {
-        errors.eworktwoPoint1val = "Please enter Atleast 1-2 Work Exp point.";
+        errors.eworktwoPoint1val = "Please enter atleast 1-2 Work Exp point.";
       }
       if (!values.eworktwoPoint1val || !values.eworktwoPoint2val) {
-        errors.eworktwoPointval = "Please enter Atleast 1-2 Work Exp point.";
+        errors.eworktwoPointval = "Please enter atleast 1-2 Work Exp point.";
       }
     }
 
@@ -533,25 +516,25 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
       errors.eprojectonename = "Project name is required!";
     } else if (!/^[A-Za-z0-9&,\-_\b ]+$/.test(values.eprojectonename)) {
       errors.eprojectonename =
-        "Please enter a Valid Alphanumerical Characters only.";
+        "Please enter a valid Alphanumerical Characters only.";
     }
 
     if (!values.eprojectonerole) {
       errors.eprojectonerole = "Project Role is required!";
     } else if (!/^[A-Za-z\-\b ]+$/.test(values.eprojectonerole)) {
       errors.eprojectonerole =
-        "Please enter a Valid Alphanumerical Characters only.";
+        "Please enter a valid Alphanumerical Characters only.";
     }
     if (
       !values.eprojectonetech1 ||
       !values.eprojectonetech2 ||
       !values.eprojectonetech3
     ) {
-      errors.eprojectonetech = "Please enter Atleast 3-4 Technologies.";
+      errors.eprojectonetech = "Please enter atleast 3-4 Technologies.";
     }
 
     if (!values.eprojectonepoint1 || !values.eprojectonepoint2) {
-      errors.eprojectonepoint = "Please enter Atleast 2-3 Points.";
+      errors.eprojectonepoint = "Please enter atleast 2-3 Points.";
     }
 
     ///////  project 2 Validation
@@ -561,25 +544,25 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
         errors.eprojecttwoname = "Project name is required!";
       } else if (!/^[A-Za-z0-9&,\-_\b ]+$/.test(values.eprojecttwoname)) {
         errors.eprojecttwoname =
-          "Please enter a Valid Alphanumerical Characters only.";
+          "Please enter a valid Alphanumerical Characters only.";
       }
 
       if (!values.eprojecttworole) {
         errors.eprojecttworole = "Project Role is required!";
       } else if (!/^[A-Za-z\-\b ]+$/.test(values.eprojecttworole)) {
         errors.eprojecttworole =
-          "Please enter a Valid Alphanumerical Characters only.";
+          "Please enter a valid Alphanumerical Characters only.";
       }
       if (
         !values.eprojecttwotech1 ||
         !values.eprojecttwotech2 ||
         !values.eprojecttwotech3
       ) {
-        errors.eprojecttwotech = "Please enter Atleast 3-4 Technologies.";
+        errors.eprojecttwotech = "Please enter atleast 3-4 Technologies.";
       }
 
       if (!values.eprojecttwopoint1 || !values.eprojecttwopoint2) {
-        errors.eprojecttwopoint = "Please enter Atleast 2-3 Points.";
+        errors.eprojecttwopoint = "Please enter atleast 2-3 Points.";
       }
     }
     return errors;
@@ -1321,7 +1304,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                     htmlFor="role"
                                     className="pb-2 labelTextExperience"
                                   >
-                                    Role:
+                                    Role
                                   </label>
                                   <div>
                                     <select
@@ -1439,7 +1422,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                         boxShadow: theme.inputfieldShadow,
                                       }}
                                       className="form-control inputTxt"
-                                      placeholder="Enter 10-digit number"
+                                      placeholder="Enter 10-digit phone number"
                                       maxLength="10"
                                       onChange={(e) => {
                                         handleChange(e);
@@ -1844,7 +1827,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                           return (
                                             <option
                                               key={keyindex}
-                                              value={item.eduname}
+                                              value={item.label}
                                             >
                                               {item.label}
                                             </option>
@@ -1899,7 +1882,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                               return (
                                                 <option
                                                   key={keyindex}
-                                                  value={item.eduname}
+                                                  value={item.label}
                                                 >
                                                   {item.label}
                                                 </option>
@@ -1942,7 +1925,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                           return (
                                             <option
                                               key={keyindex}
-                                              value={item.eduname}
+                                              value={item.label}
                                             >
                                               {item.label}
                                             </option>
@@ -1998,16 +1981,22 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                           value={workoneyeartoval}
                                           disabled={disablemonthyear1}
                                         >
-                                          {yeartoData.map((item, keyindex) => {
-                                            return (
-                                              <option
-                                                key={keyindex}
-                                                value={item.eduname}
-                                              >
-                                                {item.label}
-                                              </option>
-                                            );
-                                          })}
+                                          {yeartoData
+                                            .filter(
+                                              (filteritem) =>
+                                                filteritem.label >
+                                                workoneyearfromval
+                                            )
+                                            .map((item, keyindex) => {
+                                              return (
+                                                <option
+                                                  key={keyindex}
+                                                  value={item.label}
+                                                >
+                                                  {item.label}
+                                                </option>
+                                              );
+                                            })}
                                         </select>
                                       </div>
                                     </Col>
@@ -2337,7 +2326,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                                 return (
                                                   <option
                                                     key={keyindex}
-                                                    value={item.eduname}
+                                                    value={item.label}
                                                   >
                                                     {item.label}
                                                   </option>
@@ -2395,7 +2384,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                                   return (
                                                     <option
                                                       key={keyindex}
-                                                      value={item.eduname}
+                                                      value={item.label}
                                                     >
                                                       {item.label}
                                                     </option>
@@ -2439,7 +2428,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                                 return (
                                                   <option
                                                     key={keyindex}
-                                                    value={item.eduname}
+                                                    value={item.label}
                                                   >
                                                     {item.label}
                                                   </option>
@@ -2499,18 +2488,22 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                               value={worktwoyeartoval}
                                               disabled={disablemonthyear2}
                                             >
-                                              {yeartoData.map(
-                                                (item, keyindex) => {
+                                              {yeartoData
+                                                .filter(
+                                                  (filteritem) =>
+                                                    filteritem.label >
+                                                    worktwoyearfromval
+                                                )
+                                                .map((item, keyindex) => {
                                                   return (
                                                     <option
                                                       key={keyindex}
-                                                      value={item.eduname}
+                                                      value={item.label}
                                                     >
                                                       {item.label}
                                                     </option>
                                                   );
-                                                }
-                                              )}
+                                                })}
                                             </select>
                                           </div>
                                         </Col>
@@ -3506,7 +3499,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                     htmlFor="Stream"
                                     className="pb-2 labelTextExperience"
                                   >
-                                    Enter Stream{"\n"}
+                                    Stream{"\n"}
                                     <span className="asteriskkey">*</span>
                                   </label>
                                   <div className="input-group">
@@ -3546,7 +3539,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                     htmlFor="University"
                                     className="pb-2 labelTextExperience"
                                   >
-                                    Enter University Name{"\n"}
+                                    University Name{"\n"}
                                     <span className="asteriskkey">*</span>
                                   </label>
                                   <div className="input-group">
@@ -3616,7 +3609,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                       return (
                                         <option
                                           key={keyindex}
-                                          value={item.eduname}
+                                          value={item.label}
                                         >
                                           {item.label}
                                         </option>
@@ -3666,7 +3659,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                         return (
                                           <option
                                             key={keyindex}
-                                            value={item.eduname}
+                                            value={item.label}
                                           >
                                             {item.label}
                                           </option>
@@ -3713,16 +3706,21 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                       onChange={yeartodropdownSelect}
                                       value={eyeartoval}
                                     >
-                                      {yeartoData.map((item, keyindex) => {
-                                        return (
-                                          <option
-                                            key={keyindex}
-                                            value={item.eduname}
-                                          >
-                                            {item.label}
-                                          </option>
-                                        );
-                                      })}
+                                      {yeartoData
+                                        .filter(
+                                          (filteritem) =>
+                                            filteritem.label > eyearfromval
+                                        )
+                                        .map((item, keyindex) => {
+                                          return (
+                                            <option
+                                              key={keyindex}
+                                              value={item.label}
+                                            >
+                                              {item.label}
+                                            </option>
+                                          );
+                                        })}
                                     </select>
                                   </div>
                                 </Col>
@@ -3749,7 +3747,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                     htmlFor="CourseName"
                                     className="pb-2 labelTextExperience"
                                   >
-                                    Enter Course Name{"\n"}
+                                    Course Name{"\n"}
                                     <span className="asteriskkey">*</span>
                                   </label>
                                   <div className="input-group">
@@ -3858,7 +3856,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                         return (
                                           <option
                                             key={keyindex}
-                                            value={item.eduname}
+                                            value={item.label}
                                           >
                                             {item.label}
                                           </option>
@@ -3909,7 +3907,7 @@ const ExperienceFormScreen = memo(({ resumeIDInfo }) => {
                                         return (
                                           <option
                                             key={keyindex}
-                                            value={item.eduname}
+                                            value={item.label}
                                           >
                                             {item.label}
                                           </option>

@@ -119,8 +119,8 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
   const [fstreamval, setFstreamVal] = useState("");
   const [funiversitynameval, setFuniversitynameVal] = useState("");
   const [fmonthfromval, setFmonthfromVal] = useState("January");
-  const [fyearfromval, setFfromyearVal] = useState("2015");
-  const [fyeartoval, setFtoyearVal] = useState("2019");
+  const [fyearfromval, setFfromyearVal] = useState("2008");
+  const [fyeartoval, setFtoyearVal] = useState("2009");
   const [fcoursenameval, setFcoursenameVal] = useState("");
   const [fplatnameval, setFplatnameVal] = useState("");
   const [fcertificatemonthval, setFcertificatemonthVal] = useState("January");
@@ -348,7 +348,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
     if (!values.fusername) {
       errors.fusername = "Username is required!";
     } else if (!/^[A-Za-z\b ]+$/.test(values.fusername)) {
-      errors.fusername = "Please enter a Valid username.";
+      errors.fusername = "Please enter a valid username.";
     }
 
     if (!values.femail) {
@@ -356,13 +356,13 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.femail)
     ) {
-      errors.femail = "Please enter a Valid Email ID.";
+      errors.femail = "Please enter a valid Email ID.";
     }
 
     if (!values.fphoneno) {
       errors.fphoneno = "Phone no is required!";
     } else if (!/[6-9]\d{9}$/i.test(values.fphoneno)) {
-      errors.fphoneno = "Please enter a Valid 10-digit phone number.";
+      errors.fphoneno = "Please enter a valid 10-digit phone number.";
     }
 
     if (!values.fsummary) {
@@ -377,9 +377,6 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
   const freshervalidateStep2 = (values) => {
     const errors = {};
 
-    ///////  project 1 Validation
-    // console.log("initial values --> ", values);
-
     if (progSelectval.length === 0) {
       setSkillnullfresher(true);
     } else {
@@ -390,14 +387,14 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
       errors.fprojectonename = "Project name is required!";
     } else if (!/^[A-Za-z0-9&,\-_\b ]+$/.test(values.fprojectonename)) {
       errors.fprojectonename =
-        "Please enter a Valid Alphanumerical Characters only.";
+        "Please enter a valid Alphanumerical Characters only.";
     }
 
     if (!values.fprojectonerole) {
       errors.fprojectonerole = "Project Role is required!";
     } else if (!/^[A-Za-z\-\b ]+$/.test(values.fprojectonerole)) {
       errors.fprojectonerole =
-        "Please enter a Valid Alphanumerical Characters only.";
+        "Please enter a valid Alphanumerical Characters only.";
     }
 
     if (
@@ -405,11 +402,11 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
       !values.fprojectonetech2 ||
       !values.fprojectonetech3
     ) {
-      errors.fprojectonetech1 = "Please enter Atleast 3-4 Technologies.";
+      errors.fprojectonetech1 = "Please enter atleast 3-4 Technologies.";
     }
 
     if (!values.fprojectonepoint1 || !values.fprojectonepoint2) {
-      errors.fprojectonepoint1 = "Please enter Atleast 2-3 Points.";
+      errors.fprojectonepoint1 = "Please enter atleast 2-3 Points.";
     }
 
     ///////  project 2 Validation
@@ -419,24 +416,24 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
         errors.fprojecttwoname = "Project name is required!";
       } else if (!/^[A-Za-z0-9&,\-_\b ]+$/.test(values.fprojecttwoname)) {
         errors.fprojecttwoname =
-          "Please enter a Valid Alphanumerical Characters only.";
+          "Please enter a valid Alphanumerical Characters only.";
       }
 
       if (!values.fprojecttworole) {
         errors.fprojecttworole = "Project Role is required!";
       } else if (!/^[A-Za-z\-\b ]+$/.test(values.fprojecttworole)) {
         errors.fprojecttworole =
-          "Please enter a Valid Alphanumerical Characters only.";
+          "Please enter a valid Alphanumerical Characters only.";
       }
       if (
         !values.fprojecttwotech1 ||
         !values.fprojecttwotech2 ||
         !values.fprojecttwotech3
       ) {
-        errors.fprojecttwotech1 = "Please enter Atleast 3-4 Technologies.";
+        errors.fprojecttwotech1 = "Please enter atleast 3-4 Technologies.";
       }
       if (!values.fprojecttwopoint1 || !values.fprojecttwopoint2) {
-        errors.fprojecttwopoint1 = "Please enter Atleast 2-3 Points.";
+        errors.fprojecttwopoint1 = "Please enter atleast 2-3 Points.";
       }
     }
 
@@ -449,25 +446,25 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
     if (!values.fstream) {
       errors.fstream = "Education stream is required!";
     } else if (!/^[A-Za-z\b ]+$/.test(values.fstream)) {
-      errors.fstream = "Please enter the valid characters only.";
+      errors.fstream = "Please enter the valid Alpha Characters only.";
     }
 
     if (!values.funiversity) {
       errors.funiversity = "University name is required!";
     } else if (!/^[A-Za-z\b ]+$/.test(values.funiversity)) {
-      errors.funiversity = "Please enter the valid characters only.";
+      errors.funiversity = "Please enter the valid Alpha Characters only.";
     }
 
     if (!values.fcoursename) {
       errors.fcoursename = "Course name is required!";
     } else if (!/^[A-Za-z\b ]+$/.test(values.fcoursename)) {
-      errors.fcoursename = "Please enter the valid characters only.";
+      errors.fcoursename = "Please enter the valid Alpha Characters only.";
     }
 
     if (!values.fplatform) {
       errors.fplatform = "Platfrom name is required!";
     } else if (!/^[A-Za-z\b ]+$/.test(values.fplatform)) {
-      errors.fplatform = "Please enter the valid characters only.";
+      errors.fplatform = "Please enter the valid Alpha Characters only.";
     }
 
     return errors;
@@ -1063,7 +1060,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                         boxShadow: theme.inputfieldShadow,
                                       }}
                                       className="form-control inputTxt"
-                                      placeholder="Enter Full name"
+                                      placeholder="Enter full name"
                                       onChange={(e) => {
                                         handleChange(e);
                                         setFnameVal(e.target.value);
@@ -1090,7 +1087,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                     htmlFor="role"
                                     className="pb-2 labelTextFresher"
                                   >
-                                    Role:
+                                    Role
                                   </label>
                                   <div>
                                     <Select
@@ -1192,7 +1189,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                         boxShadow: theme.inputfieldShadow,
                                       }}
                                       className="form-control inputTxt"
-                                      placeholder="Enter 10-digit number"
+                                      placeholder="Enter 10-digit phone number"
                                       maxLength="10"
                                       onChange={(e) => {
                                         handleChange(e);
@@ -2269,7 +2266,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                       return (
                                         <option
                                           key={keyindex}
-                                          value={item.eduname}
+                                          value={item.label}
                                         >
                                           {item.label}
                                         </option>
@@ -2289,7 +2286,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                     htmlFor="Stream"
                                     className="pb-2 labelTextFresher"
                                   >
-                                    Enter Stream{"\n"}
+                                    Stream{"\n"}
                                     <span className="asteriskkey">*</span>
                                   </label>
                                   <div className="input-group">
@@ -2329,7 +2326,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                     htmlFor="University"
                                     className="pb-2 labelTextFresher"
                                   >
-                                    Enter University Name{"\n"}
+                                    University Name{"\n"}
                                     <span className="asteriskkey">*</span>
                                   </label>
                                   <div className="input-group">
@@ -2399,7 +2396,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                       return (
                                         <option
                                           key={keyindex}
-                                          value={item.eduname}
+                                          value={item.label}
                                         >
                                           {item.label}
                                         </option>
@@ -2449,7 +2446,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                         return (
                                           <option
                                             key={keyindex}
-                                            value={item.eduname}
+                                            value={item.label}
                                           >
                                             {item.label}
                                           </option>
@@ -2496,16 +2493,21 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                       onChange={yeartodropdownSelect}
                                       value={fyeartoval}
                                     >
-                                      {yeartoData.map((item, keyindex) => {
-                                        return (
-                                          <option
-                                            key={keyindex}
-                                            value={item.eduname}
-                                          >
-                                            {item.label}
-                                          </option>
-                                        );
-                                      })}
+                                      {yeartoData
+                                        .filter(
+                                          (filteritem) =>
+                                            filteritem.label > fyearfromval
+                                        )
+                                        .map((item, keyindex) => {
+                                          return (
+                                            <option
+                                              key={keyindex}
+                                              value={item.label}
+                                            >
+                                              {item.label}
+                                            </option>
+                                          );
+                                        })}
                                     </select>
                                   </div>
                                 </Col>
@@ -2532,7 +2534,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                     htmlFor="CourseName"
                                     className="pb-2 labelTextFresher"
                                   >
-                                    Enter Course Name{"\n"}
+                                    Course Name{"\n"}
                                     <span className="asteriskkey">*</span>
                                   </label>
                                   <div className="input-group">
@@ -2641,7 +2643,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                         return (
                                           <option
                                             key={keyindex}
-                                            value={item.eduname}
+                                            value={item.label}
                                           >
                                             {item.label}
                                           </option>
@@ -2692,7 +2694,7 @@ const FresherFormScreen = memo(({ resumeIDInfo }) => {
                                         return (
                                           <option
                                             key={keyindex}
-                                            value={item.eduname}
+                                            value={item.label}
                                           >
                                             {item.label}
                                           </option>

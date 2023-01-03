@@ -57,9 +57,9 @@ const AboutScreen = memo(() => {
                       <div className="abt-text-cont">
                         <h3>Sanath S Karanth</h3>
                         <p>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the
+                          Passionate about web design and development who works
+                          as a techie in a professional service-oriented firm
+                          with a few years of experience.
                         </p>
                         <div className="abt-social-icon-cont">
                           <div className="socialicon-cont">
